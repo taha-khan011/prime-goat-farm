@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        :root {
+            --white-text: #fff;
+            --gray-text: #989b9e;
+            --green-text: rgb(94, 172, 94);
+            --green-bg: #38DC7C;
+            --transparent-green-bg: #0B4122;
+            --dark-body-bg: rgb(39, 39, 41);
+            --light-body-bg: rgb(46, 46, 51);
+            --black: black;
+        }
+
+        body {
+            background-color: var(--dark-body-bg);
+        }
+
+        .sec-1-parent {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .sub-sec-1 {
+            width: 85%;
+            padding: 4% 0;
+        }
+
+        .sec-1-head-1 {
+            width: 230px;
+            height: 30px;
+            background-color: var(--transparent-green-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--green-text);
+            border-radius: 20px;
+        }
+
+        .sec-1-head-2 {
+            font-size: 45px;
+            color: var(--white-text);
+            margin-bottom: 15px;
+        }
+
+        .sec-1-head-2 span {
+            color: var(--green-text);
+        }
+
+        .sec-1-head-3 {
+            width: 490px;
+            color: var(--gray-text);
+            font-weight: 500;
+        }
+
+        .sec-2-parent {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 70px;
+        }
+
+        .sub-sec-2 {
+            width: 85%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 35px;
+        }
+
+        .sec-2-cards {
+            width: 25%;
+            padding: 3% 3%;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            justify-content: center;
+            background-color: var(--light-body-bg);
+            box-shadow: 0 0 10px var(--dark-body-bg);
+        }
+
+        .sec-2-icon-parent {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background-color: var(--transparent-green-bg);
+            display: flex;
+            align-items: center;
+        }
+
+        .sec-2-heading {
+            color: var(--white-text);
+        }
+
+        .sec-2-paragraph {
+            color: var(--gray-text);
+            font-weight: 500;
+        }
+
+        .sec-3-parent {
+            width: 100%;
+            height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid var(--gray-text);
+        }
+
+        .sub-sec-3 {
+            width: 79%;
+            height: 40vh;
+            padding: 0 3%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--transparent-green-bg);
+            border-radius: 12px;
+
+        }
+
+        .sec-3-part-1 {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .sec-3-heading {
+            color: var(--white-text);
+            font-size: 30px;
+            line-height: 35px;
+        }
+
+        .sec-3-paragraph {
+            color: var(--gray-text);
+            font-weight: 500;
+        }
+
+        .sec-3-part-2 {
+            width: 45%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .sec-3-part-2-btns {
+            padding: 10px 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .sec-3-part-2-btn-1 {
+            display: flex;
+            background-color: var(--green-bg);
+        }
+
+        .sec-3-part-2-btn-2 {
+            background-color: var(--black);
+            color: var(--white-text);
+        }
+
+        .sec-4-parent {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid white;
+        }
+
+        .sub-sec-4 {
+            width: 85%;
+            display: flex;
+        }
+
+        .sec-4-part-1-head-child {
+            width: 25%;
+            height: 190px;
+            /* border: 1px solid #fff; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sec-4-part-1-head-child img {
+            width: 24px;
+            height: 24px;
+
+        }
+
+        .sec-4-part-1-head-child h2 {
+            /* font-size: 20%; */
+            font-weight: 700;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- section-1 -->
+    <section class="sec-1-parent">
+        <div class="sub-sec-1">
+            <div class="sec-1-head-1">EXCELLENCE IN HUSBANDRY</div>
+            <h1 class="sec-1-head-2">What We <span>Provide</span></h1>
+            <p class="sec-1-head-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro in soluta nobis
+                sequi consectetur, tempora pariatur inventore officia fuga, quis facilis assumenda unde? Molestias,
+                nobis.</p>
+        </div>
+    </section>
+
+    <!-- section-2 -->
+    <section class="sec-2-parent">
+        <div class="sub-sec-2">
+            <div class="sec-2-cards">
+                <div class="sec-2-icon-parent">
+                    <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
+                </div>
+                <h3 class="sec-2-heading">Quality Feed</h3>
+                <p class="sec-2-paragraph">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab natus aliquam
+                    doloribus consequatur soluta enim earum libero explicabo, exercitationem voluptatum nemo, nostrum
+                    modi architecto! Enim.</p>
+            </div>
+            <div class="sec-2-cards">
+                <div class="sec-2-icon-parent">
+                    <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
+                </div>
+                <h3 class="sec-2-heading">Quality Feed</h3>
+                <p class="sec-2-paragraph">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab natus aliquam
+                    doloribus consequatur soluta enim earum libero explicabo, exercitationem voluptatum nemo, nostrum
+                    modi architecto! Enim.</p>
+            </div>
+            <div class="sec-2-cards">
+                <div class="sec-2-icon-parent">
+                    <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
+                </div>
+                <h3 class="sec-2-heading">Quality Feed</h3>
+                <p class="sec-2-paragraph">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab natus aliquam
+                    doloribus consequatur soluta enim earum libero explicabo, exercitationem voluptatum nemo, nostrum
+                    modi architecto! Enim.</p>
+            </div>
+            <div class="sec-2-cards">
+                <div class="sec-2-icon-parent">
+                    <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
+                </div>
+                <h3 class="sec-2-heading">Quality Feed</h3>
+                <p class="sec-2-paragraph">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab natus aliquam
+                    doloribus consequatur soluta enim earum libero explicabo, exercitationem voluptatum nemo, nostrum
+                    modi architecto! Enim.</p>
+            </div>
+            <div class="sec-2-cards">
+                <div class="sec-2-icon-parent">
+                    <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
+                </div>
+                <h3 class="sec-2-heading">Quality Feed</h3>
+                <p class="sec-2-paragraph">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab natus aliquam
+                    doloribus consequatur soluta enim earum libero explicabo, exercitationem voluptatum nemo, nostrum
+                    modi architecto! Enim.</p>
+            </div>
+            <div class="sec-2-cards">
+                <div class="sec-2-icon-parent">
+                    <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
+                </div>
+                <h3 class="sec-2-heading">Quality Feed</h3>
+                <p class="sec-2-paragraph">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab natus aliquam
+                    doloribus consequatur soluta enim earum libero explicabo, exercitationem voluptatum nemo, nostrum
+                    modi architecto! Enim.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- section-3 -->
+    <section class="sec-3-parent">
+        <div class="sub-sec-3">
+            <div class="sec-3-part-1">
+                <h1 class="sec-3-heading">Ready to upgrade your livestock standards?</h1>
+                <p class="sec-3-paragraph">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum hic explicabo eligendi dolorem
+                    qui cupiditate provident nulla, temporibus quae omnis molestiae saepe aliquam distinctio odio?
+                </p>
+            </div>
+            <div class="sec-3-part-2">
+                <button class="sec-3-part-2-btn-1 sec-3-part-2-btns">Visit Our Location</button>
+                <button class="sec-3-part-2-btn-2 sec-3-part-2-btns">Schedule Consultation</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- section 4 -->
+    <section class="sec-4-parent">
+        <div class="sub-sec-4">
+            <div class="sec-4-part-1-head-child">
+                <img class="img-Sec-4" src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
+                <h2 class="heading-Sec4">CERTIFIED HEALTH</h2>
+            </div>
+            <div class="sec-4-part-1-head-child">
+                <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
+                <h2>EXPERT HANDLERS</h2>
+            </div>
+            <div class="sec-4-part-1-head-child">
+                <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
+                <h2>PREMIUM GENETICS</h2>
+            </div>
+            <div class="sec-4-part-1-head-child">
+                <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
+                <h2>BIO-SECURE FARM</h2>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
