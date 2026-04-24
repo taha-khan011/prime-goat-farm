@@ -442,18 +442,21 @@
         }
 
         .logo span {
-            color: #35d26f;
-            font-size: 22px;
+            font-size: 20px;
+            line-height: 20px;
             font-weight: 700;
+            color: #38DC7CFF;
         }
 
         .about p {
-            line-height: 1.6;
             max-width: 330px;
             margin-left: 30px;
             margin-bottom: 22px;
-            color: #b9b9b9;
-            /* background-color: yellow; */
+            /* font-family: var(--paraFont); */
+            font-size: 14px;
+            line-height: 23px;
+            font-weight: lighter;
+            color: #BCC2C8FF;
         }
 
         .contact-list {
@@ -480,8 +483,12 @@
 
         .contact-list span {
             display: inline-block;
-            line-height: 1.4;
-            margin-top: 0;
+            /* margin-top: 5px; */
+            margin-bottom: 13px;
+            font-size: 14px;
+            font-weight: bolder;
+            line-height: 20px;
+            color: #F9FAFBFF;
         }
 
         .socials {
@@ -508,7 +515,10 @@
             color: #f5f5f5;
             margin-bottom: 20px;
             font-size: 22px;
+            font-weight: bolder;
         }
+
+
 
         .inquiry-form {
             display: flex;
@@ -546,6 +556,7 @@
         .inquiry-form input::placeholder,
         .inquiry-form textarea::placeholder {
             color: #9a9a9a;
+            font-weight: bolder;
         }
 
         .inquiry-form textarea {
@@ -560,13 +571,16 @@
         }
 
         .inquiry-form button {
-            background: #35d26f;
-            color: #111;
-            border: none;
             padding: 14px 18px;
+            font-size: 14px;
+            line-height: 22px;
+            font-weight:bolder;
+            background: #38DC7CFF;
+            opacity: 1;
             border-radius: 10px;
-            font-weight: 700;
-            font-size: 15px;
+            border-width: 0px;
+            border-color: #FFFFFFFF;
+            border-style: solid;
             cursor: pointer;
         }
 
@@ -575,7 +589,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
-
+        
         .links ul {
             list-style: none;
             display: flex;
@@ -586,25 +600,30 @@
         .links a {
             text-decoration: none;
             color: #d1d1d1;
-        }
-
-        .visit-card {
             margin-top: 24px;
+            font-weight: bolder;
+        }
+        
+        .visit-card {
             background: linear-gradient(135deg, #14572e, #0f3f22);
-            padding: 22px;
+            padding: 15px;
+            height: 200px;
             border-radius: 14px;
+            background-color: yellowgreen;
         }
 
         .visit-card h4 {
             color: #fff;
             margin-bottom: 10px;
             font-size: 18px;
+            font-weight: bolder;
         }
 
         .visit-card p {
             color: #d2d2d2;
             line-height: 1.6;
             margin-bottom: 18px;
+            font-weight: bolder;
         }
 
         .direction-btn {
@@ -616,8 +635,8 @@
             text-decoration: none;
             padding: 12px 16px;
             border-radius: 10px;
-            border: 1px solid #3a3f46;
             font-weight: 600;
+            border: 1px solid #3a3f46;
         }
 
         .footer-bottom {
@@ -626,6 +645,7 @@
             padding: 16px 10px;
             color: #a5a5a5;
             font-size: 14px;
+            font-weight: bolder;
         }
 
 
