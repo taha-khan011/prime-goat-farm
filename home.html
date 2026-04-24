@@ -70,8 +70,9 @@
         }
 
         .hero-banner-detail-parent {
-            width: 70%;
-            height: 55vh;
+            width: 95%;
+            max-width: 940px;
+            height: clamp(300px, 50vh, 500px);
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
@@ -81,23 +82,22 @@
         }
 
         .hero-head-1 {
-            width: 371px;
-            height: 30px;
-            padding: 0 20px;
-            font-size: 12px;
+            padding: clamp(5px, .5vw, 8px) clamp(16px, 2vw, 28px);
+            font-size: clamp(10px, .87vw, 13px);
             border-radius: 40px;
             border: 1px solid var(--green-bg);
             background-color: var(--transparent-green-bg);
             color: var(--green-text);
             display: flex;
             align-items: center;
+            justify-content: center;
             font-family: var(--font-fam-heading);
             font-weight: 400;
         }
 
         .hero-head-2 {
             color: var(--white-text);
-            font-size: 72px;
+            font-size: clamp(32px, 5vw, 72px);
             font-family: var(--font-fam-heading);
         }
 
@@ -106,15 +106,17 @@
         }
 
         .hero-para {
-            width: 89%;
-            font-size: 24px;
+            width: 100%;
+            max-width: 940px;
+            font-size: clamp(16px, 1.75vw, 26px);
             text-align: center;
             color: var(--white-text);
             font-family: var(--font-fam-para);
         }
 
         .hero-btn-parent {
-            width: 43%;
+            width: 65%;
+            max-width: 370px;
             display: flex;
             justify-content: space-between;
             font-family: var(--font-fam-para);
@@ -122,28 +124,22 @@
 
         .hero-btn-parent button {
             border: none;
-            padding: 0 12px;
             border-radius: 10px;
-            font-weight: 700;
-            font-size: 18px;
-        }
-
-        .hero-btn-parent a {
-            text-decoration: none;
-        }
-
-        .hero-btn-parent a:first-child button {
-            background-color: var(--green-bg);
-            width: 225px;
+            font-weight: 800;
+            font-size: clamp(13px, 1.1vw, 18px);
             height: 56px;
         }
 
-        .hero-btn-parent a:last-child button {
+        .hero-btn-parent button:first-child {
+            background-color: var(--green-bg);
+            width: clamp(150px, 55%, 255px);
+        }
+
+        .hero-btn-parent button:last-child {
             background-color: var(--light-black-bg);
             color: var(--white-text);
             border: 1px solid var(--white-text);
-            width: 170.5625px;
-            height: 56px;
+            width: clamp(120px, 41%, 200px);
         }
 
         /* section-2 */
@@ -159,7 +155,6 @@
 
         .sub-sec-2-part-1 {
             width: 43%;
-
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
@@ -169,7 +164,7 @@
         .sub-sec-2-part-1 h1 {
             color: var(--white-text);
             font-size: var(--font-fam-heading);
-            font-size: 36px;
+            font-size: clamp(28px, 3.6vw, 38px);
             font-weight: 700;
         }
 
@@ -182,7 +177,7 @@
 
         .sub-sec-2-part-1 p {
             font-family: var(--font-fam-para);
-            font-size: 18px;
+            font-size: clamp(15px, 1.3vw, 19px);
             line-height: 29px;
             font-weight: 400;
             color: var(--gray-text);
@@ -193,7 +188,7 @@
             text-decoration: none;
             color: var(--green-text);
             font-family: var(--font-fam-para);
-            font-size: 18px;
+            font-size: clamp(15px, 1.3vw, 19px);
             font-weight: 500;
             border: none;
             background-color: transparent;
@@ -208,12 +203,10 @@
             width: 41%;
             display: flex;
             align-items: center;
-            height: 70vh;
         }
 
         .sec-2-part-2-card-parent {
             width: 100%;
-            height: 68.6vh;
             display: flex;
             flex-wrap: wrap;
             align-content: space-between;
@@ -231,6 +224,7 @@
             border: 1px solid var(--border-gray-bg);
             padding-left: 5%;
             box-shadow: 0px 1px 2px #0000001A, 0px 0px 0px #171a1f00;
+            margin-bottom: 14px;
         }
 
         .sec-2-icon-parent {
@@ -273,21 +267,18 @@
             align-items: center;
         }
 
-        .sec-3-parts {
-            width: 88%;
-            display: flex;
-        }
-
         .sec-3-part-1 {
+            width: 87.5%;
+            display: flex;
             flex-direction: column;
             gap: 10px;
             margin-bottom: 50px;
         }
 
         .sec-3-part-1-head-1 {
-            width: 92px;
-            height: 22px;
-            padding: 0 6px;
+            width: fit-content;
+            padding: clamp(5px, .4vw, 8px) clamp(16px, 2vw, 28px);
+            font-size: clamp(10px, .87vw, 13px);
             background-color: var(--transparent-green-bg);
             color: var(--green-text);
             font-size: 12px;
@@ -296,130 +287,126 @@
             border: 1px solid var(--green-bg);
             border-radius: 9999px;
             display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .sec-3-part-1 h1 {
             color: var(--white-text);
-            font-size: 36px;
+            font-size: clamp(28px, 2.6vw, 40px);
             font-weight: 700;
         }
 
         .sec-3-part-1-head-3 {
             display: flex;
             justify-content: space-between;
-            align-items: center;
         }
 
         .sec-3-part-1-head-3 p {
             width: 552px;
             font-weight: 400;
+            font-size: clamp(14px, 1.6vw, 16px);
             color: var(--gray-text);
         }
 
         .sec-3-part-1-head-3 button {
-            width: 162.421875px;
-            height: 40px;
-            padding: 0 12px;
+            padding: clamp(11px, 1vw, 15px) clamp(16px, 2vw, 28px);
             background-color: var(--dark-black-bg);
             border: 1px solid var(--border-gray-bg);
             color: var(--white-text);
             font-weight: 700;
-            font-size: 13px;
+            font-size: clamp(11px, 1.1vw, 14px);
             border-radius: 10px;
-            font-size: 14px;
             font-weight: 500;
         }
 
         .sec-3-part-2 {
-            flex-wrap: wrap;
-            gap: 31px;
+            width: 87.5%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .sec-3-part-2-cards-parent {
+            width: 32%;
         }
 
         .sec-3-part-2-cards {
             width: 374px;
-            height: 348px;
             border-radius: 12px;
-            border: 1px solid var(--border-gray-bg);
+            box-shadow: 0 0 10px var(--dark-black-bg),
+                0 0 10px var(--dark-black-bg);
+            margin-bottom: 23px;
         }
 
-        .sec-3-part-2-card-img-wrap {
+        .sec-3-part-2-img-wrap {
             width: 373.328125px;
-            height: 256px;
+            height: auto;
         }
 
-        .sec-3-part-2-card-img-wrap img {
+        .sec-3-part-2-img-wrap img {
             width: 100%;
             border-radius: 12px 12px 0 0;
         }
 
-        .sec-3-part-2-cards-content {
-            padding: 5% 6% 0% 6%;
+        .sec-3-part-2-content-parent {
+            padding: 8% 6% 3% 6%;
         }
 
-        .sec-3-part-2-card-content-line-1,
-        .sec-3-part-2-card-content-line-2 {
+        .sec-3-part-2-content-line-1,
+        .sec-3-part-2-content-line-2 {
             height: 26px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .sec-3-part-2-card-content-line-1 h3 {
+        .sec-3-part-2-content-line-1 p:first-child {
             font-family: var(--font-fam-heading);
-            font-size: 18px;
+            font-size: clamp(15px, 1.3vw, 20px);
             font-weight: 700;
             color: var(--white-text);
         }
 
-        .sec-3-part-2-card-content-line-1 p,
-        .sec-3-part-2-card-content-line-2 h4 {
+        .sec-3-part-2-content-line-1 p:last-child {
+            font-size: clamp(9px, .9vw, 15px);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .sec-3-part-2-content-line-2 p:first-child {
+            font-size: clamp(11px, 1.1vw, 16px);
+            font-weight: 400;
+        }
+
+        .sec-3-part-2-content-line-1 p:last-child,
+        .sec-3-part-2-content-line-2 p:first-child {
             color: var(--gray-text);
             font-family: var(--font-fam-para);
         }
 
-        .sec-3-part-2-card-content-line-1 p {
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .sec-3-part-2-card-content-line-2 h4 {
-            font-size: 14px;
-            font-weight: 400;
-        }
-
-        .sec-3-part-2-card-content-line-2 p {
-            font-family: var(--font-fam-para);
-            font-size: 18px;
+        .sec-3-part-2-content-line-2 p:last-child {
+            font-size: clamp(15px, 1.3vw, 20px);
             font-weight: 700;
-            color: var(--green-bg);
+            color: var(--green-text);
         }
 
-        .sec-3-part-2-heads-parent {
-            width: 88%;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .sec-3-part-2-heads-inner-parent {
-            width: 31.5%;
+        .sec-3-part-2-card-head-parent {
+            height: 80px;
             display: flex;
             align-items: center;
             gap: 10px;
             padding: 10px 0px;
         }
 
-        .sec-3-part-2-heads-inner-parent h2 {
+        .sec-3-part-2-card-head-parent h2 {
             font-family: var(--font-fam-heading);
-            font-size: 24px;
+            font-size: clamp(23px, 1.5vw, 26px);
             font-weight: 700;
             color: var(--white-text);
+            margin-top: 9px;
         }
 
         .sec-3-part-2-head-verticle-line {
-            width: 4px;
-            height: 30px;
+            width: 6px;
+            height: 32px;
             background-color: var(--green-bg);
             border-radius: 6px;
         }
@@ -427,13 +414,13 @@
         /* section-4 */
         .sec-4-cards-parent {
             width: 100%;
-            height: 412px;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 150px;
+            margin-top: 120px;
             background-color: #0B41221A;
             border-bottom: 1px solid var(--border-gray-bg);
+            padding: 80px 0;
         }
 
         .sec-4-cards-inner-parent {
@@ -759,7 +746,7 @@
         }
 
         .sec-7-part-1 h1 {
-            font-size: 48px;
+            font-size: clamp(28px, 3.5vw, 48px);
             font-weight: 700;
             color: var(--white-text);
             font-family: var(--font-fam-heading);
@@ -833,10 +820,129 @@
             font-weight: 700;
         }
 
-        @media (max-width: 1362px) and (min-width: 900px) {
-            
+        /* XS - Extra Small */
+        @media (max-width: 575px) {
+
+            .hero-btn-parent button {
+                height: 45px;
+            }
+
+            .sec-2-parent {
+                flex-direction: column;
+                gap: 80px;
+            }
+
+            .sub-sec-2-part-1,
+            .sub-sec-2-part-2 {
+                width: 90%;
+            }
+
+            .sec-2-hor-line {
+                display: none;
+            }
+
+            .sub-sec-2-part-1 {
+                text-align: center;
+                align-items: center;
+            }
+
+            .sub-sec-2-part-1 p {
+                line-height: 22px;
+            }
+
+            .sub-sec-2-part-1 button img {
+                margin-left: 4px;
+            }
+
+            .sec-2-part-2-card-parent {
+                gap: 20px;
+            }
+
+            .sec-2-part-2-cards {
+                width: 100%;
+                align-items: center;
+            }
+
+            .sec-3-part-1-head-3 {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sec-3-part-1 {
+                align-items: center;
+                justify-content: center;
+            }
+
+            .sec-3-part-1-head-3 p {
+                width: fit-content;
+                text-align: center;
+            }
+
+            .sec-3-part-2 {
+                flex-direction: column;
+            }
+
+            .sec-3-part-2-cards-parent {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sec-3-part-2-card-head-parent {
+                justify-content: center;
+                margin-bottom: 10px;
+            }
+
+            .sec-3-part-2-head-verticle-line {
+                display: none;
+            }
+
+            .sec-3-part-2-cards {
+                width: 300px;
+                height: 290px;
+            }
+
+            .sec-3-part-2-img-wrap {
+                width: 100%;
+                height: auto;
+            }
+
+            .sec-3-part-2-content-parent {
+                padding: 9% 6% 0% 6%;
+            }
+
+            .sec-4-cards-inner-parent{
+                width: 90%;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sec-4-cards{
+                width: 90%;
+                margin-bottom: 20px;
+            }
+
         }
 
+        /* SM - Small */
+        @media (min-width: 576px) {
+            .sec-2-hor-line {
+                display: none;
+            }
+        }
+
+        /* MD - Medium */
+        @media (min-width: 768px) {}
+
+        /* LG - Large */
+        @media (min-width: 992px) {}
+
+        /* XL - Extra Large */
+        @media (min-width: 1200px) {}
+
+        /* XXL - Extra Extra Large */
+        @media (min-width: 1400px) {}
     </style>
 </head>
 
@@ -853,8 +959,8 @@
             <p class="hero-para">Experience the heritage of quality breeding. We provide the finest goats,sheep and cows
                 natured with professional care and organic feed.</p>
             <div class="hero-btn-parent">
-                <a href=""><button>Explore Animals</button></a>
-                <a href=""><button>Book Now</button></a>
+                <button>Explore Animals</button>
+                <button>Book Now</button>
             </div>
         </div>
     </div>
@@ -880,28 +986,28 @@
                         <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
                     </div>
                     <h3>100% Vaccinated</h3>
-                    <p>Lorem ipsum dolor sit.</p>
+                    <p>Full medical history provided</p>
                 </div>
                 <div class="sec-2-part-2-cards">
                     <div class="sec-2-icon-parent">
                         <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
                     </div>
                     <h3>Premium Feed</h3>
-                    <p>Lorem ipsum dolor sit.</p>
+                    <p>Organic nutrient-rich diet</p>
                 </div>
                 <div class="sec-2-part-2-cards">
                     <div class="sec-2-icon-parent">
                         <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
                     </div>
                     <h3>Elite Pedigree</h3>
-                    <p>Lorem ipsum dolor sit.</p>
+                    <p>Documented lineage breeds</p>
                 </div>
                 <div class="sec-2-part-2-cards">
                     <div class="sec-2-icon-parent">
                         <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
                     </div>
                     <h3>Expert Vets</h3>
-                    <p>Lorem ipsum dolor sit.</p>
+                    <p>24/7 Professional health care</p>
                 </div>
             </div>
         </div>
@@ -909,7 +1015,7 @@
 
     <!-- section-3 -->
     <div class="sec-3-parent">
-        <div class="sec-3-part-1 sec-3-parts">
+        <div class="sec-3-part-1">
             <div class="sec-3-part-1-head-1">Our Catalog</div>
             <h1 class="sec-3-part-1-head-2">Available Animals</h1>
             <div class="sec-3-part-1-head-3">
@@ -920,157 +1026,164 @@
                 </a>
             </div>
         </div>
-        <div class="sec-3-part-2-heads-parent">
-            <div class="sec-3-part-2-heads-inner-parent">
-                <div class="sec-3-part-2-head-verticle-line"></div>
-                <h2>Premium Goats</h2>
+
+        <div class="sec-3-part-2">
+            <div class="sec-3-part-2-cards-parent">
+                <div class="sec-3-part-2-card-head-parent">
+                    <div class="sec-3-part-2-head-verticle-line"></div>
+                    <h2>Premium Goats</h2>
+                </div>
+
+                <div class="sec-3-part-2-cards">
+                    <div class="sec-3-part-2-img-wrap">
+                        <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg" alt="">
+                    </div>
+                    <div class="sec-3-part-2-content-parent">
+                        <div class="sec-3-part-2-content-line-1">
+                            <p>Beetal King</p>
+                            <p>STARTING PKR</p>
+                        </div>
+                        <div class="sec-3-part-2-content-line-2">
+                            <p>Beetal</p>
+                            <p>85,000</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sec-3-part-2-cards">
+                    <div class="sec-3-part-2-img-wrap">
+                        <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg" alt="">
+                    </div>
+                    <div class="sec-3-part-2-content-parent">
+                        <div class="sec-3-part-2-content-line-1">
+                            <p>Beetal King</p>
+                            <p>STARTING PKR</p>
+                        </div>
+                        <div class="sec-3-part-2-content-line-2">
+                            <p>Beetal</p>
+                            <p>85,000</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sec-3-part-2-cards">
+                    <div class="sec-3-part-2-img-wrap">
+                        <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg" alt="">
+                    </div>
+                    <div class="sec-3-part-2-content-parent">
+                        <div class="sec-3-part-2-content-line-1">
+                            <p>Beetal King</p>
+                            <p>STARTING PKR</p>
+                        </div>
+                        <div class="sec-3-part-2-content-line-2">
+                            <p>Beetal</p>
+                            <p>85,000</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="sec-3-part-2-heads-inner-parent">
-                <div class="sec-3-part-2-head-verticle-line"></div>
-                <h2>Elite Sheep</h2>
+            <div class="sec-3-part-2-cards-parent">
+                <div class="sec-3-part-2-card-head-parent">
+                    <div class="sec-3-part-2-head-verticle-line"></div>
+                    <h2>Elite Sheep</h2>
+                </div>
+                <div class="sec-3-part-2-cards">
+                    <div class="sec-3-part-2-img-wrap">
+                        <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg" alt="">
+                    </div>
+                    <div class="sec-3-part-2-content-parent">
+                        <div class="sec-3-part-2-content-line-1">
+                            <p>Beetal King</p>
+                            <p>STARTING PKR</p>
+                        </div>
+                        <div class="sec-3-part-2-content-line-2">
+                            <p>Beetal</p>
+                            <p>85,000</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sec-3-part-2-cards">
+                    <div class="sec-3-part-2-img-wrap">
+                        <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg" alt="">
+                    </div>
+                    <div class="sec-3-part-2-content-parent">
+                        <div class="sec-3-part-2-content-line-1">
+                            <p>Beetal King</p>
+                            <p>STARTING PKR</p>
+                        </div>
+                        <div class="sec-3-part-2-content-line-2">
+                            <p>Beetal</p>
+                            <p>85,000</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sec-3-part-2-cards">
+                    <div class="sec-3-part-2-img-wrap">
+                        <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg" alt="">
+                    </div>
+                    <div class="sec-3-part-2-content-parent">
+                        <div class="sec-3-part-2-content-line-1">
+                            <p>Beetal King</p>
+                            <p>STARTING PKR</p>
+                        </div>
+                        <div class="sec-3-part-2-content-line-2">
+                            <p>Beetal</p>
+                            <p>85,000</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="sec-3-part-2-heads-inner-parent">
-                <div class="sec-3-part-2-head-verticle-line"></div>
-                <h2>Noble Cows</h2>
+            <div class="sec-3-part-2-cards-parent">
+                <div class="sec-3-part-2-card-head-parent">
+                    <div class="sec-3-part-2-head-verticle-line"></div>
+                    <h2>Noble Cows</h2>
+                </div>
+                <div class="sec-3-part-2-cards">
+                    <div class="sec-3-part-2-img-wrap">
+                        <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg" alt="">
+                    </div>
+                    <div class="sec-3-part-2-content-parent">
+                        <div class="sec-3-part-2-content-line-1">
+                            <p>Beetal King</p>
+                            <p>STARTING PKR</p>
+                        </div>
+                        <div class="sec-3-part-2-content-line-2">
+                            <p>Beetal</p>
+                            <p>85,000</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sec-3-part-2-cards">
+                    <div class="sec-3-part-2-img-wrap">
+                        <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg" alt="">
+                    </div>
+                    <div class="sec-3-part-2-content-parent">
+                        <div class="sec-3-part-2-content-line-1">
+                            <p>Beetal King</p>
+                            <p>STARTING PKR</p>
+                        </div>
+                        <div class="sec-3-part-2-content-line-2">
+                            <p>Beetal</p>
+                            <p>85,000</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sec-3-part-2-cards">
+                    <div class="sec-3-part-2-img-wrap">
+                        <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg" alt="">
+                    </div>
+                    <div class="sec-3-part-2-content-parent">
+                        <div class="sec-3-part-2-content-line-1">
+                            <p>Beetal King</p>
+                            <p>STARTING PKR</p>
+                        </div>
+                        <div class="sec-3-part-2-content-line-2">
+                            <p>Beetal</p>
+                            <p>85,000</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="sec-3-part-2 sec-3-parts">
-            <div class="sec-3-part-2-cards">
-                <div class="sec-3-part-2-card-img-wrap">
-                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg" alt="">
-                </div>
-                <div class="sec-3-part-2-cards-content">
-                    <div class="sec-3-part-2-card-content-line-1">
-                        <h3>Beetal King</h3>
-                        <p>STARTING PKR</p>
-                    </div>
-                    <div class="sec-3-part-2-card-content-line-2">
-                        <h4>Beetal</h4>
-                        <p>85,000</p>
-                    </div>
-                </div>
-            </div>
-            <div class="sec-3-part-2-cards">
-                <div class="sec-3-part-2-card-img-wrap">
-                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg" alt="">
-                </div>
-                <div class="sec-3-part-2-cards-content">
-                    <div class="sec-3-part-2-card-content-line-1">
-                        <h3>Beetal King</h3>
-                        <p>STARTING PKR</p>
-                    </div>
-                    <div class="sec-3-part-2-card-content-line-2">
-                        <h4>Beetal</h4>
-                        <p>85,000</p>
-                    </div>
-                </div>
-            </div>
-            <div class="sec-3-part-2-cards">
-                <div class="sec-3-part-2-card-img-wrap">
-                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg" alt="">
-                </div>
-                <div class="sec-3-part-2-cards-content">
-                    <div class="sec-3-part-2-card-content-line-1">
-                        <h3>Beetal King</h3>
-                        <p>STARTING PKR</p>
-                    </div>
-                    <div class="sec-3-part-2-card-content-line-2">
-                        <h4>Beetal</h4>
-                        <p>85,000</p>
-                    </div>
-                </div>
-            </div>
-            <div class="sec-3-part-2-cards">
-                <div class="sec-3-part-2-card-img-wrap">
-                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg" alt="">
-                </div>
-                <div class="sec-3-part-2-cards-content">
-                    <div class="sec-3-part-2-card-content-line-1">
-                        <h3>Beetal King</h3>
-                        <p>STARTING PKR</p>
-                    </div>
-                    <div class="sec-3-part-2-card-content-line-2">
-                        <h4>Beetal</h4>
-                        <p>85,000</p>
-                    </div>
-                </div>
-            </div>
-            <div class="sec-3-part-2-cards">
-                <div class="sec-3-part-2-card-img-wrap">
-                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg" alt="">
-                </div>
-                <div class="sec-3-part-2-cards-content">
-                    <div class="sec-3-part-2-card-content-line-1">
-                        <h3>Beetal King</h3>
-                        <p>STARTING PKR</p>
-                    </div>
-                    <div class="sec-3-part-2-card-content-line-2">
-                        <h4>Beetal</h4>
-                        <p>85,000</p>
-                    </div>
-                </div>
-            </div>
-            <div class="sec-3-part-2-cards">
-                <div class="sec-3-part-2-card-img-wrap">
-                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg" alt="">
-                </div>
-                <div class="sec-3-part-2-cards-content">
-                    <div class="sec-3-part-2-card-content-line-1">
-                        <h3>Beetal King</h3>
-                        <p>STARTING PKR</p>
-                    </div>
-                    <div class="sec-3-part-2-card-content-line-2">
-                        <h4>Beetal</h4>
-                        <p>85,000</p>
-                    </div>
-                </div>
-            </div>
-            <div class="sec-3-part-2-cards">
-                <div class="sec-3-part-2-card-img-wrap">
-                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg" alt="">
-                </div>
-                <div class="sec-3-part-2-cards-content">
-                    <div class="sec-3-part-2-card-content-line-1">
-                        <h3>Beetal King</h3>
-                        <p>STARTING PKR</p>
-                    </div>
-                    <div class="sec-3-part-2-card-content-line-2">
-                        <h4>Beetal</h4>
-                        <p>85,000</p>
-                    </div>
-                </div>
-            </div>
-            <div class="sec-3-part-2-cards">
-                <div class="sec-3-part-2-card-img-wrap">
-                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg" alt="">
-                </div>
-                <div class="sec-3-part-2-cards-content">
-                    <div class="sec-3-part-2-card-content-line-1">
-                        <h3>Beetal King</h3>
-                        <p>STARTING PKR</p>
-                    </div>
-                    <div class="sec-3-part-2-card-content-line-2">
-                        <h4>Beetal</h4>
-                        <p>85,000</p>
-                    </div>
-                </div>
-            </div>
-            <div class="sec-3-part-2-cards">
-                <div class="sec-3-part-2-card-img-wrap">
-                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg" alt="">
-                </div>
-                <div class="sec-3-part-2-cards-content">
-                    <div class="sec-3-part-2-card-content-line-1">
-                        <h3>Beetal King</h3>
-                        <p>STARTING PKR</p>
-                    </div>
-                    <div class="sec-3-part-2-card-content-line-2">
-                        <h4>Beetal</h4>
-                        <p>85,000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
 
     <!-- section-4 -->
@@ -1273,6 +1386,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script> 
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
