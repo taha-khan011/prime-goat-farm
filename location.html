@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Location</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        @font-face {
+            font-family: inter;
+            src: url(./Assets/Fonts/Fonts/Inter_28pt-Bold.ttf);
+        }
+
+        @font-face {
+            font-family: wroksens;
+            src: url(./Assets/Fonts/Fonts/WorkSans-Regular.ttf);
+        }
+
+        :root {
+            --primary-color: #157347;
+            --dark-bg: #0f172a;
+            --card: #0f172a;
+            --light-text: #e5e7eb;
+            --white: #ffffff;
+            --hover-color: #16a34a;
+            --border-radius: 8px;
+            --transition: 0.3s ease;
+            --inputbg: #111;
+            --bg: #0b1120;
+            --card: #0f172a;
+            --primary: #22c55e;
+            --text: #cbd5f5;
+            --white: #fff;
+            --headingFont: inter;
+            --paraFont: wroksens;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0.95;
+            z-index: 1;
+        }
+
+        .nav-item {
+            font-family: var(--paraFont);
+            font-size: 14px;
+            line-height: 22px;
+            font-weight: 500;
+            color: #BCC2C8FF;
+            background: #00000000;
+            opacity: 1;
+            border: none;
+            border-radius: 0px 0px 0px 0px;
+
+        }
+
+        .white {
+            color: white;
+
+        }
+
+        .hover:hover {
+            color: rgb(184, 181, 181);
+        }
+
+        .green {
+            color: #38DC7C;
+        }
+
+        .left {
+            position: relative;
+            left: 60px;
+        }
+
+        .text-center {
+            position: relative;
+            right: 70px;
+        }
+
+        .navbar-brand {
+            font-family: Inter;
+            font-size: 23px;
+            line-height: 23px;
+            font-weight: 700;
+            color: #38DC7CFF;
+        }
+
+        .green-back {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #38DC7C;
+            color: black;
+            width: 140px;
+            height: 40px;
+            position: relative;
+            right: 30px;
+
+        }
+
+        .search {
+            position: relative;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+        }
+
+        .btn-success {
+            font-family: Work Sans;
+            font-size: 14px;
+            line-height: 22px;
+            font-weight: 600;
+            color: #000000FF;
+            /* black */
+            background: #38DC7CFF;
+            opacity: 1;
+            border-radius: 10px;
+            border-width: 0px;
+            border-color: #FFFFFFFF;
+            /* white */
+            border-style: solid;
+        }
+
+        /* hidden checkbox */
+        #toggle {
+            display: none;
+        }
+
+        /* BIG ICON */
+        .big-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .big-icon i {
+            font-size: 22px;
+            color: #9aa6ac;
+        }
+
+        /* SEARCH BAR */
+        .bar {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 50px;
+            background: #1b2b34;
+            border-radius: 30px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            transition: 0.4s;
+            transform: translateX(0);
+        }
+
+        /* INPUT */
+        .bar input {
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: #fff;
+            padding: 0 20px;
+        }
+
+        /* INNER ICON */
+        .inner-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .inner-icon i {
+            color: #9aa6ac;
+            font-size: 18px;
+        }
+
+        /* 🔥 OPEN STATE */
+        #toggle:checked~.bar {
+            width: 250px;
+            transform: translateX(-10%);
+            /* left side + close to icon */
+        }
+
+        /* 🔥 HIDE BIG ICON WHEN OPEN */
+        #toggle:checked~.big-icon {
+            display: none;
+        }
+
+        .btn-visit {
+            width: 132px;
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--headingFont);
+            font-size: 12px;
+            line-height: 20px;
+            font-weight: 400;
+            opacity: 1;
+            cursor: pointer;
+            transition: 0.2s;
+            transition: all 0.3s ease;
+            margin-left: 45%;
+            margin-top: 60px;
+            margin-bottom: 10px;
+            color: #38DC7CFF;
+            background-color: #38DC7C33;
+            border-radius: 15px;
+        }
+
+        .location-section {
+            padding: 60px 20px;
+            height: 980px;
+            background: #181C20FF;
+            /* background-color: slateblue; */
+            color: var(--white);
+            text-align: center;
+        }
+
+        .location-header h1 {
+            margin-right: 2%;
+            font-size: 60px;
+            font-weight: 800;
+            font-family: var(--headingFont);
+            color: #F9FAFBFF;
+        }
+
+        .location-header span {
+            color: #38DC7CFF;
+            font-family: var(--headingFont);
+        }
+
+        .location-header h4 {
+            margin-top: 10px;
+            margin-left: 24%;
+            width: 650px;
+            font-family: var(--headingFont);
+            font-size: 20px;
+            line-height: 33px;
+            font-weight: 400;
+            color: #BCC2C8FF;
+            font-size: 20px;
+            line-height: 33px;
+            font-weight: 400;
+        }
+
+        .map-box {
+            margin-top: 40px;
+            position: relative;
+            border-radius: 14px;
+            border-width: 4px;
+            border-color: #181C20FF;
+            border-style: solid;
+            box-shadow: 0px 25px 50px #00000040, 0px 0px 0px #171a1f00;
+            overflow: hidden;
+            margin-left: 68px;
+            margin-right: auto;
+            width: 1140px;
+            height: 600px;
+        }
+
+        .map-box iframe {
+            width: 1184px;
+            height: 600px;
+            border: none;
+            filter: brightness(0.8);
+        }
+
+        .contact-section {
+            background: #181C20FF;
+            /* background-color: yellow; */
+            color: var(--white);
+            padding: 60px 20px;
+        }
+
+        .contact-section h2 {
+            margin-bottom: 30px;
+            margin-left: 65px;
+            font-size: 30px;
+            line-height: 36px;
+            font-weight: 700;
+            color: #F9FAFBFF;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            width: 90%;
+            /* background-color: violet; */
+            margin-left: 68px;
+            /* margin: 0 auto; */
+        }
+
+        .info-box {
+            background: #181C20FF;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            padding: 20px;
+            width: 363px;
+            height: 106px;
+            margin-bottom: 15px;
+            background: #181C20FF;
+            border-radius: 12px;
+            border-width: 1px;
+            border-color: #31383F80;
+            border-style: solid;
+        }
+
+        /* .contact-middle {
+    background-color: tomato;
+} */
+
+        .box-size {
+            width: 363px;
+            height: 80px;
+        }
+
+        .info-box h4 {
+            font-size: 12px;
+            color: #BCC2C8FF;
+            font-family: var(--paraFont);
+            font-size: 12px;
+            line-height: 16px;
+            font-weight: 600;
+            /* background-color: yellow; */
+        }
+
+        .info-box p {
+
+            margin-top: 5px;
+            font-family: var(--paraFont);
+            font-size: 16px;
+            line-height: 26px;
+            font-weight: 500;
+            color: #F9FAFBFF;
+            font-size: 14px;
+        }
+
+        .contact-middle h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            line-height: 28px;
+            font-weight: 700;
+            color: #38DC7CFF;
+            font-family: var(--headingFont);
+        }
+
+        .contact-middle ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .contact-middle li {
+            margin-bottom: 8px;
+            font-family: var(--paraFont);
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: 400;
+            color: #BCC2C8FF;
+        }
+
+        .contact-right {
+            width: 363px;
+            height: 491px;
+            background: #181C20FF;
+            padding: 25px;
+            border-radius: 12px;
+            border-width: 2px;
+            border-color: #38DC7C33;
+            border-style: solid;
+            box-shadow: 0px 12px 24px #0000001F, 0px 0px 0px #171a1f00;
+            margin-right: 42px;
+        }
+
+        .contact-right h3 {
+            /* background-color: violet; */
+            font-family: Inter;
+            font-size: 24px;
+            line-height: 32px;
+            font-weight: 700;
+            color: #F9FAFBFF;
+        }
+
+        .contact-right p {
+            margin: 10px 0;
+            font-family: var(--paraFont);
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 400;
+            color: #BCC2C8FF;
+            /* background-color: turquoise; */
+        }
+
+        .visit-box {
+            background: #181C20FF;
+            border-radius: 12px;
+            border-width: 1px;
+            border-color: #31383F80;
+            border-style: solid;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .visit-box strong {
+            font-family: var(--paraFont);
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: 700;
+            color: #F9FAFBFF;
+        }
+
+        .visit-box span {
+            font-family: var(--paraFont);
+            font-size: 12px;
+            line-height: 16px;
+            font-weight: 400;
+            color: #BCC2C8FF;
+        }
+
+        .btn-primary {
+            width: 100%;
+            border: none;
+            padding: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: var(--paraFont);
+            font-size: 18px;
+            line-height: 28px;
+            font-weight: 700;
+            color: #000000FF;
+            background: #38DC7CFF;
+            opacity: 1;
+            border-radius: 10px;
+            border-width: 0px;
+            border-color: #FFFFFFFF;
+            border-style: solid;
+        }
+
+        .btn-outline {
+            width: 100%;
+            background: transparent;
+            padding: 12px;
+            cursor: pointer;
+            font-family: Work Sans;
+            font-size: 18px;
+            line-height: 28px;
+            font-weight: 700;
+            color: #F9FAFBFF;
+            background: #161A1DFF;
+            opacity: 1;
+            border-radius: 10px;
+            border-width: 2px;
+            border-color: #555E68FF;
+            border-style: solid;
+        }
+
+        .contact-right small {
+            display: block;
+            margin-top: 15px;
+            font-family: var(--paraFont);
+            font-size: 10px;
+            line-height: 15px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: #BCC2C8FF;
+        }
+
+        .cta {
+            text-align: center;
+            padding: 60px 20px;
+            background: #121a18;
+        }
+
+        .cta h2 {
+            font-family: var(--headingFontF);
+            font-size: 36px;
+            line-height: 40px;
+            font-weight: 700;
+            color: #F9FAFBFF;
+        }
+
+        .cta p {
+            width: 903px;
+            margin: 10px auto 20px;
+
+            font-family: var(--paraFont);
+            font-size: 18px;
+            line-height: 28px;
+            font-weight: 400;
+            color: #BCC2C8FF;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .primary {
+            background: #38DC7CFF;
+            border: none;
+            border-radius: 20px;
+            width: 300.84375px;
+            height: 30px;
+            padding: 0 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--paraFont);
+            font-size: 18px;
+            line-height: 28px;
+            font-weight: 500;
+            color: #000000FF;
+            opacity: 1;
+            border-radius: 9999px;
+            border-width: 0px;
+            border-color: #FFFFFFFF;
+            border-style: solid;
+            box-shadow: 0px 8px 16px #0000001C, 0px 0px 0px #171a1f00;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .secondary {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 233.859375px;
+            height: 30px;
+            padding: 0 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--paraFont);
+            font-size: 18px;
+            line-height: 28px;
+            font-weight: 500;
+            color: #F9FAFBFF;
+            background: #161A1DFF;
+            opacity: 1;
+            border-radius: 9999px;
+            border-width: 1px;
+            border-color: #555E68FF;
+            border-style: solid;
+        }
+
+        .footer {
+            background: #181C20FF;
+            padding: 50px 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .box {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .box h4 {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        .box p,
+        .box a {
+            color: var(--white);
+            font-size: 14px;
+            display: block;
+            margin-bottom: 8px;
+            text-decoration: none;
+        }
+
+        .footer input,
+        textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 5px;
+            background: var(--inputbg);
+            border: 1px solid #333;
+            color: white;
+            border-radius: 5px;
+        }
+
+        input::placeholder {
+            color: white;
+        }
+
+        textarea::placeholder {
+            color: white;
+        }
+
+        button {
+            background: #38DC7CFF;
+            border: none;
+            padding: 10px;
+            color: black;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .visit {
+            color: var(--white);
+            margin-top: 15px;
+            padding: 10px;
+            background: #0B4122FF;
+            border-radius: 8px;
+        }
+
+        /* Media Queryy Responsiness */
+
+        @media (max-width: 992px) {
+
+            .left {
+                left: 0;
+            }
+
+            .text-center {
+                right: 0;
+            }
+
+            .navbar-nav {
+                margin-top: 15px;
+            }
+
+            .nav-right {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+
+            .search {
+                right: 0;
+            }
+
+            .green-back {
+                right: 0;
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            body {
+                overflow-x: hidden;
+            }
+
+            .navbar {
+                padding: 10px 15px;
+            }
+
+            .navbar-brand {
+                font-size: 18px;
+                margin-left: 10px;
+                /* background-color: yellow; */
+            }
+
+            .nav-link {
+                font-size: 14px;
+                padding: 8px 0;
+            }
+
+            .navbar-toggler {
+                width: 15%;
+                margin-right: 10px;
+            }
+
+            .green-back {
+                width: 50%;
+                margin-left: 120px;
+            }
+
+            .search {
+                width: 50%;
+                margin-left: 120px;
+                display: flex;
+                margin-bottom: 20px;
+                justify-content: center;
+            }
+
+            .bar {
+                width: 100%;
+            }
+
+            #toggle:checked~.bar {
+                width: 100%;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .location-section {
+                height: 750px;
+            }
+
+            .btn-visit {
+                margin-right: auto;
+                margin-left: auto;
+            }
+
+            .map-box {
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .map-box iframe {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .map-box {
+                width: 95%;
+                height: 300px;
+            }
+
+            .map-box iframe {
+                height: 100%;
+            }
+
+            .location-header h4 {
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+                font-size: 16px;
+                line-height: 26px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .cta p {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cta p {
+                width: 95%;
+                font-size: 14px;
+                line-height: 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .primary,
+            .secondary {
+                width: 90%;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+            }
+
+            .cta h2 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 992px) {
+
+            .contact-section h2 {
+                position: relative;
+                right: 40px;
+            }
+
+            .info-box {
+                width: 100%;
+            }
+
+            .contact-left {
+                position: relative;
+                right: 40px;
+            }
+
+            .contact-middle {
+                position: relative;
+                right: 40px;
+
+            }
+
+            .contact-right {
+                width: 100%;
+                position: relative;
+                right: 40px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .contact-section {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
+
+        <a class="navbar-brand fw-bold green left" href="#">
+            ⬢ Prime Goat Farm
+        </a>
+
+        <button class="navbar-toggler" type="button " data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav mx-auto text-center">
+                <li class="nav-item"><a class="nav-link white " href="#">Home</a></li>
+                <li class="nav-item "><a class="nav-link green" href="#">Introduction</a></li>
+                <li class="nav-item"><a class="nav-link white" href="#">Services</a></li>
+                <li class="nav-item"><a class="nav-link active   white" href="#">Location</a></li>
+                <li class="nav-item"><a class="nav-link white" href="#">Contact Us</a></li>
+            </ul>
+
+            <div class="nav-right d-lg-flex align-items-center gap-3 ms-lg-auto mt-3 mt-lg-0 text-center">
+
+                <div class="search">
+
+                    <input type="checkbox" id="toggle">
+
+                    <!-- BIG ICON -->
+                    <label for="toggle" class="big-icon">
+                        <i class="fa fa-search"></i>
+                    </label>
+
+                    <!-- SEARCH BAR -->
+                    <div class="bar">
+
+                        <!-- INNER ICON (close/open) -->
+                        <label for="toggle" class="inner-icon">
+                            <i class="fa fa-search"></i>
+                        </label>
+
+                        <input type="text" placeholder="Search...">
+                    </div>
+
+                </div>
+
+                <button class="btn-nav btn-success green-back">
+                    Explore Animals </button>
+
+            </div>
+        </div>
+    </nav>
+
+    <section class="location-section">
+
+        <div class="location-header">
+            <div class="btn-visit">Visit Our Faclity</div>
+
+            <h1>
+                Our Farm <span>Location</span>
+            </h1>
+            <h4>
+                Experience the standard of excellence in livestock breeding firsthand.
+                Join us at our Korangi facility to view our premium breeds.
+            </h4>
+        </div>
+
+        <div class="map-box">
+            <iframe src="http://maps.google.co.uk/maps?q=pakistan&output=embed" loading="lazy">
+            </iframe>
+        </div>
+
+    </section>
+
+    <section class="contact-section">
+
+        <h2>Get in Touch</h2>
+
+        <div class="contact-container">
+
+            <div class="contact-left">
+
+                <div class="info-box">
+                    <h4>OFFICIAL ADDRESS</h4>
+                    <p>House No L/60, 33/C, Korangi No 2 1/2, Karachi, Pakistan</p>
+                </div>
+
+                <div class="info-box box-size">
+                    <h4>PHONE NUMBER</h4>
+                    <p>+92 300 1234567</p>
+                </div>
+
+                <div class="info-box box-size">
+                    <h4>EMAIL SUPPORT</h4>
+                    <p>info@primegoatfarm.com</p>
+                </div>
+
+                <div class="info-box box-size">
+                    <h4>VISITING HOURS</h4>
+                    <p>Mon - Sun: 08:00 AM - 06:00 PM</p>
+                </div>
+
+            </div>
+
+            <div class="contact-middle">
+
+                <h3>圓 Nearby Landmarks</h3>
+                <ul>
+                    <li>Jamia Mosque Al-Noor (2 mins walk)</li>
+                    <li>Korangi Public Sector Park</li>
+                    <li>National Highway Exit 12</li>
+                    <li>Government Hospital Korangi</li>
+                </ul>
+
+                <h3>Parking & Accessibility</h3>
+                <ul>
+                    <li>Free On-site Secure Parking</li>
+                    <li>Dedicated Truck Loading Zone</li>
+                    <li>Handicap Accessible Entrance</li>
+                    <li>Valet Assistance for Senior Visitors</li>
+                </ul>
+
+            </div>
+
+            <div class="contact-right">
+
+                <h3>Plan Your Visit</h3>
+                <p>
+                    We recommend scheduling a visit to ensure our senior caretakers
+                    are available to assist you.
+                </p>
+
+                <div class="visit-box">
+                    <p><strong>Best Visit Times</strong></p>
+                    <span>Weekends (10 AM – 2 PM)</span>
+                </div>
+
+                <button class="btn-primary">Schedule Visit</button>
+                <button class="btn-outline">Instant Directions</button>
+
+                <small>REGISTERED BREEDING CENTER #88219</small>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="cta">
+        <h2>Ready to see our livestock in person?</h2>
+        <p>
+            Whether you are looking for a single goat or stocking an entire farm,
+            our experts are here to help you choose the best animals for your needs.
+        </p>
+
+        <div class="cta-buttons">
+            <button class="primary">Explore Animals Online</button>
+            <button class="secondary">Learn About Us</button>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="box">
+                <h4>Prime Goat Farm</h4>
+                <p>Premium livestock farm offering high-quality goats, sheep, and cows.</p>
+                <p>📍 House No L/60, Korangi No 2 1/2</p>
+                <p>📞 +92 300 1234567</p>
+                <p>🕒 Mon - Sun: 8:00 AM - 6:00 PM</p>
+            </div>
+
+            <div class="box">
+                <h4>Quick Inquiry</h4>
+                <input type="text" placeholder="Full Name" required>
+                <input type="text" placeholder="Phone Number" required>
+                <input type="email" placeholder="Email (Optional)">
+                <textarea placeholder="How can we help you?"></textarea>
+                <button>Send Message</button>
+
+            </div>
+
+            <div class="box">
+                <h4>Quick Explore</h4>
+                <a href="#">Home</a>
+                <a href="#">Services</a>
+                <a href="#">Contact Us</a>
+
+                <div class="visit">
+                    <h4>Visit Our Farm</h4>
+                    <p>Experience livestock firsthand.</p>
+                    <button>Get Directions</button>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./app.js"></script>
+
+</html>
