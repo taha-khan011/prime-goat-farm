@@ -46,169 +46,6 @@
             font-family: sans-serif;
         }
 
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            opacity: 0.95;
-            z-index: 1;
-        }
-
-        .nav-item {
-            font-family: var(--paraFont);
-            font-size: 14px;
-            line-height: 22px;
-            font-weight: 500;
-            color: #BCC2C8FF;
-            background: #00000000;
-            opacity: 1;
-            border: none;
-            border-radius: 0px 0px 0px 0px;
-
-        }
-
-        .white {
-            color: white;
-
-        }
-
-        .hover:hover {
-            color: rgb(184, 181, 181);
-        }
-
-        .green {
-            color: #38DC7C;
-        }
-
-        .left {
-            position: relative;
-            left: 60px;
-        }
-
-        .text-center {
-            position: relative;
-            right: 70px;
-        }
-
-        .navbar-brand {
-            font-family: Inter;
-            font-size: 23px;
-            line-height: 23px;
-            font-weight: 700;
-            color: #38DC7CFF;
-        }
-
-        .green-back {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #38DC7C;
-            color: black;
-            width: 140px;
-            height: 40px;
-            position: relative;
-            right: 30px;
-
-        }
-
-        .search {
-            position: relative;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-        }
-
-        .btn-success {
-            font-family: Work Sans;
-            font-size: 14px;
-            line-height: 22px;
-            font-weight: 600;
-            color: #000000FF;
-            /* black */
-            background: #38DC7CFF;
-            opacity: 1;
-            border-radius: 10px;
-            border-width: 0px;
-            border-color: #FFFFFFFF;
-            /* white */
-            border-style: solid;
-        }
-
-        /* hidden checkbox */
-        #toggle {
-            display: none;
-        }
-
-        /* BIG ICON */
-        .big-icon {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .big-icon i {
-            font-size: 22px;
-            color: #9aa6ac;
-        }
-
-        /* SEARCH BAR */
-        .bar {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 0;
-            height: 50px;
-            background: #1b2b34;
-            border-radius: 30px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            transition: 0.4s;
-            transform: translateX(0);
-        }
-
-        /* INPUT */
-        .bar input {
-            width: 100%;
-            height: 100%;
-            border: none;
-            outline: none;
-            background: transparent;
-            color: #fff;
-            padding: 0 20px;
-        }
-
-        /* INNER ICON */
-        .inner-icon {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .inner-icon i {
-            color: #9aa6ac;
-            font-size: 18px;
-        }
-
-        /* 🔥 OPEN STATE */
-        #toggle:checked~.bar {
-            width: 250px;
-            transform: translateX(-10%);
-            /* left side + close to icon */
-        }
-
-        /* 🔥 HIDE BIG ICON WHEN OPEN */
-        #toggle:checked~.big-icon {
-            display: none;
-        }
-
         .btn-visit {
             width: 132px;
             height: 26px;
@@ -569,76 +406,254 @@
         }
 
         .footer {
-            background: #181C20FF;
-            padding: 50px 20px;
+            background: #181a1f;
+            color: #d6d6d6;
+            padding: 40px 20px 0;
         }
 
         .footer-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            max-width: 1100px;
+            max-width: 1250px;
             margin: auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 35px;
         }
 
-        .box {
-            flex: 1;
-            min-width: 250px;
+        .logo {
+            width: 90%;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 22px;
+            margin-left: 80px;
         }
 
-        .box h4 {
-            font-weight: bold;
+        .logo-icon {
+            width: 34px;
+            height: 34px;
+            background: #35d26f;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #111;
+            flex-shrink: 0;
+        }
+
+        .logo span {
+            color: #35d26f;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .about p {
+            line-height: 1.6;
+            max-width: 330px;
+            margin-left: 30px;
+            margin-bottom: 22px;
+            color: #b9b9b9;
+            /* background-color: yellow; */
+        }
+
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            line-height: 1.4;
+        }
+
+        .contact-list i {
+            color: #35d26f;
+            font-size: 16px;
+            width: 18px;
             margin-bottom: 15px;
-            color: var(--white);
+            min-width: 18px;
+            text-align: center;
+            flex-shrink: 0;
+            margin-top: 0;
         }
 
-        .box p,
-        .box a {
-            color: var(--white);
-            font-size: 14px;
-            display: block;
-            margin-bottom: 8px;
+        .contact-list span {
+            display: inline-block;
+            line-height: 1.4;
+            margin-top: 0;
+        }
+
+        .socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 28px;
+            margin-left: 28px;
+            /* background-color: yellow; */
+        }
+
+        .socials a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #22252b;
+            color: #eaeaea;
             text-decoration: none;
         }
 
-        .footer input,
-        textarea {
+        .footer h3 {
+            color: #f5f5f5;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .inquiry-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .links ul li a {
+            position: relative;
+            right: 30px;
+            padding-left: 22px;
+        }
+
+        .links ul li a::before {
+            content: "›";
+            position: absolute;
+            left: 4px;
+            font-size: 18px;
+            color: grey;
+            font-weight: bold;
+        }
+
+        .inquiry-form input,
+        .inquiry-form textarea {
             width: 100%;
-            margin-bottom: 10px;
-            padding: 5px;
-            background: var(--inputbg);
-            border: 1px solid #333;
-            color: white;
-            border-radius: 5px;
+            background: #1f2228;
+            border: 1px solid #2e3239;
+            outline: none;
+            color: #eee;
+            padding: 14px 16px;
+            border-radius: 10px;
+            font-size: 14px;
         }
 
-        input::placeholder {
-            color: white;
+        .inquiry-form input::placeholder,
+        .inquiry-form textarea::placeholder {
+            color: #9a9a9a;
         }
 
-        textarea::placeholder {
-            color: white;
+        .inquiry-form textarea {
+            min-height: 92px;
+            resize: vertical;
         }
 
-        button {
-            background: #38DC7CFF;
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .inquiry-form button {
+            background: #35d26f;
+            color: #111;
             border: none;
-            padding: 10px;
-            color: black;
-            width: 100%;
+            padding: 14px 18px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 15px;
             cursor: pointer;
-            border-radius: 5px;
         }
 
-        .visit {
-            color: var(--white);
-            margin-top: 15px;
-            padding: 10px;
-            background: #0B4122FF;
-            border-radius: 8px;
+        .links-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
+
+        .links ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #d1d1d1;
+        }
+
+        .visit-card {
+            margin-top: 24px;
+            background: linear-gradient(135deg, #14572e, #0f3f22);
+            padding: 22px;
+            border-radius: 14px;
+        }
+
+        .visit-card h4 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .visit-card p {
+            color: #d2d2d2;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .direction-btn {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            background: #1e2228;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid #3a3f46;
+            font-weight: 600;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #2a2e35;
+            text-align: center;
+            padding: 16px 10px;
+            color: #a5a5a5;
+            font-size: 14px;
+        }
+
 
         /* Media Queryy Responsiness */
+
+        @media (max-width: 992px) {
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .links {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
         @media (max-width: 992px) {
 
@@ -855,57 +870,6 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
-
-        <a class="navbar-brand fw-bold green left" href="#">
-            ⬢ Prime Goat Farm
-        </a>
-
-        <button class="navbar-toggler" type="button " data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-
-            <ul class="navbar-nav mx-auto text-center">
-                <li class="nav-item"><a class="nav-link white " href="#">Home</a></li>
-                <li class="nav-item "><a class="nav-link green" href="#">Introduction</a></li>
-                <li class="nav-item"><a class="nav-link white" href="#">Services</a></li>
-                <li class="nav-item"><a class="nav-link active   white" href="#">Location</a></li>
-                <li class="nav-item"><a class="nav-link white" href="#">Contact Us</a></li>
-            </ul>
-
-            <div class="nav-right d-lg-flex align-items-center gap-3 ms-lg-auto mt-3 mt-lg-0 text-center">
-
-                <div class="search">
-
-                    <input type="checkbox" id="toggle">
-
-                    <!-- BIG ICON -->
-                    <label for="toggle" class="big-icon">
-                        <i class="fa fa-search"></i>
-                    </label>
-
-                    <!-- SEARCH BAR -->
-                    <div class="bar">
-
-                        <!-- INNER ICON (close/open) -->
-                        <label for="toggle" class="inner-icon">
-                            <i class="fa fa-search"></i>
-                        </label>
-
-                        <input type="text" placeholder="Search...">
-                    </div>
-
-                </div>
-
-                <button class="btn-nav btn-success green-back">
-                    Explore Animals </button>
-
-            </div>
-        </div>
-    </nav>
-
     <section class="location-section">
 
         <div class="location-header">
@@ -1016,38 +980,79 @@
 
     <footer class="footer">
         <div class="footer-container">
+            <div class="footer-col about">
+                <div class="logo">
+                    <div class="logo-icon"><i class="fa-solid fa-diamond"></i></div>
+                    <span>Prime Goat Farm</span>
+                </div>
 
-            <div class="box">
-                <h4>Prime Goat Farm</h4>
-                <p>Premium livestock farm offering high-quality goats, sheep, and cows.</p>
-                <p>📍 House No L/60, Korangi No 2 1/2</p>
-                <p>📞 +92 300 1234567</p>
-                <p>🕒 Mon - Sun: 8:00 AM - 6:00 PM</p>
-            </div>
+                <p>Premium livestock farm offering high-quality goats, sheep, and cows with expert care.</p>
 
-            <div class="box">
-                <h4>Quick Inquiry</h4>
-                <input type="text" placeholder="Full Name" required>
-                <input type="text" placeholder="Phone Number" required>
-                <input type="email" placeholder="Email (Optional)">
-                <textarea placeholder="How can we help you?"></textarea>
-                <button>Send Message</button>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>House No L/60, 33/C, Korangi No 2 1/2</span>
+                    </li>
 
-            </div>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+92 300 1234567</span>
+                    </li>
 
-            <div class="box">
-                <h4>Quick Explore</h4>
-                <a href="#">Home</a>
-                <a href="#">Services</a>
-                <a href="#">Contact Us</a>
+                    <li>
+                        <i class="fa-regular fa-clock"></i>
+                        <span>Mon - Sun: 8:00 AM - 6:00 PM</span>
+                    </li>
+                </ul>
 
-                <div class="visit">
-                    <h4>Visit Our Farm</h4>
-                    <p>Experience livestock firsthand.</p>
-                    <button>Get Directions</button>
+                <div class="socials">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
                 </div>
             </div>
 
+            <div class="footer-col inquiry">
+                <h3>Quick Inquiry</h3>
+
+                <form class="inquiry-form">
+                    <input type="text" placeholder="Full Name" />
+
+                    <div class="form-row">
+                        <input type="text" placeholder="Phone Number" />
+                        <input type="email" placeholder="Email (Optional)" />
+                    </div>
+
+                    <textarea placeholder="How can we help you?"></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+
+            <div class="footer-col links">
+                <h3>Quick Explore</h3>
+
+                <div class="links-grid">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+
+                    <ul>
+                        <li><a href="#">Introduction</a></li>
+                        <li><a href="#">Location</a></li>
+                        <li><a href="#">All Animals</a></li>
+                    </ul>
+                </div>
+
+                <div class="visit-card">
+                    <h4>Visit Our Farm</h4>
+                    <p>Experience the quality of our livestock firsthand. Schedule your visit today.</p>
+                    <a href="#" class="direction-btn">Get Directions</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">© 2026 Prime Goat Farm. All rights reserved. Registered Livestock Breeding Center.
         </div>
     </footer>
 
