@@ -24,7 +24,6 @@
             padding: 0;
         }
 
-
         :root {
             --green-text: #38DC7CFF;
             --white-text: #FFFFFFFF;
@@ -47,10 +46,126 @@
             background-color: var(--light-black-bg);
         }
 
-        /* nav */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0.95;
+            z-index: 1;
+        }
+
+        .left {
+            position: relative;
+            left: 60px;
+        }
+
+        .text-center {
+            position: relative;
+        }
 
 
-        /* hero-section */
+
+        .green-back {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #38DC7C;
+            color: black;
+            width: 140px;
+            height: 40px;
+            position: relative;
+            right: 30px;
+
+        }
+
+        .search {
+            position: relative;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+        }
+
+        .collapse {
+            position: relative;
+            right: 50px;
+            /* margin-left: ; */
+        }
+
+        /* hidden checkbox */
+        #toggle {
+            display: none;
+        }
+
+        /* BIG ICON */
+        .big-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .big-icon i {
+            font-size: 22px;
+            color: #9aa6ac;
+        }
+
+        /* SEARCH BAR */
+        .bar {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 50px;
+            background: #1b2b34;
+            border-radius: 30px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            transition: 0.4s;
+            transform: translateX(0);
+        }
+
+        .inner-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .inner-icon i {
+            color: #9aa6ac;
+            font-size: 18px;
+        }
+
+        /* 🔥 OPEN STATE */
+        #toggle:checked~.bar {
+            width: 250px;
+            transform: translateX(-10%);
+            /* left side + close to icon */
+        }
+
+        /* 🔥 HIDE BIG ICON WHEN OPEN */
+        #toggle:checked~.big-icon {
+            display: none;
+        }
+
+        .btn-nav {
+            border: none;
+            border-radius: 12px;
+            font-family: var(--font-fam-para);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        li {
+            color: var(--white-text);
+        }
+
         .hero-banner-parent {
             width: 100%;
             display: flex;
@@ -994,7 +1109,7 @@
             padding: 14px 18px;
             font-size: 14px;
             line-height: 22px;
-            font-weight:bolder;
+            font-weight: bolder;
             background: var(--green-bg);
             opacity: 1;
             border-radius: 10px;
@@ -1009,7 +1124,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
-        
+
         .links ul {
             list-style: none;
             display: flex;
@@ -1023,7 +1138,7 @@
             margin-top: 24px;
             font-weight: bolder;
         }
-        
+
         .visit-card {
             background: var(--green-2nd-bg);
             padding: 15px;
@@ -1319,6 +1434,35 @@
 
     <!-- nav-bar -->
 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
+
+        <a class="navbar-brand fw-bold green left" href="#">
+            ⬢ Prime Goat Farm
+        </a>
+
+        <button class="navbar-toggler" type="button " data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav mx-auto text-center">
+                <li class="nav-item"><a class="nav-link white " href="/home.html">Home</a></li>
+                <li class="nav-item "><a class="nav-link green" href="/introduction.html">Introduction</a></li>
+                <li class="nav-item"><a class="nav-link white" href="/service.html">Services</a></li>
+                <li class="nav-item"><a class="nav-link active   white" href="/location.html">Contact Us</a></li>
+            </ul>
+
+            <div class="nav-right d-lg-flex align-items-center gap-3 ms-lg-auto mt-3 mt-lg-0 text-center">
+
+
+                <a href="#card"><button class="btn-nav btn-success green-back">
+                    Explore Animals </button></a>
+
+            </div>
+        </div>
+    </nav>
+
     <!-- hero-section -->
     <div class="hero-banner-parent">
         <div class="hero-banner"></div>
@@ -1383,7 +1527,7 @@
     </div>
 
     <!-- section-3 -->
-    <div class="sec-3-parent">
+    <div id="card" class="sec-3-parent">
         <div class="sec-3-part-1">
             <div class="sec-3-part-1-head-1">Our Catalog</div>
             <h1 class="sec-3-part-1-head-2">Available Animals</h1>
