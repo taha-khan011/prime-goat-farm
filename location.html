@@ -21,20 +21,23 @@
         }
 
         :root {
-            --primary-color: #157347;
-            --dark-bg: #0f172a;
-            --card: #0f172a;
-            --light-text: #e5e7eb;
-            --white: #ffffff;
-            --hover-color: #16a34a;
-            --border-radius: 8px;
-            --transition: 0.3s ease;
-            --inputbg: #111;
-            --bg: #0b1120;
-            --card: #0f172a;
             --primary: #22c55e;
-            --text: #cbd5f5;
-            --white: #fff;
+            /* green accent */
+            --primary-dark: #16a34a;
+
+            --bg: #ffffff;
+            /* main background white */
+            --card: #ffffff;
+            /* cards white */
+
+            --black: #111111;
+            --white: #ffffff;
+
+            --text: #222222;
+            --light-text: #6b7280;
+
+            --border: rgba(0, 0, 0, 0.08);
+
             --headingFont: inter;
             --paraFont: wroksens;
         }
@@ -43,7 +46,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: sans-serif;
         }
 
         .btn-visit {
@@ -55,7 +57,7 @@
             font-family: var(--headingFont);
             font-size: 12px;
             line-height: 20px;
-            font-weight: 400;
+            font-weight: bolder;
             opacity: 1;
             cursor: pointer;
             transition: 0.2s;
@@ -63,17 +65,16 @@
             margin-left: 45%;
             margin-top: 60px;
             margin-bottom: 10px;
-            color: #38DC7CFF;
-            background-color: #38DC7C33;
+            color: var(--black);
+            background-color: var(--primary);
             border-radius: 15px;
         }
 
         .location-section {
             padding: 60px 20px;
             height: 980px;
-            background: #181C20FF;
-            /* background-color: slateblue; */
-            color: var(--white);
+            background: var(--bg);
+            color: var(--black);
             text-align: center;
         }
 
@@ -82,12 +83,7 @@
             font-size: 60px;
             font-weight: 800;
             font-family: var(--headingFont);
-            color: #F9FAFBFF;
-        }
-
-        .location-header span {
-            color: #38DC7CFF;
-            font-family: var(--headingFont);
+            color: var(--black);
         }
 
         .location-header h4 {
@@ -98,7 +94,7 @@
             font-size: 20px;
             line-height: 33px;
             font-weight: 400;
-            color: #BCC2C8FF;
+            color: var(--black);
             font-size: 20px;
             line-height: 33px;
             font-weight: 400;
@@ -127,10 +123,13 @@
         }
 
         .contact-section {
-            background: #181C20FF;
-            /* background-color: yellow; */
-            color: var(--white);
+            background: var(--bg);
             padding: 60px 20px;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            border-width: 1px;
+            border-color: #31383F80;
+            border-style: solid;
         }
 
         .contact-section h2 {
@@ -139,7 +138,7 @@
             font-size: 30px;
             line-height: 36px;
             font-weight: 700;
-            color: #F9FAFBFF;
+            color: var(--black);
         }
 
         .contact-container {
@@ -147,28 +146,20 @@
             grid-template-columns: 1fr 1fr 1fr;
             gap: 30px;
             width: 90%;
-            /* background-color: violet; */
             margin-left: 68px;
-            /* margin: 0 auto; */
         }
 
         .info-box {
-            background: #181C20FF;
-            border: 1px solid rgba(34, 197, 94, 0.3);
             padding: 20px;
             width: 363px;
             height: 106px;
             margin-bottom: 15px;
-            background: #181C20FF;
+            border: 1px solid rgba(34, 197, 94, 0.3);
             border-radius: 12px;
             border-width: 1px;
             border-color: #31383F80;
             border-style: solid;
         }
-
-        /* .contact-middle {
-    background-color: tomato;
-} */
 
         .box-size {
             width: 363px;
@@ -177,7 +168,7 @@
 
         .info-box h4 {
             font-size: 12px;
-            color: #BCC2C8FF;
+            color: var(--black);
             font-family: var(--paraFont);
             font-size: 12px;
             line-height: 16px;
@@ -192,7 +183,7 @@
             font-size: 16px;
             line-height: 26px;
             font-weight: 500;
-            color: #F9FAFBFF;
+            color: var(--black);
             font-size: 14px;
         }
 
@@ -201,7 +192,7 @@
             font-size: 18px;
             line-height: 28px;
             font-weight: 700;
-            color: #38DC7CFF;
+            color: var(--black);
             font-family: var(--headingFont);
         }
 
@@ -216,13 +207,13 @@
             font-size: 14px;
             line-height: 20px;
             font-weight: 400;
-            color: #BCC2C8FF;
+            color: var(--black);
         }
 
         .contact-right {
             width: 363px;
             height: 491px;
-            background: #181C20FF;
+            /* background: #181C20FF; */
             padding: 25px;
             border-radius: 12px;
             border-width: 2px;
@@ -233,12 +224,11 @@
         }
 
         .contact-right h3 {
-            /* background-color: violet; */
             font-family: Inter;
             font-size: 24px;
             line-height: 32px;
             font-weight: 700;
-            color: #F9FAFBFF;
+            color: var(--black);
         }
 
         .contact-right p {
@@ -247,12 +237,11 @@
             font-size: 16px;
             line-height: 24px;
             font-weight: 400;
-            color: #BCC2C8FF;
-            /* background-color: turquoise; */
+            color: var(--black);
         }
 
         .visit-box {
-            background: #181C20FF;
+            /* background: #181C20FF; */
             border-radius: 12px;
             border-width: 1px;
             border-color: #31383F80;
@@ -266,7 +255,7 @@
             font-size: 14px;
             line-height: 20px;
             font-weight: 700;
-            color: #F9FAFBFF;
+            color: var(--black);
         }
 
         .visit-box span {
@@ -274,7 +263,7 @@
             font-size: 12px;
             line-height: 16px;
             font-weight: 400;
-            color: #BCC2C8FF;
+            color: var(--black);
         }
 
         .btn-primary {
@@ -323,13 +312,13 @@
             line-height: 15px;
             font-weight: 600;
             letter-spacing: 3px;
-            color: #BCC2C8FF;
+            color: var(--black);
         }
 
         .cta {
             text-align: center;
             padding: 60px 20px;
-            background: #121a18;
+            background: var(--bg);
         }
 
         .cta h2 {
@@ -337,18 +326,17 @@
             font-size: 36px;
             line-height: 40px;
             font-weight: 700;
-            color: #F9FAFBFF;
+            color: var(--black);
         }
 
         .cta p {
             width: 903px;
             margin: 10px auto 20px;
-
             font-family: var(--paraFont);
             font-size: 18px;
             line-height: 28px;
             font-weight: 400;
-            color: #BCC2C8FF;
+            color: var(--black);
         }
 
         .cta-buttons {
@@ -406,9 +394,14 @@
         }
 
         .footer {
-            background: #181a1f;
-            color: #d6d6d6;
+            background: var(--bg);
+            color: var(--black);
             padding: 40px 20px 0;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            /* border-radius: 12px; */
+            border-width: 1px;
+            border-color: #31383F80;
+            border-style: solid;
         }
 
         .footer-container {
@@ -437,7 +430,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #111;
+            color: var(--black);
             flex-shrink: 0;
         }
 
@@ -456,7 +449,7 @@
             font-size: 14px;
             line-height: 23px;
             font-weight: lighter;
-            color: #BCC2C8FF;
+            color: var(--black);
         }
 
         .contact-list {
@@ -488,7 +481,7 @@
             font-size: 14px;
             font-weight: bolder;
             line-height: 20px;
-            color: #F9FAFBFF;
+            color: var(--black);
         }
 
         .socials {
@@ -506,19 +499,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #22252b;
-            color: #eaeaea;
+            background: var(--black);
+            color: var(--bg);
             text-decoration: none;
         }
 
         .footer h3 {
-            color: #f5f5f5;
+            color: var(--black);
             margin-bottom: 20px;
             font-size: 22px;
             font-weight: bolder;
         }
-
-
 
         .inquiry-form {
             display: flex;
@@ -537,7 +528,7 @@
             position: absolute;
             left: 4px;
             font-size: 18px;
-            color: grey;
+            color: var(--black);
             font-weight: bold;
         }
 
@@ -574,7 +565,7 @@
             padding: 14px 18px;
             font-size: 14px;
             line-height: 22px;
-            font-weight:bolder;
+            font-weight: bolder;
             background: #38DC7CFF;
             opacity: 1;
             border-radius: 10px;
@@ -589,7 +580,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
-        
+
         .links ul {
             list-style: none;
             display: flex;
@@ -599,28 +590,30 @@
 
         .links a {
             text-decoration: none;
-            color: #d1d1d1;
             margin-top: 24px;
             font-weight: bolder;
         }
-        
+
+        .textcolor {
+            color: var(--black);
+        }
+
         .visit-card {
             background: linear-gradient(135deg, #14572e, #0f3f22);
             padding: 15px;
             height: 200px;
             border-radius: 14px;
-            background-color: yellowgreen;
         }
 
         .visit-card h4 {
-            color: #fff;
+            color: var(--bg);
             margin-bottom: 10px;
             font-size: 18px;
             font-weight: bolder;
         }
 
         .visit-card p {
-            color: #d2d2d2;
+            color: var(--bg);
             line-height: 1.6;
             margin-bottom: 18px;
             font-weight: bolder;
@@ -631,19 +624,18 @@
             width: 100%;
             text-align: center;
             background: #1e2228;
-            color: #fff;
             text-decoration: none;
             padding: 12px 16px;
             border-radius: 10px;
             font-weight: 600;
             border: 1px solid #3a3f46;
+            color: var(--bg);
         }
 
         .footer-bottom {
             border-top: 1px solid #2a2e35;
             text-align: center;
             padding: 16px 10px;
-            color: #a5a5a5;
             font-size: 14px;
             font-weight: bolder;
         }
@@ -673,7 +665,13 @@
             .links-grid {
                 grid-template-columns: 1fr;
             }
+
+            .direction-btn {
+                position: relative;
+                bottom: 30px;
+            }
         }
+
 
         @media (max-width: 992px) {
 
@@ -1052,15 +1050,15 @@
 
                 <div class="links-grid">
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a class="textcolor" href="#">Home</a></li>
+                        <li><a class="textcolor" href="#">Services</a></li>
+                        <li><a class="textcolor" href="#">Contact Us</a></li>
                     </ul>
 
                     <ul>
-                        <li><a href="#">Introduction</a></li>
-                        <li><a href="#">Location</a></li>
-                        <li><a href="#">All Animals</a></li>
+                        <li><a class="textcolor" href="#">Introduction</a></li>
+                        <li><a class="textcolor" href="#">Location</a></li>
+                        <li><a class="textcolor" href="#">All Animals</a></li>
                     </ul>
                 </div>
 
