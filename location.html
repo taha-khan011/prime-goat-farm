@@ -2,1080 +2,1111 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Location</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prime Goat Farm – Our Location</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
     <style>
-        @font-face {
-            font-family: inter;
-            src: url(./Assets/Fonts/Fonts/Inter_28pt-Bold.ttf);
-        }
-
-        @font-face {
-            font-family: wroksens;
-            src: url(./Assets/Fonts/Fonts/WorkSans-Regular.ttf);
-        }
-
-        :root {
-            --primary: #22c55e;
-            /* green accent */
-            --primary-dark: #16a34a;
-
+         :root {
             --bg: #ffffff;
-            /* main background white */
+            --bg2: #f8f9f8;
+            --bg3: #f2f4f2;
             --card: #ffffff;
-            /* cards white */
-
+            --border: #e4e7e4;
+            --border2: #d0d5d0;
+            --green: #22c55e;
+            --green-dark: #16a34a;
+            --green-bg: rgba(34, 197, 94, 0.08);
+            --green-border: rgba(34, 197, 94, 0.3);
             --black: #111111;
-            --white: #ffffff;
-
-            --text: #222222;
-            --light-text: #6b7280;
-
-            --border: rgba(0, 0, 0, 0.08);
-
-            --headingFont: inter;
-            --paraFont: wroksens;
+            --text: #1a1a1a;
+            --muted: #6b7280;
+            --muted2: #9ca3af;
         }
-
-        * {
+        
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
-
-        .btn-visit {
-            width: 132px;
-            height: 26px;
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        /* NAV */
+        
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #111111;
+            border-bottom: 1px solid #222;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-family: var(--headingFont);
-            font-size: 12px;
-            line-height: 20px;
-            font-weight: bolder;
-            opacity: 1;
-            cursor: pointer;
-            transition: 0.2s;
-            transition: all 0.3s ease;
-            margin-left: 45%;
-            margin-top: 60px;
-            margin-bottom: 10px;
-            color: var(--black);
-            background-color: var(--primary);
-            border-radius: 15px;
+            justify-content: space-between;
+            padding: 0 48px;
+            height: 60px;
         }
-
-        .location-section {
-            padding: 60px 20px;
-            height: 980px;
-            background: var(--bg);
-            color: var(--black);
-            text-align: center;
-        }
-
-        .location-header h1 {
-            margin-right: 2%;
-            font-size: 60px;
-            font-weight: 800;
-            font-family: var(--headingFont);
-            color: var(--black);
-        }
-
-        .location-header h4 {
-            margin-top: 10px;
-            margin-left: 24%;
-            width: 650px;
-            font-family: var(--headingFont);
-            font-size: 20px;
-            line-height: 33px;
-            font-weight: 400;
-            color: var(--black);
-            font-size: 20px;
-            line-height: 33px;
-            font-weight: 400;
-        }
-
-        .map-box {
-            margin-top: 40px;
-            position: relative;
-            border-radius: 14px;
-            border-width: 4px;
-            border-color: #181C20FF;
-            border-style: solid;
-            box-shadow: 0px 25px 50px #00000040, 0px 0px 0px #171a1f00;
-            overflow: hidden;
-            margin-left: 68px;
-            margin-right: auto;
-            width: 1140px;
-            height: 600px;
-        }
-
-        .map-box iframe {
-            width: 1184px;
-            height: 600px;
-            border: none;
-            filter: brightness(0.8);
-        }
-
-        .contact-section {
-            background: var(--bg);
-            padding: 60px 20px;
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 12px;
-            border-width: 1px;
-            border-color: #31383F80;
-            border-style: solid;
-        }
-
-        .contact-section h2 {
-            margin-bottom: 30px;
-            margin-left: 65px;
-            font-size: 30px;
-            line-height: 36px;
-            font-weight: 700;
-            color: var(--black);
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 30px;
-            width: 90%;
-            margin-left: 68px;
-        }
-
-        .info-box {
-            padding: 20px;
-            width: 363px;
-            height: 106px;
-            margin-bottom: 15px;
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 12px;
-            border-width: 1px;
-            border-color: #31383F80;
-            border-style: solid;
-        }
-
-        .box-size {
-            width: 363px;
-            height: 80px;
-        }
-
-        .info-box h4 {
-            font-size: 12px;
-            color: var(--black);
-            font-family: var(--paraFont);
-            font-size: 12px;
-            line-height: 16px;
-            font-weight: 600;
-            /* background-color: yellow; */
-        }
-
-        .info-box p {
-
-            margin-top: 5px;
-            font-family: var(--paraFont);
-            font-size: 16px;
-            line-height: 26px;
-            font-weight: 500;
-            color: var(--black);
-            font-size: 14px;
-        }
-
-        .contact-middle h3 {
-            margin-bottom: 10px;
-            font-size: 18px;
-            line-height: 28px;
-            font-weight: 700;
-            color: var(--black);
-            font-family: var(--headingFont);
-        }
-
-        .contact-middle ul {
-            margin-bottom: 20px;
-            padding-left: 20px;
-        }
-
-        .contact-middle li {
-            margin-bottom: 8px;
-            font-family: var(--paraFont);
-            font-size: 14px;
-            line-height: 20px;
-            font-weight: 400;
-            color: var(--black);
-        }
-
-        .contact-right {
-            width: 363px;
-            height: 491px;
-            /* background: #181C20FF; */
-            padding: 25px;
-            border-radius: 12px;
-            border-width: 2px;
-            border-color: #38DC7C33;
-            border-style: solid;
-            box-shadow: 0px 12px 24px #0000001F, 0px 0px 0px #171a1f00;
-            margin-right: 42px;
-        }
-
-        .contact-right h3 {
-            font-family: Inter;
-            font-size: 24px;
-            line-height: 32px;
-            font-weight: 700;
-            color: var(--black);
-        }
-
-        .contact-right p {
-            margin: 10px 0;
-            font-family: var(--paraFont);
-            font-size: 16px;
-            line-height: 24px;
-            font-weight: 400;
-            color: var(--black);
-        }
-
-        .visit-box {
-            /* background: #181C20FF; */
-            border-radius: 12px;
-            border-width: 1px;
-            border-color: #31383F80;
-            border-style: solid;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-
-        .visit-box strong {
-            font-family: var(--paraFont);
-            font-size: 14px;
-            line-height: 20px;
-            font-weight: 700;
-            color: var(--black);
-        }
-
-        .visit-box span {
-            font-family: var(--paraFont);
-            font-size: 12px;
-            line-height: 16px;
-            font-weight: 400;
-            color: var(--black);
-        }
-
-        .btn-primary {
-            width: 100%;
-            border: none;
-            padding: 12px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-family: var(--paraFont);
-            font-size: 18px;
-            line-height: 28px;
-            font-weight: 700;
-            color: #000000FF;
-            background: #38DC7CFF;
-            opacity: 1;
-            border-radius: 10px;
-            border-width: 0px;
-            border-color: #FFFFFFFF;
-            border-style: solid;
-        }
-
-        .btn-outline {
-            width: 100%;
-            background: transparent;
-            padding: 12px;
-            cursor: pointer;
-            font-family: Work Sans;
-            font-size: 18px;
-            line-height: 28px;
-            font-weight: 700;
-            color: #F9FAFBFF;
-            background: #161A1DFF;
-            opacity: 1;
-            border-radius: 10px;
-            border-width: 2px;
-            border-color: #555E68FF;
-            border-style: solid;
-        }
-
-        .contact-right small {
-            display: block;
-            margin-top: 15px;
-            font-family: var(--paraFont);
-            font-size: 10px;
-            line-height: 15px;
-            font-weight: 600;
-            letter-spacing: 3px;
-            color: var(--black);
-        }
-
-        .cta {
-            text-align: center;
-            padding: 60px 20px;
-            background: var(--bg);
-        }
-
-        .cta h2 {
-            font-family: var(--headingFontF);
-            font-size: 36px;
-            line-height: 40px;
-            font-weight: 700;
-            color: var(--black);
-        }
-
-        .cta p {
-            width: 903px;
-            margin: 10px auto 20px;
-            font-family: var(--paraFont);
-            font-size: 18px;
-            line-height: 28px;
-            font-weight: 400;
-            color: var(--black);
-        }
-
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .primary {
-            background: #38DC7CFF;
-            border: none;
-            border-radius: 20px;
-            width: 300.84375px;
-            height: 30px;
-            padding: 0 12px;
+        
+        .nav-logo {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-family: var(--paraFont);
-            font-size: 18px;
-            line-height: 28px;
-            font-weight: 500;
-            color: #000000FF;
-            opacity: 1;
-            border-radius: 9999px;
-            border-width: 0px;
-            border-color: #FFFFFFFF;
-            border-style: solid;
-            box-shadow: 0px 8px 16px #0000001C, 0px 0px 0px #171a1f00;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            gap: 10px;
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 17px;
+            color: #fff;
+            text-decoration: none;
         }
-
-        .secondary {
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 233.859375px;
-            height: 30px;
-            padding: 0 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--paraFont);
-            font-size: 18px;
-            line-height: 28px;
-            font-weight: 500;
-            color: #F9FAFBFF;
-            background: #161A1DFF;
-            opacity: 1;
-            border-radius: 9999px;
-            border-width: 1px;
-            border-color: #555E68FF;
-            border-style: solid;
-        }
-
-        .footer {
-            background: var(--bg);
-            color: var(--black);
-            padding: 40px 20px 0;
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            /* border-radius: 12px; */
-            border-width: 1px;
-            border-color: #31383F80;
-            border-style: solid;
-        }
-
-        .footer-container {
-            max-width: 1250px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr 1fr;
-            gap: 40px;
-            padding-bottom: 35px;
-        }
-
-        .logo {
-            width: 90%;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 22px;
-            margin-left: 80px;
-        }
-
+        
         .logo-icon {
-            width: 34px;
-            height: 34px;
-            background: #35d26f;
+            width: 32px;
+            height: 32px;
+            background: var(--green);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--black);
-            flex-shrink: 0;
         }
-
-        .logo span {
-            font-size: 20px;
-            line-height: 20px;
-            font-weight: 700;
-            color: #38DC7CFF;
+        
+        .logo-icon svg {
+            width: 18px;
+            height: 18px;
         }
-
-        .about p {
-            max-width: 330px;
-            margin-left: 30px;
-            margin-bottom: 22px;
-            /* font-family: var(--paraFont); */
-            font-size: 14px;
-            line-height: 23px;
-            font-weight: lighter;
-            color: var(--black);
-        }
-
-        .contact-list {
-            list-style: none;
-        }
-
-        .contact-list li {
+        
+        .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
-            line-height: 1.4;
+            gap: 32px;
+            list-style: none;
         }
-
-        .contact-list i {
-            color: #35d26f;
-            font-size: 16px;
-            width: 18px;
-            margin-bottom: 15px;
-            min-width: 18px;
-            text-align: center;
-            flex-shrink: 0;
-            margin-top: 0;
-        }
-
-        .contact-list span {
-            display: inline-block;
-            /* margin-top: 5px; */
-            margin-bottom: 13px;
+        
+        .nav-links a {
+            color: #aaa;
+            text-decoration: none;
             font-size: 14px;
-            font-weight: bolder;
-            line-height: 20px;
+            font-weight: 500;
+            transition: color .2s;
+        }
+        
+        .nav-links a:hover {
+            color: #fff;
+        }
+        
+        .nav-links a.active {
+            color: var(--green);
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .nav-search {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #aaa;
+            padding: 4px;
+            display: flex;
+        }
+        
+        .btn-explore {
+            background: var(--green);
+            color: #000;
+            font-weight: 700;
+            font-size: 13px;
+            padding: 9px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: background .2s;
+        }
+        
+        .btn-explore:hover {
+            background: #1db54f;
+        }
+        /* HERO */
+        
+        .hero {
+            text-align: center;
+            padding: 72px 24px 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--green-bg);
+            border: 1px solid var(--green-border);
+            color: var(--green-dark);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 999px;
+            margin-bottom: 28px;
+        }
+        
+        .dot {
+            width: 7px;
+            height: 7px;
+            background: var(--green);
+            border-radius: 50%;
+            display: inline-block;
+        }
+        
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(36px, 6vw, 60px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 18px;
             color: var(--black);
         }
-
-        .socials {
-            display: flex;
-            gap: 10px;
-            margin-top: 28px;
-            margin-left: 28px;
-            /* background-color: yellow; */
+        
+        .hero h1 span {
+            color: var(--green);
         }
-
-        .socials a {
+        
+        .hero p {
+            color: var(--muted);
+            font-size: clamp(14px, 1.8vw, 17px);
+            max-width: 520px;
+            margin: 0 auto;
+        }
+        /* MAP */
+        
+        .map-section {
+            padding: 48px 48px 0;
+        }
+        
+        .map-wrapper {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            aspect-ratio: 16/7;
+            min-height: 320px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+        }
+        
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .map-overlay-btns {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-map {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--green);
+            color: #000;
+            font-weight: 700;
+            font-size: 13px;
+            padding: 10px 18px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            text-decoration: none;
+            box-shadow: 0 2px 12px rgba(34, 197, 94, 0.35);
+            transition: background .2s;
+        }
+        
+        .btn-map:hover {
+            background: #1db54f;
+        }
+        
+        .btn-share {
             width: 40px;
             height: 40px;
-            border-radius: 50%;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--black);
-            color: var(--bg);
-            text-decoration: none;
+            cursor: pointer;
+            color: var(--muted);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: border-color .2s, color .2s;
         }
-
-        .footer h3 {
+        
+        .btn-share:hover {
+            border-color: var(--green);
+            color: var(--green);
+        }
+        /* CONTACT SECTION */
+        
+        .contact-section {
+            padding: 64px 48px;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .contact-left h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
             color: var(--black);
-            margin-bottom: 20px;
-            font-size: 22px;
-            font-weight: bolder;
+            margin-bottom: 32px;
         }
-
-        .inquiry-form {
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 26px;
+        }
+        
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            background: var(--green-bg);
+            border: 1px solid var(--green-border);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .info-icon svg {
+            width: 17px;
+            height: 17px;
+            stroke: var(--green-dark);
+        }
+        
+        .info-label {
+            font-size: 11px;
+            color: var(--muted2);
+            text-transform: uppercase;
+            letter-spacing: .09em;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        
+        .info-value {
+            font-size: 14px;
+            color: var(--text);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+        
+        .contact-mid {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 32px;
         }
-
-        .links ul li a {
-            position: relative;
-            right: 30px;
-            padding-left: 22px;
-        }
-
-        .links ul li a::before {
-            content: "›";
-            position: absolute;
-            left: 4px;
-            font-size: 18px;
+        
+        .landmark-box h4 {
+            font-size: 14px;
+            font-weight: 700;
             color: var(--black);
-            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
         }
-
-        .inquiry-form input,
-        .inquiry-form textarea {
-            width: 100%;
-            background: #1f2228;
-            border: 1px solid #2e3239;
-            outline: none;
-            color: #eee;
-            padding: 14px 16px;
-            border-radius: 10px;
-            font-size: 14px;
+        
+        .landmark-box h4 svg {
+            stroke: var(--green);
         }
-
-        .inquiry-form input::placeholder,
-        .inquiry-form textarea::placeholder {
-            color: #9a9a9a;
-            font-weight: bolder;
-        }
-
-        .inquiry-form textarea {
-            min-height: 92px;
-            resize: vertical;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .inquiry-form button {
-            padding: 14px 18px;
-            font-size: 14px;
-            line-height: 22px;
-            font-weight: bolder;
-            background: #38DC7CFF;
-            opacity: 1;
-            border-radius: 10px;
-            border-width: 0px;
-            border-color: #FFFFFFFF;
-            border-style: solid;
-            cursor: pointer;
-        }
-
-        .links-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .links ul {
+        
+        .landmark-list {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 10px;
         }
-
-        .links a {
-            text-decoration: none;
-            margin-top: 24px;
-            font-weight: bolder;
+        
+        .landmark-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--muted);
         }
-
-        .textcolor {
-            color: var(--black);
+        
+        .check-circle {
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
+            border-radius: 50%;
+            border: 1.5px solid var(--green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-
+        
+        .check-circle svg {
+            width: 10px;
+            height: 10px;
+            stroke: var(--green);
+        }
+        /* PLAN YOUR VISIT — dark card */
+        
         .visit-card {
-            background: linear-gradient(135deg, #14572e, #0f3f22);
-            padding: 15px;
-            height: 200px;
-            border-radius: 14px;
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 16px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            height: fit-content;
         }
-
+        
         .visit-card h4 {
-            color: var(--bg);
-            margin-bottom: 10px;
-            font-size: 18px;
-            font-weight: bolder;
+            font-family: 'Syne', sans-serif;
+            font-size: 19px;
+            font-weight: 700;
+            color: #fff;
         }
-
-        .visit-card p {
-            color: var(--bg);
-            line-height: 1.6;
-            margin-bottom: 18px;
-            font-weight: bolder;
+        
+        .visit-card>p {
+            font-size: 13px;
+            color: #aaa;
         }
-
-        .direction-btn {
-            display: inline-block;
-            width: 100%;
-            text-align: center;
-            background: #1e2228;
-            text-decoration: none;
+        
+        .best-time-row {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
             padding: 12px 16px;
-            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .best-time-row svg {
+            stroke: var(--green);
+            min-width: 18px;
+        }
+        
+        .best-time-row div {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .best-time-row span:first-child {
+            font-size: 11px;
             font-weight: 600;
-            border: 1px solid #3a3f46;
-            color: var(--bg);
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: .07em;
         }
-
-        .footer-bottom {
-            border-top: 1px solid #2a2e35;
-            text-align: center;
-            padding: 16px 10px;
+        
+        .best-time-row span:last-child {
+            font-size: 13px;
+            color: #eee;
+            font-weight: 500;
+        }
+        
+        .btn-green-full {
+            background: var(--green);
+            color: #000;
+            font-weight: 700;
             font-size: 14px;
-            font-weight: bolder;
+            padding: 13px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            width: 100%;
+            transition: background .2s;
         }
-
-
-        /* Media Queryy Responsiness */
-
-        @media (max-width: 992px) {
-            .footer-container {
+        
+        .btn-green-full:hover {
+            background: #1db54f;
+        }
+        
+        .btn-dark-outline {
+            background: transparent;
+            color: #fff;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 13px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            width: 100%;
+            transition: border-color .2s;
+        }
+        
+        .btn-dark-outline:hover {
+            border-color: var(--green);
+        }
+        
+        .registered-tag {
+            text-align: center;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: #555;
+        }
+        /* DIVIDER */
+        
+        hr.divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 0 48px;
+        }
+        /* CTA */
+        
+        .cta-section {
+            text-align: center;
+            padding: 72px 48px;
+            background: var(--bg2);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .cta-section h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(24px, 4vw, 38px);
+            font-weight: 800;
+            color: var(--black);
+            margin-bottom: 16px;
+        }
+        
+        .cta-section p {
+            color: var(--muted);
+            font-size: 15px;
+            max-width: 580px;
+            margin: 0 auto 36px;
+        }
+        
+        .cta-btns {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-green-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--green);
+            color: #000;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 13px 28px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: background .2s;
+        }
+        
+        .btn-green-cta:hover {
+            background: #1db54f;
+        }
+        
+        .btn-white-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--black);
+            font-weight: 600;
+            font-size: 14px;
+            padding: 13px 28px;
+            border-radius: 10px;
+            border: 1.5px solid var(--border2);
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: border-color .2s, background .2s;
+        }
+        
+        .btn-white-cta:hover {
+            border-color: var(--green);
+            background: var(--green-bg);
+        }
+        /* FOOTER */
+        
+        footer {
+            background: #111;
+            padding: 52px 48px 28px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1.5fr 1.5fr;
+            gap: 48px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-brand-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        
+        .footer-logo-icon {
+            width: 28px;
+            height: 28px;
+            background: var(--green);
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .footer-brand p {
+            color: #777;
+            font-size: 13px;
+            line-height: 1.7;
+            max-width: 220px;
+            margin-bottom: 16px;
+        }
+        
+        .f-info {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+        
+        .f-info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+            font-size: 13px;
+            color: #888;
+        }
+        
+        .f-info-row svg {
+            stroke: var(--green);
+            min-width: 14px;
+            margin-top: 2px;
+        }
+        
+        .social-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px;
+        }
+        
+        .social-btn {
+            width: 34px;
+            height: 34px;
+            border: 1px solid #2a2a2a;
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #666;
+            transition: border-color .2s, color .2s;
+        }
+        
+        .social-btn:hover {
+            border-color: var(--green);
+            color: var(--green);
+        }
+        
+        .footer-col h5 {
+            font-family: 'Syne', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        
+        .inquiry-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .inquiry-form input,
+        .inquiry-form textarea {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            color: #eee;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            padding: 10px 14px;
+            outline: none;
+            transition: border-color .2s;
+        }
+        
+        .inquiry-form input::placeholder,
+        .inquiry-form textarea::placeholder {
+            color: #555;
+        }
+        
+        .inquiry-form input:focus,
+        .inquiry-form textarea:focus {
+            border-color: var(--green);
+        }
+        
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        
+        .inquiry-form textarea {
+            resize: none;
+            min-height: 72px;
+        }
+        
+        .btn-send {
+            background: var(--green);
+            color: #000;
+            font-weight: 700;
+            font-size: 13px;
+            padding: 11px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: background .2s;
+        }
+        
+        .btn-send:hover {
+            background: #1db54f;
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 7px 24px;
+        }
+        
+        .links-grid a {
+            color: #888;
+            font-size: 13px;
+            text-decoration: none;
+            transition: color .2s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .links-grid a::before {
+            content: '›';
+            color: var(--green);
+            font-size: 16px;
+        }
+        
+        .links-grid a:hover {
+            color: #fff;
+        }
+        
+        .visit-promo {
+            background: rgba(34, 197, 94, 0.07);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 10px;
+            padding: 16px;
+            margin-top: 20px;
+        }
+        
+        .visit-promo h6 {
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'Syne', sans-serif;
+            color: #fff;
+        }
+        
+        .visit-promo p {
+            font-size: 12px;
+            color: #777;
+            margin: 6px 0 14px;
+        }
+        
+        .btn-directions {
+            background: #1a1a1a;
+            color: #ddd;
+            font-weight: 600;
+            font-size: 12px;
+            padding: 9px 16px;
+            border-radius: 7px;
+            border: 1px solid #2a2a2a;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            width: 100%;
+            transition: border-color .2s;
+        }
+        
+        .btn-directions:hover {
+            border-color: var(--green);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #1e1e1e;
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .footer-bottom p {
+            font-size: 12px;
+            color: #555;
+        }
+        /* RESPONSIVE */
+        
+        @media(max-width:960px) {
+            .contact-section {
+                grid-template-columns: 1fr;
+                padding: 40px 24px;
+            }
+            .footer-grid {
                 grid-template-columns: 1fr 1fr;
             }
-
-            .links {
-                grid-column: 1 / -1;
+        }
+        
+        @media(max-width:768px) {
+            nav {
+                padding: 0 20px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .map-section {
+                padding: 32px 20px 0;
+            }
+            .cta-section {
+                padding: 48px 20px;
+            }
+            hr.divider {
+                margin: 0 20px;
+            }
+            footer {
+                padding: 40px 20px 24px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
             }
         }
-
-        @media (max-width: 768px) {
-            .footer-container {
-                grid-template-columns: 1fr;
+        
+        @media(max-width:480px) {
+            .map-wrapper {
+                aspect-ratio: 4/3;
             }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .links-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .direction-btn {
-                position: relative;
-                bottom: 30px;
-            }
-        }
-
-
-        @media (max-width: 992px) {
-
-            .left {
-                left: 0;
-            }
-
-            .text-center {
-                right: 0;
-            }
-
-            .navbar-nav {
-                margin-top: 15px;
-            }
-
-            .nav-right {
+            .cta-btns {
                 flex-direction: column;
-                gap: 10px;
                 align-items: center;
             }
-
-            .search {
-                right: 0;
-            }
-
-            .green-back {
-                right: 0;
-                width: 80%;
-            }
-        }
-
-        @media (max-width: 768px) {
-
-            body {
-                overflow-x: hidden;
-            }
-
-            .navbar {
-                padding: 10px 15px;
-            }
-
-            .navbar-brand {
-                font-size: 18px;
-                margin-left: 10px;
-                /* background-color: yellow; */
-            }
-
-            .nav-link {
-                font-size: 14px;
-                padding: 8px 0;
-            }
-
-            .navbar-toggler {
-                width: 15%;
-                margin-right: 10px;
-            }
-
-            .green-back {
-                width: 50%;
-                margin-left: 120px;
-            }
-
-            .search {
-                width: 50%;
-                margin-left: 120px;
-                display: flex;
-                margin-bottom: 20px;
+            .btn-green-cta,
+            .btn-white-cta {
+                width: 100%;
                 justify-content: center;
             }
-
-            .bar {
-                width: 100%;
-            }
-
-            #toggle:checked~.bar {
-                width: 100%;
-                transform: translateX(0);
-            }
-        }
-
-        @media (max-width: 1200px) {
-            .location-section {
-                height: 750px;
-            }
-
-            .btn-visit {
-                margin-right: auto;
-                margin-left: auto;
-            }
-
-            .map-box {
-                width: 90%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .map-box iframe {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .map-box {
-                width: 95%;
-                height: 300px;
-            }
-
-            .map-box iframe {
-                height: 100%;
-            }
-
-            .location-header h4 {
-                width: 90%;
-                margin-left: auto;
-                margin-right: auto;
-                font-size: 16px;
-                line-height: 26px;
-            }
-        }
-
-        @media (max-width: 1200px) {
-            .cta p {
-                width: 90%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .cta p {
-                width: 95%;
-                font-size: 14px;
-                line-height: 24px;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .primary,
-            .secondary {
-                width: 90%;
-                height: 40px;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .contact-container {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .footer-container {
-                flex-direction: column;
-            }
-
-            .cta h2 {
-                font-size: 24px;
-            }
-        }
-
-        @media (max-width: 992px) {
-
-            .contact-section h2 {
-                position: relative;
-                right: 40px;
-            }
-
-            .info-box {
-                width: 100%;
-            }
-
-            .contact-left {
-                position: relative;
-                right: 40px;
-            }
-
-            .contact-middle {
-                position: relative;
-                right: 40px;
-
-            }
-
-            .contact-right {
-                width: 100%;
-                position: relative;
-                right: 40px;
-            }
-
-            .contact-container {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .contact-section {
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-
-            .contact-container {
+            .input-row {
                 grid-template-columns: 1fr;
             }
         }
     </style>
-
 </head>
 
 <body>
 
-    <section class="location-section">
-
-        <div class="location-header">
-            <div class="btn-visit">Visit Our Faclity</div>
-
-            <h1>
-                Our Farm <span>Location</span>
-            </h1>
-            <h4>
-                Experience the standard of excellence in livestock breeding firsthand.
-                Join us at our Korangi facility to view our premium breeds.
-            </h4>
+    <!-- NAV -->
+    <nav>
+        <a class="nav-logo" href="#">
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z" />
+          <path d="M2 17l10 5 10-5" />
+          <path d="M2 12l10 5 10-5" />
+        </svg>
+            </div>
+            Prime Goat Farm
+        </a>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Introduction</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Location</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+        <div class="nav-right">
+            <button class="nav-search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.35-4.35" />
+        </svg>
+      </button>
+            <button class="btn-explore">Explore Animals</button>
         </div>
+    </nav>
 
-        <div class="map-box">
-            <iframe src="http://maps.google.co.uk/maps?q=pakistan&output=embed" loading="lazy">
-            </iframe>
-        </div>
-
+    <section class="hero">
+        <div class="hero-badge"><span class="dot"></span> Visit Our Facility</div>
+        <h1>Our Farm <span>Location</span></h1>
+        <p>Experience the standard of excellence in livestock breeding firsthand. Join us at our Korangi facility to view our premium breeds.</p>
     </section>
 
+    <!-- MAP -->
+    <section class="map-section">
+        <div class="map-wrapper">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.2!2d67.0823!3d24.8217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33daa49bfffff%3A0x0!2sKorangi%2C+Karachi%2C+Pakistan!5e0!3m2!1sen!2s!4v1680000000000" allowfullscreen=""
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="map-overlay-btns">
+                <a class="btn-map" href="https://maps.google.com/?q=Korangi+Karachi" target="_blank">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+            <circle cx="12" cy="9" r="2.5" />
+          </svg> Open in Maps
+                </a>
+                <button class="btn-share">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="5" r="3" />
+            <circle cx="6" cy="12" r="3" />
+            <circle cx="18" cy="19" r="3" />
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+          </svg>
+        </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- GET IN TOUCH -->
     <section class="contact-section">
-
-        <h2>Get in Touch</h2>
-
-        <div class="contact-container">
-
-            <div class="contact-left">
-
-                <div class="info-box">
-                    <h4>OFFICIAL ADDRESS</h4>
-                    <p>House No L/60, 33/C, Korangi No 2 1/2, Karachi, Pakistan</p>
+        <!-- LEFT -->
+        <div class="contact-left">
+            <h2>Get in Touch</h2>
+            <div class="info-item">
+                <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+            <circle cx="12" cy="9" r="2.5" />
+          </svg></div>
+                <div>
+                    <div class="info-label">Official Address</div>
+                    <div class="info-value">House No L/60, 33/C, Korangi No 2 1/2,<br>Karachi, Pakistan</div>
                 </div>
-
-                <div class="info-box box-size">
-                    <h4>PHONE NUMBER</h4>
-                    <p>+92 300 1234567</p>
-                </div>
-
-                <div class="info-box box-size">
-                    <h4>EMAIL SUPPORT</h4>
-                    <p>info@primegoatfarm.com</p>
-                </div>
-
-                <div class="info-box box-size">
-                    <h4>VISITING HOURS</h4>
-                    <p>Mon - Sun: 08:00 AM - 06:00 PM</p>
-                </div>
-
             </div>
-
-            <div class="contact-middle">
-
-                <h3>圓 Nearby Landmarks</h3>
-                <ul>
-                    <li>Jamia Mosque Al-Noor (2 mins walk)</li>
-                    <li>Korangi Public Sector Park</li>
-                    <li>National Highway Exit 12</li>
-                    <li>Government Hospital Korangi</li>
-                </ul>
-
-                <h3>Parking & Accessibility</h3>
-                <ul>
-                    <li>Free On-site Secure Parking</li>
-                    <li>Dedicated Truck Loading Zone</li>
-                    <li>Handicap Accessible Entrance</li>
-                    <li>Valet Assistance for Senior Visitors</li>
-                </ul>
-
-            </div>
-
-            <div class="contact-right">
-
-                <h3>Plan Your Visit</h3>
-                <p>
-                    We recommend scheduling a visit to ensure our senior caretakers
-                    are available to assist you.
-                </p>
-
-                <div class="visit-box">
-                    <p><strong>Best Visit Times</strong></p>
-                    <span>Weekends (10 AM – 2 PM)</span>
+            <div class="info-item">
+                <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.1 1.11h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg></div>
+                <div>
+                    <div class="info-label">Phone Number</div>
+                    <div class="info-value">+92 300 1234567</div>
                 </div>
-
-                <button class="btn-primary">Schedule Visit</button>
-                <button class="btn-outline">Instant Directions</button>
-
-                <small>REGISTERED BREEDING CENTER #88219</small>
-
             </div>
-
+            <div class="info-item">
+                <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+          </svg></div>
+                <div>
+                    <div class="info-label">Email Support</div>
+                    <div class="info-value">info@primegoatfarm.com</div>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg></div>
+                <div>
+                    <div class="info-label">Visiting Hours</div>
+                    <div class="info-value">Mon – Sun: 08:00 AM – 06:00 PM</div>
+                </div>
+            </div>
         </div>
 
+        <!-- MID -->
+        <div class="contact-mid">
+            <div class="landmark-box">
+                <h4>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+            <circle cx="12" cy="9" r="2.5" />
+          </svg> Nearby Landmarks
+                </h4>
+                <ul class="landmark-list">
+                    <li><span class="check-circle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="2 6 5 9 10 3" />
+              </svg></span>Jamia Mosque Al-Noor (2 mins walk)</li>
+                    <li><span class="check-circle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="2 6 5 9 10 3" />
+              </svg></span>Korangi Public Sector Park</li>
+                    <li><span class="check-circle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="2 6 5 9 10 3" />
+              </svg></span>National Highway Exit 12</li>
+                    <li><span class="check-circle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="2 6 5 9 10 3" />
+              </svg></span>Government Hospital Korangi</li>
+                </ul>
+            </div>
+            <div class="landmark-box">
+                <h4>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M9 17v-5l3-3 3 3v5" />
+          </svg> Parking &amp; Accessibility
+                </h4>
+                <ul class="landmark-list">
+                    <li><span class="check-circle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="2 6 5 9 10 3" />
+              </svg></span>Free On-site Secure Parking</li>
+                    <li><span class="check-circle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="2 6 5 9 10 3" />
+              </svg></span>Dedicated Truck Loading Zone</li>
+                    <li><span class="check-circle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="2 6 5 9 10 3" />
+              </svg></span>Handicap Accessible Entrance</li>
+                    <li><span class="check-circle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="2 6 5 9 10 3" />
+              </svg></span>Valet Assistance for Senior Visitors</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- VISIT CARD -->
+        <div class="visit-card">
+            <h4>Plan Your Visit</h4>
+            <p>We recommend scheduling a visit to ensure our senior caretakers are available to assist you.</p>
+            <div class="best-time-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" />
+          <line x1="16" y1="2" x2="16" y2="6" />
+          <line x1="8" y1="2" x2="8" y2="6" />
+          <line x1="3" y1="10" x2="21" y2="10" />
+        </svg>
+                <div><span>Best Visit Times</span><span>Weekends (10 AM – 2 PM)</span></div>
+            </div>
+            <button class="btn-green-full">Schedule Visit</button>
+            <button class="btn-dark-outline">Instant Directions</button>
+            <div class="registered-tag">Registered Breeding Center #38219</div>
+        </div>
     </section>
 
-    <section class="cta">
+    <hr class="divider" />
+
+    <!-- CTA -->
+    <section class="cta-section">
         <h2>Ready to see our livestock in person?</h2>
-        <p>
-            Whether you are looking for a single goat or stocking an entire farm,
-            our experts are here to help you choose the best animals for your needs.
-        </p>
-
-        <div class="cta-buttons">
-            <button class="primary">Explore Animals Online</button>
-            <button class="secondary">Learn About Us</button>
+        <p>Whether you are looking for a single goat or stocking an entire farm, our experts are here to help you choose the best animals for your needs.</p>
+        <div class="cta-btns">
+            <button class="btn-green-cta">Explore Animals Online</button>
+            <button class="btn-white-cta">Learn About Us</button>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-col about">
-                <div class="logo">
-                    <div class="logo-icon"><i class="fa-solid fa-diamond"></i></div>
-                    <span>Prime Goat Farm</span>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand-name">
+                    <div class="footer-logo-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg></div>
+                    Prime Goat Farm
                 </div>
-
-                <p>Premium livestock farm offering high-quality goats, sheep, and cows with expert care.</p>
-
-                <ul class="contact-list">
-                    <li>
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>House No L/60, 33/C, Korangi No 2 1/2</span>
-                    </li>
-
-                    <li>
-                        <i class="fa-solid fa-phone"></i>
-                        <span>+92 300 1234567</span>
-                    </li>
-
-                    <li>
-                        <i class="fa-regular fa-clock"></i>
-                        <span>Mon - Sun: 8:00 AM - 6:00 PM</span>
-                    </li>
-                </ul>
-
-                <div class="socials">
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <div class="footer-brand">
+                    <p>Premium livestock farm offering high-quality goats, sheep, and cows with expert care.</p>
+                </div>
+                <div class="f-info">
+                    <div class="f-info-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+              <circle cx="12" cy="9" r="2.5" />
+            </svg>House No L/60, 33/C, Korangi No 2 1/2</div>
+                    <div class="f-info-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.1 1.11h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>+92 300 1234567</div>
+                    <div class="f-info-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>Mon – Sun: 8:00 AM – 6:00 PM</div>
+                </div>
+                <div class="social-row">
+                    <div class="social-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+            </svg></div>
+                    <div class="social-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+            </svg></div>
                 </div>
             </div>
-
-            <div class="footer-col inquiry">
-                <h3>Quick Inquiry</h3>
-
-                <form class="inquiry-form">
+            <div class="footer-col">
+                <h5>Quick Inquiry</h5>
+                <div class="inquiry-form">
                     <input type="text" placeholder="Full Name" />
-
-                    <div class="form-row">
-                        <input type="text" placeholder="Phone Number" />
-                        <input type="email" placeholder="Email (Optional)" />
-                    </div>
-
+                    <div class="input-row"><input type="tel" placeholder="Phone Number" /><input type="email" placeholder="Email (Optional)" /></div>
                     <textarea placeholder="How can we help you?"></textarea>
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
-
-            <div class="footer-col links">
-                <h3>Quick Explore</h3>
-
-                <div class="links-grid">
-                    <ul>
-                        <li><a class="textcolor" href="#">Home</a></li>
-                        <li><a class="textcolor" href="#">Services</a></li>
-                        <li><a class="textcolor" href="#">Contact Us</a></li>
-                    </ul>
-
-                    <ul>
-                        <li><a class="textcolor" href="#">Introduction</a></li>
-                        <li><a class="textcolor" href="#">Location</a></li>
-                        <li><a class="textcolor" href="#">All Animals</a></li>
-                    </ul>
+                    <button class="btn-send">Send Message</button>
                 </div>
-
-                <div class="visit-card">
-                    <h4>Visit Our Farm</h4>
+            </div>
+            <div class="footer-col">
+                <h5>Quick Explore</h5>
+                <div class="links-grid">
+                    <a href="#">Home</a><a href="#">Introduction</a>
+                    <a href="#">Services</a><a href="#">Location</a>
+                    <a href="#">Contact Us</a><a href="#">All Animals</a>
+                </div>
+                <div class="visit-promo">
+                    <h6>Visit Our Farm</h6>
                     <p>Experience the quality of our livestock firsthand. Schedule your visit today.</p>
-                    <a href="#" class="direction-btn">Get Directions</a>
+                    <button class="btn-directions">Get Directions</button>
                 </div>
             </div>
         </div>
-
-        <div class="footer-bottom">© 2026 Prime Goat Farm. All rights reserved. Registered Livestock Breeding Center.
+        <div class="footer-bottom">
+            <p>© 2026 Prime Goat Farm. All rights reserved. Registered Livestock Breeding Center.</p>
         </div>
     </footer>
 
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="./app.js"></script>
 
 </html>
