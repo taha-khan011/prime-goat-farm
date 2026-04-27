@@ -30,32 +30,26 @@
         :root {
             --green-text: #38DC7CFF;
             --white-text: #FFFFFFFF;
-            --gray-text: #BCC2C8FF;
             --black-text: black;
 
+            --inner-bg: whitesmoke;
+            --white-bg: #FFFFFF;
+            --black-bg: black;
             --light-black-bg: #1b1f22;
             --dark-black-bg: #161A1DFF;
             --green-bg: #38DC7CFF;
             --green-2nd-bg: #0B4122FF;
-            --transparent-green-bg: #38DC7C33;
-            --transparent-2nd-green-bg: #38DC7C1A;
-            --border-gray-bg: #31383FFF;
+            --transparent-green-bg: #32a14aa2;
+
+            --border-bg: black;
             --border-gray-2nd-bg: #F2FDF6FF;
-            --nav-bg: #161A1D99;
 
             --font-fam-heading: inter;
             --font-fam-para: work-sans;
         }
 
-        body {
-            background-color: var(--light-black-bg);
-            /* overflow-x: hidden; */
-            /* max-width: 100%; */
-        }
-
         /* nav */
         nav {
-
             width: 100%;
             display: flex;
             justify-content: center;
@@ -63,7 +57,8 @@
             position: sticky;
             top: 0;
             z-index: 99;
-            background-color: var(--nav-bg);
+            background-color: var(--white-bg);
+            box-shadow: 0 2px 12px var(--border-bg);
         }
 
         .nav-child {
@@ -83,7 +78,7 @@
         }
 
         .nav-child li a {
-            color: var(--gray-text);
+            color: var(--black-text);
             font-family: var(--font-fam-para);
             font-size: 14px;
             font-weight: 500;
@@ -147,7 +142,7 @@
             display: block;
             width: 20px;
             height: 2px;
-            background: var(--white-text);
+            background: var(--black-bg);
             border-radius: 2px;
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
@@ -169,7 +164,7 @@
         .offscreen-menu {
             display: none;
             width: 100%;
-            background-color: var(--light-black-bg);
+            background-color: var(--white-bg);
             border-bottom: 1px solid var(--border-gray-bg);
             overflow: hidden;
             max-height: 0;
@@ -199,7 +194,7 @@
         }
 
         .offscreen-menu-inner ul li {
-            border-bottom: 1px solid var(--border-gray-bg);
+            border-bottom: 1px solid var(--border-bg);
         }
 
         .offscreen-menu-inner ul li:last-child {
@@ -209,12 +204,12 @@
         .offscreen-menu-inner ul li a {
             display: block;
             padding: 14px 8px;
-            color: var(--gray-text);
+            color: var(--black-bg);
             font-family: var(--font-fam-para);
             font-size: 15px;
             font-weight: 500;
             text-decoration: none;
-            transition: color 0.2s ease, padding-left 0.2s ease;
+            transition: color 0.3s ease, padding-left 0.2s ease;
         }
 
         .offscreen-menu-inner ul li a:hover {
@@ -265,10 +260,6 @@
 
             .offscreen-menu {
                 top: 70px;
-            }
-
-            nav {
-                background-color: var(--dark-black-bg);
             }
 
             .nav-child ul li:not(:first-child) {
@@ -336,16 +327,15 @@
             flex-direction: column;
             justify-content: space-evenly;
             align-items: center;
-            filter: brightness(100%);
             position: absolute;
+            filter: brightness(100%);
         }
 
         .hero-head-1 {
             padding: clamp(5px, .5vw, 8px) clamp(16px, 2vw, 28px);
             font-size: clamp(10px, .87vw, 13px);
             border-radius: 40px;
-            border: 1px solid var(--green-bg);
-            background-color: var(--transparent-green-bg);
+            border: 2px solid var(--green-bg);
             color: var(--green-text);
             display: flex;
             align-items: center;
@@ -396,9 +386,8 @@
         }
 
         .hero-btn-parent button:last-child {
-            background-color: var(--light-black-bg);
-            color: var(--white-text);
-            border: 1px solid var(--white-text);
+            background-color: var(--white-bg);
+            color: var(--black-bg);
             width: clamp(120px, 41%, 200px);
         }
 
@@ -410,7 +399,7 @@
             align-items: center;
             gap: 50px;
             padding: 70px 0;
-            background-color: var(--dark-black-bg);
+            background-color: var(--white-bg);
         }
 
         .sub-sec-2-part-1 {
@@ -422,7 +411,7 @@
         }
 
         .sub-sec-2-part-1 h1 {
-            color: var(--white-text);
+            color: var(--black-text);
             font-size: var(--font-fam-heading);
             font-size: clamp(28px, 3.6vw, 38px);
             font-weight: 700;
@@ -440,7 +429,7 @@
             font-size: clamp(15px, 1.3vw, 19px);
             line-height: 29px;
             font-weight: 400;
-            color: var(--gray-text);
+            color: var(--black-text);
         }
 
         .sub-sec-2-part-1 button {
@@ -475,20 +464,18 @@
         .sec-2-part-2-cards {
             width: 100%;
             height: 194px;
-            background-color: var(--light-black-bg);
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
             border-radius: 14px;
-            border: 1px solid var(--border-gray-bg);
             padding-left: 5%;
-            box-shadow: 0px 1px 2px #0000001A, 0px 0px 0px #171a1f00;
+            box-shadow: 0 0 6px var(--border-bg);
         }
 
         .sec-2-icon-parent {
             width: 48px;
             height: 48px;
-            background-color: var(--transparent-2nd-green-bg);
+            background-color: var(--green-bg);
             border-radius: 14px;
             display: flex;
             justify-content: center;
@@ -502,7 +489,7 @@
         }
 
         .sec-2-part-2-card-parent h3 {
-            color: var(--white-text);
+            color: var(--black-text);
             font-family: var(--font-fam-heading);
             font-size: clamp(18px, 1.4vw, 20px);
             font-weight: 700;
@@ -511,7 +498,7 @@
         .sec-2-part-2-card-parent p {
             font-size: 14px;
             font-weight: 500;
-            color: var(--gray-text);
+            color: var(--black-text);
             font-size: 14px;
             font-weight: 400;
         }
@@ -537,18 +524,17 @@
             width: fit-content;
             padding: clamp(5px, .4vw, 8px) clamp(16px, 2vw, 28px);
             font-size: clamp(10px, .87vw, 13px);
-            background-color: var(--transparent-green-bg);
             color: var(--green-text);
             font-size: 12px;
             font-family: var(--font-fam-heading);
             font-weight: 600;
-            border: 1px solid var(--green-bg);
+            border: 2px solid var(--green-bg);
             border-radius: 9999px;
             display: flex;
         }
 
         .sec-3-part-1 h1 {
-            color: var(--white-text);
+            color: var(--black-text);
             font-size: clamp(28px, 2.6vw, 40px);
             font-weight: 700;
         }
@@ -562,18 +548,18 @@
             width: 552px;
             font-weight: 400;
             font-size: clamp(14px, 1.6vw, 16px);
-            color: var(--gray-text);
+            color: var(--black-text);
         }
 
         .sec-3-part-1-head-3 button {
             padding: clamp(11px, 1vw, 15px) clamp(16px, 2vw, 28px);
-            background-color: var(--dark-black-bg);
-            border: 1px solid var(--border-gray-bg);
-            color: var(--white-text);
+            background-color: var(--green-bg);
+            color: var(--black-text);
             font-weight: 700;
             font-size: clamp(11px, 1.1vw, 14px);
             border-radius: 10px;
             font-weight: 500;
+            border: none;
         }
 
         .sec-3-part-2 {
@@ -589,8 +575,7 @@
         .sec-3-part-2-cards {
             width: 100%;
             border-radius: 12px;
-            box-shadow: 0 0 10px var(--dark-black-bg),
-                0 0 10px var(--dark-black-bg);
+            box-shadow: 0 0 10px var(--border-bg);
             margin-bottom: 23px;
         }
 
@@ -620,7 +605,7 @@
             font-family: var(--font-fam-heading);
             font-size: clamp(15px, 1.3vw, 20px);
             font-weight: 700;
-            color: var(--white-text);
+            color: var(--black-text);
         }
 
         .sec-3-part-2-content-line-1 p:last-child {
@@ -636,7 +621,7 @@
 
         .sec-3-part-2-content-line-1 p:last-child,
         .sec-3-part-2-content-line-2 p:first-child {
-            color: var(--gray-text);
+            color: var(--black-text);
             font-family: var(--font-fam-para);
         }
 
@@ -658,7 +643,7 @@
             font-family: var(--font-fam-heading);
             font-size: clamp(23px, 1.5vw, 24px);
             font-weight: 700;
-            color: var(--white-text);
+            color: var(--black-text);
             margin-top: 9px;
         }
 
@@ -676,7 +661,7 @@
             justify-content: center;
             align-items: center;
             margin-top: 120px;
-            background-color: #0B41221A;
+            background-color: var(--inner-bg);
             border-bottom: 1px solid var(--border-gray-bg);
             padding: 80px 0;
         }
@@ -692,8 +677,8 @@
             width: 100%;
             height: 252px;
             padding: 20px;
-            background-color: var(--dark-black-bg);
-            border: 1px solid var(--border-gray-bg);
+            background-color: var(--white-bg);
+            box-shadow: 0 0 6px var(--border-bg);
             border-radius: 14px;
             display: flex;
             flex-direction: column;
@@ -705,11 +690,11 @@
             font-family: var(--font-fam-heading);
             font-size: clamp(19px, 1.5vw, 22px);
             font-weight: 700;
-            color: var(--white-text);
+            color: var(--black-text);
         }
 
         .sec-4-cards p {
-            color: var(--gray-text);
+            color: var(--black-text);
             font-family: var(--font-fam-para);
             font-size: clamp(13px, 1.1vw, 18px);
             line-height: 26px;
@@ -738,12 +723,11 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background-color: var(--dark-black-bg);
             border-bottom: 1px solid var(--border-gray-bg);
         }
 
         .sec-5-parent h1 {
-            color: var(--white-text);
+            color: var(--black-text);
             margin-bottom: 10px;
             font-family: var(--font-fam-heading);
             font-size: clamp(28px, 2.6vw, 40px);
@@ -753,7 +737,7 @@
 
         .sec-5-parent>p {
             width: 90%;
-            color: var(--gray-text);
+            color: var(--black-text);
             font-family: var(--font-fam-para);
             font-size: clamp(12px, 1.6vw, 17px);
             line-height: 24px;
@@ -777,8 +761,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: var(--light-black-bg);
-            border: 1px solid var(--border-gray-bg);
+            box-shadow: 0 0 6px var(--border-bg);
         }
 
         .sec-5-img-wrapper img {
@@ -799,7 +782,7 @@
 
         .sec-5-cards-content-1 {
             width: 100%;
-            border-bottom: 4px solid var(--border-gray-bg);
+            border-bottom: 2px solid var(--border-bg);
             padding: 4% 0;
         }
 
@@ -812,7 +795,7 @@
         }
 
         .sec-5-cards-content-1-line-1 h4 {
-            color: var(--white-text);
+            color: var(--black-text);
             font-family: var(--font-fam-heading);
             font-size: clamp(18px, 1.4vw, 22px);
             font-weight: 700;
@@ -828,7 +811,7 @@
         .sec-5-cards-content-1-line-2,
         .sec-5-cards-content-2,
         .sec-5-cards-content-parent a {
-            color: var(--gray-text);
+            color: var(--black-text);
         }
 
         .sec-5-cards-content-1-line-2 p:first-child {
@@ -845,7 +828,7 @@
 
         .sec-5-cards-content-2 {
             width: 100%;
-            border-bottom: 4px solid var(--border-gray-bg);
+            border-bottom: 2px solid var(--border-bg);
             padding: 12px 0 0 0;
             font-size: 13px;
             display: flex;
@@ -868,7 +851,6 @@
             justify-content: center;
             align-items: center;
             gap: 20px;
-            background-color: var(--dark-black-bg);
         }
 
         .sec-6-head-1 {
@@ -883,9 +865,8 @@
             font-size: 12px;
             line-height: 20px;
             font-weight: 400;
-            border: 1px solid var(--green-bg);
+            border: 2px solid var(--green-bg);
             border-radius: 9999px;
-            background-color: var(--transparent-green-bg);
             color: var(--green-text);
         }
 
@@ -893,7 +874,7 @@
             font-family: var(--font-fam-heading);
             font-size: clamp(28px, 2.6vw, 40px);
             font-weight: 700;
-            color: var(--white-text);
+            color: var(--black-text);
         }
 
         .sec-6-parent .carousel {
@@ -910,7 +891,7 @@
         .carousel-item {
             width: 100%;
             height: 406px;
-            border: 1px solid var(--border-gray-bg);
+            border: 1px solid var(--border-bg);
             border-radius: 14px;
         }
 
@@ -938,9 +919,10 @@
             height: 40px;
             top: 50%;
             transform: translateY(-50%);
-            filter: brightness(50%);
+            filter: invert(1);
             border-radius: 50%;
         }
+
 
         .carousel-item-child p:nth-child(1) {
             font-size: clamp(18px, 1.5vw, 24px);
@@ -952,7 +934,7 @@
             font-size: clamp(19px, 1.73vw, 26px);
             line-height: 39px;
             font-weight: 300;
-            color: var(--gray-text);
+            color: var(--black-text);
             text-align: center;
             font-style: italic;
         }
@@ -973,7 +955,7 @@
         .profile-parent h4 {
             font-size: clamp(14px, 1.31vw, 22px);
             font-weight: 700;
-            color: var(--white-text);
+            color: var(--black-text);
             margin-bottom: 1px;
             margin-top: 8px;
         }
@@ -981,7 +963,7 @@
         .profile-parent span {
             font-size: clamp(11px, 1.02vw, 16px);
             font-weight: 400;
-            color: var(--gray-text);
+            color: var(--black-text);
         }
 
         /* section-7 */
@@ -991,14 +973,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: var(--dark-black-bg);
             border-bottom: 1px solid var(--border-gray-bg);
         }
 
         .sub-sec-7 {
             width: 88%;
             height: 100%;
-            background-color: var(--green-2nd-bg);
+            background-color: var(--inner-bg);
             padding: 4% 6%;
             border-radius: 30px;
             display: flex;
@@ -1016,12 +997,12 @@
         .sec-7-part-1 h1 {
             font-size: clamp(26px, 3.5vw, 48px);
             font-weight: 700;
-            color: var(--white-text);
+            color: var(--black-text);
             font-family: var(--font-fam-heading);
         }
 
         .sec-7-part-1 p {
-            color: var(--gray-text);
+            color: var(--black-text);
             font-size: clamp(16px, 1.5vw, 22px);
             font-weight: 400;
             line-height: 33px;
@@ -1054,9 +1035,8 @@
         .sec-7-part-1-btn-parent button:last-child {
             width: 204.953125px;
             font-weight: 500;
-            color: var(--white-text);
-            background-color: var(--dark-black-bg);
-            border: 1px solid var(--border-gray-2nd-bg);
+            color: var(--black-text);
+            border: 1px solid var(--border-bg);
         }
 
         .sec-7-part-2 {
@@ -1065,7 +1045,7 @@
             border-radius: 9999px;
             background-color: var(--dark-black-bg);
             border: 10px solid var(--transparent-green-bg);
-            box-shadow: 0 0 0 4px rgba(14, 43, 14, 0.281);
+            box-shadow: 0 0 0 4px var(--transparent-green-bg);
             position: relative;
             z-index: 5;
             display: flex;
