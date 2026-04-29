@@ -301,15 +301,7 @@
             font-size: clamp(11px, .87vw, 13px);
             border-radius: 999px;
         }
-
-        .dot {
-            width: 7px;
-            height: 7px;
-            background: var(--green-bg);
-            border-radius: 50%;
-            display: inline-block;
-        }
-
+        
         .hero h1 {
             font-family: var(--heading-font);
             font-size: clamp(40px, 4.3vw, 62px);
@@ -444,19 +436,19 @@
         }
 
         .info-label {
-            text-transform: uppercase;
-            letter-spacing: .09em;
-            font-family: var(--para-font);
-            font-size: clamp(10px, 0.85vw, 12px);
-            font-weight: 600;
-            margin-bottom: 3px;
-        }
-
-        .info-value {
             font-family: var(--para-font);
             font-size: clamp(13px, 1.15vw, 16px);
             line-height: clamp(22px, 1.9vw, 26px);
             font-weight: 500;
+            margin-bottom: 3px;
+        }
+        
+        .info-value {
+            /* text-transform: uppercase; */
+            letter-spacing: .09em;
+            font-family: var(--para-font);
+            font-size: clamp(10px, 0.85vw, 12px);
+            font-weight: 600;
         }
 
         .contact-mid {
@@ -591,21 +583,6 @@
             width: 100%;
         }
 
-        .btn-dark-outline {
-            background: transparent;
-            font-weight: 600;
-            font-size: clamp(12px, 1vw, 14px);
-            padding: 13px;
-            height: 56px;
-            background: var(--white-bg);
-            border: 1px solid #2a2a2a;
-            border-radius: 10px;
-            outline: none;
-            cursor: pointer;
-            width: 100%;
-            margin-bottom: 15px;
-        }
-
         .registered-tag {
             text-align: center;
             font-size: clamp(9px, 0.8vw, 11px);
@@ -621,74 +598,7 @@
             border-top: 1px solid var(--border);
             margin: 0 48px;
         }
-
-        .cta-section {
-            width: 100%;
-            text-align: center;
-            background: var(--inner-bg);
-            border-bottom: 1px solid var(--border-bg);
-            display: flex;
-            justify-content: center;
-        }
-
-        .cta-section-child {
-            width: 88%;
-            padding: 3% 0 8% 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 25px;
-        }
-
-        .cta-section-child h2 {
-            font-family: var(--heading-font);
-            font-size: clamp(24px, 4vw, 38px);
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .cta-section-child p {
-            width: 75%;
-            font-size: clamp(14px, 1.2vw, 19px);
-        }
-
-        .cta-btns {
-            display: flex;
-            justify-content: center;
-            gap: 14px;
-        }
-
-        .btn-green-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--green-bg);
-            font-weight: 600;
-            font-size: 14px;
-            padding: 13px 28px;
-            border-radius: 10px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-white-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: transparent;
-            color: var(--black);
-            font-weight: 600;
-            font-size: 14px;
-            padding: 13px 28px;
-            background: var(--white-bg);
-            border: 1px solid #2a2a2a;
-            border-radius: 10px;
-            outline: none;
-            cursor: pointer;
-        }
-
-        /* FOOTER */
-
+        
         footer {
             width: 100%;
             background: var(--inner-bg);
@@ -727,7 +637,7 @@
             width: 28px;
             height: 28px;
             min-width: 28px;
-            background: var(--green-bg);
+            background: var(--transparent-green-bg);
             border-radius: 7px;
             display: flex;
             align-items: center;
@@ -846,33 +756,6 @@
 
         .footer-col:last-child {
             width: 22%;
-        }
-
-        .links-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 7px 24px;
-        }
-
-        .links-grid a {
-            width: calc(50% - 12px);
-            color: var(--black-text);
-            font-size: 13px;
-            text-decoration: none;
-            transition: color .2s;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .links-grid a::before {
-            content: '›';
-            color: var(--green-text);
-            font-size: 16px;
-        }
-
-        .links-grid a:hover {
-            color: var(--green-bg);
         }
 
         .visit-promo {
@@ -1069,7 +952,7 @@
 
 
     <section class="hero">
-        <div class="hero-badge"><span class="dot"></span> Visit Our Facility</div>
+        <div class="hero-badge">Visit Our Facility</div>
         <h1>Our Farm <span>Location</span></h1>
         <p>Experience the standard of excellence in livestock breeding firsthand. Join us at our Korangi facility to
             view our premium breeds.</p>
@@ -1115,7 +998,7 @@
                         <circle cx="12" cy="9" r="2.5" />
                     </svg></div>
                 <div>
-                    <div class="info-label">Official Address</div>
+                    <div class="info-label">Offcial Address</div>
                     <div class="info-value">House No L/60, 33/C, Korangi No 2 1/2,<br>Karachi, Pakistan</div>
                 </div>
             </div>
@@ -1227,37 +1110,18 @@
                 <div><span>Best Visit Times</span><span>Weekends (10 AM – 2 PM)</span></div>
             </div>
             <button class="btn-green-full">Schedule Visit</button>
-            <button class="btn-dark-outline">Instant Directions</button>
             <div class="registered-tag">Registered Breeding Center #38219</div>
         </div>
     </section>
 
     <hr class="divider" />
 
-    <!-- CTA -->
-    <section class="cta-section">
-        <div class="cta-section-child">
-            <h2>Ready to see our livestock in person?</h2>
-            <p>Whether you are looking for a single goat or stocking an entire farm, our experts are here to help you
-                choose the best animals for your needs.</p>
-            <div class="cta-btns">
-                <button class="btn-green-cta">Explore Animals Online</button>
-                <button class="btn-white-cta">Learn About Us</button>
-            </div>
-        </div>
-    </section>
-
     <!-- FOOTER -->
     <footer>
         <div class="footer-grid">
             <div class="footer-part-1">
                 <div class="footer-brand-name">
-                    <div class="footer-logo-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                            stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                            <path d="M2 17l10 5 10-5" />
-                            <path d="M2 12l10 5 10-5" />
-                        </svg></div>
+                    <div class="footer-logo-icon"><img  width="50" height="50" src="./Assets/Images/prime goat only logo png.png" alt=""></div>
                     Prime Goat Farm
                 </div>
                 <div class="footer-brand">
@@ -1304,11 +1168,6 @@
             </div>
             <div class="footer-col">
                 <h5>Quick Explore</h5>
-                <div class="links-grid">
-                    <a href="#">Home</a><a href="#">Introduction</a>
-                    <a href="#">Services</a><a href="#">Location</a>
-                    <a href="#">Contact Us</a><a href="#">All Animals</a>
-                </div>
                 <div class="visit-promo">
                     <h6>Visit Our Farm</h6>
                     <p>Experience the quality of our livestock firsthand. Schedule your visit today.</p>
