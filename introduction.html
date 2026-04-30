@@ -31,6 +31,16 @@
     --para-font: work-sans;
 
   }
+  
+  @font-face {
+    font-family: inter;
+    src: url(./Assets/Fonts/Inter_28pt-Bold.ttf);
+  }
+
+  @font-face {
+    font-family: work-sans;
+    src: url(./Assets/Fonts/WorkSans-Regular.ttf);
+  }
 
   * {
     box-sizing: border-box;
@@ -74,8 +84,9 @@
 
   .nav-child ul li a {
     color: var(--black-text);
-    /* font-family: var(--para-font); */
-    /* font-size: clamp(13px, 1.2vw, 15px); */
+    font-family: var(--para-font);
+    font-size: clamp(13px, 1.2vw, 15px);
+    font-weight: 600;
   }
 
   .nav-child li a:focus {
@@ -88,19 +99,20 @@
 
   .nav-child ul li a {
     text-decoration: none;
+    font-size: clamp(13px, 1.2vw, 15px);
   }
 
   .nav-child li a {
     /* font-family: var(--para-font); */
-    font-size: 14.9px;
-    font-weight: bolder;
+    font-size: 14.8px;
+    font-weight: 500;
   }
 
   .nav-child ul li:first-child a {
     color: var(--green-text);
     font-size: clamp(19px, 1.8vw, 29px);
-    font-weight: 700;
-    /* font-family: var(--font-fam-heading); */
+    font-weight: bolder;
+    font-family: var(--font-fam-heading);
   }
 
   .nav-hamburger-btn {
