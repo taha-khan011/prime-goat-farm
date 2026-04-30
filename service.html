@@ -264,33 +264,37 @@
 
         @media (max-width: 820px) {
             nav {
-                height: 100%;
+                height: auto;
+                /* 100% ki jagah auto */
             }
 
-            .offscreen-menu {
-                top: 70px;
-            }
+            ...
+        }
 
-            .nav-child ul li:not(:first-child) {
-                display: none;
-            }
+        .offscreen-menu {
+            top: 70px;
+        }
 
-            .nav-hamburger-btn {
-                display: flex;
-            }
+        .nav-child ul li:not(:first-child) {
+            display: none;
+        }
 
-            nav>a {
-                display: none;
-            }
+        .nav-hamburger-btn {
+            display: flex;
+        }
 
-            .nav-child {
-                width: 88%;
-                justify-content: space-between;
-            }
+        nav>a {
+            display: none;
+        }
 
-            .offscreen-menu {
-                display: block;
-            }
+        .nav-child {
+            width: 88%;
+            justify-content: space-between;
+        }
+
+        .offscreen-menu {
+            display: block;
+        }
         }
 
         @media (min-width: 821px) {
@@ -317,6 +321,8 @@
             width: 100%;
             display: flex;
             justify-content: center;
+            margin-top: 81px;
+            /* navbar height ke barabar */
         }
 
         .sub-sec-1 {
@@ -495,11 +501,11 @@
             color: var(--green-text);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
         }
-        
+
         .sec-3-part-2-btns:active {
             transform: scale(0.96);
         }
-        
+
         .sec-3-part-2-btn-1 {
             background-color: var(--transparent-green-bg);
             font-family: var(--para-font);
@@ -507,7 +513,7 @@
             color: var(--white-text);
             transition: all 0.3s ease;
         }
-        
+
         .sec-3-part-2-btn-2 {
             background-color: var(--black-bg);
             color: var(--white-text);
@@ -763,7 +769,8 @@
             <div class="sec-1-head-1">EXCELLENCE IN HUSBANDRY</div>
             <h1 class="sec-1-head-2"><span class="txt-1">What We</span> <span class="txt-2">Provide</span></h1>
             <p class="sec-1-head-3">At Prime Goat Farm, we don't just sell animals; we provide a legacy of quality. Our
-                comprehensive approach ensures every goat, sheep, and cow leaves our farm in peak physical condition.At Prime Goat Farm, we don't just sell animals; we provide a legacy of quality. Our
+                comprehensive approach ensures every goat, sheep, and cow leaves our farm in peak physical condition.At
+                Prime Goat Farm, we don't just sell animals; we provide a legacy of quality. Our
                 comprehensive approach ensures every goat, sheep, and cow leaves our farm in peak physical condition.
             </p>
         </div>
@@ -790,7 +797,8 @@
             </div>
             <div class="sec-2-cards">
                 <div class="sec-2-icon-parent">
-                    <img src="/Assets/service-page-icon/Icons/license_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png" alt="">
+                    <img src="/Assets/service-page-icon/Icons/license_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png"
+                        alt="">
                 </div>
                 <h3 class="sec-2-heading">High-Quality Animals</h3>
                 <p class="sec-2-paragraph">We take pride in offering livestock that meets the highest standards of
@@ -798,7 +806,8 @@
             </div>
             <div class="sec-2-cards">
                 <div class="sec-2-icon-parent">
-                    <img src="/Assets/service-page-icon/Icons/verified_user_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png" alt="">
+                    <img src="/Assets/service-page-icon/Icons/verified_user_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png"
+                        alt="">
                 </div>
                 <h3 class="sec-2-heading">Proper Vaccination </h3>
                 <p class="sec-2-paragraph">Complete medical history for every animal. We strictly follow WHO-standard
@@ -806,7 +815,8 @@
             </div>
             <div class="sec-2-cards">
                 <div class="sec-2-icon-parent">
-                    <img src="/Assets/service-page-icon/Icons/stethoscope_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png" alt="">
+                    <img src="/Assets/service-page-icon/Icons/stethoscope_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png"
+                        alt="">
                 </div>
                 <h3 class="sec-2-heading">Premium Breeds</h3>
                 <p class="sec-2-paragraph">Exotic and local breeds including Beetal, Kamori, and Gulabi goats, as well
@@ -814,7 +824,8 @@
             </div>
             <div class="sec-2-cards">
                 <div class="sec-2-icon-parent">
-                    <img src="/Assets/service-page-icon/Icons/release_alert_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png" alt="">
+                    <img src="/Assets/service-page-icon/Icons/release_alert_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png"
+                        alt="">
                 </div>
                 <h3 class="sec-2-heading">Health Consulting</h3>
                 <p class="sec-2-paragraph">Need advice on starting your own farm? Our experts provide consultation on
