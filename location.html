@@ -751,6 +751,12 @@
             justify-content: center;
             cursor: pointer;
             transition: border-color .2s, color .2s;
+            transition: all 0.3s ease;
+        }
+
+        .aColor{
+            color: var(--black-text);
+            transition: all 0.3s ease;
         }
 
         .social-btn:hover {
@@ -1001,6 +1007,16 @@
                 line-height: 23px;
             }
         }
+
+        @media(max-width: 600px) {
+            .input-row {
+                flex-direction: column;
+            }
+
+            .input-row input {
+                width: 100%;
+            }
+        }
     </style>
 
 </head>
@@ -1239,26 +1255,39 @@
                         </svg>Mon – Sun: 8:00 AM – 6:00 PM</div>
                 </div>
                 <div class="social-row">
-                    <div class="social-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                        </svg></div>
-                    <div class="social-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="2" width="20" height="20" rx="5" />
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                        </svg></div>
+                    <div class="social-btn"><a class="aColor" target="_blank" href="https://www.facebook.com/share/1P9Qq8QxoN/"><svg width="13"
+                                height="13" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                            </svg></a></div>
+                    <div class="social-btn"><a class="aColor" target="_blank"
+                            href="https://www.instagram.com/primegoatform?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><svg
+                                width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" />
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                            </svg></a></div>
                 </div>
             </div>
             <div class="footer-col">
                 <h5>Quick Inquiry</h5>
-                <div class="inquiry-form">
-                    <input type="text" placeholder="Full Name" />
-                    <div class="input-row"><input type="tel" placeholder="Phone Number" /><input type="email"
-                            placeholder="Email (Optional)" /></div>
-                    <textarea placeholder="How can we help you?"></textarea>
-                    <button class="btn-send">Send Message</button>
-                </div>
+                <form class="inquiry-form" id="inquiryForm">
+
+                    <input type="text" name="fullname" placeholder="Full Name" required />
+
+                    <div class="input-row">
+                        <input type="tel" name="phone" placeholder="Phone Number" required />
+                        <input type="email" name="email" placeholder="Email (Optional)" />
+                    </div>
+
+                    <textarea name="message" placeholder="How can we help you?" required></textarea>
+
+                    <!-- Fixed business email (hidden) -->
+                    <input type="hidden" name="to_email" value="yourbusiness@gmail.com">
+
+                    <button type="submit" class="btn-send">Send Message</button>
+
+                </form>
             </div>
             <div class="footer-col">
                 <h5>Quick Explore</h5>
@@ -1336,6 +1365,25 @@
 
         offscreenLinks.forEach(link => {
             link.addEventListener('click', closeOffscreenMenu);
+        });
+
+        document.getElementById("inquiryForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const data = {
+                to_email: this.to_email.value,
+                fullname: this.fullname.value,
+                phone: this.phone.value,
+                email: this.email.value, // optional
+                message: this.message.value
+            };
+
+            console.log("Form Data:", data);
+
+            // yahan ab tum API ya EmailJS lagao
+            alert("Message sent successfully!");
+
+            this.reset(); // form clear
         });
     </script>
 
