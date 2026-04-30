@@ -45,6 +45,88 @@
             --para-font: work-sans;
         }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial;
+        }
+
+        #loader {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: var(--white-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 9999;
+            color: black;
+            transition: opacity 0.6s ease;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            display: flex;
+            align-items: center;
+            animation: zoom 1.5s ease-in-out infinite alternate;
+        }
+
+        .logo img{
+            width: 100px;
+        }
+
+        @keyframes zoom {
+            0% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        .sub {
+            margin-top: 10px;
+            font-size: 12px;
+            color: var(--black-text);
+            letter-spacing: 2px;
+        }
+
+        .bar {
+            width: 200px;
+            height: 4px;
+            background: #222;
+            margin-top: 25px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .bar span {
+            display: block;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #00ff88, #00ccff);
+            animation: load 3.5s linear forwards;
+        }
+
+        @keyframes load {
+            100% {
+                width: 100%;
+            }
+        }
+
+        #main {
+            display: none;
+            padding: 40px;
+            text-align: center;
+        }
+
         /* nav */
 
         nav {
@@ -1644,6 +1726,19 @@
 </head>
 
 <body>
+
+    <div id="loader">
+
+        <div class="logo"><img src="/Assets/Images/prime goat only logo png.png" alt=""> PRIME GOAT FARM</div>
+
+        <div class="sub">Preparing your farm experience...</div>
+
+        <div class="bar">
+            <span></span>
+        </div>
+
+    </div>
+
     <!-- nav-bar -->
     <nav>
         <div class="nav-child">
@@ -2762,6 +2857,17 @@
         offscreenLinks.forEach(link => {
             link.addEventListener('click', closeOffscreenMenu);
         });
+
+        setTimeout(() => {
+            document.getElementById("loader").style.opacity = "0";
+
+            setTimeout(() => {
+                document.getElementById("loader").style.display = "none";
+                document.getElementById("main").style.display = "block";
+            }, 600);
+
+        }, 3500);
+
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
