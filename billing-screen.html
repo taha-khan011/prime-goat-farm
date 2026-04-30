@@ -42,6 +42,7 @@
             background: var(--inner-bg);
             border: 2px solid var(--border-bg);
             padding: 20px;
+            border-radius: 12px;
         }
 
         .form-container h2 {
@@ -66,7 +67,11 @@
             border-radius: 8px;
         }
 
-        input::placeholder{
+        #package {
+            width: 95%;
+        }
+
+        input::placeholder {
             color: var(--black-text);
         }
 
@@ -81,7 +86,7 @@
 
 
         button {
-            width: 100%;
+            width: 95%;
             padding: 12px;
             background: var(--black-bg);
             border: none;
@@ -99,11 +104,36 @@
         /* BILL */
         .bill {
             margin-top: 20px;
-            background: #fff;
-            border: 2px solid #000;
-            border-radius: 12px;
+            background: var(--white-bg);
+            border: 2px solid var(--border-bg);
             padding: 20px;
             display: none;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: nowrap;
+            /* 🔥 important */
+            background-color: var(--inner-bg);
+            padding: 8px 10px;
+            margin-bottom: 6px;
+        }
+
+        .label {
+            font-weight: bold;
+            width: 40%;
+        }
+
+        .row div {
+            width: 60%;
+            text-align: right;
+        }
+
+        .row span,
+        .row div {
+            display: inline-block;
         }
 
         .bill h2 {
@@ -112,10 +142,11 @@
         }
 
         .row {
+            width: 100%;
             display: flex;
+            flex-direction: row;
             justify-content: space-between;
             background-color: var(--inner-bg);
-            padding: 8px 0;
         }
 
         .label {
@@ -152,7 +183,9 @@
 
         <!-- FORM -->
         <div class="form-container" id="formBox">
-            <h2><img src="./Assets/Images/prime goat farm logo pic png01.png" alt=""> Prime Goat Billing</h2>
+            <h2><img src="./Assets/Images/prime goat farm logo pic png01.png" alt="">
+                <p>Prime Goat Billing</p>
+            </h2>
 
             <input id="name" placeholder="Full Name">
             <input id="phone" placeholder="Phone Number">
@@ -175,34 +208,36 @@
         <!-- BILL -->
         <div class="bill" id="bill">
 
-            <h2><img src="./Assets/Images/prime goat farm logo pic png01.png" alt=""> Prime Goat Receipt</h2>
+            <h2><img src="./Assets/Images/prime goat farm logo pic png01.png" alt="">
+                <p>Prime Goat Receipt</p>
+            </h2>
 
             <div class="row">
-                <div class="label">Name</div>
+                <span class="label">Name</span>
                 <div id="b_name"></div>
             </div>
             <div class="row">
-                <div class="label">Phone</div>
+                <span class="label">Phone</span>
                 <div id="b_phone"></div>
             </div>
             <div class="row">
-                <div class="label">Date</div>
+                <span class="label">Date</span>
                 <div id="b_date"></div>
             </div>
             <div class="row">
-                <div class="label">Animal Color</div>
+                <span class="label">Animal Color</span>
                 <div id="b_color"></div>
             </div>
             <div class="row">
-                <div class="label">Package</div>
+                <span class="label">Package</span>
                 <div id="b_package"></div>
             </div>
             <div class="row">
-                <div class="label">Payment-screenshot</div>
+                <span class="label">Payment-screenshot</span>
                 <div id="b_payment" class="verified"></div>
             </div>
             <div class="row">
-                <div class="label">Amount</div>
+                <span class="label">Amount</span>
                 <div id="b_amount"></div>
             </div>
 
