@@ -25,13 +25,13 @@
             --inner-bg: whitesmoke;
             --black-bg: black;
             --white-bg: #FFFFFF;
-            --green-bg: #38DC7CFF;
+            --green-bg: #114C36;
             --white-text: #FFFFFF;
-            --green-text: #38DC7CFF;
+            --green-text: #114C36;
             --black-text: black;
             --transparent-green-bg: #32a14aa2;
             --border-bg: black;
-            --green-border: #38DC7CFF;
+            --green-border: #114C36;
             --para-font: work-sans;
             --heading-font: inter;
         }
@@ -44,10 +44,6 @@
 
         html {
             scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
         }
 
         nav {
@@ -89,7 +85,7 @@
         .nav-child ul li a {
             color: var(--black-text);
             font-family: var(--para-font);
-            font-size: clamp(13px,1.2vw,15px);
+            font-size: clamp(13px, 1.2vw, 15px);
         }
 
         .nav-child li a:focus {
@@ -225,6 +221,49 @@
             display: block;
         }
 
+        /* base */
+        .nav-child ul li a {
+            position: relative;
+            text-decoration: none;
+            color: var(--black-text);
+            transition: color 0.3s ease;
+        }
+
+        /* underline hidden by default */
+        .nav-child ul li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background: var(--green-text);
+            transition: width 0.3s ease;
+        }
+
+        /* hover par line */
+        .nav-child ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* active page par line permanently */
+        .nav-child ul li a.active {
+            color: var(--green-text);
+        }
+
+        .nav-child ul li a.active::after {
+            width: 100%;
+        }
+
+        /* ❌ logo par kuch bhi apply nahi */
+        .nav-child ul li:first-child a::after {
+            display: none;
+        }
+
+        .nav-child ul li:first-child a:hover {
+            color: initial;
+        }
+
         @media (max-width: 820px) {
             nav {
                 height: 100%;
@@ -300,8 +339,19 @@
             padding: clamp(5px, .5vw, 8px) clamp(16px, 2vw, 28px);
             font-size: clamp(11px, .87vw, 13px);
             border-radius: 999px;
+            transition: 0.3s;
         }
-        
+
+        .hero-badge:hover {
+            background: var(--green-text);
+            color: var(--white-text);
+            cursor: pointer;
+        }
+
+        .hero-badge:active {
+            transform: scale(0.96);
+        }
+
         .hero h1 {
             font-family: var(--heading-font);
             font-size: clamp(40px, 4.3vw, 62px);
@@ -442,7 +492,7 @@
             font-weight: 500;
             margin-bottom: 3px;
         }
-        
+
         .info-value {
             /* text-transform: uppercase; */
             letter-spacing: .09em;
@@ -485,6 +535,7 @@
             align-items: center;
             gap: 10px;
             font-size: clamp(11px, 0.95vw, 13px);
+            font-family: var(--para-font);
         }
 
         .check-circle {
@@ -563,11 +614,13 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: .07em;
+            font-family: var(--para-font);
         }
 
         .best-time-row span:last-child {
             font-size: clamp(11px, 0.95vw, 13px);
             font-weight: 500;
+            font-family: var(--para-font);
         }
 
         .btn-green-full {
@@ -581,6 +634,18 @@
             cursor: pointer;
             font-family: 'Inter', sans-serif;
             width: 100%;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-green-full:hover {
+            background: #fff;
+            color: var(--green-text);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-green-full:active {
+            transform: scale(0.96);
         }
 
         .registered-tag {
@@ -598,7 +663,7 @@
             border-top: 1px solid var(--border);
             margin: 0 48px;
         }
-        
+
         footer {
             width: 100%;
             background: var(--inner-bg);
@@ -662,6 +727,7 @@
             align-items: flex-start;
             gap: 9px;
             font-size: 13px;
+            font-family: var(--para-font);
         }
 
         .f-info-row svg {
@@ -678,7 +744,7 @@
         .social-btn {
             width: 34px;
             height: 34px;
-            border: 1px solid var(--border-bg);
+            border: 1px solid var(--transparent-green-bg);
             border-radius: 7px;
             display: flex;
             align-items: center;
@@ -688,8 +754,13 @@
         }
 
         .social-btn:hover {
-            border-color: var(--green-bg);
-            color: var(--green-text);
+            background: var(--green-text);
+            color: var(--white-text);
+            cursor: pointer;
+        }
+
+        .social-btn:active {
+            transform: scale(0.96);
         }
 
         .footer-col {
@@ -750,8 +821,20 @@
             padding: 11px;
             border-radius: 8px;
             border: none;
-            cursor: pointer;
             width: 100%;
+            font-family: var(--para-font);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-send:hover {
+            background: #fff;
+            color: var(--green-text);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-send:active {
+            transform: scale(0.96);
         }
 
         .footer-col:last-child {
@@ -775,6 +858,7 @@
         .visit-promo p {
             font-size: 12px;
             margin: 6px 0 14px;
+            font-family: var(--para-font);
         }
 
         .btn-directions {
@@ -789,10 +873,19 @@
             font-family: 'Inter', sans-serif;
             width: 100%;
             transition: border-color .2s;
+            outline: none;
+            transition: all 0.3s ease;
         }
 
+
         .btn-directions:hover {
-            border-color: var(--green-bg);
+            background: var(--green-text);
+            color: var(--white-text);
+            cursor: pointer;
+        }
+
+        .btn-directions:active {
+            transform: scale(0.96);
         }
 
         /* Mobile */
@@ -923,7 +1016,7 @@
                 <li><a href="/home.html">Home</a></li>
                 <li><a href="/introduction.html">Introduction</a></li>
                 <li><a href="/service.html">Services</a></li>
-                <li><a href="/location.html">Contact Us</a></li>
+                <li><a href="/location.html" class="active">Contact Us</a></li>
             </ul>
 
             <!-- Hamburger Btn -->
@@ -1121,7 +1214,8 @@
         <div class="footer-grid">
             <div class="footer-part-1">
                 <div class="footer-brand-name">
-                    <div class="footer-logo-icon"><img  width="50" height="50" src="./Assets/Images/prime goat only logo png.png" alt=""></div>
+                    <div class="footer-logo-icon"><img width="50" height="50"
+                            src="./Assets/Images/prime goat only logo png.png" alt=""></div>
                     Prime Goat Farm
                 </div>
                 <div class="footer-brand">
@@ -1244,6 +1338,7 @@
             link.addEventListener('click', closeOffscreenMenu);
         });
     </script>
+
 </body>
 
 </html>
