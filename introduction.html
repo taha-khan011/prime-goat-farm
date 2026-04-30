@@ -328,7 +328,7 @@
   }
 
   .main-h1-1 {
-    font-family: Inter;
+    font-family: var(--para-font);
     /* Body */
     font-size: 60px;
     line-height: 60px;
@@ -338,8 +338,6 @@
     color: #FFFFFFFF;
     /* white */
   }
-
-
 
   p {
 
@@ -354,20 +352,29 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #06e35e;
+    /* border: 1px solid #06e35e; */
+    border: none;
     width: auto;
-    padding: 5px 20px;
+    padding: 6px 30px;
     height: 35px;
     border-radius: 20px;
     background-color: #12291E;
     color: #38DC7C;
     cursor: pointer;
     margin-bottom: 10px;
+    margin-right: 30px;
+    font-family: var(--para-font);
+    transition: all 0.3s ease;
   }
 
-  button:active {
-    background-color: #12412c;
-    scale: 0.9;
+  .About-us:hover {
+    background: #fff;
+    color: var(--green-text);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  .About-us:active {
+    transform: scale(0.96);
   }
 
   .text-img-div {
@@ -453,18 +460,17 @@
     border-width: 1px;
     border-color: #555E68FF;
     border-style: solid;
+    transition: all 0.3s ease;
   }
 
-  /* Hover */
   .btn-2:hover {
-    color: #F9FAFBFF;
-    background: #161A1DFF;
+    background: #fff;
+    color: var(--green-text);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
   }
 
-  /* Pressed */
-  .btn-2:hover:active {
-    color: #F9FAFBFF;
-    background: #161A1DFF;
+  .btn-2:active {
+    transform: scale(0.96);
   }
 
   /* Disabled */
@@ -589,19 +595,17 @@
     border-width: 1px;
     border-color: #555E68FF;
     border-style: solid;
+    transition: all 0.3s ease;
   }
 
-  /* Hover */
   .btn-3:hover {
-    color: #F9FAFBFF;
-    background: #161A1DFF;
-
+    background: #fff;
+    color: var(--green-text);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
   }
 
-  /* Pressed */
-  .btn-3:hover:active {
-    color: #F9FAFBFF;
-    background: #161A1DFF;
+  .btn-3:active {
+    transform: scale(0.96);
   }
 
   /* Disabled */
