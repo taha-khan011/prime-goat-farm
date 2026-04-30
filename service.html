@@ -33,13 +33,12 @@
             --inner-bg: whitesmoke;
             --black-bg: black;
             --white-bg: #FFFFFF;
-            --green-bg: #38DC7CFF;
+            --green-bg: #124C36;
             --white-text: #FFFFFF;
-            --green-text: #38DC7CFF;
+            --green-text: #124C36;
             --black-text: black;
             --transparent-green-bg: #32a14aa2;
             --border-bg: black;
-            --green-border: #38DC7CFF;
             --para-font: work-sans;
             --heading-font: inter;
         }
@@ -50,7 +49,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            position: fixed ;
+            position: fixed;
             top: 0;
             z-index: 99;
             background-color: var(--white-bg);
@@ -61,7 +60,7 @@
             width: 90px;
             height: 100px;
             position: relative;
-            right: 20px;
+            right: 14px;
             top: 5px;
         }
 
@@ -217,6 +216,48 @@
             z-index: 97;
         }
 
+        .nav-child ul li a {
+            position: relative;
+            text-decoration: none;
+            color: var(--black-text);
+            transition: color 0.3s ease;
+        }
+
+        /* underline hidden by default */
+        .nav-child ul li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background: var(--green-text);
+            transition: width 0.3s ease;
+        }
+
+        /* hover par line */
+        .nav-child ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* active page par line permanently */
+        .nav-child ul li a.active {
+            color: var(--green-text);
+        }
+
+        .nav-child ul li a.active::after {
+            width: 100%;
+        }
+
+        /* ❌ logo par kuch bhi apply nahi */
+        .nav-child ul li:first-child a::after {
+            display: none;
+        }
+
+        .nav-child ul li:first-child a:hover {
+            color: initial;
+        }
+
         .offscreen-overlay.offscreen-overlay-visible {
             display: block;
         }
@@ -351,8 +392,8 @@
 
         .sec-2-cards {
             /* FIX: Fixed 25% ki jagah calc() use kiya — 3 per row on desktop */
-            width: 21.5%;
-            padding: 5% 5%;
+            width: 25.5%;
+            padding: 3% 3%;
             border-radius: 10px;
             display: flex;
             flex-direction: column;
@@ -365,7 +406,7 @@
             width: 50px;
             height: 50px;
             border-radius: 12px;
-            background-color: var(--transparent-green-bg);
+            background-color: var(--white-bg);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -449,16 +490,29 @@
             white-space: nowrap;
         }
 
+        .sec-3-part-2-btns:hover {
+            background: #fff;
+            color: var(--green-text);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .sec-3-part-2-btns:active {
+            transform: scale(0.96);
+        }
+        
         .sec-3-part-2-btn-1 {
             background-color: var(--transparent-green-bg);
             font-family: var(--para-font);
             background-color: var(--green-bg);
+            color: var(--white-text);
+            transition: all 0.3s ease;
         }
-
+        
         .sec-3-part-2-btn-2 {
             background-color: var(--black-bg);
             color: var(--white-text);
             font-family: var(--para-font);
+            transition: all 0.3s ease;
         }
 
         /* ==================== SECTION 4 ==================== */
@@ -493,7 +547,7 @@
             width: 24px;
             height: 24px;
             flex-shrink: 0;
-            background-color: var(--transparent-green-bg);
+            /* color: var(--green-bg); */
         }
 
         .sec-4-part-1-head-child h2 {
@@ -670,7 +724,7 @@
                             alt=""></a></li>
                 <li><a href="/home.html">Home</a></li>
                 <li><a href="/introduction.html">Introduction</a></li>
-                <li><a href="/service.html">Services</a></li>
+                <li><a href="/service.html" class="active">Services</a></li>
                 <li><a href="/location.html">Contact Us</a></li>
             </ul>
 
@@ -709,6 +763,7 @@
             <div class="sec-1-head-1">EXCELLENCE IN HUSBANDRY</div>
             <h1 class="sec-1-head-2"><span class="txt-1">What We</span> <span class="txt-2">Provide</span></h1>
             <p class="sec-1-head-3">At Prime Goat Farm, we don't just sell animals; we provide a legacy of quality. Our
+                comprehensive approach ensures every goat, sheep, and cow leaves our farm in peak physical condition.At Prime Goat Farm, we don't just sell animals; we provide a legacy of quality. Our
                 comprehensive approach ensures every goat, sheep, and cow leaves our farm in peak physical condition.
             </p>
         </div>
@@ -719,7 +774,7 @@
         <div class="sub-sec-2">
             <div class="sec-2-cards">
                 <div class="sec-2-icon-parent">
-                    <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
+                    <img src="/Assets/service-page-icon/Icons/wheat_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png" alt="">
                 </div>
                 <h3 class="sec-2-heading">Quality Feed</h3>
                 <p class="sec-2-paragraph">Our livestock is raised on a strictly monitored diet of organic grains, fresh
@@ -727,7 +782,7 @@
             </div>
             <div class="sec-2-cards">
                 <div class="sec-2-icon-parent">
-                    <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
+                    <img src="/Assets/service-page-icon/Icons/group_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png" alt="">
                 </div>
                 <h3 class="sec-2-heading">Professional CareTakers</h3>
                 <p class="sec-2-paragraph">Dedicated animal specialists monitor our farm 24/7. Our staff is trained in
@@ -735,7 +790,7 @@
             </div>
             <div class="sec-2-cards">
                 <div class="sec-2-icon-parent">
-                    <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
+                    <img src="/Assets/service-page-icon/Icons/license_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png" alt="">
                 </div>
                 <h3 class="sec-2-heading">High-Quality Animals</h3>
                 <p class="sec-2-paragraph">We take pride in offering livestock that meets the highest standards of
@@ -743,7 +798,7 @@
             </div>
             <div class="sec-2-cards">
                 <div class="sec-2-icon-parent">
-                    <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
+                    <img src="/Assets/service-page-icon/Icons/verified_user_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png" alt="">
                 </div>
                 <h3 class="sec-2-heading">Proper Vaccination </h3>
                 <p class="sec-2-paragraph">Complete medical history for every animal. We strictly follow WHO-standard
@@ -751,7 +806,7 @@
             </div>
             <div class="sec-2-cards">
                 <div class="sec-2-icon-parent">
-                    <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
+                    <img src="/Assets/service-page-icon/Icons/stethoscope_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png" alt="">
                 </div>
                 <h3 class="sec-2-heading">Premium Breeds</h3>
                 <p class="sec-2-paragraph">Exotic and local breeds including Beetal, Kamori, and Gulabi goats, as well
@@ -759,7 +814,7 @@
             </div>
             <div class="sec-2-cards">
                 <div class="sec-2-icon-parent">
-                    <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
+                    <img src="/Assets/service-page-icon/Icons/release_alert_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png" alt="">
                 </div>
                 <h3 class="sec-2-heading">Health Consulting</h3>
                 <p class="sec-2-paragraph">Need advice on starting your own farm? Our experts provide consultation on
@@ -789,19 +844,19 @@
     <section class="sec-4-parent">
         <div class="sub-sec-4">
             <div class="sec-4-part-1-head-child">
-                <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
+                <img src="./Assets/service-page-icon/Icons/verified_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png" alt="">
                 <h2>CERTIFIED HEALTH</h2>
             </div>
             <div class="sec-4-part-1-head-child">
-                <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
+                <img src="./Assets/service-page-icon/Icons/verified_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png" alt="">
                 <h2>EXPERT HANDLERS</h2>
             </div>
             <div class="sec-4-part-1-head-child">
-                <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
+                <img src="./Assets/service-page-icon/Icons/verified_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png" alt="">
                 <h2>PREMIUM GENETICS</h2>
             </div>
             <div class="sec-4-part-1-head-child">
-                <img src="/Assets/Icons/icons8-twitter-bird-30.png" alt="">
+                <img src="./Assets/service-page-icon/Icons/verified_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png" alt="">
                 <h2>BIO-SECURE FARM</h2>
             </div>
         </div>
