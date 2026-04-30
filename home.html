@@ -90,11 +90,45 @@
             font-size: clamp(13px, 1.2vw, 15px);
         }
 
-        .nav-child li a:focus {
+        .nav-child ul li a {
+            position: relative;
+            text-decoration: none;
+            color: var(--black-text);
+            transition: color 0.3s ease;
+        }
+
+        /* underline hidden by default */
+        .nav-child ul li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background: var(--green-text);
+            transition: width 0.3s ease;
+        }
+
+        /* hover par line */
+        .nav-child ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* active page par line permanently */
+        .nav-child ul li a.active {
             color: var(--green-text);
         }
 
-        .nav-child li:first-child a:focus {
+        .nav-child ul li a.active::after {
+            width: 100%;
+        }
+
+        /* ❌ logo par kuch bhi apply nahi */
+        .nav-child ul li:first-child a::after {
+            display: none;
+        }
+
+        .nav-child ul li:first-child a:hover {
             color: initial;
         }
 
@@ -354,9 +388,9 @@
             height: 56px;
         }
 
-        .hero-btn-parent button:first-child {
+        .hero-btn-parent a:first-child button {
             background-color: var(--green-bg);
-            width: clamp(150px, 55%, 255px);
+            width: clamp(150px, 55%, 275px);
             color: var(--white-text);
         }
 
@@ -1616,7 +1650,7 @@
             <ul>
                 <li><a href="/home.html"><img class="IconPrime" src="./Assets/Images/prime goat farm logo pic png01.png"
                             alt=""></a></li>
-                <li><a href="/home.html">Home</a></li>
+                <li><a href="/home.html" class="active">Home</a></li>
                 <li><a href="/introduction.html">Introduction</a></li>
                 <li><a href="/service.html">Services</a></li>
                 <li><a href="/location.html">Contact Us</a></li>
@@ -1655,15 +1689,17 @@
     <div class="hero-banner-parent">
         <div class="hero-banner"></div>
         <div class="hero-banner-detail-parent">
-            <div class="hero-head-1 animate__animated animate__slideInUp">Established 1995 . Pakistan's Leading
+            <div class="hero-head-1">Established 1995 . Pakistan's Leading
                 Livestock Exporter</div>
-            <h1 class="hero-head-2 animate__animated animate__slideInUp">Premium <span>Livestock</span> Farm</h1>
-            <p class="hero-para animate__animated animate__slideInUp">Experience the heritage of quality breeding. We
+            <h1 class="hero-head-2">Premium <span>Livestock</span> Farm</h1>
+            <p class="hero-para">Experience the heritage of quality breeding. We
                 provide the finest goats,sheep and cows
                 natured with professional care and organic feed.</p>
             <div class="hero-btn-parent">
-                <button class="animate__animated animate__slideInLeft">Explore Animals</button>
-                <button class="animate__animated animate__slideInRight">Book Now</button>
+                <a href="/billing-screen.html">
+                    <button>Billing Screen</button>
+                </a>
+                <button>Book Now</button>
             </div>
         </div>
     </div>
@@ -1684,28 +1720,28 @@
         </div>
         <div class="sub-sec-2-part-2">
             <div class="sec-2-part-2-card-parent">
-                <div class="sec-2-part-2-cards  animate__animated animate__fadeIn">
+                <div class="sec-2-part-2-cards">
                     <div class="sec-2-icon-parent">
                         <img src="/Assets/Icons/sec-2-protect-icon.png" alt="">
                     </div>
                     <h3>100% Vaccinated</h3>
                     <p>Full medical history provided</p>
                 </div>
-                <div class="sec-2-part-2-cards  animate__animated animate__fadeIn">
+                <div class="sec-2-part-2-cards">
                     <div class="sec-2-icon-parent">
                         <img src="/Assets/Icons/sec-2-trending-icon (2).png" alt="">
                     </div>
                     <h3>Premium Feed</h3>
                     <p>Organic nutrient-rich diet</p>
                 </div>
-                <div class="sec-2-part-2-cards  animate__animated animate__fadeIn">
+                <div class="sec-2-part-2-cards">
                     <div class="sec-2-icon-parent">
                         <img src="/Assets/Icons/sec-2-trending-icon.png" alt="">
                     </div>
                     <h3>Elite Pedigree</h3>
                     <p>Documented lineage breeds</p>
                 </div>
-                <div class="sec-2-part-2-cards  animate__animated animate__fadeIn">
+                <div class="sec-2-part-2-cards">
                     <div class="sec-2-icon-parent">
                         <img src="/Assets/Icons/sec-4-contact-icon.png" alt="">
                     </div>
