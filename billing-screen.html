@@ -298,7 +298,7 @@
             max-width: 500px;
             margin: auto;
         }
-        
+
         /* FORM */
         .form-container {
             margin-top: 40px;
@@ -502,15 +502,22 @@
             </select>
 
             <input id="amount" type="number" placeholder="Amount">
+            <label for="screenshot"
+                style="font-weight:600; display:block; margin:10px 0 5px; font-family: var(--para-font);">
+                Attach Payment Screenshot
+            </label>
+
             <input id="screenshot" type="file">
 
             <button onclick="generateBill()">Done Generate Bill</button>
         </div>
 
         <!-- BILL -->
+        <!-- BILL -->
         <div class="bill" id="bill">
 
-            <h2><img src="./Assets/Images/prime goat farm logo pic png01.png" alt="">
+            <h2>
+                <img src="./Assets/Images/prime goat farm logo pic png01.png" alt="">
                 <p>Prime Goat Receipt</p>
             </h2>
 
@@ -518,26 +525,32 @@
                 <span class="label">Name</span>
                 <div id="b_name"></div>
             </div>
+
             <div class="row">
                 <span class="label">Phone</span>
                 <div id="b_phone"></div>
             </div>
+
             <div class="row">
                 <span class="label">Date</span>
                 <div id="b_date"></div>
             </div>
+
             <div class="row">
                 <span class="label">Animal Color</span>
                 <div id="b_color"></div>
             </div>
+
             <div class="row">
                 <span class="label">Package</span>
                 <div id="b_package"></div>
             </div>
+
             <div class="row">
-                <span class="label">Payment-screenshot</span>
+                <span class="label">Payment</span>
                 <div id="b_payment" class="verified"></div>
             </div>
+
             <div class="row">
                 <span class="label">Amount</span>
                 <div id="b_amount"></div>
@@ -547,34 +560,17 @@
 
         </div>
 
-    </div>
+        <div id="screenshotPreview" style="margin-top:15px; text-align:center; display:none;">
+            <h4 style="font-family: var(--para-font); margin-bottom:10px;">
+                Payment Screenshot
+            </h4>
+
+            <img id="b_screenshot" style="width:100%; max-width:250px; border-radius:8px; border:2px solid black;">
+        </div>
 
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
     <script>
-
-        function showToast(message, type = "success") {
-
-            let toastEl = document.getElementById("liveToast");
-            let toastMsg = document.getElementById("toastMsg");
-
-            toastMsg.innerText = message;
-
-            // reset colors
-            toastEl.classList.remove("bg-success", "bg-danger");
-
-            // apply color
-            if (type === "success") {
-                toastEl.classList.add("bg-success");
-            } else {
-                toastEl.classList.add("bg-danger");
-            }
-
-            // bootstrap toast instance (IMPORTANT)
-            let toast = bootstrap.Toast.getOrCreateInstance(toastEl);
-
-            toast.show();
-        }
 
         function generateBill() {
 
@@ -584,15 +580,13 @@
             let color = document.getElementById("color").value;
             let pkg = document.getElementById("package").value;
             let amount = document.getElementById("amount").value;
-            let file = document.getElementById("screenshot").files.length;
+            let file = document.getElementById("screenshot").files[0];
 
-            // ❌ VALIDATION
-            if (name === "" || phone === "" || date === "" || color === "" || pkg === "Select Package" || amount === "" || file === 0) {
+            if (!name || !phone || !date || !color || pkg === "Select Package" || !amount || !file) {
                 showToast("Please fill all inputs", "danger");
                 return;
             }
 
-            // ✅ DATA SET
             document.getElementById("b_name").innerText = name;
             document.getElementById("b_phone").innerText = phone;
             document.getElementById("b_date").innerText = date;
@@ -600,36 +594,41 @@
             document.getElementById("b_package").innerText = pkg;
             document.getElementById("b_amount").innerText = "PKR " + amount;
 
-            // ✅ Screenshot check → VERIFIED show
-            document.getElementById("b_payment").innerHTML = '<img src="/Assets/Icons/verified.png" width="30"><span>Verified</span>';
+            document.getElementById("b_payment").innerHTML =
+                '<img src="/Assets/Icons/verified.png" width="25"> Verified';
 
-            // UI switch
+            // screenshot show
+            let reader = new FileReader();
+
+            reader.onload = function (e) {
+                document.getElementById("b_screenshot").src = e.target.result;
+                document.getElementById("screenshotPreview").style.display = "block";
+            };
+
+            reader.readAsDataURL(file);
+
             document.getElementById("bill").style.display = "block";
             document.getElementById("formBox").style.display = "none";
 
             showToast("Bill generated successfully 😎", "success");
-
         }
 
         function downloadBill() {
-
-            let file = document.getElementById("screenshot").files.length;
-
-            if (file === 0) {
-                showToast("Please attach screenshot", "danger");
-                return;
-            }
 
             const bill = document.getElementById("bill");
             const btn = document.querySelector(".download-btn");
 
             btn.style.display = "none";
 
-            html2canvas(bill).then(canvas => {
+            html2canvas(bill, {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: "#ffffff"
+            }).then(canvas => {
 
                 let link = document.createElement("a");
-                link.download = "Prime-Goat-Bill.png";
-                link.href = canvas.toDataURL();
+                link.download = "Prime-Goat-Receipt.png";
+                link.href = canvas.toDataURL("image/png");
                 link.click();
 
                 btn.style.display = "block";
@@ -637,73 +636,6 @@
 
             showToast("Receipt downloaded successfully 😎", "success");
         }
-
-        const navBtn = document.getElementById('navHamburgerBtn');
-        const offscreenMenu = document.getElementById('offscreenMenu');
-        const offscreenOverlay = document.getElementById('offscreenOverlay');
-        const offscreenLinks = document.querySelectorAll('.offscreen-link');
-
-        function openOffscreenMenu() {
-            offscreenMenu.classList.add('offscreen-open');
-            offscreenOverlay.classList.add('offscreen-overlay-visible');
-            navBtn.classList.add('nav-btn-active');
-            navBtn.setAttribute('aria-expanded', 'true');
-            offscreenMenu.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden'; // scroll band
-            trapFocus();
-        }
-
-        function closeOffscreenMenu() {
-            offscreenMenu.classList.remove('offscreen-open');
-            offscreenOverlay.classList.remove('offscreen-overlay-visible');
-            navBtn.classList.remove('nav-btn-active');
-            navBtn.setAttribute('aria-expanded', 'false');
-            offscreenMenu.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = ''; // scroll wapas
-            navBtn.focus();
-        }
-
-        function trapFocus() {
-            const focusable = Array.from(
-                offscreenMenu.querySelectorAll('a[href], button:not([disabled])')
-            );
-            const first = focusable[0];
-            const last = focusable[focusable.length - 1];
-            if (first) first.focus();
-
-            function handleTab(e) {
-                if (e.key !== 'Tab') return;
-                if (e.shiftKey) {
-                    if (document.activeElement === first) {
-                        e.preventDefault();
-                        last.focus();
-                    }
-                } else {
-                    if (document.activeElement === last) {
-                        e.preventDefault();
-                        first.focus();
-                    }
-                }
-            }
-            document.addEventListener('keydown', handleTab);
-        }
-
-        navBtn.addEventListener('click', () => {
-            offscreenMenu.classList.contains('offscreen-open') ?
-                closeOffscreenMenu() :
-                openOffscreenMenu();
-        });
-
-        offscreenOverlay.addEventListener('click', closeOffscreenMenu);
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeOffscreenMenu();
-        });
-
-        offscreenLinks.forEach(link => {
-            link.addEventListener('click', closeOffscreenMenu);
-        });
-
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
