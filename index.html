@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
-
-
-
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,7 +49,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial;
         }
 
         #loader {
@@ -67,22 +59,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            gap: 10px;
             flex-direction: column;
             z-index: 9999;
             color: black;
             transition: opacity 0.6s ease;
         }
 
-        .logo {
-            font-size: 45px;
-            font-weight: bold;
-            letter-spacing: 3px;
-            display: flex;
-            align-items: center;
-            animation: zoom 1.5s ease-in-out infinite alternate;
-        }
-
-        .logo img{
+        #loader img{
             width: 200px;
         }
 
@@ -103,12 +87,14 @@
             font-size: 20px;
             color: var(--black-text);
             letter-spacing: 2px;
+            position: absolute;
+            top: 59%;
         }
 
         .bar {
             width: 200px;
             height: 4px;
-            background: #222;
+            background: var(--black-bg);
             margin-top: 25px;
             border-radius: 10px;
             overflow: hidden;
@@ -118,7 +104,7 @@
             display: block;
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, #00ff88, #00ccff);
+            background: var(--green-bg);
             animation: load 3.5s linear forwards;
         }
 
@@ -186,7 +172,6 @@
             transition: color 0.3s ease;
         }
 
-        /* underline hidden by default */
         .nav-child ul li a::after {
             content: "";
             position: absolute;
@@ -198,12 +183,10 @@
             transition: width 0.3s ease;
         }
 
-        /* hover par line */
         .nav-child ul li a:hover::after {
             width: 100%;
         }
 
-        /* active page par line permanently */
         .nav-child ul li a.active {
             color: var(--green-text);
         }
@@ -212,7 +195,6 @@
             width: 100%;
         }
 
-        /* ❌ logo par kuch bhi apply nahi */
         .nav-child ul li:first-child a::after {
             display: none;
         }
@@ -288,7 +270,7 @@
         }
 
         .offscreen-menu.offscreen-open {
-            max-height: 400px;
+            max-height: 600px;
         }
 
         .offscreen-menu-inner {
@@ -319,7 +301,7 @@
             color: var(--black-text);
             font-family: var(--para-font);
             font-size: 15px;
-            font-weight: 500;
+            font-weight: 600;
             text-decoration: none;
             transition: color 0.2s ease, padding-left 0.2s ease;
         }
@@ -443,7 +425,7 @@
 
         .hero-head-2 {
             color: var(--white-text);
-            font-size: clamp(32px, 5vw, 72px);
+            font-size: clamp(38px, 5.2vw, 80px);
             font-family: var(--heading-font);
             text-align: center;
         }
@@ -1166,7 +1148,6 @@
             }
 
             .hero-head-2 {
-                font-size: clamp(28px, 8vw, 42px);
                 text-align: center;
             }
 
@@ -1174,6 +1155,9 @@
                 font-size: 14px;
             }
 
+            .hero-btn-parent{
+                width: 90%;
+            }
 
             .hero-btn-parent button {
                 height: 45px;
@@ -1736,7 +1720,7 @@
 
     <div id="loader">
 
-        <div class="logo"><img src="/Assets/Images/prime goat only logo png.png" alt=""> PRIME GOAT FARM</div>
+        <img src="/Assets/Images/prime goat farm logo pic png01.png" alt="">
 
         <div class="sub">Preparing your farm experience...</div>
 
@@ -1779,9 +1763,6 @@
                 <li><a href="/service.html" class="offscreen-link">Services</a></li>
                 <li><a href="/location.html" class="offscreen-link">Contact Us</a></li>
             </ul>
-            <button class="offscreen-explore-btn offscreen-link" onclick="location.href='#bottom-card'">
-                Explore Animals
-            </button>
         </div>
     </div>
 
