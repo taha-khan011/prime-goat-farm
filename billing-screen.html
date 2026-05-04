@@ -296,12 +296,6 @@
             }
         }
 
-
-        .container {
-            max-width: 500px;
-            margin: auto;
-        }
-
         /* FORM */
         .form-container {
             margin-top: 50px;
@@ -513,7 +507,6 @@
 
     <div class="container">
 
-        <!-- FORM -->
         <div class="form-container" id="formBox">
             <h2><img src="./Assets/Images/prime goat farm logo pic png01.png" alt="">
                 <p>Prime Goat Billing</p>
@@ -542,8 +535,6 @@
             <button onclick="generateBill()">Done Generate Bill</button>
         </div>
 
-        <!-- ========== BILL ========== -->
-        <!-- Screenshot ab ANDAR hai, button BAHAR hai -->
         <div class="bill" id="bill">
 
             <h2>
@@ -586,56 +577,86 @@
                 <div id="b_amount"></div>
             </div>
 
-            <!-- ✅ Screenshot ANDAR receipt div mein -->
             <div class="bill-screenshot-section" id="screenshotPreview" style="display:none;">
                 <h4>Payment Screenshot</h4>
                 <img id="b_screenshot" alt="Payment Screenshot">
             </div>
 
         </div>
-        <!-- ========== BILL END ========== -->
 
-        <!-- ✅ Download button BAHAR receipt div se -->
         <div class="download-btn-wrapper" id="downloadWrapper">
             <button onclick="downloadBill()">Download Receipt</button>
         </div>
 
     </div>
 
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
     <script>
 
-        const navHamburgerBtn = document.getElementById("navHamburgerBtn");
-        const offscreenMenu = document.getElementById("offscreenMenu");
-        const offscreenOverlay = document.getElementById("offscreenOverlay");
-        const offscreenLinks = document.querySelectorAll(".offscreen-link");
+        const navBtn = document.getElementById('navHamburgerBtn');
+        const offscreenMenu = document.getElementById('offscreenMenu');
+        const offscreenOverlay = document.getElementById('offscreenOverlay');
+        const offscreenLinks = document.querySelectorAll('.offscreen-link');
 
-        function closeMenu() {
-            offscreenMenu.classList.remove("offscreen-open");
-            offscreenOverlay.classList.remove("offscreen-overlay-visible");
-            navHamburgerBtn.classList.remove("nav-btn-active");
-
-            navHamburgerBtn.setAttribute("aria-expanded", "false");
-            offscreenMenu.setAttribute("aria-hidden", "true");
+        function openOffscreenMenu() {
+            offscreenMenu.classList.add('offscreen-open');
+            offscreenOverlay.classList.add('offscreen-overlay-visible');
+            navBtn.classList.add('nav-btn-active');
+            navBtn.setAttribute('aria-expanded', 'true');
+            offscreenMenu.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden'; // scroll band
+            trapFocus();
         }
 
-        navHamburgerBtn.addEventListener("click", () => {
+        function closeOffscreenMenu() {
+            offscreenMenu.classList.remove('offscreen-open');
+            offscreenOverlay.classList.remove('offscreen-overlay-visible');
+            navBtn.classList.remove('nav-btn-active');
+            navBtn.setAttribute('aria-expanded', 'false');
+            offscreenMenu.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = ''; // scroll wapas
+            navBtn.focus();
+        }
 
-            offscreenMenu.classList.toggle("offscreen-open");
-            offscreenOverlay.classList.toggle("offscreen-overlay-visible");
-            navHamburgerBtn.classList.toggle("nav-btn-active");
+        function trapFocus() {
+            const focusable = Array.from(
+                offscreenMenu.querySelectorAll('a[href], button:not([disabled])')
+            );
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (first) first.focus();
 
-            const isOpen = offscreenMenu.classList.contains("offscreen-open");
+            function handleTab(e) {
+                if (e.key !== 'Tab') return;
+                if (e.shiftKey) {
+                    if (document.activeElement === first) {
+                        e.preventDefault();
+                        last.focus();
+                    }
+                } else {
+                    if (document.activeElement === last) {
+                        e.preventDefault();
+                        first.focus();
+                    }
+                }
+            }
+            document.addEventListener('keydown', handleTab);
+        }
 
-            navHamburgerBtn.setAttribute("aria-expanded", isOpen);
-            offscreenMenu.setAttribute("aria-hidden", !isOpen);
+        navBtn.addEventListener('click', () => {
+            offscreenMenu.classList.contains('offscreen-open') ?
+                closeOffscreenMenu() :
+                openOffscreenMenu();
         });
 
-        offscreenOverlay.addEventListener("click", closeMenu);
+        offscreenOverlay.addEventListener('click', closeOffscreenMenu);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeOffscreenMenu();
+        });
 
         offscreenLinks.forEach(link => {
-            link.addEventListener("click", closeMenu);
+            link.addEventListener('click', closeOffscreenMenu);
         });
 
         function generateBill() {
@@ -712,6 +733,7 @@
 
     </script>
 
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>

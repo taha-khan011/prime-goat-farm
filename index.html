@@ -9,7 +9,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="style.css">
     <style>
         @font-face {
             font-family: inter;
@@ -51,7 +50,7 @@
             box-sizing: border-box;
         }
 
-        #loader {
+        #loader{
             position: fixed;
             width: 100%;
             height: 100vh;
@@ -59,16 +58,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
             flex-direction: column;
             z-index: 9999;
-            color: black;
+            color: var(--black-text);
             transition: opacity 0.6s ease;
         }
 
         #loader img {
             width: 200px;
-            position: relative;
         }
 
         @keyframes zoom {
@@ -88,8 +85,6 @@
             font-size: 20px;
             color: var(--black-text);
             letter-spacing: 2px;
-            position: absolute;
-            top: 57%;
         }
 
         .bar {
@@ -106,7 +101,7 @@
             height: 100%;
             width: 0%;
             background: var(--green-bg);
-            animation: load 3.5s linear forwards;
+            animation: load 4s linear forwards;
         }
 
         @keyframes load {
@@ -119,14 +114,6 @@
             display: none;
             padding: 40px;
             text-align: center;
-        }
-
-        @media (min-width: 768px) and (min-width: 950px) {
-
-            .sub{
-                top: 58%;
-            }
-
         }
 
         /* nav */
@@ -327,7 +314,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
             z-index: 97;
         }
 
@@ -458,7 +444,7 @@
             display: flex;
             justify-content: space-between;
         }
-        
+
         .hero-btn-parent button {
             border: none;
             border-radius: 10px;
@@ -466,8 +452,17 @@
             font-weight: 800;
             font-size: clamp(13px, 1.1vw, 18px);
             font-family: var(--para-font);
+            transition: scale .4s ease;
         }
-        
+
+        .hero-btn-parent button:hover{
+            scale: 1.03;
+        }
+
+        .hero-btn-parent button:active{
+            scale: .98;
+        }
+
         .hero-btn-parent a:first-child button {
             font-size: clamp(13px, 1.1vw, 18px);
             font-weight: 800;
@@ -522,17 +517,6 @@
             line-height: 29px;
             font-weight: 600;
             color: var(--black-text);
-        }
-
-        .sub-sec-2-part-1 button {
-            text-decoration: none;
-            color: var(--green-text);
-            font-family: var(--para-font);
-            width: max-content;
-            font-size: clamp(15px, 1.3vw, 19px);
-            font-weight: 500;
-            border: none;
-            background-color: transparent;
         }
 
         .sub-sec-2-part-1 button img {
@@ -632,27 +616,12 @@
             font-weight: 700;
         }
 
-        .sec-3-part-1-head-3 {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .sec-3-part-1-head-3 p {
+        .sec-3-part-1 > p {
             width: 552px;
             font-weight: 600;
+            font-family: var(--para-font);
             font-size: clamp(14px, 1.6vw, 16px);
-            color: var(--black-text);
-        }
-
-        .sec-3-part-1-head-3 button {
-            padding: clamp(11px, 1vw, 15px) clamp(16px, 2vw, 28px);
-            background-color: var(--green-bg);
-            color: var(--white-text);
-            font-weight: 700;
-            font-size: clamp(11px, 1.1vw, 14px);
-            border-radius: 10px;
-            font-weight: 500;
-            border: none;
+            /* color: var(--black-text); */
         }
 
         .sec-3-part-2 {
@@ -719,11 +688,6 @@
             font-weight: 700;
             color: var(--green-text);
         }
-
-
-
-
-
 
         /* section-4 */
         .sec-4-cards-parent {
@@ -1098,6 +1062,15 @@
             font-family: var(--para-font);
             padding: 0 12px;
             font-size: clamp(13px, 1.1vw, 18px);
+            transition: scale .4s ease;
+        }
+
+        .sec-7-part-1-btn-parent button:hover{
+            scale: 1.03;
+        }
+
+        .sec-7-part-1-btn-parent button:active{
+            scale: .98;
         }
 
         .sec-7-part-1-btn-parent button:first-child {
@@ -1148,6 +1121,9 @@
         /* XS - Extra Small */
         @media (max-width: 575px) {
 
+            #loader img{
+                width: 120px;
+            }
 
             .hero-head-1 {
                 text-align: center;
@@ -1226,7 +1202,7 @@
                 justify-content: center;
             }
 
-            .sec-3-part-1-head-3 p {
+            .sec-3-part-1 p {
                 width: fit-content;
                 text-align: center;
             }
@@ -1369,6 +1345,10 @@
         /* SM - Small */
         @media (min-width: 576px) and (max-width: 800px) {
 
+            #loader img{
+                width: 140px;
+            }
+
             .sec-2-hor-line {
                 display: none;
             }
@@ -1406,7 +1386,7 @@
                 width: 88%;
             }
 
-            .sec-3-part-1-head-3 p {
+            .sec-3-part-1 p {
                 width: fit-content;
             }
 
@@ -1504,6 +1484,10 @@
         /* MD - Medium */
         @media (min-width: 801px) and (max-width: 999px) {
 
+            #loader img{
+                width: 160px;
+            }
+
             .sec-2-hor-line {
                 display: none;
             }
@@ -1543,11 +1527,7 @@
                 gap: 15px;
             }
 
-            .sec-3-part-1-head-3 {
-                flex-direction: column;
-            }
-
-            .sec-3-part-1-head-3 p {
+            .sec-3-part-1 p {
                 width: fit-content;
             }
 
@@ -1623,6 +1603,10 @@
 
         /* LG - Large */
         @media (min-width: 1000px) and (max-width: 1200px) {
+
+            #loader img{
+                width: 180px;
+            }
 
             .sec-2-parent {
                 flex-direction: column;
@@ -1735,7 +1719,7 @@
 
 <body>
 
-    <div id="loader">
+    <!-- <div id="loader">
 
         <img src="/Assets/Images/prime goat farm logo pic png01.png" alt="">
 
@@ -1745,15 +1729,17 @@
             <span></span>
         </div>
 
-    </div>
+        <div id="main"></div>
+
+    </div> -->
 
     <!-- nav-bar -->
     <nav>
         <div class="nav-child">
             <ul>
-                <li><a href="/home.html"><img class="IconPrime" src="./Assets/Images/prime goat farm logo pic png01.png"
-                            alt=""></a></li>
-                <li><a href="/home.html" class="active">Home</a></li>
+                <li><a href="/index.html"><img class="IconPrime"
+                            src="./Assets/Images/prime goat farm logo pic png01.png" alt=""></a></li>
+                <li><a href="/index.html" class="active">Home</a></li>
                 <li><a href="/introduction.html">Introduction</a></li>
                 <li><a href="/service.html">Services</a></li>
                 <li><a href="/location.html">Contact Us</a></li>
@@ -1775,7 +1761,7 @@
     <div class="offscreen-menu" id="offscreenMenu" aria-hidden="true">
         <div class="offscreen-menu-inner">
             <ul>
-                <li><a href="/home.html" class="offscreen-link">Home</a></li>
+                <li><a href="/index.html" class="offscreen-link">Home</a></li>
                 <li><a href="/introduction.html" class="offscreen-link">Introduction</a></li>
                 <li><a href="/service.html" class="offscreen-link">Services</a></li>
                 <li><a href="/location.html" class="offscreen-link">Contact Us</a></li>
@@ -1816,7 +1802,6 @@
             <p class="sec-2-para-2">Whether you are looking for sacrificial animals for religious festivals or premium
                 livestock for breeding and dairy purposes, our commitment to hygiene, transparency, and quality remains
                 unparalleled in the industry.</p>
-            <button>Read Our Full Story <img src="/Assets/Icons/icons8-right-arrow-30.png" alt=""></button>
         </div>
         <div class="sub-sec-2-part-2">
             <div class="sec-2-part-2-card-parent">
@@ -1857,13 +1842,8 @@
         <div class="sec-3-part-1">
             <div class="sec-3-part-1-head-1">Our Catalog</div>
             <h1 class="sec-3-part-1-head-2">Available Animals</h1>
-            <div class="sec-3-part-1-head-3">
-                <p>Browse our current inventory of healthy, hand-picked livestock. Each animal comes with a certified
-                    health record.</p>
-                <a href="">
-                    <button>View All Condition</button>
-                </a>
-            </div>
+            <p>Browse our current inventory of healthy, hand-picked livestock. Each animal comes with a certified
+                health record.</p>
         </div>
 
         <div class="sec-3-part-2">
@@ -2863,15 +2843,24 @@
             link.addEventListener('click', closeOffscreenMenu);
         });
 
-        setTimeout(() => {
-            document.getElementById("loader").style.opacity = "0";
+        document.addEventListener("DOMContentLoaded", () => {
 
             setTimeout(() => {
-                document.getElementById("loader").style.display = "none";
-                document.getElementById("main").style.display = "block";
-            }, 600);
+                const loader = document.getElementById("loader");
+                const main = document.getElementById("main");
 
-        }, 3500);
+                if (!loader || !main) return; // safety check
+
+                loader.style.opacity = "0";
+
+                setTimeout(() => {
+                    loader.style.display = "none";
+                    main.style.display = "block";
+                }, 600);
+
+            }, 4000);
+
+        });
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
