@@ -953,31 +953,60 @@
 
 <body>
 
-  <nav>
-    <div class="nav-child">
-      <ul>
-        <li><a href="/home.html"><img class="IconPrime" src="./Assets/Images/prime goat farm logo pic png01.png"
-              alt=""></a></li>
-        <li><a href="/home.html">Home</a></li>
-        <li><a href="/introduction.html" class="active">Introduction</a></li>
-        <li><a href="/service.html">Services</a></li>
-        <li><a href="/location.html">Contact Us</a></li>
-      </ul>
 
-      <!-- Hamburger Btn -->
-      <button class="nav-hamburger-btn" id="navHamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+    <nav>
+        <div class="nav-child">
+            <ul>
+                <li><a href="/index.html"><img class="IconPrime" src="./Assets/Images/prime goat farm logo pic png01.png"
+                            alt=""></a></li>
+                <li><a href="/index.html" class="active">Home</a></li>
+                <li><a href="/introduction.html">Introduction</a></li>
+                <li><a href="/service.html">Services</a></li>
+                <li><a href="/location.html">Contact Us</a></li>
+            </ul>
+
+            <!-- Hamburger Btn -->
+            <button class="nav-hamburger-btn" id="navHamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+      
+    </nav>
+
+    <!-- Overlay -->
+    <div class="offscreen-overlay" id="offscreenOverlay"></div>
+
+    <!-- Offscreen Menu -->
+    <div class="offscreen-menu" id="offscreenMenu" aria-hidden="true">
+        <div class="offscreen-menu-inner">
+            <ul>
+                <li><a href="/index.html" class="offscreen-link">Home</a></li>
+                <li><a href="/introduction.html" class="offscreen-link">Introduction</a></li>
+                <li><a href="/service.html" class="offscreen-link">Services</a></li>
+                <li><a href="/location.html" class="offscreen-link">Contact Us</a></li>
+            </ul>
+        </div>
     </div>
-  </nav>
 
+    <!-- Overlay -->
+    <div class="offscreen-overlay" id="offscreenOverlay"></div>
 
+    <!-- Offscreen Menu -->
+    <div class="offscreen-menu" id="offscreenMenu" aria-hidden="true">
+        <div class="offscreen-menu-inner">
+            <ul>
+                <li><a href="/index.html" class="offscreen-link">Home</a></li>
+                <li><a href="/introduction.html" class="offscreen-link">Introduction</a></li>
+                <li><a href="/service.html" class="offscreen-link">Services</a></li>
+                <li><a href="/location.html" class="offscreen-link">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
   <div class="main-div">
     <div class="pera-hea">
       <button class="About-us">About Us</button>
-      <h1 class="main-h1-1">A Qualityy of Quality Breeding</h1>
+      <h1 class="main-h1-1">A Legacy of Quality Breeding</h1>
       <p>Rooted in tradition, powered by modern expertise. Discover the journey <br /> of Pakistan's premier livestock
         breeding
         farm.</p>
@@ -1033,6 +1062,74 @@
         </div>
       </div>
     </div>
+
+    <script>
+      const navBtn = document.getElementById('navHamburgerBtn');
+        const offscreenMenu = document.getElementById('offscreenMenu');
+        const offscreenOverlay = document.getElementById('offscreenOverlay');
+        const offscreenLinks = document.querySelectorAll('.offscreen-link');
+
+        function openOffscreenMenu() {
+            offscreenMenu.classList.add('offscreen-open');
+            offscreenOverlay.classList.add('offscreen-overlay-visible');
+            navBtn.classList.add('nav-btn-active');
+            navBtn.setAttribute('aria-expanded', 'true');
+            offscreenMenu.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden'; // scroll band
+            trapFocus();
+        }
+
+        function closeOffscreenMenu() {
+            offscreenMenu.classList.remove('offscreen-open');
+            offscreenOverlay.classList.remove('offscreen-overlay-visible');
+            navBtn.classList.remove('nav-btn-active');
+            navBtn.setAttribute('aria-expanded', 'false');
+            offscreenMenu.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = ''; // scroll wapas
+            navBtn.focus();
+        }
+
+        function trapFocus() {
+            const focusable = Array.from(
+                offscreenMenu.querySelectorAll('a[href], button:not([disabled])')
+            );
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (first) first.focus();
+
+            function handleTab(e) {
+                if (e.key !== 'Tab') return;
+                if (e.shiftKey) {
+                    if (document.activeElement === first) {
+                        e.preventDefault();
+                        last.focus();
+                    }
+                } else {
+                    if (document.activeElement === last) {
+                        e.preventDefault();
+                        first.focus();
+                    }
+                }
+            }
+            document.addEventListener('keydown', handleTab);
+        }
+
+        navBtn.addEventListener('click', () => {
+            offscreenMenu.classList.contains('offscreen-open') ?
+                closeOffscreenMenu() :
+                openOffscreenMenu();
+        });
+
+        offscreenOverlay.addEventListener('click', closeOffscreenMenu);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeOffscreenMenu();
+        });
+
+        offscreenLinks.forEach(link => {
+            link.addEventListener('click', closeOffscreenMenu);
+        });
+    </script>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
