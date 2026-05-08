@@ -387,9 +387,7 @@
         .hero-banner {
             width: 100%;
             height: calc(100vh - 81px);
-            background-image: url("https://eduindex.org/wp-content/uploads/2021/07/1913623.jpg?w=1024");
-            background-position: center;
-            background-size: cover;
+            
         }
 
         .hero-banner-detail-parent {
@@ -401,7 +399,6 @@
             justify-content: space-evenly;
             align-items: center;
             position: absolute;
-            filter: brightness(100%);
         }
 
         .hero-head-1 {
@@ -420,7 +417,7 @@
 
         .hero-head-2 {
             color: var(--white-text);
-            font-size: clamp(38px, 5.2vw, 80px);
+            font-size: clamp(38px, 4.7vw, 70px);
             font-family: var(--heading-font);
             text-align: center;
         }
@@ -432,7 +429,7 @@
         .hero-para {
             width: 90%;
             max-width: 940px;
-            font-size: clamp(16px, 1.75vw, 26px);
+            font-size: clamp(16px, 1.6vw, 24px);
             text-align: center;
             color: var(--white-text);
             font-family: var(--para-font);
@@ -524,15 +521,19 @@
         .hero-bg {
             position: absolute;
             inset: 0;
-            background-size: cover;
-            background-position: center;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
         }
 
-        .hero-bg::after {
-            content: '';
+        .hero-bg img {
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.48);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: brightness(60%);
         }
 
         /* Arrows */
@@ -571,7 +572,7 @@
         .hero-bullets {
             position: absolute;
             bottom: 24px;
-            left: 50%;
+            left: 54%;
             transform: translateX(-50%);
             display: flex;
             gap: 10px;
@@ -758,6 +759,8 @@
 
         .sec-3-part-2-img-wrap img {
             width: 100%;
+            height: 250px;
+            object-fit: cover;
             border-radius: 12px 12px 0 0;
         }
 
@@ -912,7 +915,6 @@
             height: 288px;
             border-radius: 12px 12px 0 0;
             object-fit: cover;
-
         }
 
         .sec-5-cards-content-parent {
@@ -1810,7 +1812,7 @@
                 line-height: 1.4;
                 text-align: center;
             }
-            
+
             .hero-btn-parent {
                 width: 100% !important;
                 justify-content: space-between;
@@ -1835,7 +1837,7 @@
                 font-size: 12px;
             }
 
-            .hero-viewport{
+            .hero-viewport {
                 height: 125vh;
             }
 
@@ -1994,7 +1996,7 @@
                 line-height: 1.8;
                 text-align: center;
             }
-            
+
             .hero-btn-parent {
                 width: 65%;
                 justify-content: center !important;
@@ -2065,7 +2067,7 @@
                 line-height: 1.4;
                 text-align: center;
             }
-            
+
             .hero-btn-parent {
                 width: 60%;
                 justify-content: center !important;
@@ -2110,7 +2112,7 @@
 
 <body>
 
-    <div id="loader">
+    <!-- <div id="loader">
 
         <img src="/Assets/Images/prime goat farm logo pic png01.png" alt="">
 
@@ -2122,7 +2124,7 @@
 
         <div id="main"></div>
 
-    </div>
+    </div> -->
 
     <!-- nav-bar -->
     <nav>
@@ -2167,8 +2169,8 @@
 
                 <!-- Slide 1 -->
                 <div class="hero-face face-front">
-                    <div class="hero-bg"
-                        style="background-image:url('https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1400&q=80');">
+                    <div class="hero-bg">
+                        <img src="/Assets/Images/home-slider-1-img-2.jpeg" alt="">
                     </div>
                     <div class="hero-banner-detail-parent">
                         <div class="hero-head-1">Established 1995 · Pakistan's Leading Livestock Exporter</div>
@@ -2184,8 +2186,8 @@
 
                 <!-- Slide 2 -->
                 <div class="hero-face face-right">
-                    <div class="hero-bg"
-                        style="background-image:url('https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=1400&q=80');">
+                    <div class="hero-bg">
+                        <img src="/Assets/Images/home-slider-1-img-1.jpeg" alt="">
                     </div>
                     <div class="hero-banner-detail-parent">
                         <div class="hero-head-1">Our Services · Quality You Can Trust</div>
@@ -2193,16 +2195,16 @@
                         <p class="hero-para">Pure bloodline animals, health-certified and ready for export across South
                             Asia and beyond.</p>
                         <div class="hero-btn-parent">
-                            <a href="/service.html"><button>View Services</button></a>
-                            <a href="/service.html"><button>Learn More</button></a>
+                            <a href="/billing-screen.html"><button>Pay Bill</button></a>
+                            <a href=""><button>Book Now</button></a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Slide 3 -->
                 <div class="hero-face face-back">
-                    <div class="hero-bg"
-                        style="background-image:url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1400&q=80');">
+                    <div class="hero-bg">
+                        <img src="/Assets/Images/home-slider-1-img-3.jpeg" alt="">
                     </div>
                     <div class="hero-banner-detail-parent">
                         <div class="hero-head-1">Organic Feed · Veterinary Care</div>
@@ -2210,8 +2212,8 @@
                         <p class="hero-para">Three decades of livestock excellence. Serving families, exporters, and
                             farms across Pakistan.</p>
                         <div class="hero-btn-parent">
-                            <a href="/location.html"><button>Contact Us</button></a>
-                            <a href="#learn"><button>Our Story</button></a>
+                            <a href="/billing-screen.html"><button>Pay Bill</button></a>
+                            <a href=""><button>Book Now</button></a>
                         </div>
                     </div>
                 </div>
@@ -2245,7 +2247,7 @@
                 unparalleled in the industry.</p>
         </div>
         <div class="sub-sec-2-part-2">
-            <div id="learn" class="sec-2-part-2-card-parent">
+            <div class="sec-2-part-2-card-parent">
                 <div class="sec-2-part-2-cards">
                     <div class="sec-2-icon-parent">
                         <img src="/Assets/Icons/sec-2-protect-icon.png" alt="">
@@ -2295,7 +2297,7 @@
                         <div class="sec-3-card-parent">
                             <div class="sec-3-part-2-cards">
                                 <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
+                                    <img src="/Assets/Images/sec-3-card-1-img.webp"
                                         alt="">
                                 </div>
                                 <div class="sec-3-part-2-content-parent">
@@ -2311,85 +2313,33 @@
                             </div>
                             <div class="sec-3-part-2-cards">
                                 <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
+                                    <img src="/Assets/Images/sec-3-card-2-img.webp"
                                         alt="">
                                 </div>
                                 <div class="sec-3-part-2-content-parent">
                                     <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
+                                        <p>Kajla Supreme</p>
                                         <p>STARTING PKR</p>
                                     </div>
                                     <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
+                                        <p>Kajla</p>
+                                        <p>75,000</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="sec-3-part-2-cards">
                                 <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
+                                    <img src="/Assets/Images/sec-3-card-3-img.webp"
                                         alt="">
                                 </div>
                                 <div class="sec-3-part-2-content-parent">
                                     <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
+                                        <p>Kamori Prince</p>
                                         <p>STARTING PKR</p>
                                     </div>
                                     <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sec-3-screen-slide carousel-item">
-                        <div class="sec-3-card-parent">
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-3-part-2-content-parent">
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-3-part-2-content-parent">
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-3-part-2-content-parent">
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
+                                        <p>Kamori</p>
+                                        <p>120,000</p>
                                     </div>
                                 </div>
                             </div>
@@ -2399,49 +2349,49 @@
                         <div class="sec-3-card-parent">
                             <div class="sec-3-part-2-cards">
                                 <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
+                                    <img src="/Assets/Images/sec-3-card-4-img.webp"
                                         alt="">
                                 </div>
                                 <div class="sec-3-part-2-content-parent">
                                     <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
+                                        <p>Mundra Giant</p>
                                         <p>STARTING PKR</p>
                                     </div>
                                     <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
+                                        <p>Mundra</p>
+                                        <p>65,000</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="sec-3-part-2-cards">
                                 <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
+                                    <img src="/Assets/Images/sec-3-card-5-img.webp"
                                         alt="">
                                 </div>
                                 <div class="sec-3-part-2-content-parent">
                                     <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
+                                        <p>Gulabi Star</p>
                                         <p>STARTING PKR</p>
                                     </div>
                                     <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
+                                        <p>Gulabi</p>
+                                        <p>95,000</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="sec-3-part-2-cards">
                                 <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
+                                    <img src="/Assets/Images/sec-3-card-6-img.webp"
                                         alt="">
                                 </div>
                                 <div class="sec-3-part-2-content-parent">
                                     <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
+                                        <p>Dumba Special</p>
                                         <p>STARTING PKR</p>
                                     </div>
                                     <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
+                                        <p>Dumba</p>
+                                        <p>88,000</p>
                                     </div>
                                 </div>
                             </div>
@@ -2454,346 +2404,6 @@
                     <span class="sr-only"></span>
                 </a>
                 <a class="carousel-control-next" href="#carouselAnimalsSlide-1" role="button" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only"></span>
-                </a>
-            </div>
-            <div id="carouselAnimalsSlide-2" class="carousel slide" data-bs-ride="carousel">
-
-                <div class="sec-3-screen-slide-parent carousel-inner">
-                    <div class="sec-3-screen-slide carousel-item active">
-                        <div class="sec-3-card-parent">
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-3-part-2-content-parent">
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-3-part-2-content-parent">
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-3-part-2-content-parent">
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sec-3-screen-slide carousel-item">
-                        <div class="sec-3-card-parent">
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-3-part-2-content-parent">
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-3-part-2-content-parent">
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-3-part-2-content-parent">
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sec-3-screen-slide carousel-item">
-                        <div class="sec-3-card-parent">
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-3-part-2-content-parent">
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-3-part-2-content-parent">
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-3-part-2-content-parent">
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <a class="carousel-control-prev" href="#carouselAnimalsSlide-2" role="button" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only"></span>
-                </a>
-                <a class="carousel-control-next" href="#carouselAnimalsSlide-2" role="button" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only"></span>
-                </a>
-            </div>
-            <div id="carouselAnimalsSlide-3" class="carousel slide" data-bs-ride="carousel">
-
-                <div class="sec-3-screen-slide-parent carousel-inner">
-                    <div class="sec-3-screen-slide carousel-item active">
-                        <div class="sec-3-card-parent">
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-3-part-2-content-parent">
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-3-part-2-content-parent">
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-3-part-2-content-parent">
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sec-3-screen-slide carousel-item">
-                        <div class="sec-3-card-parent">
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-3-part-2-content-parent">
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-3-part-2-content-parent">
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-3-part-2-content-parent">
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sec-3-screen-slide carousel-item">
-                        <div class="sec-3-card-parent">
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-3-part-2-content-parent">
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-3-part-2-content-parent">
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-3-part-2-content-parent">
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <a class="carousel-control-prev" href="#carouselAnimalsSlide-3" role="button" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only"></span>
-                </a>
-                <a class="carousel-control-next" href="#carouselAnimalsSlide-3" role="button" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only"></span>
                 </a>
@@ -2843,7 +2453,7 @@
 
                             <div class="sec-5-cards">
                                 <div class="sec-5-img-wrapper">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
+                                    <img src="/Assets/Images/sec-5-card-1-img.webp"
                                         alt="">
                                 </div>
                                 <div class="sec-5-cards-content-parent">
@@ -2866,7 +2476,7 @@
 
                             <div class="sec-5-cards">
                                 <div class="sec-5-img-wrapper">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
+                                    <img src="/Assets/Images/sec-5-card-2-img.webp"
                                         alt="">
                                 </div>
                                 <div class="sec-5-cards-content-parent">
@@ -2888,7 +2498,7 @@
                             </div>
                             <div class="sec-5-cards">
                                 <div class="sec-5-img-wrapper">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
+                                    <img src="/Assets/Images/sec-5-card-3-img.webp"
                                         alt="">
                                 </div>
                                 <div class="sec-5-cards-content-parent">
@@ -2910,7 +2520,7 @@
                             </div>
                             <div class="sec-5-cards">
                                 <div class="sec-5-img-wrapper">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
+                                    <img src="/Assets/Images/sec-5-card-4-img.webp"
                                         alt="">
                                 </div>
                                 <div class="sec-5-cards-content-parent">
@@ -3323,10 +2933,8 @@
             document.getElementById('heroPrev').addEventListener('click', () => goTo(cur - 1));
             bullets.forEach(b => b.addEventListener('click', () => goTo(+b.dataset.i)));
 
-            let auto = setInterval(() => goTo(cur + 1), 5000);
-            const parent = cube.closest('.hero-banner-parent');
-            parent.addEventListener('mouseenter', () => clearInterval(auto));
-            parent.addEventListener('mouseleave', () => { auto = setInterval(() => goTo(cur + 1), 4000); });
+            let auto = setInterval(() => goTo(cur + 1), 3000);
+
         })();
 
     </script>
