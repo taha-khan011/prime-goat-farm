@@ -334,23 +334,64 @@
     }
   }
 
+
+.main-div{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.baner-man{
+
+    width: 100%;
+    height: auto;
+
+    display: block;
+
+    opacity: 0;
+
+    transform: scale(1.15) translateY(-80px);
+
+    animation: bannerAnimation 2s ease forwards;
+}
+
+
+/* SMOOTH ANIMATION */
+
+@keyframes bannerAnimation{
+
+    0%{
+        opacity: 0;
+        transform: scale(1.15) translateY(-80px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+}
+
+  
   .main-div {
     display: flex;
-   justify-content: center;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
-   
-   
+
+
   }
-  .baner-man{
-    
+
+  .baner-man {
+
     width: 100%;
     height: 370px;
-     opacity: 0.9;
+    opacity: 0.9;
   }
 
   .pera-hea {
-    
+
     height: auto;
     width: 80%;
     display: flex;
@@ -443,7 +484,36 @@
     width: 55%;
     height: auto;
     /* background-color: #02e1e1; */
+
+       opacity: 0;
+
+    transform: translateX(-150px);
+
+    animation: textReveal linear forwards;
+
+    animation-timeline: view();
+
+    animation-range: entry 0% cover 50%;
   }
+
+
+  @keyframes textReveal{
+
+    from{
+
+        opacity: 0;
+
+        transform: translateX(-150px);
+    }
+
+    to{
+
+        opacity: 1;
+
+        transform: translateX(0);
+    }
+
+}
 
   .p2 {
     position: relative;
@@ -464,54 +534,54 @@
     font-size: 20px;
   }
 
-  .img2 {
-    position: relative;
-    right: 0;
-    width: 40%;
-    height: 380px;
-    border-radius: 10px;
-    opacity: 0.9;
-    object-fit: cover;
-  }
+ 
+/* TEXT + IMAGE PREMIUM SCROLL ANIMATION */
 
-  .btn-2 {
-    position: absolute;
-    top: 360px;
-    /* left: 128px;  */
-    width: 111.515625px;
-    height: 40px;
-    padding: 0 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: Work Sans;
-    font-size: 14px;
-    line-height: 22px;
-    font-weight: 500;
-    color: #F9FAFBFF;
-    background: #161A1DFF;
-    opacity: 1;
-    border-radius: 9999px;
-    border-width: 1px;
-    border-color: #555E68FF;
-    border-style: solid;
-    transition: all 0.3s ease;
-  }
+.text,
+.img2{
 
-  .btn-2:hover {
-    background: #fff;
-    color: var(--green-text);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-  }
+    opacity: 0;
 
-  .btn-2:active {
-    transform: scale(0.96);
-  }
+    filter: blur(15px);
 
-  /* Disabled */
-  .btn-2:disabled {
-    opacity: 0.4;
-  }
+    transform: scale(0.7) translateY(120px);
+
+    animation: smoothReveal linear forwards;
+
+    animation-timeline: view();
+
+    animation-range: entry 0% cover 40%;
+}
+
+
+
+/* KEYFRAME */
+
+@keyframes smoothReveal{
+
+    from{
+
+        opacity: 0;
+
+        filter: blur(15px);
+
+        transform: scale(0.7) translateY(120px);
+    }
+
+    to{
+
+        opacity: 1;
+
+        filter: blur(0);
+
+        transform: scale(1) translateY(0);
+    }
+
+}
+
+
+ 
+
 
   .h2 {
     color: rgb(0, 0, 0);
@@ -521,65 +591,113 @@
     color: black;
   }
 
-
+  /* PREMIUM IMAGE CARD UI */
   .container {
-    /* width: 90%; */
-    max-width: 90%;
-
-    border-radius: 17px;
-    padding: 30px 20px;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 20px;
-    background: #124C36;
-    position: relative;
-    bottom: 0;
-    right: 0;
-    margin: 20px auto;
+
   }
 
   .card {
-    flex: 1;
-    min-width: 220px;
-    background: white;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    padding: 30px 20px;
+    position: relative;
+    overflow: hidden;
+    /* gap: 30px; */
+    height: 420px;
+    padding: 0 !important;
+    border-radius: 20px;
+    transition: 0.5s ease;
+  }
+
+  .card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.8s ease;
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+        rgba(0, 0, 0, 0.95),
+        rgba(0, 0, 0, 0.2));
+  }
+
+  .card-content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     text-align: center;
-    transition: 0.3s;
+
+    padding: 30px;
+
+    color: white;
+
+    transform: translateY(80px);
+    transition: 0.7s ease;
+  }
+
+  .card:hover .card-content {
+    transform: translateY(0);
+    cursor: pointer;
+  }
+
+  .card:hover .card-img {
+    transform: scale(1.12);
     cursor: pointer;
   }
 
   .card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(250, 38, 0, 0.4);
-  }
-
-  .icon {
-    width: 50px;
-    height: 50px;
-    margin: 0 auto 20px;
-    border-radius: 50%;
-    background: rgba(34, 197, 94, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #22c55e;
-    font-size: 22px;
+    transform: translateY(-10px);
+    cursor: pointer;
   }
 
   .card h3 {
-    color: #101010;
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 12px;
+    color: white !important;
+    font-size: 32px;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
 
   .card p {
-    color: #151515;
-    font-size: 14px;
-    line-height: 1.6;
+    color: #f1f1f1 !important;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .icon {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    /* background: white; */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 30px;
+
+    margin-bottom: 15px;
+
+    backdrop-filter: blur(5px);
+  }
+
+  /* SCROLL ANIMATION */
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(150px);
+    transition: 1s all ease;
+  }
+
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .same-cont-2 {
@@ -606,31 +724,6 @@
   #same-left {
     position: relative;
     left: 6px;
-  }
-
-  /* Button */
-  .btn-3 {
-    position: absolute;
-    top: 380px;
-    left: 550px;
-    width: 111.515625px;
-    height: 40px;
-    padding: 0 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: Work Sans;
-    font-size: 14px;
-    line-height: 22px;
-    font-weight: 500;
-    color: #F9FAFBFF;
-    background: #161A1DFF;
-    opacity: 1;
-    border-radius: 9999px;
-    border-width: 1px;
-    border-color: #555E68FF;
-    border-style: solid;
-    transition: all 0.3s ease;
   }
 
   .btn-3:hover {
@@ -1027,14 +1120,8 @@
     </div>
   </div>
   <div class="main-div">
-    <img class="baner-man" src="./Assets/introduction-img/WhatsApp Image 2026-05-05 at 11.41.50 PM.jpeg" alt="">
-    <!-- <div class="pera-hea">
-      <button class="About-us">About Us</button>
-      <h1 class="main-h1-1">A Legacy of Quality Breeding</h1>
-      <p>Rooted in tradition, powered by modern expertise. Discover the journey <br /> of Pakistan's premier livestock
-        breeding
-        farm.</p>
-    </div> -->
+    <img class="baner-man" src="./Assets/introduction-img/img01.jpeg" alt="">
+
   </div>
 
   <div class="text-img-div">
@@ -1051,25 +1138,81 @@
       <img class="img2" src="./Assets/introduction-img/free-photo-of-wooden-barn-by-the-forest.jpeg" alt="">
     </div>
 
+
     <div class="container">
-      <div class="card">
-        <div class="icon">🌿</div>
-        <h3>100% Organic Feed</h3>
-        <p>All our livestock are raised on a specialized diet of organic silage, grains, and fresh seasonal greens for
-          optimal development.</p>
+
+      <!-- CARD 1 -->
+
+      <div class="card reveal">
+
+        <img class="card-img" src="./Assets/introduction-img/img-box-03.jpeg" alt="">
+
+        <div class="overlay"></div>
+
+        <div class="card-content">
+
+          <div class="icon">🌿</div>
+
+          <h3>100% Organic Feed</h3>
+
+          <p>
+            All our livestock are raised on a specialized
+            diet of <br /> organic silage, grains, and fresh seasonal
+            greens for <br /> optimal development.
+          </p>
+
+        </div>
+
       </div>
-      <div class="card">
-        <div class="icon">🛡️</div>
-        <h3>Vaccination Protocol</h3>
-        <p>Strict adherence to government and international health standards. Every animal is tagged and digitally
-          tracked for health history.</p>
+
+      <!-- CARD 2 -->
+
+      <div class="card reveal">
+
+        <img class="card-img" src="./Assets/introduction-img/img-box-02.jpeg" alt="">
+
+        <div class="overlay"></div>
+
+        <div class="card-content">
+
+          <div class="icon">🛡️</div>
+
+          <h3>Vaccination Protocol</h3>
+
+          <p>
+            Strict adherence to government and international
+            health <br /> standards. Every animal is tagged and
+            digitally tracked <br /> for health history.
+          </p>
+
+        </div>
+
       </div>
-      <div class="card">
-        <div class="icon">❤️</div>
-        <h3>Professional Care</h3>
-        <p>Our team of on-site veterinarians and experienced herdsmen monitor our animals 24/7 to ensure maximum comfort
-          and well-being.</p>
+
+      <!-- CARD 3 -->
+
+      <div class="card reveal">
+
+        <img class="card-img" src="./Assets/introduction-img/img-box-01.jpeg" alt="">
+
+        <div class="overlay"></div>
+
+        <div class="card-content">
+
+          <div class="icon">❤️</div>
+
+          <h3>Professional Care</h3>
+
+          <p>
+            Our team of on-site veterinarians and experienced <br />
+            herdsmen monitor our animals 24/7 to ensure <br />
+            maximum comfort and well-being.
+          </p>
+
+        </div>
+
       </div>
+
     </div>
 
     <div class="text-img-div same-cont-2">
@@ -1153,6 +1296,44 @@
       offscreenLinks.forEach(link => {
         link.addEventListener('click', closeOffscreenMenu);
       });
+
+
+
+
+
+
+
+
+
+      window.addEventListener("scroll", reveal);
+
+      function reveal() {
+
+        let reveals = document.querySelectorAll(".reveal");
+
+        for (let i = 0; i < reveals.length; i++) {
+
+          let windowHeight = window.innerHeight;
+
+          let revealTop =
+            reveals[i].getBoundingClientRect().top;
+
+          let revealPoint = 120;
+
+          if (revealTop < windowHeight - revealPoint) {
+
+            reveals[i].classList.add("active");
+
+          } else {
+
+            reveals[i].classList.remove("active");
+
+          }
+
+        }
+
+      }
+
     </script>
 
 
