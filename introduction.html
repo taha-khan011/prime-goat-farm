@@ -483,10 +483,7 @@
     justify-content: center;
     width: 55%;
     height: auto;
-    /* background-color: #02e1e1; */
-
-       opacity: 0;
-
+    opacity: 0;
     transform: translateX(-150px);
 
     animation: textReveal linear forwards;
@@ -536,47 +533,60 @@
 
  
 /* TEXT + IMAGE PREMIUM SCROLL ANIMATION */
+/* SECTION */
+.text-img{
+    perspective: 1200px;
+}
 
-.text,
+
+/* IMAGE */
 .img2{
 
-    opacity: 0;
+    width: 55%;
+    border-radius: 10px;
 
-    filter: blur(15px);
+   
 
-    transform: scale(0.7) translateY(120px);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
 
-    animation: smoothReveal linear forwards;
+    /* scroll par animation start */
+    animation:
+      showImage linear forwards,
+      rotateXImage 2s linear infinite;
 
     animation-timeline: view();
-
     animation-range: entry 0% cover 40%;
 }
 
 
-
-/* KEYFRAME */
-
-@keyframes smoothReveal{
+/* IMAGE SHOW */
+@keyframes showImage{
 
     from{
-
         opacity: 0;
-
         filter: blur(15px);
-
         transform: scale(0.7) translateY(120px);
     }
 
     to{
-
         opacity: 1;
-
         filter: blur(0);
-
         transform: scale(1) translateY(0);
     }
+}
 
+
+/* CONTINUOUS ROTATEX */
+@keyframes rotateXImage{
+
+    from{
+        transform: rotateX(0deg);
+    }
+
+    to{
+        transform: rotateX(360deg);
+    }
 }
 
 
