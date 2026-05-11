@@ -334,24 +334,69 @@
     }
   }
 
+
   .main-div {
-    display: flex;
-   justify-content: center;
-    align-items: center;
-    flex-direction: column;
-   
-   
-  }
-  .baner-man{
-    
     width: 100%;
     height: 370px;
-     opacity: 0.9;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .baner-man {
+
+    width: 100%;
+    height: auto;
+
+
+    display: block;
+
+    opacity: 0;
+
+    transform: scale(1.15) translateY(-80px);
+
+    animation: bannerAnimation 2s ease forwards;
+  }
+
+
+  /* SMOOTH ANIMATION */
+
+  @keyframes bannerAnimation {
+
+    0% {
+      opacity: 0;
+      transform: scale(1.15) translateY(-80px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+  }
+
+
+  .main-div {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 550px;
+
+
+  }
+
+  .baner-man {
+
+    width: 100%;
+    height: 550px;
+    opacity: 0.2;
   }
 
   .pera-hea {
-    
+
     height: auto;
+
     width: 80%;
     display: flex;
     justify-content: center;
@@ -362,65 +407,18 @@
     padding: 20px;
   }
 
-  .main-h1-1 {
-    font-family: var(--para-font);
-    /* Body */
-    font-size: 60px;
-    line-height: 60px;
-    font-weight: 700;
-    text-shadow: 0px 4px 3px #00000012;
-    /* shadow-custom */
-    color: #FFFFFFFF;
-    /* white */
-  }
 
-  p {
-
-    font-family: Work Sans;
-    font-size: 20px;
-    line-height: 28px;
-    font-weight: 300;
-    color: #E5E7EBFF;
-  }
-
-  .About-us {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* border: 1px solid #06e35e; */
-    border: none;
-    width: auto;
-    padding: 6px 30px;
-    height: 35px;
-    border-radius: 20px;
-    background-color: #12291E;
-    color: #38DC7C;
-    cursor: pointer;
-    margin-bottom: 10px;
-    margin-right: 30px;
-    font-family: var(--para-font);
-    transition: all 0.3s ease;
-  }
-
-  .About-us:hover {
-    background: #fff;
-    color: var(--green-text);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-  }
-
-  .About-us:active {
-    transform: scale(0.96);
-  }
 
   .text-img-div {
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
+
     width: 100%;
     height: auto;
     background-color: white;
-    padding: 40px 0;
+    padding: 50px 0;
   }
 
   .text-img {
@@ -428,12 +426,13 @@
     justify-content: space-around;
     align-items: center;
     position: relative;
+    
     top: 0;
-    width: 90%;
+    width: 87%;
     height: auto;
-    gap: 20px;
-    padding: 20px 0;
-    /* background-color: #060707; */
+    gap: 10px;
+    padding: 10px 0;
+    /* background-color: #04e9e9; */
   }
 
   .text {
@@ -442,76 +441,118 @@
     justify-content: center;
     width: 55%;
     height: auto;
-    /* background-color: #02e1e1; */
+    opacity: 0;
+    transform: translateX(-150px);
+
+    animation: textReveal linear forwards;
+
+    animation-timeline: view();
+
+    animation-range: entry 0% cover 50%;
+  }
+
+
+  @keyframes textReveal {
+
+    from {
+
+      opacity: 0;
+
+      transform: translateX(-170px);
+    }
+
+    to {
+
+      opacity: 1;
+
+      transform: translateX(0);
+    }
+
   }
 
   .p2 {
     position: relative;
     top: 10px;
     color: black;
+    font-size: 12px;
   }
 
   .color-black {
     color: black;
+    font-size: 40px;
   }
 
 
   span {
     position: relative;
     left: 10px;
-    bottom: 14px;
+    bottom: 10px;
     color: #124C36;
     font-size: 20px;
   }
 
+
+  /* TEXT + IMAGE PREMIUM SCROLL ANIMATION */
+  /* SECTION */
+  .text-img {
+    perspective: 1200px;
+  }
+
+
+  /* IMAGE */
   .img2 {
-    position: relative;
-    right: 0;
-    width: 40%;
-    height: 380px;
+
+    width: 47%;
     border-radius: 10px;
-    opacity: 0.9;
-    object-fit: cover;
+    height: 400px;
+
+
+
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+
+    /* scroll par animation start */
+    animation:
+      showImage linear forwards,
+      rotateXImage 2s linear infinite;
+
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
   }
 
-  .btn-2 {
-    position: absolute;
-    top: 360px;
-    /* left: 128px;  */
-    width: 111.515625px;
-    height: 40px;
-    padding: 0 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: Work Sans;
-    font-size: 14px;
-    line-height: 22px;
-    font-weight: 500;
-    color: #F9FAFBFF;
-    background: #161A1DFF;
-    opacity: 1;
-    border-radius: 9999px;
-    border-width: 1px;
-    border-color: #555E68FF;
-    border-style: solid;
-    transition: all 0.3s ease;
+
+  /* IMAGE SHOW */
+  @keyframes showImage {
+
+    from {
+      opacity: 0;
+      filter: blur(15px);
+      transform: scale(0.7) translateY(120px);
+    }
+
+    to {
+      opacity: 1;
+      filter: blur(0);
+      transform: scale(1) translateY(0);
+    }
   }
 
-  .btn-2:hover {
-    background: #fff;
-    color: var(--green-text);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+
+  /* CONTINUOUS ROTATEX */
+  @keyframes rotateXImage {
+
+    from {
+      transform: rotateX(0deg);
+    }
+
+    to {
+      transform: rotateX(360deg);
+    }
   }
 
-  .btn-2:active {
-    transform: scale(0.96);
-  }
 
-  /* Disabled */
-  .btn-2:disabled {
-    opacity: 0.4;
-  }
+
+
 
   .h2 {
     color: rgb(0, 0, 0);
@@ -521,65 +562,119 @@
     color: black;
   }
 
-
+  /* PREMIUM IMAGE CARD UI */
   .container {
-    /* width: 90%; */
-    max-width: 90%;
-
-    border-radius: 17px;
-    padding: 30px 20px;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 20px;
-    background: #124C36;
-    position: relative;
-    bottom: 0;
-    right: 0;
-    margin: 20px auto;
+
+
   }
 
   .card {
-    flex: 1;
-    min-width: 220px;
-    background: white;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    padding: 30px 20px;
+    position: relative;
+    overflow: hidden;
+    /* gap: 30px; */
+    height: 420px;
+    padding: 0 !important;
+    border-radius: 20px;
+    transition: 0.5s ease;
+    width: 100%;
+  }
+
+  .card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.8s ease;
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+        rgba(0, 0, 0, 0.95),
+        rgba(0, 0, 0, 0.2));
+  }
+
+  .card-content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     text-align: center;
-    transition: 0.3s;
+
+    padding: 30px;
+
+    color: white;
+
+    transform: translateY(80px);
+    transition: 0.7s ease;
+  }
+
+  .card:hover .card-content {
+    transform: translateY(0);
+    cursor: pointer;
+  }
+
+  .card:hover .card-img {
+    transform: scale(1.12);
     cursor: pointer;
   }
 
   .card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(250, 38, 0, 0.4);
-  }
-
-  .icon {
-    width: 50px;
-    height: 50px;
-    margin: 0 auto 20px;
-    border-radius: 50%;
-    background: rgba(34, 197, 94, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #22c55e;
-    font-size: 22px;
+    transform: translateY(-10px);
+    cursor: pointer;
   }
 
   .card h3 {
-    color: #101010;
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 12px;
+    color: white !important;
+    position: relative;
+    bottom: 20px;
+    font-size: 36px;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
 
   .card p {
-    color: #151515;
+    color: #f1f1f1 !important;
+    position: relative;
+    bottom: 20px;
     font-size: 14px;
-    line-height: 1.6;
+    line-height: 1.8;
+  }
+
+  .icon {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    /* background: white; */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 30px;
+
+    margin-bottom: 15px;
+
+    backdrop-filter: blur(5px);
+  }
+
+  /* SCROLL ANIMATION */
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(150px);
+    transition: 1s all ease;
+  }
+
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .same-cont-2 {
@@ -599,38 +694,13 @@
     width: 50%;
     height: 380px;
     position: relative;
-    right: 20px;
+    right: 10px;
 
   }
 
   #same-left {
     position: relative;
-    left: 6px;
-  }
-
-  /* Button */
-  .btn-3 {
-    position: absolute;
-    top: 380px;
-    left: 550px;
-    width: 111.515625px;
-    height: 40px;
-    padding: 0 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: Work Sans;
-    font-size: 14px;
-    line-height: 22px;
-    font-weight: 500;
-    color: #F9FAFBFF;
-    background: #161A1DFF;
-    opacity: 1;
-    border-radius: 9999px;
-    border-width: 1px;
-    border-color: #555E68FF;
-    border-style: solid;
-    transition: all 0.3s ease;
+    left: 13px;
   }
 
   .btn-3:hover {
@@ -892,20 +962,17 @@
     .foter-img {
       position: relative;
       /* bottom: 50px; */
-      /* top: 350px; */
+      top: 380px;
       width: 110%;
+      height: 270px;
       left: 20px;
 
     }
 
     .same-text-2 {
       position: relative;
-      bottom: 220px;
+      bottom: 300px;
     }
-
-
-
-
 
     .container2 {
       flex-direction: column;
@@ -1027,61 +1094,117 @@
     </div>
   </div>
   <div class="main-div">
-    <img class="baner-man" src="./Assets/introduction-img/WhatsApp Image 2026-05-05 at 11.41.50 PM.jpeg" alt="">
-    <!-- <div class="pera-hea">
-      <button class="About-us">About Us</button>
-      <h1 class="main-h1-1">A Legacy of Quality Breeding</h1>
-      <p>Rooted in tradition, powered by modern expertise. Discover the journey <br /> of Pakistan's premier livestock
-        breeding
-        farm.</p>
-    </div> -->
+    <img class="baner-man" src="./Assets/introduction-img/man-img.jpeg" alt="">
+
   </div>
 
   <div class="text-img-div">
     <div class="text-img">
       <div class="text">
-        <span>SINCE 1998</span>
-        <h1 class="color-black">Our Journey Started with a Vision for Excellence</h1>
-        <p class="p2">Prime Goat Farm was founded on a simple principle: high-quality livestock deserves a high-quality
-          life. What started as a small family barn has evolved into a state-of-the-art breeding center. We believe that
-          healthy, happy animals produce the finest meat and milk, and we've dedicated over two decades to perfecting
-          our care protocols and genetic lineages.</p>
+        <span>SINCE 2025</span>
+        <h1 class="color-black">The Vision: Heritage Meets Innovation</h1>
+        <p class="p2">Prime Goat Farm was born from a singular, uncompromising vision: Excellence is not an act, but a
+          habit. What began as a dedicated family legacy has transformed into Pakistan's premier state-of-the-art
+          breeding epicenter. We don't just raise livestock; we engineer a standard of living that defines the future of
+          the industry. We believe that a high-quality life is the only path to high-quality results. Two decades of
+          perfecting genetic lineages and medical protocols have led us here—where tradition meets the cutting edge..
+        </p>
         <!-- <button class="btn-2">Learn More</button> -->
       </div>
-      <img class="img2" src="./Assets/introduction-img/free-photo-of-wooden-barn-by-the-forest.jpeg" alt="">
+      <img class="img2" src="./Assets/introduction-img/text-imge.jpeg" alt="">
     </div>
 
+
     <div class="container">
-      <div class="card">
-        <div class="icon">🌿</div>
-        <h3>100% Organic Feed</h3>
-        <p>All our livestock are raised on a specialized diet of organic silage, grains, and fresh seasonal greens for
-          optimal development.</p>
+
+      <!-- CARD 1 -->
+
+      <div class="card reveal">
+
+        <img class="card-img" src="./Assets/introduction-img/img-box-03.jpeg" alt="">
+
+        <div class="overlay"></div>
+
+        <div class="card-content">
+
+          <div class="icon">🌿</div>
+
+          <h3>Precision Nutrition (100% Organic)</h3>
+
+          <p>
+            We’ve replaced industrial shortcuts with nature’s blueprint. Our livestock <br /> thrives on a curated,
+            nutrient-dense diet of organic silage, hand-selected <br /> grains, and fresh seasonal greens. No chemicals,
+            no growth hormones—just pure, <br /> peak physical development.
+          </p>
+
+        </div>
+
       </div>
-      <div class="card">
-        <div class="icon">🛡️</div>
-        <h3>Vaccination Protocol</h3>
-        <p>Strict adherence to government and international health standards. Every animal is tagged and digitally
-          tracked for health history.</p>
+
+      <!-- CARD 2 -->
+
+      <div class="card reveal">
+
+        <img class="card-img" src="./Assets/introduction-img/img-box-02.jpeg" alt="">
+
+        <div class="overlay"></div>
+
+        <div class="card-content">
+
+          <div class="icon">🛡️</div>
+
+          <h3>Digital Health Governance</h3>
+
+          <p>
+            Our bio-security is absolute. Every animal is a "Digital Asset," <br /> tagged and tracked through a
+            rigorous, international-standard <br /> vaccination protocol. From birth to export, every health <br />
+            milestone is recorded in a transparent, verifiable digital history.
+          </p>
+
+        </div>
+
       </div>
-      <div class="card">
-        <div class="icon">❤️</div>
-        <h3>Professional Care</h3>
-        <p>Our team of on-site veterinarians and experienced herdsmen monitor our animals 24/7 to ensure maximum comfort
-          and well-being.</p>
+
+      <!-- CARD 3 -->
+
+      <div class="card reveal">
+
+        <img class="card-img" src="./Assets/introduction-img/img-box-01.jpeg" alt="">
+
+        <div class="overlay"></div>
+
+        <div class="card-content">
+
+          <div class="icon">❤️</div>
+
+          <h3>Elite Veterinary Command</h3>
+
+          <p>
+            Comfort is our priority; vigilance is our promise. Our 500-acre <br /> facility is under 24/7 surveillance
+            by a dedicated team of on-site <br /> veterinarians and master herdsmen. We don't just react to health
+            <br /> issues—we prevent them through constant, expert-level care.
+          </p>
+
+        </div>
+
       </div>
+
     </div>
 
     <div class="text-img-div same-cont-2">
       <div class="text-img same-img-2">
-        <img class="img2 img-same foter-img" src="./Assets/introduction-img/images.jpg" alt="">
+        <img class="img2 img-same foter-img" src="./Assets/introduction-img/text-imge 02.jpeg" alt="">
         <div class="text same-text-2">
-          <span id="same-left">SINCE 1998</span>
-          <h1 id="same-left" class="color-black">Our Journey Started with a Vision for Excellence</h1>
-          <p class="p2" id="same-left">Prime Goat Farm was founded on a simple principle: high-quality livestock
-            deserves a high-quality life. What started as a small family barn has evolved into a state-of-the-art
-            breeding center. We believe that healthy, happy animals produce the finest meat and milk, and we've
-            dedicated over two decades to perfecting our care protocols and genetic lineages.</p>
+          <span id="same-left">SINCE 2025</span>
+          <h1 id="same-left" class="color-black">The Anthem of Prime: Forging the Future of Livestock</h1>
+          <p class="p2" id="same-left">At Prime Goat Farm, we don’t predict the future of the industry; we build it.
+            Born from an uncompromising refusal to accept the ordinary, our journey from a small family barn to
+            Pakistan’s leading, state-of-the-art breeding epicenter is fueled by one core obsession: Excellence is not a
+            goal; it’s our DNA.
+            We do not merely raise livestock. We engineer a legacy of health, vitality, and genetic perfection. Two
+            decades of ruthless dedication to medical protocols and elite lineage development have culminated here. This
+            is where tradition finds its edge. We believe a high-quality life is the only blueprint for high-quality
+            results. Our operations are precise, our vision is </p>
           <!-- <button class="btn-3" id="same-left Mobile-left">Learn More</button> -->
         </div>
       </div>
@@ -1153,6 +1276,44 @@
       offscreenLinks.forEach(link => {
         link.addEventListener('click', closeOffscreenMenu);
       });
+
+
+
+
+
+
+
+
+
+      window.addEventListener("scroll", reveal);
+
+      function reveal() {
+
+        let reveals = document.querySelectorAll(".reveal");
+
+        for (let i = 0; i < reveals.length; i++) {
+
+          let windowHeight = window.innerHeight;
+
+          let revealTop =
+            reveals[i].getBoundingClientRect().top;
+
+          let revealPoint = 120;
+
+          if (revealTop < windowHeight - revealPoint) {
+
+            reveals[i].classList.add("active");
+
+          } else {
+
+            reveals[i].classList.remove("active");
+
+          }
+
+        }
+
+      }
+
     </script>
 
 

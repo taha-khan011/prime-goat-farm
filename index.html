@@ -20,11 +20,6 @@
             src: url(/Assets/Fonts/WorkSans-Regular.ttf);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
 
         :root {
             --green-text: #124C36;
@@ -127,7 +122,7 @@
             top: 0;
             z-index: 99;
             background-color: var(--white-bg);
-            box-shadow: 0 2px 5px var(--border-bg);
+            border: 1px solid var(--border-bg);
         }
 
         .IconPrime {
@@ -387,7 +382,6 @@
         .hero-banner {
             width: 100%;
             height: calc(100vh - 81px);
-            
         }
 
         .hero-banner-detail-parent {
@@ -399,6 +393,7 @@
             justify-content: space-evenly;
             align-items: center;
             position: absolute;
+            filter: brightness(100%);
         }
 
         .hero-head-1 {
@@ -422,10 +417,10 @@
             text-align: center;
         }
 
-        .hero-head-2 span{
+        .hero-head-2 span {
             color: var(--green-text);
         }
-        
+
         .hero-para {
             width: 90%;
             max-width: 940px;
@@ -436,7 +431,7 @@
         }
 
         .hero-btn-parent {
-            width: 65%;
+            width: 55%;
             max-width: 350px;
             display: flex;
             justify-content: space-between;
@@ -524,6 +519,7 @@
             width: 100%;
             height: 100vh;
             overflow: hidden;
+
         }
 
         .hero-bg img {
@@ -533,6 +529,7 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
+            filter: brightness(80%);
         }
 
         /* Arrows */
@@ -661,7 +658,10 @@
             border-radius: 14px;
             padding-left: 5%;
             border: 1px solid var(--border-bg);
+            transition: all;
         }
+
+        .sec-2-part-2-cards:hover {}
 
         .sec-2-icon-parent {
             width: 48px;
@@ -749,6 +749,13 @@
             border-radius: 12px;
             border: 1px solid var(--border-bg);
             margin-bottom: 23px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .sec-3-part-2-cards:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(18, 76, 54, 0.15);
         }
 
         .sec-3-part-2-img-wrap {
@@ -1260,6 +1267,10 @@
 
             .hero-btn-parent {
                 width: 90%;
+            }
+
+            .hero-bg img {
+                object-fit: cover;
             }
 
             .hero-btn-parent button {
@@ -2111,7 +2122,8 @@
 
 <body>
 
-    <!-- <div id="loader">
+    <!-- loader -->
+    <div id="loader">
 
         <img src="/Assets/Images/prime goat farm logo pic png01.png" alt="">
 
@@ -2123,7 +2135,7 @@
 
         <div id="main"></div>
 
-    </div> -->
+    </div>
 
     <!-- nav-bar -->
     <nav>
@@ -2294,10 +2306,10 @@
                 <div class="sec-3-screen-slide-parent carousel-inner">
                     <div class="sec-3-screen-slide carousel-item active">
                         <div class="sec-3-card-parent">
-                            <div class="sec-3-part-2-cards">
+
+                            <div class="sec-3-part-2-cards" onclick="goToDetail(1)">
                                 <div class="sec-3-part-2-img-wrap">
-                                    <img src="/Assets/Images/sec-3-card-1-img.webp"
-                                        alt="">
+                                    <img src="/Assets/Images/sec-3-card-1-img.webp" alt="">
                                 </div>
                                 <div class="sec-3-part-2-content-parent">
                                     <div class="sec-3-part-2-content-line-1">
@@ -2310,10 +2322,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="sec-3-part-2-cards">
+
+                            <div class="sec-3-part-2-cards" onclick="goToDetail(2)">
                                 <div class="sec-3-part-2-img-wrap">
-                                    <img src="/Assets/Images/sec-3-card-2-img.webp"
-                                        alt="">
+                                    <img src="/Assets/Images/sec-3-card-2-img.webp" alt="">
                                 </div>
                                 <div class="sec-3-part-2-content-parent">
                                     <div class="sec-3-part-2-content-line-1">
@@ -2326,10 +2338,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="sec-3-part-2-cards">
+
+                            <div class="sec-3-part-2-cards" onclick="goToDetail(3)">
                                 <div class="sec-3-part-2-img-wrap">
-                                    <img src="/Assets/Images/sec-3-card-3-img.webp"
-                                        alt="">
+                                    <img src="/Assets/Images/sec-3-card-3-img.webp" alt="">
                                 </div>
                                 <div class="sec-3-part-2-content-parent">
                                     <div class="sec-3-part-2-content-line-1">
@@ -2338,18 +2350,19 @@
                                     </div>
                                     <div class="sec-3-part-2-content-line-2">
                                         <p>Kamori</p>
-                                        <p>120,000</p>
+                                        <p>1,20,000</p>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <div class="sec-3-screen-slide carousel-item">
                         <div class="sec-3-card-parent">
-                            <div class="sec-3-part-2-cards">
+
+                            <div class="sec-3-part-2-cards" onclick="goToDetail(4)">
                                 <div class="sec-3-part-2-img-wrap">
-                                    <img src="/Assets/Images/sec-3-card-4-img.webp"
-                                        alt="">
+                                    <img src="/Assets/Images/sec-3-card-4-img.webp" alt="">
                                 </div>
                                 <div class="sec-3-part-2-content-parent">
                                     <div class="sec-3-part-2-content-line-1">
@@ -2362,10 +2375,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="sec-3-part-2-cards">
+
+                            <div class="sec-3-part-2-cards" onclick="goToDetail(5)">
                                 <div class="sec-3-part-2-img-wrap">
-                                    <img src="/Assets/Images/sec-3-card-5-img.webp"
-                                        alt="">
+                                    <img src="/Assets/Images/sec-3-card-5-img.webp" alt="">
                                 </div>
                                 <div class="sec-3-part-2-content-parent">
                                     <div class="sec-3-part-2-content-line-1">
@@ -2378,10 +2391,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="sec-3-part-2-cards">
+
+                            <div class="sec-3-part-2-cards" onclick="goToDetail(6)">
                                 <div class="sec-3-part-2-img-wrap">
-                                    <img src="/Assets/Images/sec-3-card-6-img.webp"
-                                        alt="">
+                                    <img src="/Assets/Images/sec-3-card-6-img.webp" alt="">
                                 </div>
                                 <div class="sec-3-part-2-content-parent">
                                     <div class="sec-3-part-2-content-line-1">
@@ -2394,6 +2407,7 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -2452,8 +2466,7 @@
 
                             <div class="sec-5-cards">
                                 <div class="sec-5-img-wrapper">
-                                    <img src="/Assets/Images/sec-5-card-1-img.webp"
-                                        alt="">
+                                    <img src="/Assets/Images/sec-5-card-1-img.webp" alt="">
                                 </div>
                                 <div class="sec-5-cards-content-parent">
                                     <div class="sec-5-cards-content-1">
@@ -2475,8 +2488,7 @@
 
                             <div class="sec-5-cards">
                                 <div class="sec-5-img-wrapper">
-                                    <img src="/Assets/Images/sec-5-card-2-img.webp"
-                                        alt="">
+                                    <img src="/Assets/Images/sec-5-card-2-img.webp" alt="">
                                 </div>
                                 <div class="sec-5-cards-content-parent">
                                     <div class="sec-5-cards-content-1">
@@ -2497,8 +2509,7 @@
                             </div>
                             <div class="sec-5-cards">
                                 <div class="sec-5-img-wrapper">
-                                    <img src="/Assets/Images/sec-5-card-3-img.webp"
-                                        alt="">
+                                    <img src="/Assets/Images/sec-5-card-3-img.webp" alt="">
                                 </div>
                                 <div class="sec-5-cards-content-parent">
                                     <div class="sec-5-cards-content-1">
@@ -2519,8 +2530,7 @@
                             </div>
                             <div class="sec-5-cards">
                                 <div class="sec-5-img-wrapper">
-                                    <img src="/Assets/Images/sec-5-card-4-img.webp"
-                                        alt="">
+                                    <img src="/Assets/Images/sec-5-card-4-img.webp" alt="">
                                 </div>
                                 <div class="sec-5-cards-content-parent">
                                     <div class="sec-5-cards-content-1">
@@ -2547,8 +2557,7 @@
 
                             <div class="sec-5-cards">
                                 <div class="sec-5-img-wrapper">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
+                                    <img src="/Assets/Images/sec-5-card-1-img.webp" alt="">
                                 </div>
                                 <div class="sec-5-cards-content-parent">
                                     <div class="sec-5-cards-content-1">
@@ -2570,8 +2579,7 @@
 
                             <div class="sec-5-cards">
                                 <div class="sec-5-img-wrapper">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
+                                    <img src="/Assets/Images/sec-5-card-2-img.webp" alt="">
                                 </div>
                                 <div class="sec-5-cards-content-parent">
                                     <div class="sec-5-cards-content-1">
@@ -2592,8 +2600,7 @@
                             </div>
                             <div class="sec-5-cards">
                                 <div class="sec-5-img-wrapper">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
+                                    <img src="/Assets/Images/sec-5-card-3-img.webp" alt="">
                                 </div>
                                 <div class="sec-5-cards-content-parent">
                                     <div class="sec-5-cards-content-1">
@@ -2614,103 +2621,7 @@
                             </div>
                             <div class="sec-5-cards">
                                 <div class="sec-5-img-wrapper">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-5-cards-content-parent">
-                                    <div class="sec-5-cards-content-1">
-                                        <div class="sec-5-cards-content-1-line-1">
-                                            <h4>Sultan</h4>
-                                            <p>1.2M</p>
-                                        </div>
-                                        <div class="sec-5-cards-content-1-line-2">
-                                            <p>Brahman * 2.5 Years</p>
-                                            <p>PKR</p>
-                                        </div>
-                                    </div>
-                                    <div class="sec-5-cards-content-2">
-                                        <p><img src="/Assets/Icons/sec-5-trending-icon.png" alt=""> 250 KG</p>
-                                        <p><img src="/Assets/Icons/sec-5-verified-icon.png" alt=""> Vaccinated</p>
-                                    </div> <a href="">Quick view</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="sec-3-screen-slide carousel-item">
-                        <div class="sec-5-card-parent">
-
-                            <div class="sec-5-cards">
-                                <div class="sec-5-img-wrapper">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-5-cards-content-parent">
-                                    <div class="sec-5-cards-content-1">
-                                        <div class="sec-5-cards-content-1-line-1">
-                                            <h4>Sultan</h4>
-                                            <p>1.2M</p>
-                                        </div>
-                                        <div class="sec-5-cards-content-1-line-2">
-                                            <p>Brahman * 2.5 Years</p>
-                                            <p>PKR</p>
-                                        </div>
-                                    </div>
-                                    <div class="sec-5-cards-content-2">
-                                        <p><img src="/Assets/Icons/sec-5-trending-icon.png" alt=""> 250 KG</p>
-                                        <p><img src="/Assets/Icons/sec-5-verified-icon.png" alt=""> Vaccinated</p>
-                                    </div> <a href="">Quick view</a>
-                                </div>
-                            </div>
-
-                            <div class="sec-5-cards">
-                                <div class="sec-5-img-wrapper">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-5-cards-content-parent">
-                                    <div class="sec-5-cards-content-1">
-                                        <div class="sec-5-cards-content-1-line-1">
-                                            <h4>Sultan</h4>
-                                            <p>1.2M</p>
-                                        </div>
-                                        <div class="sec-5-cards-content-1-line-2">
-                                            <p>Brahman * 2.5 Years</p>
-                                            <p>PKR</p>
-                                        </div>
-                                    </div>
-                                    <div class="sec-5-cards-content-2">
-                                        <p><img src="/Assets/Icons/sec-5-trending-icon.png" alt=""> 250 KG</p>
-                                        <p><img src="/Assets/Icons/sec-5-verified-icon.png" alt=""> Vaccinated</p>
-                                    </div> <a href="">Quick view</a>
-                                </div>
-                            </div>
-                            <div class="sec-5-cards">
-                                <div class="sec-5-img-wrapper">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
-                                </div>
-                                <div class="sec-5-cards-content-parent">
-                                    <div class="sec-5-cards-content-1">
-                                        <div class="sec-5-cards-content-1-line-1">
-                                            <h4>Sultan</h4>
-                                            <p>1.2M</p>
-                                        </div>
-                                        <div class="sec-5-cards-content-1-line-2">
-                                            <p>Brahman * 2.5 Years</p>
-                                            <p>PKR</p>
-                                        </div>
-                                    </div>
-                                    <div class="sec-5-cards-content-2">
-                                        <p><img src="/Assets/Icons/sec-5-trending-icon.png" alt=""> 250 KG</p>
-                                        <p><img src="/Assets/Icons/sec-5-verified-icon.png" alt=""> Vaccinated</p>
-                                    </div> <a href="">Quick view</a>
-                                </div>
-                            </div>
-                            <div class="sec-5-cards">
-                                <div class="sec-5-img-wrapper">
-                                    <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg"
-                                        alt="">
+                                    <img src="/Assets/Images/sec-5-card-4-img.webp" alt="">
                                 </div>
                                 <div class="sec-5-cards-content-parent">
                                     <div class="sec-5-cards-content-1">
@@ -2757,7 +2668,10 @@
                 <div class="sec-6 carousel-item active">
                     <div class="carousel-item-child">
                         <p>⭐⭐⭐⭐⭐</p>
-                        <p>"I have visited many farms in Karachi, but the Korangi facility at Prime Goat Farm is in a league of its own. Seeing the 24/7 veterinary presence and the immaculate health records for every animal gave me the confidence I needed. They aren't just selling livestock; they are providing a professional service backed by science."</p>
+                        <p>"I have visited many farms in Karachi, but the Korangi facility at Prime Goat Farm is in a
+                            league of its own. Seeing the 24/7 veterinary presence and the immaculate health records for
+                            every animal gave me the confidence I needed. They aren't just selling livestock; they are
+                            providing a professional service backed by science."</p>
                         <div class="profile-parent">
                             <img src="/Assets/Images/taha.jpg" alt="">
                             <h4>Farhan J.</h4>
@@ -2768,7 +2682,10 @@
                 <div class="carousel-item">
                     <div class="carousel-item-child">
                         <p>⭐⭐⭐⭐⭐</p>
-                        <p>"The quality of the meat and the overall health of the animals is a direct result of their 'Premium Feed' program. You can tell these goats are raised on a nutrient-rich, organic diet—no shortcuts, no chemicals. If you want livestock that has been raised ethically and naturally, this is the only place to go."</p>
+                        <p>"The quality of the meat and the overall health of the animals is a direct result of their
+                            'Premium Feed' program. You can tell these goats are raised on a nutrient-rich, organic
+                            diet—no shortcuts, no chemicals. If you want livestock that has been raised ethically and
+                            naturally, this is the only place to go."</p>
                         <div class="profile-parent">
                             <img src="/Assets/Images/taha.jpg" alt="">
                             <h4>M. Rizwan</h4>
@@ -2779,7 +2696,10 @@
                 <div class="carousel-item">
                     <div class="carousel-item-child">
                         <p>⭐⭐⭐⭐⭐</p>
-                        <p>"For serious breeders, lineage is everything. Prime Goat Farm provided me with documented pedigree and a clear medical history that is impossible to find elsewhere. Their commitment to elite genetics and purebred standards makes them the most reliable partner for anyone looking to upgrade their own flock."</p>
+                        <p>"For serious breeders, lineage is everything. Prime Goat Farm provided me with documented
+                            pedigree and a clear medical history that is impossible to find elsewhere. Their commitment
+                            to elite genetics and purebred standards makes them the most reliable partner for anyone
+                            looking to upgrade their own flock."</p>
                         <div class="profile-parent">
                             <img src="/Assets/Images/taha.jpg" alt="">
                             <h4>Dr. Arshad</h4>
@@ -2790,7 +2710,10 @@
                 <div class="carousel-item">
                     <div class="carousel-item-child">
                         <p>⭐⭐⭐⭐⭐</p>
-                        <p>"As an international partner, I prioritize bio-security and international standards. Prime Goat Farm’s export protocols and 100% vaccination guarantee make the entire process seamless and low-risk. Their digital branding is professional, but their on-ground operations are even better."</p>
+                        <p>"As an international partner, I prioritize bio-security and international standards. Prime
+                            Goat Farm’s export protocols and 100% vaccination guarantee make the entire process seamless
+                            and low-risk. Their digital branding is professional, but their on-ground operations are
+                            even better."</p>
                         <div class="profile-parent">
                             <img src="/Assets/Images/taha.jpg" alt="">
                             <h4>Salman K.</h4>
@@ -2940,6 +2863,10 @@
             let auto = setInterval(() => goTo(cur + 1), 3000);
 
         })();
+
+        function goToDetail(id) {
+            window.location.href = `animal-detail.html?id=${id}`;
+        }
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
