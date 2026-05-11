@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SERVICES — Prime Goat Farm</title>
     <link rel="shortcut icon" href="/Assets/Images/prime goat only logo png.png" type="image/x-icon">
     <style>
         /* ===== BASE RESET ===== */
         * {
             margin: 0;
             padding: 0;
+            /* outline: 1px solid red; */
         }
 
         @font-face {
@@ -27,6 +28,12 @@
         body {
             overflow-x: hidden;
             width: 100%;
+            /* gpt */
+            background:
+                linear-gradient(to bottom right, #f7faf8, #eef4f0);
+
+            position: relative;
+
         }
 
         :root {
@@ -49,7 +56,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            position: sticky;
+            position: fixed;
             top: 0;
             z-index: 99;
             background-color: var(--white-bg);
@@ -59,11 +66,14 @@
         }
 
         .IconPrime {
-            width: 75px;   /* FIX: was 90px, trimmed to fit nav height */
-            height: 75px;  /* FIX: was 100px (overflowed 81px nav) */
+            width: 75px;
+            /* FIX: was 90px, trimmed to fit nav height */
+            height: 75px;
+            /* FIX: was 100px (overflowed 81px nav) */
             position: relative;
             right: 14px;
-            top: 0;        /* FIX: was top:5px causing slight overflow */
+            top: 0;
+            /* FIX: was top:5px causing slight overflow */
         }
 
         .nav-child {
@@ -263,6 +273,7 @@
 
         /* ===== MOBILE NAV ===== */
         @media (max-width: 820px) {
+
             /* FIX: was height:100% — caused navbar icon to cover full screen */
             nav {
                 height: auto;
@@ -287,7 +298,8 @@
 
             .nav-child {
                 width: 88%;
-                height: 75px; /* FIX: match icon height */
+                height: 75px;
+                /* FIX: match icon height */
                 justify-content: space-between;
             }
 
@@ -324,10 +336,11 @@
 
         .sub-sec-1 {
             width: 88%;
-            padding: 4% 0;
+            padding: 3.5% 0;
             display: flex;
             flex-direction: column;
             gap: 15px;
+            /* background-color: aqua; */
         }
 
         .txt-1 {
@@ -389,7 +402,7 @@
             gap: 25px;
         }
 
-        .sec-2-cards {
+        /* .sec-2-cards {
             width: 25.5%;
             padding: 3% 3%;
             border-radius: 10px;
@@ -398,8 +411,44 @@
             gap: 10px;
             background-color: var(--inner-bg);
             box-shadow: 0 0 10px var(--dark-body-bg);
+        } */
+
+        .sec-2-cards {
+            width: 25.5%;
+            padding: 3% 3%;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+
+            background: rgba(255, 255, 255, 0.9);
+
+            border: 1px solid rgba(0, 0, 0, 0.06);
+
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.08),
+                0 4px 10px rgba(0, 0, 0, 0.04);
+
+            transition:
+                transform 0.4s ease,
+                box-shadow 0.4s ease,
+                background 0.4s ease;
+
+            position: relative;
+            overflow: hidden;
         }
 
+        .sec-2-cards:hover {
+            transform: translateY(-12px) scale(1.02);
+
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.14),
+                0 8px 20px rgba(18, 76, 54, 0.15);
+
+            background: #ffffff;
+        }
+
+        /* 
         .sec-2-icon-parent {
             width: 50px;
             height: 50px;
@@ -409,6 +458,32 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+        } */
+
+        .sec-2-icon-parent {
+            width: 55px;
+            height: 55px;
+            border-radius: 12px;
+            background-color: var(--white-bg);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.4s ease;
+        }
+
+        .sec-2-cards:hover .sec-2-icon-parent {
+            background: var(--green-bg);
+            transform: rotate(-6deg) scale(1.08);
+        }
+
+        .sec-2-icon-parent img {
+            transition: 0.4s ease;
+        }
+
+        .sec-2-cards:hover .sec-2-icon-parent img {
+            filter: brightness(0) invert(1);
         }
 
         .sec-2-heading {
@@ -423,7 +498,9 @@
             font-family: var(--para-font);
         }
 
+
         /* ==================== SECTION 3 ==================== */
+
         .sec-3-parent {
             width: 100%;
             display: flex;
@@ -431,6 +508,7 @@
             align-items: center;
             padding: 60px 0;
             border-bottom: 1px solid var(--white-text);
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.01), transparent);
         }
 
         .sub-sec-3 {
@@ -442,6 +520,42 @@
             gap: 30px;
             background-color: var(--inner-bg);
             border-radius: 12px;
+
+            /* CLEAN PREMIUM EFFECT */
+            position: relative;
+            overflow: hidden;
+
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+
+            transition:
+                transform 0.4s ease,
+                box-shadow 0.4s ease;
+        }
+
+        /* soft top glow line */
+        .sub-sec-3::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 1px;
+
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.8),
+                    transparent);
+
+            transition: left 0.7s ease;
+        }
+
+        .sub-sec-3:hover::before {
+            left: 100%;
+        }
+
+        .sub-sec-3:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
         }
 
         .sec-3-part-1 {
@@ -456,6 +570,15 @@
             font-size: clamp(20px, 3vw, 30px);
             line-height: 1.3;
             font-family: var(--heading-font);
+
+            transition:
+                transform 0.35s ease,
+                letter-spacing 0.35s ease;
+        }
+
+        .sub-sec-3:hover .sec-3-heading {
+            transform: translateX(3px);
+            letter-spacing: 0.4px;
         }
 
         .sec-3-paragraph {
@@ -475,38 +598,95 @@
         }
 
         .sec-3-part-2-btns {
-            padding: 12px 18px;
+            padding: 20px 30px;
             border: none;
             border-radius: 8px;
             font-size: 14px;
             font-weight: 500;
             cursor: pointer;
             white-space: nowrap;
+
+            position: relative;
+            overflow: hidden;
+
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
         }
 
-        .sec-3-part-2-btns:hover {
-            background: #fff;
-            color: var(--green-text);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        /* button shine */
+        .sec-3-part-2-btns::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 60%;
+            height: 100%;
+
+            background: rgba(255, 255, 255, 0.22);
+            transform: skewX(-20deg);
+
+            transition: left 0.6s ease;
         }
 
-        .sec-3-part-2-btns:active {
-            transform: scale(0.96);
+        .sec-3-part-2-btns:hover::before {
+            left: 140%;
         }
 
         .sec-3-part-2-btn-1 {
             background-color: var(--green-bg);
             color: var(--white-text);
             font-family: var(--para-font);
-            transition: all 0.3s ease;
         }
 
         .sec-3-part-2-btn-2 {
             background-color: var(--black-bg);
             color: var(--white-text);
             font-family: var(--para-font);
-            transition: all 0.3s ease;
         }
+
+        /* cleaner hover */
+        .sec-3-part-2-btns:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+        }
+
+        .sec-3-part-2-btns:active {
+            transform: scale(0.97);
+        }
+
+        /* CLEAN HEADING (TRIGGER ONLY ON HOVER OVER HEADING) */
+        .sec-3-heading {
+            color: var(--green-text);
+            font-size: clamp(20px, 3vw, 30px);
+            line-height: 1.3;
+            font-family: var(--heading-font);
+
+            transition:
+                transform 0.35s ease,
+                letter-spacing 0.35s ease,
+                color 0.35s ease;
+        }
+
+        /* hover ONLY when cursor is on heading */
+        .sec-3-heading:hover {
+            transform: translateX(3px);
+            letter-spacing: 0.4px;
+            color: #0a8a4f;
+        }
+
+        /* paragraph optional (can keep section hover or remove) */
+        .sec-3-paragraph {
+            color: var(--black-text);
+            font-weight: 500;
+            line-height: 1.6;
+            font-family: var(--para-font);
+
+            transition: opacity 0.35s ease;
+        }
+
 
         /* ==================== SECTION 4 ==================== */
         .sec-4-parent {
@@ -516,37 +696,111 @@
             border: 1px solid;
             background-color: var(--inner-bg);
             margin-bottom: 12px;
+
+            /* ONLY horizontal scroll hide */
+            overflow-x: hidden;
         }
 
         .sub-sec-4 {
             width: 94%;
             display: flex;
             justify-content: center;
-            flex-wrap: wrap; /* FIX: added flex-wrap so items don't overflow on small screens */
+            flex-wrap: wrap;
         }
 
+        /* UPDATED */
         .sec-4-part-1-head-child {
-            width: 25%;
+            width: 23.3%;
             min-height: 100px;
             padding: 25px 10px;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 12px;
+
+            /* IMPORTANT */
+            position: relative;
+            cursor: pointer;
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
         }
 
+        /* shine effect */
+        .sec-4-part-1-head-child::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background: linear-gradient(120deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.18),
+                    transparent);
+
+            transform: translateX(-120%);
+            transition: transform 0.7s ease;
+
+            pointer-events: none;
+        }
+
+        .sec-4-part-1-head-child:hover::before {
+            transform: translateX(120%);
+        }
+
+        /* hover card effect */
+        .sec-4-part-1-head-child:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        /* image animation */
         .sec-4-part-1-head-child img {
             width: 24px;
             height: 24px;
             flex-shrink: 0;
+
+            transition:
+                transform 0.35s ease,
+                filter 0.35s ease;
         }
 
+        .sec-4-part-1-head-child:hover img {
+            transform: scale(1.15) rotate(6deg);
+            filter: drop-shadow(0 0 6px rgba(46, 97, 52, 0.35));
+        }
+
+        /* text animation */
         .sec-4-part-1-head-child h2 {
             font-size: clamp(12px, 1.5vw, 20px);
             font-weight: 700;
             color: var(--black);
             font-family: var(--heading-font);
+
+            transition:
+                letter-spacing 0.3s ease,
+                transform 0.3s ease;
         }
+
+        .sec-4-part-1-head-child:hover h2 {
+            letter-spacing: 0.5px;
+            transform: translateX(2px);
+        }
+
+        /* ===== FOOTER NOTE ===== */
+        .footer-note {
+            text-align: center;
+            padding: 32px 0;
+            /* outline: 1px solid red; */
+            font-family: var(--para-font);
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .footer-note strong {
+            color: var(--green-text);
+        }
+
 
 
         /* ======================================================
@@ -694,8 +948,8 @@
     <nav>
         <div class="nav-child">
             <ul>
-                <li><a href="/index.html"><img class="IconPrime" src="./Assets/Images/prime goat farm logo pic png01.png"
-                            alt=""></a></li>
+                <li><a href="/index.html"><img class="IconPrime"
+                            src="./Assets/Images/prime goat farm logo pic png01.png" alt=""></a></li>
                 <li><a href="/index.html">Home</a></li>
                 <li><a href="/introduction.html">Introduction</a></li>
                 <li><a href="/service.html" class="active">Services</a></li>
@@ -737,7 +991,8 @@
             <div class="sec-1-head-1">EXCELLENCE IN HUSBANDRY</div>
             <h1 class="sec-1-head-2"><span class="txt-1">What We</span> <span class="txt-2">Provide</span></h1>
             <p class="sec-1-head-3">At Prime Goat Farm, we don't just sell animals; we provide a legacy of quality. Our
-                comprehensive approach ensures every goat, sheep, and cow leaves our farm in peak physical condition. At Prime Goat Farm, we don't just sell animals; we provide a legacy of quality. Our
+                comprehensive approach ensures every goat, sheep, and cow leaves our farm in peak physical condition. At
+                Prime Goat Farm, we don't just sell animals; we provide a legacy of quality. Our
                 comprehensive approach ensures every goat, sheep, and cow leaves our farm in peak physical condition.
             </p>
         </div>
@@ -764,7 +1019,8 @@
             </div>
             <div class="sec-2-cards">
                 <div class="sec-2-icon-parent">
-                    <img src="/Assets/service-page-icon/Icons/license_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png" alt="">
+                    <img src="/Assets/service-page-icon/Icons/license_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png"
+                        alt="">
                 </div>
                 <h3 class="sec-2-heading">High-Quality Animals</h3>
                 <p class="sec-2-paragraph">We take pride in offering livestock that meets the highest standards of
@@ -772,7 +1028,8 @@
             </div>
             <div class="sec-2-cards">
                 <div class="sec-2-icon-parent">
-                    <img src="/Assets/service-page-icon/Icons/verified_user_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png" alt="">
+                    <img src="/Assets/service-page-icon/Icons/verified_user_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png"
+                        alt="">
                 </div>
                 <h3 class="sec-2-heading">Proper Vaccination</h3>
                 <p class="sec-2-paragraph">Complete medical history for every animal. We strictly follow WHO-standard
@@ -780,7 +1037,8 @@
             </div>
             <div class="sec-2-cards">
                 <div class="sec-2-icon-parent">
-                    <img src="/Assets/service-page-icon/Icons/stethoscope_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png" alt="">
+                    <img src="/Assets/service-page-icon/Icons/stethoscope_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png"
+                        alt="">
                 </div>
                 <h3 class="sec-2-heading">Premium Breeds</h3>
                 <p class="sec-2-paragraph">Exotic and local breeds including Beetal, Kamori, and Gulabi goats, as well
@@ -788,7 +1046,8 @@
             </div>
             <div class="sec-2-cards">
                 <div class="sec-2-icon-parent">
-                    <img src="/Assets/service-page-icon/Icons/release_alert_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png" alt="">
+                    <img src="/Assets/service-page-icon/Icons/release_alert_26dp_2E6134_FILL0_wght400_GRAD0_opsz24.png"
+                        alt="">
                 </div>
                 <h3 class="sec-2-heading">Health Consulting</h3>
                 <p class="sec-2-paragraph">Need advice on starting your own farm? Our experts provide consultation on
@@ -809,7 +1068,7 @@
             </div>
             <div class="sec-3-part-2">
                 <button class="sec-3-part-2-btn-1 sec-3-part-2-btns">Visit Our Location</button>
-                <button class="sec-3-part-2-btn-2 sec-3-part-2-btns">Schedule Consultation</button>
+                <!-- <button class="sec-3-part-2-btn-2 sec-3-part-2-btns">Schedule Consultation</button> -->
             </div>
         </div>
     </section>
@@ -835,6 +1094,9 @@
             </div>
         </div>
     </section>
+    <div class="footer-note">
+        © 2025 <strong>Prime Goat Farm</strong>. All rights reserved.
+    </div>
 
     <script>
 
