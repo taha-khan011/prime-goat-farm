@@ -335,17 +335,18 @@
   }
 
 
-.main-div{
+  .main-div {
     width: 100%;
-    height: auto;
+    height: 370px;
     overflow: hidden;
     position: relative;
-}
+  }
 
-.baner-man{
+  .baner-man {
 
     width: 100%;
     height: auto;
+
 
     display: block;
 
@@ -354,31 +355,33 @@
     transform: scale(1.15) translateY(-80px);
 
     animation: bannerAnimation 2s ease forwards;
-}
+  }
 
 
-/* SMOOTH ANIMATION */
+  /* SMOOTH ANIMATION */
 
-@keyframes bannerAnimation{
+  @keyframes bannerAnimation {
 
-    0%{
-        opacity: 0;
-        transform: scale(1.15) translateY(-80px);
+    0% {
+      opacity: 0;
+      transform: scale(1.15) translateY(-80px);
     }
 
-    100%{
-        opacity: 1;
-        transform: scale(1) translateY(0);
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
     }
 
-}
+  }
 
-  
+
   .main-div {
+
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: 550px;
 
 
   }
@@ -386,13 +389,14 @@
   .baner-man {
 
     width: 100%;
-    height: 370px;
-    opacity: 0.9;
+    height: 550px;
+    opacity: 0.2;
   }
 
   .pera-hea {
 
     height: auto;
+
     width: 80%;
     display: flex;
     justify-content: center;
@@ -403,65 +407,18 @@
     padding: 20px;
   }
 
-  .main-h1-1 {
-    font-family: var(--para-font);
-    /* Body */
-    font-size: 60px;
-    line-height: 60px;
-    font-weight: 700;
-    text-shadow: 0px 4px 3px #00000012;
-    /* shadow-custom */
-    color: #FFFFFFFF;
-    /* white */
-  }
 
-  p {
-
-    font-family: Work Sans;
-    font-size: 20px;
-    line-height: 28px;
-    font-weight: 300;
-    color: #E5E7EBFF;
-  }
-
-  .About-us {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* border: 1px solid #06e35e; */
-    border: none;
-    width: auto;
-    padding: 6px 30px;
-    height: 35px;
-    border-radius: 20px;
-    background-color: #12291E;
-    color: #38DC7C;
-    cursor: pointer;
-    margin-bottom: 10px;
-    margin-right: 30px;
-    font-family: var(--para-font);
-    transition: all 0.3s ease;
-  }
-
-  .About-us:hover {
-    background: #fff;
-    color: var(--green-text);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-  }
-
-  .About-us:active {
-    transform: scale(0.96);
-  }
 
   .text-img-div {
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
+
     width: 100%;
     height: auto;
     background-color: white;
-    padding: 40px 0;
+    padding: 50px 0;
   }
 
   .text-img {
@@ -494,58 +451,61 @@
   }
 
 
-  @keyframes textReveal{
+  @keyframes textReveal {
 
-    from{
+    from {
 
-        opacity: 0;
+      opacity: 0;
 
-        transform: translateX(-150px);
+      transform: translateX(-170px);
     }
 
-    to{
+    to {
 
-        opacity: 1;
+      opacity: 1;
 
-        transform: translateX(0);
+      transform: translateX(0);
     }
 
-}
+  }
 
   .p2 {
     position: relative;
     top: 10px;
     color: black;
+    font-size: 14px;
   }
 
   .color-black {
     color: black;
+    font-size: 40px;
   }
 
 
   span {
     position: relative;
     left: 10px;
-    bottom: 14px;
+    bottom: 10px;
     color: #124C36;
     font-size: 20px;
   }
 
- 
-/* TEXT + IMAGE PREMIUM SCROLL ANIMATION */
-/* SECTION */
-.text-img{
+
+  /* TEXT + IMAGE PREMIUM SCROLL ANIMATION */
+  /* SECTION */
+  .text-img {
     perspective: 1200px;
-}
+  }
 
 
-/* IMAGE */
-.img2{
+  /* IMAGE */
+  .img2 {
 
-    width: 55%;
+    width: 47%;
     border-radius: 10px;
+    height: 400px;
 
-   
+
 
     transform-style: preserve-3d;
     backface-visibility: hidden;
@@ -557,40 +517,40 @@
 
     animation-timeline: view();
     animation-range: entry 0% cover 40%;
-}
+  }
 
 
-/* IMAGE SHOW */
-@keyframes showImage{
+  /* IMAGE SHOW */
+  @keyframes showImage {
 
-    from{
-        opacity: 0;
-        filter: blur(15px);
-        transform: scale(0.7) translateY(120px);
+    from {
+      opacity: 0;
+      filter: blur(15px);
+      transform: scale(0.7) translateY(120px);
     }
 
-    to{
-        opacity: 1;
-        filter: blur(0);
-        transform: scale(1) translateY(0);
+    to {
+      opacity: 1;
+      filter: blur(0);
+      transform: scale(1) translateY(0);
     }
-}
+  }
 
 
-/* CONTINUOUS ROTATEX */
-@keyframes rotateXImage{
+  /* CONTINUOUS ROTATEX */
+  @keyframes rotateXImage {
 
-    from{
-        transform: rotateX(0deg);
+    from {
+      transform: rotateX(0deg);
     }
 
-    to{
-        transform: rotateX(360deg);
+    to {
+      transform: rotateX(360deg);
     }
-}
+  }
 
 
- 
+
 
 
   .h2 {
@@ -606,6 +566,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    
 
   }
 
@@ -617,6 +578,7 @@
     padding: 0 !important;
     border-radius: 20px;
     transition: 0.5s ease;
+    width: 100%;
   }
 
   .card-img {
@@ -669,7 +631,7 @@
 
   .card h3 {
     color: white !important;
-     position: relative;
+    position: relative;
     bottom: 20px;
     font-size: 36px;
     margin-top: 15px;
@@ -999,15 +961,16 @@
     .foter-img {
       position: relative;
       /* bottom: 50px; */
-      /* top: 350px; */
+      top: 380px;
       width: 110%;
+      height: 270px;
       left: 20px;
 
     }
 
     .same-text-2 {
       position: relative;
-      bottom: 220px;
+      bottom: 300px;
     }
 
 
@@ -1134,7 +1097,7 @@
     </div>
   </div>
   <div class="main-div">
-    <img class="baner-man" src="./Assets/introduction-img/img01.jpeg" alt="">
+    <img class="baner-man" src="./Assets/introduction-img/man-img.jpeg" alt="">
 
   </div>
 
@@ -1142,11 +1105,13 @@
     <div class="text-img">
       <div class="text">
         <span>SINCE 2025</span>
-        <h1 class="color-black">Our Journey Started with a Vision for Excellence</h1>
-        <p class="p2">Prime Goat Farm was founded on a simple principle: high-quality livestock deserves a high-quality
-          life. What started as a small family barn has evolved into a state-of-the-art breeding center. We believe that
-          healthy, happy animals produce the finest meat and milk, and we've dedicated over two decades to perfecting
-          our care protocols and genetic lineages.</p>
+        <h1 class="color-black">The Vision: Heritage Meets Innovation</h1>
+        <p class="p2">Prime Goat Farm was born from a singular, uncompromising vision: Excellence is not an act, but a
+          habit. What began as a dedicated family legacy has transformed into Pakistan's premier state-of-the-art
+          breeding epicenter. We don't just raise livestock; we engineer a standard of living that defines the future of
+          the industry. We believe that a high-quality life is the only path to high-quality results. Two decades of
+          perfecting genetic lineages and medical protocols have led us here—where tradition meets the cutting edge..
+        </p>
         <!-- <button class="btn-2">Learn More</button> -->
       </div>
       <img class="img2" src="./Assets/introduction-img/text-imge.jpeg" alt="">
@@ -1170,7 +1135,9 @@
           <h3>Precision Nutrition (100% Organic)</h3>
 
           <p>
-           We’ve replaced industrial shortcuts with nature’s blueprint. Our livestock <br /> thrives on a curated, nutrient-dense diet of organic silage, hand-selected <br /> grains,  and fresh seasonal greens. No chemicals, no growth hormones—just pure, <br /> peak physical development.
+            We’ve replaced industrial shortcuts with nature’s blueprint. Our livestock <br /> thrives on a curated,
+            nutrient-dense diet of organic silage, hand-selected <br /> grains, and fresh seasonal greens. No chemicals,
+            no growth hormones—just pure, <br /> peak physical development.
           </p>
 
         </div>
@@ -1192,7 +1159,9 @@
           <h3>Digital Health Governance</h3>
 
           <p>
-            Our bio-security is absolute. Every animal is a "Digital Asset," <br /> tagged and tracked through a rigorous, international-standard <br /> vaccination protocol. From birth to export, every health <br /> milestone  is recorded in a  transparent, verifiable digital history.
+            Our bio-security is absolute. Every animal is a "Digital Asset," <br /> tagged and tracked through a
+            rigorous, international-standard <br /> vaccination protocol. From birth to export, every health <br />
+            milestone is recorded in a transparent, verifiable digital history.
           </p>
 
         </div>
@@ -1214,7 +1183,9 @@
           <h3>Elite Veterinary Command</h3>
 
           <p>
-           Comfort is our priority; vigilance is our promise. Our 500-acre <br /> facility is under 24/7 surveillance by a dedicated team of on-site <br /> veterinarians and master herdsmen. We don't just react to health <br /> issues—we  prevent them through constant, expert-level care.
+            Comfort is our priority; vigilance is our promise. Our 500-acre <br /> facility is under 24/7 surveillance
+            by a dedicated team of on-site <br /> veterinarians and master herdsmen. We don't just react to health
+            <br /> issues—we prevent them through constant, expert-level care.
           </p>
 
         </div>
@@ -1228,11 +1199,15 @@
         <img class="img2 img-same foter-img" src="./Assets/introduction-img/text-imge 02.jpeg" alt="">
         <div class="text same-text-2">
           <span id="same-left">SINCE 2025</span>
-          <h1 id="same-left" class="color-black">Our Journey Started with a Vision for Excellence</h1>
-          <p class="p2" id="same-left">Prime Goat Farm was founded on a simple principle: high-quality livestock
-            deserves a high-quality life. What started as a small family barn has evolved into a state-of-the-art
-            breeding center. We believe that healthy, happy animals produce the finest meat and milk, and we've
-            dedicated over two decades to perfecting our care protocols and genetic lineages.</p>
+          <h1 id="same-left" class="color-black">The Anthem of Prime: Forging the Future of Livestock</h1>
+          <p class="p2" id="same-left">At Prime Goat Farm, we don’t predict the future of the industry; we build it.
+            Born from an uncompromising refusal to accept the ordinary, our journey from a small family barn to
+            Pakistan’s leading, state-of-the-art breeding epicenter is fueled by one core obsession: Excellence is not a
+            goal; it’s our DNA.
+            We do not merely raise livestock. We engineer a legacy of health, vitality, and genetic perfection. Two
+            decades of ruthless dedication to medical protocols and elite lineage development have culminated here. This
+            is where tradition finds its edge. We believe a high-quality life is the only blueprint for high-quality
+            results. Our operations are precise, our vision is </p>
           <!-- <button class="btn-3" id="same-left Mobile-left">Learn More</button> -->
         </div>
       </div>
