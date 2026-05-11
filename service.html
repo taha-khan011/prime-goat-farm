@@ -521,7 +521,7 @@
             width: 94%;
             display: flex;
             justify-content: center;
-            /* flex-wrap: wrap; FIX: added flex-wrap so items don't overflow on small screens */
+            flex-wrap: wrap; /* FIX: added flex-wrap so items don't overflow on small screens */
         }
 
         .sec-4-part-1-head-child {
@@ -668,8 +668,10 @@
         @media (max-width: 400px) {
             .sec-4-part-1-head-child {
                 width: 100%;
-                justify-content: flex-start;
+                /* justify-content: flex-start; */
+                justify-content: center;
                 padding: 15px 10px;
+
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
 

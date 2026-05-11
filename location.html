@@ -25,13 +25,13 @@
             --inner-bg: whitesmoke;
             --black-bg: black;
             --white-bg: #FFFFFF;
-            --green-bg: #38DC7CFF;
+            --green-bg: #114C36;
             --white-text: #FFFFFF;
-            --green-text: #38DC7CFF;
+            --green-text: #114C36;
             --black-text: black;
             --transparent-green-bg: #32a14aa2;
             --border-bg: black;
-            --green-border: #38DC7CFF;
+            --green-border: #114C36;
             --para-font: work-sans;
             --heading-font: inter;
         }
@@ -44,10 +44,6 @@
 
         html {
             scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
         }
 
         nav {
@@ -89,7 +85,7 @@
         .nav-child ul li a {
             color: var(--black-text);
             font-family: var(--para-font);
-            font-size: clamp(13px,1.2vw,15px);
+            font-size: clamp(13px, 1.2vw, 15px);
         }
 
         .nav-child li a:focus {
@@ -225,6 +221,49 @@
             display: block;
         }
 
+        /* base */
+        .nav-child ul li a {
+            position: relative;
+            text-decoration: none;
+            color: var(--black-text);
+            transition: color 0.3s ease;
+        }
+
+        /* underline hidden by default */
+        .nav-child ul li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background: var(--green-text);
+            transition: width 0.3s ease;
+        }
+
+        /* hover par line */
+        .nav-child ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* active page par line permanently */
+        .nav-child ul li a.active {
+            color: var(--green-text);
+        }
+
+        .nav-child ul li a.active::after {
+            width: 100%;
+        }
+
+        /* ❌ logo par kuch bhi apply nahi */
+        .nav-child ul li:first-child a::after {
+            display: none;
+        }
+
+        .nav-child ul li:first-child a:hover {
+            color: initial;
+        }
+
         @media (max-width: 820px) {
             nav {
                 height: 100%;
@@ -300,8 +339,19 @@
             padding: clamp(5px, .5vw, 8px) clamp(16px, 2vw, 28px);
             font-size: clamp(11px, .87vw, 13px);
             border-radius: 999px;
+            transition: 0.3s;
         }
-        
+
+        .hero-badge:hover {
+            background: var(--green-text);
+            color: var(--white-text);
+            cursor: pointer;
+        }
+
+        .hero-badge:active {
+            transform: scale(0.96);
+        }
+
         .hero h1 {
             font-family: var(--heading-font);
             font-size: clamp(40px, 4.3vw, 62px);
@@ -358,7 +408,7 @@
             align-items: center;
             gap: 8px;
             background: var(--green-bg);
-            color: var(--black-text);
+            color: var(--white-text);
             font-weight: 700;
             font-size: 13px;
             padding: 10px 18px;
@@ -367,6 +417,17 @@
             cursor: pointer;
             font-family: var(--para-font);
             text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-map:hover {
+            background: #fff;
+            color: var(--green-text);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-map:active {
+            transform: scale(0.96);
         }
 
         .btn-share {
@@ -381,6 +442,17 @@
             color: var(--black-text);
             border: none;
             box-shadow: 0 0 6px var(--black-bg);
+            transition: all 0.3s ease;
+        }
+
+        .btn-share:hover {
+            background: var(--green-bg);
+            color: var(--white-text);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-share:active {
+            transform: scale(0.96);
         }
 
         /* CONTACT SECTION */
@@ -442,7 +514,7 @@
             font-weight: 500;
             margin-bottom: 3px;
         }
-        
+
         .info-value {
             /* text-transform: uppercase; */
             letter-spacing: .09em;
@@ -485,6 +557,7 @@
             align-items: center;
             gap: 10px;
             font-size: clamp(11px, 0.95vw, 13px);
+            font-family: var(--para-font);
         }
 
         .check-circle {
@@ -563,15 +636,18 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: .07em;
+            font-family: var(--para-font);
         }
 
         .best-time-row span:last-child {
             font-size: clamp(11px, 0.95vw, 13px);
             font-weight: 500;
+            font-family: var(--para-font);
         }
 
         .btn-green-full {
             background: var(--green-bg);
+            color: var(--white-text);
             height: 56px;
             font-weight: 700;
             font-size: 14px;
@@ -581,6 +657,18 @@
             cursor: pointer;
             font-family: 'Inter', sans-serif;
             width: 100%;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-green-full:hover {
+            background: #fff;
+            color: var(--green-text);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-green-full:active {
+            transform: scale(0.96);
         }
 
         .registered-tag {
@@ -598,7 +686,7 @@
             border-top: 1px solid var(--border);
             margin: 0 48px;
         }
-        
+
         footer {
             width: 100%;
             background: var(--inner-bg);
@@ -637,7 +725,8 @@
             width: 28px;
             height: 28px;
             min-width: 28px;
-            background: var(--transparent-green-bg);
+            background: rgba(34, 197, 94, 0.07);
+            border: 1px solid #2a2a2a;
             border-radius: 7px;
             display: flex;
             align-items: center;
@@ -662,6 +751,7 @@
             align-items: flex-start;
             gap: 9px;
             font-size: 13px;
+            font-family: var(--para-font);
         }
 
         .f-info-row svg {
@@ -678,18 +768,29 @@
         .social-btn {
             width: 34px;
             height: 34px;
-            border: 1px solid var(--border-bg);
+            border: 1px solid var(--transparent-green-bg);
             border-radius: 7px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: border-color .2s, color .2s;
+            transition: all 0.3s ease;
+        }
+
+        .aColor {
+            color: var(--black-text);
+            transition: all 0.3s ease;
         }
 
         .social-btn:hover {
-            border-color: var(--green-bg);
-            color: var(--green-text);
+            background: var(--green-text);
+            color: var(--white-text);
+            cursor: pointer;
+        }
+
+        .social-btn:active {
+            transform: scale(0.96);
         }
 
         .footer-col {
@@ -745,13 +846,26 @@
 
         .btn-send {
             background: var(--green-bg);
+            color: var(--white-text);
             font-weight: 700;
             font-size: 13px;
             padding: 11px;
             border-radius: 8px;
             border: none;
-            cursor: pointer;
             width: 100%;
+            font-family: var(--para-font);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-send:hover {
+            background: #fff;
+            color: var(--green-text);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-send:active {
+            transform: scale(0.96);
         }
 
         .footer-col:last-child {
@@ -775,6 +889,7 @@
         .visit-promo p {
             font-size: 12px;
             margin: 6px 0 14px;
+            font-family: var(--para-font);
         }
 
         .btn-directions {
@@ -789,10 +904,19 @@
             font-family: 'Inter', sans-serif;
             width: 100%;
             transition: border-color .2s;
+            outline: none;
+            transition: all 0.3s ease;
         }
 
+
         .btn-directions:hover {
-            border-color: var(--green-bg);
+            background: var(--green-text);
+            color: var(--white-text);
+            cursor: pointer;
+        }
+
+        .btn-directions:active {
+            transform: scale(0.96);
         }
 
         /* Mobile */
@@ -908,6 +1032,16 @@
                 line-height: 23px;
             }
         }
+
+        @media(max-width: 600px) {
+            .input-row {
+                flex-direction: column;
+            }
+
+            .input-row input {
+                width: 100%;
+            }
+        }
     </style>
 
 </head>
@@ -918,12 +1052,12 @@
     <nav>
         <div class="nav-child">
             <ul>
-                <li><a href="/home.html"><img class="IconPrime" src="./Assets/Images/prime goat farm logo pic png01.png"
-                            alt=""></a></li>
-                <li><a href="/home.html">Home</a></li>
+                <li><a href="/index.html"><img class="IconPrime"
+                            src="./Assets/Images/prime goat farm logo pic png01.png" alt=""></a></li>
+                <li><a href="./index.html">Home</a></li>
                 <li><a href="/introduction.html">Introduction</a></li>
                 <li><a href="/service.html">Services</a></li>
-                <li><a href="/location.html">Contact Us</a></li>
+                <li><a href="/location.html" class="active">Contact Us</a></li>
             </ul>
 
             <!-- Hamburger Btn -->
@@ -1121,7 +1255,8 @@
         <div class="footer-grid">
             <div class="footer-part-1">
                 <div class="footer-brand-name">
-                    <div class="footer-logo-icon"><img  width="50" height="50" src="./Assets/Images/prime goat only logo png.png" alt=""></div>
+                    <div class="footer-logo-icon"><img width="50" height="50"
+                            src="./Assets/Images/prime goat only logo png.png" alt=""></div>
                     Prime Goat Farm
                 </div>
                 <div class="footer-brand">
@@ -1145,26 +1280,40 @@
                         </svg>Mon – Sun: 8:00 AM – 6:00 PM</div>
                 </div>
                 <div class="social-row">
-                    <div class="social-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                        </svg></div>
-                    <div class="social-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="2" width="20" height="20" rx="5" />
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                        </svg></div>
+                    <div class="social-btn"><a class="aColor" target="_blank"
+                            href="https://www.facebook.com/share/1P9Qq8QxoN/"><svg width="13" height="13"
+                                viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                            </svg></a></div>
+                    <div class="social-btn"><a class="aColor" target="_blank"
+                            href="https://www.instagram.com/primegoatform?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><svg
+                                width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" />
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                            </svg></a></div>
                 </div>
             </div>
             <div class="footer-col">
                 <h5>Quick Inquiry</h5>
-                <div class="inquiry-form">
-                    <input type="text" placeholder="Full Name" />
-                    <div class="input-row"><input type="tel" placeholder="Phone Number" /><input type="email"
-                            placeholder="Email (Optional)" /></div>
-                    <textarea placeholder="How can we help you?"></textarea>
-                    <button class="btn-send">Send Message</button>
-                </div>
+                <form class="inquiry-form" id="inquiryForm">
+
+                    <input type="text" name="fullname" placeholder="Full Name" required />
+
+                    <div class="input-row">
+                        <input type="tel" name="phone" placeholder="Phone Number" required />
+                        <input type="email" name="email" placeholder="Email (Optional)" />
+                    </div>
+
+                    <textarea name="message" placeholder="How can we help you?" required></textarea>
+
+                    <!-- Fixed business email (hidden) -->
+                    <input type="hidden" name="to_email" value="yourbusiness@gmail.com">
+
+                    <button type="submit" class="btn-send">Send Message</button>
+
+                </form>
             </div>
             <div class="footer-col">
                 <h5>Quick Explore</h5>
@@ -1243,7 +1392,27 @@
         offscreenLinks.forEach(link => {
             link.addEventListener('click', closeOffscreenMenu);
         });
+
+        document.getElementById("inquiryForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const data = {
+                to_email: this.to_email.value,
+                fullname: this.fullname.value,
+                phone: this.phone.value,
+                email: this.email.value, // optional
+                message: this.message.value
+            };
+
+            console.log("Form Data:", data);
+
+            // yahan ab tum API ya EmailJS lagao
+            alert("Message sent successfully!");
+
+            this.reset(); // form clear
+        });
     </script>
+
 </body>
 
 </html>
