@@ -12,7 +12,7 @@
 
     <style>
         @font-face {
-            font-family: inter;
+            font-family: 'Syne', sans-serif;
             src: url(/Assets/Fonts/Inter_28pt-Bold.ttf);
         }
 
@@ -33,7 +33,7 @@
             --border-bg: black;
             --green-border: #114C36;
             --para-font: work-sans;
-            --heading-font: inter;
+            --heading-font: 'Syne', sans-serif;
         }
 
         * {
@@ -84,7 +84,7 @@
 
         .nav-child ul li a {
             color: var(--black-text);
-            font-family: var(--para-font);
+            /* font-family: var(--heading-font); */
             font-size: clamp(13px, 1.2vw, 15px);
         }
 
@@ -109,8 +109,8 @@
         .nav-child ul li:first-child a {
             color: var(--green-text);
             font-size: clamp(19px, 1.8vw, 29px);
-            font-weight: 700;
-            font-family: var(--font-fam-heading);
+            /* font-weight: 700; */
+            /* font-family: var(--font-fam-heading); */
         }
 
         .nav-hamburger-btn {
@@ -1076,7 +1076,7 @@
     <div class="offscreen-menu" id="offscreenMenu" aria-hidden="true">
         <div class="offscreen-menu-inner">
             <ul>
-                <li><a href="/home.html" class="offscreen-link">Home</a></li>
+                <li><a href="./index.html" class="offscreen-link">Home</a></li>
                 <li><a href="/introduction.html" class="offscreen-link">Introduction</a></li>
                 <li><a href="/service.html" class="offscreen-link">Services</a></li>
                 <li><a href="/location.html" class="offscreen-link">Contact Us</a></li>
