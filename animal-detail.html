@@ -11,6 +11,17 @@
         rel="stylesheet">
     <title>Animal Detail</title>
     <style>
+
+        @font-face {
+            font-family: inter;
+            src: url(/Assets/Fonts/Inter_28pt-Bold.ttf);
+        }
+
+        @font-face {
+            font-family: work-sans;
+            src: url(/Assets/Fonts/WorkSans-Regular.ttf);
+        }
+
         :root {
             --green-text: #124C36;
             --white-text: #FFFFFFFF;
@@ -176,7 +187,7 @@
             display: none;
             width: 100%;
             background-color: var(--white-bg);
-            border-bottom: 1px solid var(--border-gray-bg);
+            border-bottom: 1px solid var(--border-bg);
             overflow: hidden;
             max-height: 0;
             transition: max-height .7s cubic-bezier(0.4, 0, 0.2, 1);
@@ -280,15 +291,14 @@
 
         
 
-        /* ── NAVBAR ── */
 
         .btn-back {
             display: flex;
             align-items: center;
             gap: 8px;
             background: none;
-            border: 2px solid var(--green);
-            color: var(--green);
+            border: 2px solid var(--green-bg);
+            color: var(--green-text);
             padding: 8px 20px;
             border-radius: 999px;
             font-size: 14px;
@@ -299,19 +309,18 @@
         }
 
         .btn-back:hover {
-            background: var(--green);
-            color: #fff;
+            background: var(--green-bg);
+            color: var(--white-text);
         }
 
-        /* ── BREADCRUMB ── */
         .breadcrumb-section {
             padding: 16px 6%;
             font-size: 13px;
-            color: var(--text-muted);
+            color: var(--black-text);
         }
 
         .breadcrumb-section a {
-            color: var(--green);
+            color: var(--green-text);
             text-decoration: none;
             font-weight: 500;
         }
@@ -320,7 +329,6 @@
             margin: 0 6px;
         }
 
-        /* ── MAIN DETAIL LAYOUT ── */
         .detail-wrapper {
             padding: 30px 6% 80px;
             display: grid;
@@ -330,7 +338,6 @@
             margin: 0 auto;
         }
 
-        /* LEFT — Image Gallery */
         .detail-gallery {
             display: flex;
             flex-direction: column;
@@ -342,7 +349,7 @@
             border-radius: 16px;
             overflow: hidden;
             position: relative;
-            background: #e8ede8;
+            background: var(--inner-bg);
         }
 
         .main-img-wrap img {
@@ -361,8 +368,8 @@
             position: absolute;
             top: 16px;
             left: 16px;
-            background: var(--green);
-            color: #fff;
+            background: var(--green-bg);
+            color: var(--white-text);
             font-size: 11px;
             font-weight: 600;
             padding: 5px 14px;
@@ -385,7 +392,7 @@
         }
 
         .thumb.active {
-            border-color: var(--green);
+            border-color: var(--green-bg);
         }
 
         .thumb img {
@@ -395,7 +402,6 @@
             display: block;
         }
 
-        /* RIGHT — Info */
         .detail-info {
             display: flex;
             flex-direction: column;
@@ -405,18 +411,18 @@
         .tag-breed {
             width: fit-content;
             padding: 5px 18px;
-            border: 2px solid var(--green);
+            border: 2px solid var(--green-bg);
             border-radius: 999px;
             font-size: 12px;
             font-weight: 600;
-            color: var(--green);
+            color: var(--green-text);
         }
 
         .detail-title {
-            font-family: var(--heading-font);
             font-size: clamp(28px, 3vw, 42px);
             font-weight: 700;
             line-height: 1.15;
+            font-family: var(--heading-font);
         }
 
         .price-block {
@@ -428,7 +434,7 @@
         .price-label {
             font-size: 13px;
             font-weight: 500;
-            color: var(--text-muted);
+            color: var(--black-text);
             text-transform: uppercase;
             letter-spacing: 0.8px;
         }
@@ -436,27 +442,26 @@
         .price-value {
             font-size: 34px;
             font-weight: 700;
-            color: var(--green);
+            color: var(--green-text);
             font-family: var(--heading-font);
         }
 
         .price-currency {
             font-size: 16px;
             font-weight: 600;
-            color: var(--green);
+            color: var(--green-text);
         }
 
         .divider {
             height: 1px;
-            background: var(--border);
+            background: var(--black-bg);
             width: 100%;
         }
 
-        /* Specs Grid */
         .specs-title {
             font-size: 15px;
             font-weight: 600;
-            color: var(--text-muted);
+            color: var(--black-text);
             text-transform: uppercase;
             letter-spacing: 0.8px;
         }
@@ -468,7 +473,7 @@
         }
 
         .spec-item {
-            background: #fff;
+            background: var(--inner-bg);
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 14px 16px;
@@ -476,7 +481,7 @@
 
         .spec-key {
             font-size: 12px;
-            color: var(--text-muted);
+            color: var(--black-text);
             font-weight: 500;
             margin-bottom: 4px;
         }
@@ -484,19 +489,16 @@
         .spec-val {
             font-size: 16px;
             font-weight: 600;
-            color: var(--text-dark);
+            color: var(--black-text);
         }
 
-        /* Description */
         .desc-block p {
             font-size: 15px;
             line-height: 1.75;
-            color: #444;
+            color: var(--black-text);
         }
 
-        /* Health Record */
         .health-block {
-            background: var(--green-light);
             border-radius: 14px;
             padding: 18px 20px;
             display: flex;
@@ -508,7 +510,7 @@
             width: 38px;
             height: 38px;
             border-radius: 50%;
-            background: var(--green);
+            background: var(--green-bg);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -518,24 +520,23 @@
         .health-icon svg {
             width: 18px;
             height: 18px;
-            fill: #fff;
+            fill: var(--white-bg);
         }
 
         .health-text strong {
             font-size: 14px;
             font-weight: 600;
-            color: var(--green);
+            color: var(--green-text);
             display: block;
             margin-bottom: 3px;
         }
 
         .health-text p {
             font-size: 13px;
-            color: var(--green-mid);
+            color: var(--black-text);
             line-height: 1.5;
         }
 
-        /* CTA Buttons */
         .cta-row {
             display: flex;
             gap: 14px;
@@ -545,9 +546,9 @@
         .btn-outline-custom {
             flex: 1;
             padding: 14px;
-            background: var(--green);
-            color: #fff;
-            border: none;
+            background: var(--inner-bg);
+            color: var(--green-text);
+            border: 1px solid var(--green-bg);
             border-radius: 12px;
             font-size: 15px;
             font-weight: 600;
@@ -556,11 +557,11 @@
         }
 
         .btn-outline-custom:hover {
-            background: var(--green-mid);
+            background: var(--green-bg);
+            color: var(--white-text);
             transform: translateY(-1px);
         }
 
-        /* ── SIMILAR ANIMALS ── */
         .similar-section {
             padding: 0 6% 80px;
             max-width: 1300px;
@@ -580,11 +581,11 @@
         }
 
         .see-all-link {
-            color: var(--green);
+            color: var(--green-text);
             font-weight: 600;
             font-size: 14px;
             text-decoration: none;
-            border-bottom: 1px solid var(--green);
+            border-bottom: 1px solid var(--green-bg);
         }
 
         .similar-grid {
@@ -594,8 +595,8 @@
         }
 
         .similar-card {
-            background: #fff;
-            border: 1px solid var(--border);
+            background: var(--inner-bg);
+            border: 1px solid var(--border-bg);
             border-radius: 14px;
             overflow: hidden;
             cursor: pointer;
@@ -630,16 +631,15 @@
 
         .similar-card-body .breed {
             font-size: 13px;
-            color: var(--text-muted);
+            color: var(--black-text);
         }
 
         .similar-card-body .price {
             font-size: 17px;
             font-weight: 700;
-            color: var(--green);
+            color: var(--green-text);
         }
 
-        /* ── RESPONSIVE ── */
         @media (max-width: 991px) {
             .detail-wrapper {
                 grid-template-columns: 1fr;
@@ -697,8 +697,6 @@
             .offscreen-overlay {
                 display: none !important;
             }
-
-            
 
         }
 
