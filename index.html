@@ -47,68 +47,36 @@
 
         #loader {
             position: fixed;
-            width: 100%;
-            height: 100vh;
-            background: var(--white-bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+            inset: 0;
             z-index: 9999;
-            color: var(--black-text);
-            transition: opacity 0.6s ease;
+
+            opacity: 1;
+            visibility: visible;
+
+            transition:
+                opacity 1.2s ease,
+                visibility 1.2s ease;
         }
 
-        #loader img {
-            width: 200px;
+        /* fade state */
+        #loader.hide {
+            opacity: 0;
+            visibility: hidden;
         }
 
-        @keyframes zoom {
-            0% {
-                transform: scale(1);
-                opacity: 0.6;
-            }
-
-            100% {
-                transform: scale(1.1);
-                opacity: 1;
-            }
-        }
-
-        .sub {
-            margin-top: 10px;
-            font-size: 20px;
-            color: var(--black-text);
-            letter-spacing: 2px;
-        }
-
-        .bar {
-            width: 200px;
-            height: 4px;
-            background: var(--black-bg);
-            margin-top: 25px;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .bar span {
-            display: block;
+        /* video */
+        #loader-video {
+            position: absolute;
+            width: 100%;
             height: 100%;
-            width: 0%;
-            background: var(--green-bg);
-            animation: load 4s linear forwards;
+            object-fit: cover;
+            top: 0;
+            left: 0;
         }
 
-        @keyframes load {
-            100% {
-                width: 100%;
-            }
-        }
 
         #main {
             display: none;
-            padding: 40px;
-            text-align: center;
         }
 
         /* nav */
@@ -658,10 +626,13 @@
             border-radius: 14px;
             padding-left: 5%;
             border: 1px solid var(--border-bg);
-            transition: all;
+            transition: transform .3s, box-shadow .5s;
         }
 
-        .sec-2-part-2-cards:hover {}
+        .sec-2-part-2-cards:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px;
+        }
 
         .sec-2-icon-parent {
             width: 48px;
@@ -746,16 +717,17 @@
         }
 
         .sec-3-part-2-cards {
+            margin-top: 20px;
             border-radius: 12px;
             border: 1px solid var(--border-bg);
             margin-bottom: 23px;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform .3s, box-shadow .5s;
         }
 
         .sec-3-part-2-cards:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(18, 76, 54, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px;
         }
 
         .sec-3-part-2-img-wrap {
@@ -842,6 +814,12 @@
             flex-direction: column;
             justify-content: center;
             gap: 10px;
+            transition: transform .3s, box-shadow .5s;
+        }
+
+        .sec-4-cards:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px;
         }
 
         .sec-4-cards h3 {
@@ -908,12 +886,19 @@
         }
 
         .sec-5-cards {
+            margin-top: 20px;
             width: 100%;
             border-radius: 12px;
             display: flex;
             flex-direction: column;
             align-items: center;
             border: 1px solid var(--border-bg);
+            transition: transform .3s, box-shadow .5s;
+        }
+
+        .sec-5-cards:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px;
         }
 
         .sec-5-img-wrapper img {
@@ -1052,7 +1037,6 @@
 
         .sec-6.carousel-item {
             width: 100%;
-            height: 406px;
             border-radius: 14px;
         }
 
@@ -1063,7 +1047,7 @@
 
         .carousel-item-child {
             width: 100%;
-            height: 100%;
+            height: 455px !important;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -1092,7 +1076,7 @@
         .carousel-item-child p:nth-child(2) {
             width: 88%;
             font-family: var(--heading-font);
-            font-size: clamp(19px, 1.73vw, 26px);
+            font-size: clamp(19px, 1.6vw, 26px);
             line-height: 39px;
             font-weight: 300;
             color: var(--black-text);
@@ -1111,6 +1095,8 @@
             border-radius: 32px;
             float: left;
             margin-right: 15px;
+            object-fit: cover;
+            object-position: center;
         }
 
         .profile-parent h4 {
@@ -2123,19 +2109,15 @@
 <body>
 
     <!-- loader -->
-    <div id="loader">
+    <!-- <div id="loader">
 
-        <img src="/Assets/Images/prime goat farm logo pic png01.png" alt="">
-
-        <div class="sub">Preparing your farm experience...</div>
-
-        <div class="bar">
-            <span></span>
-        </div>
-
-        <div id="main"></div>
+        <video autoplay muted loop playsinline id="loader-video">
+            <source src="/Assets/Videos/loader-video.mp4" type="video/mp4">
+        </video>
 
     </div>
+
+    <div id="main"></div> -->
 
     <!-- nav-bar -->
     <nav>
@@ -2301,7 +2283,8 @@
         </div>
 
         <div class="sec-3-part-2">
-            <div id="carouselAnimalsSlide-1" class="carousel slide" data-bs-ride="carousel">
+            <div id="carouselAnimalsSlide-1" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000"
+            data-bs-pause="false">
 
                 <div class="sec-3-screen-slide-parent carousel-inner">
                     <div class="sec-3-screen-slide carousel-item active">
@@ -2458,7 +2441,8 @@
         <p>The most exceptional specimens currently available at our farm.</p>
         <div class="sec-5-cards-parent">
 
-            <div id="carouselAnimalsSlide-sec-5" class="carousel slide" data-bs-ride="carousel">
+            <div id="carouselAnimalsSlide-sec-5" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000"
+            data-bs-pause="false">
 
                 <div class="sec-5-screen-slide-parent carousel-inner">
                     <div class="sec-5-screen-slide carousel-item active">
@@ -2662,8 +2646,8 @@
 
         <div class="sec-6-head-1">Testimonial</div>
         <h2>What Our Clients Say</h2>
-        <div id="carouselTestimonial" class="sec-6 carousel slide" data-bs-ride="carousel">
-
+        <div id="carouselTestimonial" class="sec-6 carousel slide" data-bs-ride="carousel" data-bs-interval="3000"
+            data-bs-pause="false">
             <div class="sec-6 carousel-inner">
                 <div class="sec-6 carousel-item active">
                     <div class="carousel-item-child">
@@ -2673,7 +2657,7 @@
                             every animal gave me the confidence I needed. They aren't just selling livestock; they are
                             providing a professional service backed by science."</p>
                         <div class="profile-parent">
-                            <img src="/Assets/Images/taha.jpg" alt="">
+                            <img src="/Assets/Images/testimonial-img-1.jpg" alt="">
                             <h4>Farhan J.</h4>
                             <span>Corporate Client • Karachi</span>
                         </div>
@@ -2687,7 +2671,7 @@
                             diet—no shortcuts, no chemicals. If you want livestock that has been raised ethically and
                             naturally, this is the only place to go."</p>
                         <div class="profile-parent">
-                            <img src="/Assets/Images/taha.jpg" alt="">
+                            <img src="/Assets/Images/testimonial-img-2.jpg" alt="">
                             <h4>M. Rizwan</h4>
                             <span>High-End Meat Distributor • Karachi</span>
                         </div>
@@ -2701,7 +2685,7 @@
                             to elite genetics and purebred standards makes them the most reliable partner for anyone
                             looking to upgrade their own flock."</p>
                         <div class="profile-parent">
-                            <img src="/Assets/Images/taha.jpg" alt="">
+                            <img src="/Assets/Images/testimonial-img-3.jpg" alt="">
                             <h4>Dr. Arshad</h4>
                             <span>Livestock Consultant • Karachi</span>
                         </div>
@@ -2715,9 +2699,81 @@
                             and low-risk. Their digital branding is professional, but their on-ground operations are
                             even better."</p>
                         <div class="profile-parent">
-                            <img src="/Assets/Images/taha.jpg" alt="">
+                            <img src="/Assets/Images/testimonial-img-4.jpg" alt="">
                             <h4>Salman K.</h4>
                             <span>Export Partner • Karachi</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-item-child">
+                        <p>⭐⭐⭐⭐⭐</p>
+                        <p>"In the world of agricultural investment, transparency is rare. Prime Goat Farm is the
+                            exception. Their digitized tracking and elite genetic blueprints make them a low-risk,
+                            high-reward partner. I’ve seen their Korangi facility firsthand—the integration of 24/7 vet
+                            care and state-of-the-art breeding is unlike anything else in Pakistan. They aren't just
+                            farming; they are setting a global gold standard."</p>
+                        <div class="profile-parent">
+                            <img src="/Assets/Images/testimonial-img-5.jpg" alt="">
+                            <h4>Mustafa Qureshi</h4>
+                            <span>Equity Partner & Agro-Investor • Karachi</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-item-child">
+                        <p>⭐⭐⭐⭐⭐</p>
+                        <p>"For my restaurants, the quality of the product starts at the source. The organic,
+                            nutrient-rich diet these animals are raised on translates directly into the marbling and
+                            flavor of the meat. Prime Goat Farm’s dedication to a 'high-quality life' for their
+                            livestock is exactly why they are our exclusive supplier. Our customers can taste the
+                            difference of a chemical-free, organic upbringing."</p>
+                        <div class="profile-parent">
+                            <img src="/Assets/Images/testimonial-img-6.jpg" alt="">
+                            <h4>Chef Rehan Ahmed</h4>
+                            <span>Executive Chef at The Grill Karachi</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-item-child">
+                        <p>⭐⭐⭐⭐⭐</p>
+                        <p>"Exporting requires meeting brutal international standards. Prime Goat Farm makes my job
+                            easy. Their bio-security measures and documented medical histories are so rigorous that they
+                            clear export inspections without a hitch. They are single-handedly improving the reputation
+                            of Pakistani livestock on the international stage."</p>
+                        <div class="profile-parent">
+                            <img src="/Assets/Images/testimonial-img-7.jpg" alt="">
+                            <h4>Adnan Siddiqui</h4>
+                            <span>CEO of Global Livestock Exports • Karachi</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-item-child">
+                        <p>⭐⭐⭐⭐⭐</p>
+                        <p>"I’ve been breeding goats for 30 years, and I’ve never seen a facility as sophisticated as
+                            Prime. They’ve managed to keep the heart of traditional breeding while adding the precision
+                            of modern technology. The growth rates of their elite pedigree stock are incredible. If you
+                            want to start your own flock with the best genetics in the country, start here."</p>
+                        <div class="profile-parent">
+                            <img src="/Assets/Images/testimonial-img-8.jpg" alt="">
+                            <h4>Haji Bashir</h4>
+                            <span>Independent Livestock Breeder • Karachi</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-item-child">
+                        <p>⭐⭐⭐⭐⭐</p>
+                        <p>"As a veterinarian, I’m critical of livestock management, but Prime Goat Farm is flawless.
+                            Their 100% vaccination protocol and refusal to use synthetic growth hormones result in
+                            animals that are physically superior and disease-resistant. When you buy from Prime, you are
+                            buying peace of mind and scientific excellence."</p>
+                        <div class="profile-parent">
+                            <img src="/Assets/Images/testimonial-img-9.jpg" alt="">
+                            <h4>Dr. Zainab Malik</h4>
+                            <span>Senior Veterinary Consultant • Karachi</span>
                         </div>
                     </div>
                 </div>
@@ -2821,23 +2877,26 @@
             link.addEventListener('click', closeOffscreenMenu);
         });
 
-        document.addEventListener("DOMContentLoaded", () => {
+        window.addEventListener("load", () => {
 
-            setTimeout(() => {
-                const loader = document.getElementById("loader");
-                const main = document.getElementById("main");
+            const MIN_TIME = 7000;
+            const start = performance.now();
 
-                if (!loader || !main) return;
+            const loader = document.getElementById("loader");
+            const main = document.getElementById("main");
 
-                loader.style.opacity = "0";
+            const finish = () => {
+                main.style.display = "block";
+                requestAnimationFrame(() => main.classList.add("show"));
 
-                setTimeout(() => {
-                    loader.style.display = "none";
-                    main.style.display = "block";
-                }, 600);
+                loader.classList.add("hide");
 
-            }, 4000);
+                setTimeout(() => loader.remove(), 1200);
+            };
 
+            const delay = Math.max(0, MIN_TIME - (performance.now() - start));
+
+            setTimeout(finish, delay);
         });
 
         // ── Hero Cube Slider ──
