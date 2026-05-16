@@ -927,7 +927,7 @@
 
         .sec-5-cards-content-1-line-1,
         .sec-5-cards-content-1-line-2 {
-            height: 22px;
+            height: 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -936,7 +936,7 @@
         .sec-5-cards-content-1-line-1 h4 {
             color: var(--black-text);
             font-family: var(--heading-font);
-            font-size: clamp(18px, 1.4vw, 22px);
+            font-size: clamp(14px, 1.5vw, 16px);
             font-weight: 700;
         }
 
@@ -2899,6 +2899,9 @@
     </div>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
     <script>
         // ── NAV HAMBURGER ──
         const navBtn = document.getElementById('navHamburgerBtn');
@@ -2991,44 +2994,336 @@
         })();
 
         // ── SEC-3 DATA ──
+
+        // ─── SEC-3 ANIMALS DATA (Available Animals) ───
         const sec3Animals = [
-            { id: 1, name: "Beetal King", breed: "Beetal", price: "85,000", img: "/Assets/Images/sec-3-card-1-img.webp" },
-            { id: 2, name: "Kajla Supreme", breed: "Kajla", price: "75,000", img: "/Assets/Images/sec-3-card-2-img.webp" },
-            { id: 3, name: "Kamori Prince", breed: "Kamori", price: "1,20,000", img: "/Assets/Images/sec-3-card-3-img.webp" },
-            { id: 4, name: "Mundra Giant", breed: "Mundra", price: "65,000", img: "/Assets/Images/sec-3-card-4-img.webp" },
-            { id: 5, name: "Gulabi Star", breed: "Gulabi", price: "95,000", img: "/Assets/Images/sec-3-card-5-img.webp" },
-            { id: 6, name: "Dumba Special", breed: "Dumba", price: "88,000", img: "/Assets/Images/sec-3-card-6-img.webp" },
+            {
+                id: 1,
+                name: "Beetal King",
+                breed: "Beetal",
+                price: "85,000",
+                img: "/Assets/Images/sec-3-card-1-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-3-card-1-img.webp",
+                    "/Assets/Images/sec-3-card-2-img.webp",
+                    "/Assets/Images/sec-3-card-3-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "3 Years" },
+                    { key: "Weight", val: "~85 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Excellent" },
+                    { key: "Location", val: "Multan" }
+                ],
+                desc: "Beetal King is a premier Beetal breed goat known for its massive size and exceptional meat quality. Fully vaccinated, dewormed, and health certified. Ideal for premium Qurbani or breeding purposes."
+            },
+            {
+                id: 2,
+                name: "Kajla Supreme",
+                breed: "Kajla",
+                price: "75,000",
+                img: "/Assets/Images/sec-3-card-2-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-3-card-2-img.webp",
+                    "/Assets/Images/sec-3-card-1-img.webp",
+                    "/Assets/Images/sec-3-card-4-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "2.5 Years" },
+                    { key: "Weight", val: "~75 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Very Good" },
+                    { key: "Location", val: "Lahore" }
+                ],
+                desc: "Kajla Supreme is a top-quality Kajla breed with excellent body structure and healthy temperament. Complete vaccination record available. Perfect for families looking for a reliable Qurbani animal."
+            },
+            {
+                id: 3,
+                name: "Kamori Prince",
+                breed: "Kamori",
+                price: "1,20,000",
+                img: "/Assets/Images/sec-3-card-3-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-3-card-3-img.webp",
+                    "/Assets/Images/sec-3-card-5-img.webp",
+                    "/Assets/Images/sec-3-card-1-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "4 Years" },
+                    { key: "Weight", val: "~95 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "6 Dant" },
+                    { key: "Condition", val: "Premium" },
+                    { key: "Location", val: "Karachi" }
+                ],
+                desc: "Kamori Prince is an elite Kamori breed goat with superior genetics and outstanding physical attributes. Health certified with complete veterinary records. A choice selection for discerning buyers."
+            },
+            {
+                id: 4,
+                name: "Mundra Giant",
+                breed: "Mundra",
+                price: "65,000",
+                img: "/Assets/Images/sec-3-card-4-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-3-card-4-img.webp",
+                    "/Assets/Images/sec-3-card-6-img.webp",
+                    "/Assets/Images/sec-3-card-2-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "2 Years" },
+                    { key: "Weight", val: "~70 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Good" },
+                    { key: "Location", val: "Sindh" }
+                ],
+                desc: "Mundra Giant is a robust Mundra breed with strong build and excellent health. Fully vaccinated and dewormed. Great value for money with reliable quality for Qurbani."
+            },
+            {
+                id: 5,
+                name: "Gulabi Star",
+                breed: "Gulabi",
+                price: "95,000",
+                img: "/Assets/Images/sec-3-card-5-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-3-card-5-img.webp",
+                    "/Assets/Images/sec-3-card-4-img.webp",
+                    "/Assets/Images/sec-3-card-6-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "3 Years" },
+                    { key: "Weight", val: "~80 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Excellent" },
+                    { key: "Location", val: "Multan" }
+                ],
+                desc: "Gulabi Star is a prized Gulabi breed goat with a striking pink nose and large floppy ears. This breed is highly sought after for its beauty and meat quality. Fully vaccinated, dewormed, and certified. A great choice for a premium Qurbani animal."
+            },
+            {
+                id: 6,
+                name: "Dumba Special",
+                breed: "Dumba",
+                price: "88,000",
+                img: "/Assets/Images/sec-3-card-6-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-3-card-6-img.webp",
+                    "/Assets/Images/sec-3-card-3-img.webp",
+                    "/Assets/Images/sec-3-card-5-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "3.5 Years" },
+                    { key: "Weight", val: "~82 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Very Good" },
+                    { key: "Location", val: "Punjab" }
+                ],
+                desc: "Dumba Special is a high-quality Dumba breed known for its distinctive features and excellent meat yield. Health certified with full vaccination history. An excellent choice for Qurbani or breeding."
+            }
         ];
 
-        // ── SEC-5 DATA ──
+        // ─── SEC-5 LIVESTOCK DATA (Featured Livestock) ───
         const sec5Livestock = [
-            { id: 1, name: "Sultan", breed: "Brahman", price: "1,200,000", img: "/Assets/Images/sec-5-card-1-img.webp" },
-            { id: 2, name: "Sultan", breed: "Brahman", price: "1,200,000", img: "/Assets/Images/sec-5-card-2-img.webp" },
-            { id: 3, name: "Sultan", breed: "Brahman", price: "1,200,000", img: "/Assets/Images/sec-5-card-3-img.webp" },
-            { id: 4, name: "Sultan", breed: "Brahman", price: "1,200,000", img: "/Assets/Images/sec-5-card-4-img.webp" },
+            {
+                id: 1,
+                name: "Sultan Brahman",
+                breed: "Brahman",
+                price: "1,200,000",
+                img: "/Assets/Images/sec-5-card-1-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-5-card-1-img.webp",
+                    "/Assets/Images/sec-5-card-2-img.webp",
+                    "/Assets/Images/sec-5-card-3-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "2.5 Years" },
+                    { key: "Weight", val: "~250 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Premium" },
+                    { key: "Location", val: "Multan" }
+                ],
+                desc: "Sultan Brahman #1 is an exceptional Brahman breed cattle with superior genetics and massive frame. Fully vaccinated, health certified, and vet-approved. The ideal choice for luxury Qurbani or breeding program."
+            },
+            {
+                id: 2,
+                name: "Sultan Brahman",
+                breed: "Brahman",
+                price: "1,200,000",
+                img: "/Assets/Images/sec-5-card-2-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-5-card-2-img.webp",
+                    "/Assets/Images/sec-5-card-3-img.webp",
+                    "/Assets/Images/sec-5-card-4-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "2.5 Years" },
+                    { key: "Weight", val: "~250 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Premium" },
+                    { key: "Location", val: "Multan" }
+                ],
+                desc: "Sultan Brahman #2 is a premium Brahman cattle with outstanding build and health status. Complete veterinary records and health certification included. Perfect for those seeking top-tier Qurbani animals."
+            },
+            {
+                id: 3,
+                name: "Sultan Brahman",
+                breed: "Brahman",
+                price: "1,200,000",
+                img: "/Assets/Images/sec-5-card-3-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-5-card-3-img.webp",
+                    "/Assets/Images/sec-5-card-4-img.webp",
+                    "/Assets/Images/sec-5-card-1-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "2.5 Years" },
+                    { key: "Weight", val: "~250 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Premium" },
+                    { key: "Location", val: "Multan" }
+                ],
+                desc: "Sultan Brahman #3 represents the finest in Brahman breed cattle with exceptional size and health. Vet-examined with full vaccination history. A prestigious choice for premium Qurbani."
+            },
+            {
+                id: 4,
+                name: "Sultan Brahman",
+                breed: "Brahman",
+                price: "1,200,000",
+                img: "/Assets/Images/sec-5-card-4-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-5-card-4-img.webp",
+                    "/Assets/Images/sec-5-card-1-img.webp",
+                    "/Assets/Images/sec-5-card-2-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "2.5 Years" },
+                    { key: "Weight", val: "~250 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Premium" },
+                    { key: "Location", val: "Multan" }
+                ],
+                desc: "Sultan Brahman #4 is a magnificent Brahman cattle with superior qualities and excellent health record. Fully certified and vaccination complete. Ideal for luxury Qurbani requirements."
+            },
+            {
+                id: 5,
+                name: "Sultan Brahman",
+                breed: "Brahman",
+                price: "1,200,000",
+                img: "/Assets/Images/sec-5-card-1-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-5-card-1-img.webp",
+                    "/Assets/Images/sec-5-card-2-img.webp",
+                    "/Assets/Images/sec-5-card-4-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "2.5 Years" },
+                    { key: "Weight", val: "~250 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Premium" },
+                    { key: "Location", val: "Multan" }
+                ],
+                desc: "Sultan Brahman #5 is an elite Brahman breed with exceptional genetics and robust health. Health certified with complete vet records. A top choice for discerning buyers seeking premium livestock."
+            },
+            {
+                id: 6,
+                name: "Sultan Brahman",
+                breed: "Brahman",
+                price: "1,200,000",
+                img: "/Assets/Images/sec-5-card-2-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-5-card-2-img.webp",
+                    "/Assets/Images/sec-5-card-3-img.webp",
+                    "/Assets/Images/sec-5-card-1-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "2.5 Years" },
+                    { key: "Weight", val: "~250 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Premium" },
+                    { key: "Location", val: "Multan" }
+                ],
+                desc: "Sultan Brahman #6 is a outstanding Brahman cattle with premium qualities and excellent physical attributes. Fully vaccinated and health certified. Perfect for luxury Qurbani or breeding."
+            },
+            {
+                id: 7,
+                name: "Sultan Brahman",
+                breed: "Brahman",
+                price: "1,200,000",
+                img: "/Assets/Images/sec-5-card-3-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-5-card-3-img.webp",
+                    "/Assets/Images/sec-5-card-4-img.webp",
+                    "/Assets/Images/sec-5-card-2-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "2.5 Years" },
+                    { key: "Weight", val: "~250 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Premium" },
+                    { key: "Location", val: "Multan" }
+                ],
+                desc: "Sultan Brahman #7 is a superior Brahman breed cattle with exceptional build and health status. Complete veterinary certification included. An excellent choice for premium Qurbani needs."
+            },
+            {
+                id: 8,
+                name: "Sultan Brahman",
+                breed: "Brahman",
+                price: "1,200,000",
+                img: "/Assets/Images/sec-5-card-4-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-5-card-4-img.webp",
+                    "/Assets/Images/sec-5-card-1-img.webp",
+                    "/Assets/Images/sec-5-card-3-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "2.5 Years" },
+                    { key: "Weight", val: "~250 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Premium" },
+                    { key: "Location", val: "Multan" }
+                ],
+                desc: "Sultan Brahman #8 is a magnificent Brahman cattle with top-tier genetics and outstanding health. Fully certified with complete vaccination records. The ultimate choice for luxury Qurbani."
+            }
         ];
 
-        // ── CARD BUILDERS ──
+        // ─── CARD BUILDERS ───
         function buildSec3Card(animal) {
             const div = document.createElement("div");
             div.className = "sec-3-part-2-cards";
             div.style.cursor = "pointer";
-            div.onclick = () => window.location.href = `animal-detail.html?id=${animal.id}`;
+
+            div.addEventListener("click", () => {
+                localStorage.setItem("selectedAnimal", JSON.stringify(animal));
+                window.location.href = "animal-detail.html";
+            });
+
             div.innerHTML = `
-            <div class="sec-3-part-2-img-wrap">
-                <img src="${animal.img}" alt="${animal.name}">
+        <div class="sec-3-part-2-img-wrap">
+            <img src="${animal.img}" alt="${animal.name}">
+        </div>
+        <div class="sec-3-part-2-content-parent">
+            <div class="sec-3-part-2-content-line-1">
+                <p>${animal.name}</p>
+                <p>STARTING PKR</p>
             </div>
-            <div class="sec-3-part-2-content-parent">
-                <div class="sec-3-part-2-content-line-1">
-                    <p>${animal.name}</p>
-                    <p>STARTING PKR</p>
-                </div>
-                <div class="sec-3-part-2-content-line-2">
-                    <p>${animal.breed}</p>
-                    <p>${animal.price}</p>
-                </div>
+            <div class="sec-3-part-2-content-line-2">
+                <p>${animal.breed}</p>
+                <p>${animal.price}</p>
             </div>
-        `;
+        </div>
+    `;
+
             return div;
         }
 
@@ -3036,33 +3331,49 @@
             const div = document.createElement("div");
             div.className = "sec-5-cards" + (extraClass ? " " + extraClass : "");
             div.style.cursor = "pointer";
-            div.onclick = () => window.location.href = `animal-detail.html?type=livestock&id=${animal.id}`;
+
+            div.addEventListener("click", () => {
+                localStorage.setItem("selectedAnimal", JSON.stringify(animal));
+                localStorage.setItem("animalType", "livestock");
+                window.location.href = "animal-detail.html?type=livestock";
+            });
+
             div.innerHTML = `
-            <div class="sec-5-img-wrapper">
-                <img src="${animal.img}" alt="${animal.name}">
-            </div>
-            <div class="sec-5-cards-content-parent">
-                <div class="sec-5-cards-content-1">
-                    <div class="sec-5-cards-content-1-line-1">
-                        <h4>${animal.name}</h4>
-                        <p>${animal.price}</p>
-                    </div>
-                    <div class="sec-5-cards-content-1-line-2">
-                        <p>${animal.breed} * 2.5 Years</p>
-                        <p>PKR</p>
-                    </div>
+        <div class="sec-5-img-wrapper">
+            <img src="${animal.img}" alt="${animal.name}">
+        </div>
+        <div class="sec-5-cards-content-parent">
+            <div class="sec-5-cards-content-1">
+                <div class="sec-5-cards-content-1-line-1">
+                    <h4>${animal.name}</h4>
+                    <p>${animal.price}</p>
                 </div>
-                <div class="sec-5-cards-content-2">
-                    <p><img src="/Assets/Icons/sec-5-trending-icon.png" alt=""> 250 KG</p>
-                    <p><img src="/Assets/Icons/sec-5-verified-icon.png" alt=""> Vaccinated</p>
+                <div class="sec-5-cards-content-1-line-2">
+                    <p>${animal.breed} * 2.5 Years</p>
+                    <p>PKR</p>
                 </div>
-                <a href="animal-detail.html?type=livestock&id=${animal.id}">Quick view</a>
             </div>
-        `;
+            <div class="sec-5-cards-content-2">
+                <p>
+                    <img src="/Assets/Icons/sec-5-trending-icon.png" alt="">
+                    250 KG
+                </p>
+                <p>
+                    <img src="/Assets/Icons/sec-5-verified-icon.png" alt="">
+                    Vaccinated
+                </p>
+            </div>
+            <a href="animal-detail.html?type=livestock"
+               onclick="event.stopPropagation()">
+               Quick View
+            </a>
+        </div>
+    `;
+
             return div;
         }
 
-        // ── SLIDER POPULATOR ──
+        // ─── SLIDER POPULATOR ───
         function populateSlider(sliderId, data, cardsPerSlide, gridClass, buildFn, extraCardClass = "") {
             const sliderInner = document.querySelector(`#${sliderId} .carousel-inner`);
             if (!sliderInner) return;
@@ -3086,22 +3397,89 @@
             }
         }
 
-        // ── SEC-3 SLIDERS POPULATE ──
+        // ─── SEC-3 SLIDERS POPULATE ───
         populateSlider("sec3-slider-mobile", sec3Animals, 1, "sec3-grid-1", buildSec3Card);
         populateSlider("sec3-slider-sm", sec3Animals, 2, "sec3-grid-2", buildSec3Card);
         populateSlider("sec3-slider-md", sec3Animals, 3, "sec3-grid-3-sm", buildSec3Card, "sec-3-card-sm");
         populateSlider("sec3-slider-desktop", sec3Animals, 3, "sec-3-card-parent", buildSec3Card);
 
-        // ── SEC-5 SLIDERS POPULATE ──
+        // ─── SEC-5 SLIDERS POPULATE ───
         populateSlider("sec5-slider-mobile", sec5Livestock, 1, "sec5-grid-1", buildSec5Card);
         populateSlider("sec5-slider-sm", sec5Livestock, 2, "sec5-grid-2", buildSec5Card);
         populateSlider("sec5-slider-md", sec5Livestock, 3, "sec5-grid-3", buildSec5Card, "sec-5-card-sm");
         populateSlider("carouselAnimalsSlide-sec-5", sec5Livestock, 4, "sec-5-card-parent", buildSec5Card);
 
+        // ─── SIMILAR ANIMALS FUNCTION FOR DETAIL PAGE ───
+        function loadSimilarAnimals() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const animalType = urlParams.get('type');
+            const animalData = JSON.parse(localStorage.getItem('selectedAnimal'));
+
+            if (!animalData) return;
+
+            const similarGrid = document.getElementById('similar-grid');
+            if (!similarGrid) return;
+
+            let similarAnimals = [];
+
+            if (animalType === 'livestock') {
+                similarAnimals = sec5Livestock.filter(a => a.id !== animalData.id).slice(0, 3);
+            } else {
+                similarAnimals = sec3Animals.filter(a => a.id !== animalData.id).slice(0, 3);
+            }
+
+            similarGrid.innerHTML = '';
+
+            similarAnimals.forEach(similar => {
+                const card = document.createElement('a');
+                card.className = 'similar-card';
+                card.href = '#';
+
+                card.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    localStorage.setItem('selectedAnimal', JSON.stringify(similar));
+                    if (animalType === 'livestock') {
+                        localStorage.setItem('animalType', 'livestock');
+                        window.location.href = 'animal-detail.html?type=livestock';
+                    } else {
+                        localStorage.removeItem('animalType');
+                        window.location.href = 'animal-detail.html';
+                    }
+                });
+
+                card.innerHTML = `
+            <img src="${similar.img}" alt="${similar.name}">
+            <div class="similar-card-body">
+                <div>
+                    <div class="name">${similar.name}</div>
+                    <div class="breed">${similar.breed}</div>
+                </div>
+                <div class="price">${similar.price}</div>
+            </div>
+        `;
+                similarGrid.appendChild(card);
+            });
+        }
+
+        // Load similar animals when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadSimilarAnimals);
+        } else {
+            loadSimilarAnimals();
+        }
+
+        // ─── WHATSAPP FUNCTION ───
+        function handleWhatsApp() {
+            const animalData = JSON.parse(localStorage.getItem('selectedAnimal'));
+            if (!animalData) return;
+
+            const phoneNumber = "923001234567"; // Change to your actual number
+            const message = `Hi, I'm interested in ${animalData.name} (${animalData.breed}) priced at PKR ${animalData.price}`;
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
 </body>
 
 </html>

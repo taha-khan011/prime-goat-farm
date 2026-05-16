@@ -11,7 +11,6 @@
         rel="stylesheet">
     <title>Animal Detail</title>
     <style>
-
         @font-face {
             font-family: inter;
             src: url(/Assets/Fonts/Inter_28pt-Bold.ttf);
@@ -74,7 +73,7 @@
             position: relative;
         }
 
-        .btn-back{
+        .btn-back {
             position: absolute;
             right: 0;
         }
@@ -286,10 +285,10 @@
             .offscreen-menu {
                 display: block;
             }
-            
+
         }
 
-        
+
 
 
         .btn-back {
@@ -699,7 +698,6 @@
             }
 
         }
-
     </style>
 </head>
 
@@ -746,8 +744,8 @@
                 <li><a href="/service.html" class="offscreen-link">Services</a></li>
                 <li><a href="/location.html" class="offscreen-link">Contact Us</a></li>
                 <li><a href="/location.html" class="offscreen-link">
-                    
-                </a></li>
+
+                    </a></li>
             </ul>
         </div>
     </div>
@@ -782,7 +780,6 @@
 
             <div class="price-block">
                 <span class="price-label">Starting PKR</span>
-                <span class="price-currency">PKR</span>
                 <span class="price-value" id="detail-price">—</span>
             </div>
 
@@ -839,211 +836,123 @@
         crossorigin="anonymous"></script>
 
     <script>
-        // ── ANIMALS DATA ──
-        // (same animals as your catalog cards — extend as needed)
-        const animals = [
-            {
-                id: 1,
-                name: "Beetal King",
-                breed: "Beetal",
-                price: "85,000",
-                img: "/Assets/Images/sec-3-card-1-img.webp",
-                thumbs: [
-                    "/Assets/Images/sec-3-card-1-img.webp",
-                    "/Assets/Images/sec-3-card-2-img.webp",
-                    "/Assets/Images/sec-3-card-3-img.webp"
-                ],
-                specs: [
-                    { key: "Age", val: "2.5 Years" },
-                    { key: "Weight", val: "~65 kg" },
-                    { key: "Gender", val: "Male" },
-                    { key: "Teeth", val: "4 Dant" },
-                    { key: "Condition", val: "Excellent" },
-                    { key: "Location", val: "Lahore" }
-                ],
-                desc: "Beetal King is a premium quality Beetal goat known for its large frame, bold horns, and excellent meat yield. Raised on organic feed with daily grooming. This animal is ideal for Qurbani and has all four teeth, making it fully eligible. Comes with a certified health card from a licensed vet."
-            },
-            {
-                id: 2,
-                name: "Kajla Supreme",
-                breed: "Kajla",
-                price: "75,000",
-                img: "/Assets/Images/sec-3-card-2-img.webp",
-                thumbs: [
-                    "/Assets/Images/sec-3-card-2-img.webp",
-                    "/Assets/Images/sec-3-card-1-img.webp",
-                    "/Assets/Images/sec-3-card-3-img.webp"
-                ],
-                specs: [
-                    { key: "Age", val: "3 Years" },
-                    { key: "Weight", val: "~70 kg" },
-                    { key: "Gender", val: "Male" },
-                    { key: "Teeth", val: "4 Dant" },
-                    { key: "Condition", val: "Very Good" },
-                    { key: "Location", val: "Faisalabad" }
-                ],
-                desc: "Kajla Supreme is a robust and healthy Kajla breed goat with a thick coat and excellent build. Well-fed, vaccinated, and ready for Qurbani. Known for its calm temperament and high meat quality. Health certified by our partnered veterinarian."
-            },
-            {
-                id: 3,
-                name: "Kamori Prince",
-                breed: "Kamori",
-                price: "1,20,000",
-                img: "/Assets/Images/sec-3-card-3-img.webp",
-                thumbs: [
-                    "/Assets/Images/sec-3-card-3-img.webp",
-                    "/Assets/Images/sec-3-card-1-img.webp",
-                    "/Assets/Images/sec-3-card-2-img.webp"
-                ],
-                specs: [
-                    { key: "Age", val: "3.5 Years" },
-                    { key: "Weight", val: "~90 kg" },
-                    { key: "Gender", val: "Male" },
-                    { key: "Teeth", val: "4 Dant" },
-                    { key: "Condition", val: "Premium" },
-                    { key: "Location", val: "Karachi" }
-                ],
-                desc: "Kamori Prince is one of our finest animals — a rare and highly prized Kamori goat from Sindh. Renowned for its distinctive long ears, spotted coat, and impressive height. This is a collector-grade animal perfect for premium Qurbani. Full vet documentation included."
-            },
-            {
-                id: 4,
-                name: "Mundra Giant",
-                breed: "Mundra",
-                price: "65,000",
-                img: "/Assets/Images/sec-3-card-4-img.webp",
-                thumbs: [
-                    "/Assets/Images/sec-3-card-4-img.webp",
-                    "/Assets/Images/sec-3-card-5-img.webp",
-                    "/Assets/Images/sec-3-card-6-img.webp"
-                ],
-                specs: [
-                    { key: "Age", val: "2 Years" },
-                    { key: "Weight", val: "~55 kg" },
-                    { key: "Gender", val: "Male" },
-                    { key: "Teeth", val: "2 Dant" },
-                    { key: "Condition", val: "Good" },
-                    { key: "Location", val: "Hyderabad" }
-                ],
-                desc: "Mundra Giant is a well-built Mundra breed goat, known for its stocky frame and healthy appetite. Raised in a clean farm environment with regular vet check-ups. Suitable for Qurbani with valid health clearance."
-            },
-            {
-                id: 5,
-                name: "Gulabi Star",
-                breed: "Gulabi",
-                price: "95,000",
-                img: "/Assets/Images/sec-3-card-5-img.webp",
-                thumbs: [
-                    "/Assets/Images/sec-3-card-5-img.webp",
-                    "/Assets/Images/sec-3-card-4-img.webp",
-                    "/Assets/Images/sec-3-card-6-img.webp"
-                ],
-                specs: [
-                    { key: "Age", val: "3 Years" },
-                    { key: "Weight", val: "~80 kg" },
-                    { key: "Gender", val: "Male" },
-                    { key: "Teeth", val: "4 Dant" },
-                    { key: "Condition", val: "Excellent" },
-                    { key: "Location", val: "Multan" }
-                ],
-                desc: "Gulabi Star is a prized Gulabi breed goat with a striking pink nose and large floppy ears. This breed is highly sought after for its beauty and meat quality. Fully vaccinated, dewormed, and certified. A great choice for a premium Qurbani animal."
-            },
-            {
-                id: 6,
-                name: "Dumba Special",
-                breed: "Dumba",
-                price: "88,000",
-                img: "/Assets/Images/sec-3-card-6-img.webp",
-                thumbs: [
-                    "/Assets/Images/sec-3-card-6-img.webp",
-                    "/Assets/Images/sec-3-card-4-img.webp",
-                    "/Assets/Images/sec-3-card-5-img.webp"
-                ],
-                specs: [
-                    { key: "Age", val: "2.5 Years" },
-                    { key: "Weight", val: "~75 kg" },
-                    { key: "Gender", val: "Male" },
-                    { key: "Teeth", val: "4 Dant" },
-                    { key: "Condition", val: "Very Good" },
-                    { key: "Location", val: "Islamabad" }
-                ],
-                desc: "Dumba Special is a fat-tailed Dumba sheep known for its exceptional meat quality and dense fat reserves. Traditionally preferred for Eid ul Adha across Pakistan. Well maintained, vaccinated, and health certified. Impressive build and calm nature."
+        // ─── GET URL PARAMETER ───
+        const urlParams = new URLSearchParams(window.location.search);
+        const animalType = urlParams.get('type');
+
+        // ─── UPDATE HEADING BASED ON TYPE ───
+        const breadcrumbName = document.getElementById('breadcrumb-name');
+        const detailTitle = document.getElementById('detail-name');
+
+        if (animalType === 'livestock') {
+            breadcrumbName.textContent = 'Featured Livestock';
+        } else {
+            breadcrumbName.textContent = 'Animal Detail';
+        }
+
+        // ─── GET ANIMAL DATA FROM LOCALSTORAGE ───
+        const animalData = JSON.parse(localStorage.getItem('selectedAnimal'));
+
+        if (!animalData) {
+            window.location.href = 'index.html';
+        } else {
+            // ─── POPULATE DATA ───
+            document.getElementById('main-img').src = animalData.img;
+            document.getElementById('detail-breed').textContent = animalData.breed;
+            document.getElementById('detail-name').textContent = animalData.name;
+            document.getElementById('detail-price').textContent = animalData.price;
+            document.getElementById('detail-desc').textContent = animalData.desc;
+
+            // Update breadcrumb
+            if (animalType === 'livestock') {
+                document.getElementById('breadcrumb-name').textContent = animalData.name;
+            } else {
+                document.getElementById('breadcrumb-name').textContent = animalData.name;
             }
-        ];
 
-        // ── GET ANIMAL FROM URL PARAM ──
-        function getAnimalFromURL() {
-            const params = new URLSearchParams(window.location.search);
-            const id = parseInt(params.get("id"));
-            return animals.find(a => a.id === id) || animals[0];
+            // ─── POPULATE THUMBNAILS ───
+            const thumbRow = document.getElementById('thumb-row');
+            thumbRow.innerHTML = '';
+
+            animalData.thumbs.forEach((thumb, index) => {
+                const thumbDiv = document.createElement('div');
+                thumbDiv.className = 'thumb' + (index === 0 ? ' active' : '');
+                thumbDiv.innerHTML = `<img src="${thumb}" alt="Thumb ${index + 1}">`;
+                thumbDiv.addEventListener('click', () => {
+                    document.getElementById('main-img').src = thumb;
+                    document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+                    thumbDiv.classList.add('active');
+                });
+                thumbRow.appendChild(thumbDiv);
+            });
+
+            // ─── POPULATE SPECS ───
+            const specsGrid = document.getElementById('specs-grid');
+            specsGrid.innerHTML = '';
+
+            animalData.specs.forEach(spec => {
+                const specDiv = document.createElement('div');
+                specDiv.className = 'spec-item';
+                specDiv.innerHTML = `
+            <div class="spec-key">${spec.key}</div>
+            <div class="spec-val">${spec.val}</div>
+        `;
+                specsGrid.appendChild(specDiv);
+            });
         }
 
-        // ── RENDER DETAIL PAGE ──
-        function renderDetail(animal) {
-            document.title = animal.name + " — LiveStock.pk";
-            document.getElementById("breadcrumb-name").textContent = animal.name;
-            document.getElementById("detail-name").textContent = animal.name;
-            document.getElementById("detail-breed").textContent = animal.breed;
-            document.getElementById("detail-price").textContent = animal.price;
-            document.getElementById("detail-desc").textContent = animal.desc;
+        // ─── SIMILAR ANIMALS (Optional - Same type animals) ───
+        const similarGrid = document.getElementById('similar-grid');
+        if (similarGrid) {
+            let similarAnimals = [];
 
-            // Main image
-            const mainImg = document.getElementById("main-img");
-            mainImg.src = animal.img;
-            mainImg.alt = animal.name;
+            if (animalType === 'livestock') {
+                similarAnimals = sec5Livestock.filter(a => a.id !== animalData.id).slice(0, 3);
+            } else {
+                similarAnimals = sec3Animals.filter(a => a.id !== animalData.id).slice(0, 3);
+            }
 
-            // Thumbnails
-            const thumbRow = document.getElementById("thumb-row");
-            thumbRow.innerHTML = "";
-            animal.thumbs.forEach((src, i) => {
-                const div = document.createElement("div");
-                div.className = "thumb" + (i === 0 ? " active" : "");
-                div.innerHTML = `<img src="${src}" alt="thumb ${i + 1}">`;
-                div.onclick = () => {
-                    mainImg.src = src;
-                    thumbRow.querySelectorAll(".thumb").forEach(t => t.classList.remove("active"));
-                    div.classList.add("active");
+            similarGrid.innerHTML = '';
+            similarAnimals.forEach(similar => {
+                const card = document.createElement('a');
+                card.className = 'similar-card';
+                card.href = animalType === 'livestock' ? 'animal-detail.html?type=livestock' : 'animal-detail.html';
+                card.onclick = (e) => {
+                    e.preventDefault();
+                    localStorage.setItem('selectedAnimal', JSON.stringify(similar));
+                    if (animalType === 'livestock') {
+                        localStorage.setItem('animalType', 'livestock');
+                        window.location.href = 'animal-detail.html?type=livestock';
+                    } else {
+                        window.location.href = 'animal-detail.html';
+                    }
                 };
-                thumbRow.appendChild(div);
-            });
 
-            // Specs
-            const specsGrid = document.getElementById("specs-grid");
-            specsGrid.innerHTML = "";
-            animal.specs.forEach(s => {
-                specsGrid.innerHTML += `
-                    <div class="spec-item">
-                        <div class="spec-key">${s.key}</div>
-                        <div class="spec-val">${s.val}</div>
-                    </div>`;
-            });
-
-            // Similar Animals (exclude current)
-            const similarGrid = document.getElementById("similar-grid");
-            const similar = animals.filter(a => a.id !== animal.id).slice(0, 3);
-            similarGrid.innerHTML = "";
-            similar.forEach(a => {
-                similarGrid.innerHTML += `
-                    <a class="similar-card" href="animal-detail.html?id=${a.id}">
-                        <img src="${a.img}" alt="${a.name}">
-                        <div class="similar-card-body">
-                            <div>
-                                <div class="name">${a.name}</div>
-                                <div class="breed">${a.breed}</div>
-                            </div>
-                            <div class="price">PKR ${a.price}</div>
-                        </div>
-                    </a>`;
+                card.innerHTML = `
+            <img src="${similar.img}" alt="${similar.name}">
+            <div class="similar-card-body">
+                <div>
+                    <div class="name">${similar.name}</div>
+                    <div class="breed">${similar.breed}</div>
+                </div>
+                <div class="price">${similar.price}</div>
+            </div>
+        `;
+                similarGrid.appendChild(card);
             });
         }
 
+        // ─── WHATSAPP FUNCTION ───
         function handleWhatsApp() {
-            const animal = getAnimalFromURL();
-            const msg = encodeURIComponent(`Hello, I'm interested in "${animal.name}" (${animal.breed}) – PKR ${animal.price}. Please share more details.`);
-            window.open(`https://wa.me/923001234567?text=${msg}`, "_blank");
+            const phoneNumber = "923001234567"; // Change to your number
+            const message = `Hi, I'm interested in ${animalData.name} (${animalData.breed}) priced at PKR ${animalData.price}`;
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
         }
 
-        // ── INIT ──
-        renderDetail(getAnimalFromURL());
+        // Define arrays globally for similar animals access
+        const sec3Animals = [/* copy from index.html */];
+        const sec5Livestock = [/* copy from index.html */];
     </script>
 
 </body>
