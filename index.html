@@ -2193,6 +2193,210 @@
             }
 
         }
+
+        /* ── Section-3 Responsive Slider Override ── */
+
+        /* Team member ke purane classes hide karo */
+        .sec-3-slider-mobile,
+        .sec-3-slider-tablet,
+        .sec-3-slider-desktop {
+            display: none !important;
+        }
+
+        /* Naye slider grids */
+        .sec3-grid-1 {
+            display: grid;
+            grid-template-columns: 1fr;
+            width: 100%;
+        }
+
+        .sec3-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+            gap: 2%;
+        }
+
+        .sec3-grid-3-sm {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            width: 100%;
+            gap: 2%;
+        }
+
+        .sec-3-card-sm .sec-3-part-2-img-wrap img {
+            height: 180px !important;
+        }
+
+        /* Breakpoint toggles */
+        #sec3-slider-mobile {
+            display: block;
+        }
+
+        #sec3-slider-sm {
+            display: none;
+        }
+
+        #sec3-slider-md {
+            display: none;
+        }
+
+        #sec3-slider-desktop {
+            display: none;
+        }
+
+        @media (min-width: 576px) {
+            #sec3-slider-mobile {
+                display: none;
+            }
+
+            #sec3-slider-sm {
+                display: block;
+            }
+
+            #sec3-slider-md {
+                display: none;
+            }
+
+            #sec3-slider-desktop {
+                display: none;
+            }
+        }
+
+        @media (min-width: 800px) {
+            #sec3-slider-mobile {
+                display: none;
+            }
+
+            #sec3-slider-sm {
+                display: none;
+            }
+
+            #sec3-slider-md {
+                display: block;
+            }
+
+            #sec3-slider-desktop {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            #sec3-slider-mobile {
+                display: none;
+            }
+
+            #sec3-slider-sm {
+                display: none;
+            }
+
+            #sec3-slider-md {
+                display: none;
+            }
+
+            #sec3-slider-desktop {
+                display: block;
+            }
+        }
+
+
+
+        /* ── Section-5 Responsive Slider Grids ── */
+        .sec5-grid-1 {
+            display: grid;
+            grid-template-columns: 1fr;
+            width: 100%;
+        }
+
+        .sec5-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+            gap: 2%;
+        }
+
+        .sec5-grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            width: 100%;
+            gap: 2%;
+        }
+
+        /* Choti image medium slider ke liye */
+        .sec-5-card-sm .sec-5-img-wrapper img {
+            height: 200px !important;
+        }
+
+        /* ── Breakpoint display toggles ── */
+        #sec5-slider-mobile {
+            display: block;
+        }
+
+        #sec5-slider-sm {
+            display: none;
+        }
+
+        #sec5-slider-md {
+            display: none;
+        }
+
+        #carouselAnimalsSlide-sec-5 {
+            display: none;
+        }
+
+        @media (min-width: 576px) {
+            #sec5-slider-mobile {
+                display: none;
+            }
+
+            #sec5-slider-sm {
+                display: block;
+            }
+
+            #sec5-slider-md {
+                display: none;
+            }
+
+            #carouselAnimalsSlide-sec-5 {
+                display: none;
+            }
+        }
+
+        @media (min-width: 768px) {
+            #sec5-slider-mobile {
+                display: none;
+            }
+
+            #sec5-slider-sm {
+                display: none;
+            }
+
+            #sec5-slider-md {
+                display: block;
+            }
+
+            #carouselAnimalsSlide-sec-5 {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            #sec5-slider-mobile {
+                display: none;
+            }
+
+            #sec5-slider-sm {
+                display: none;
+            }
+
+            #sec5-slider-md {
+                display: none;
+            }
+
+            #carouselAnimalsSlide-sec-5 {
+                display: block;
+            }
+        }
     </style>
 </head>
 
@@ -2364,339 +2568,74 @@
     </div>
 
     <!-- section-3 -->
-    <div class="sec-3-parent">
 
+    <div class="sec-3-parent">
         <div class="sec-3-part-1">
             <div class="sec-3-part-1-head-1">Our Catalog</div>
             <h1 class="sec-3-part-1-head-2">Available Animals</h1>
-
-            <p>
-                Browse our current inventory of healthy, hand-picked livestock.
-                Each animal comes with a certified health record.
-            </p>
+            <p>Browse our current inventory of healthy, hand-picked livestock. Each animal comes with a certified health
+                record.</p>
         </div>
 
-        <!-- ===================================== -->
-        <!-- MOBILE SLIDER (1 CARD) -->
-        <!-- ===================================== -->
+        <div class="sec-3-part-2">
 
-        <div class="sec-3-slider-mobile">
-
-            <div id="mobileAnimalSlider" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000"
+            <!-- SLIDER A: Mobile (< 576px) — 1 card -->
+            <div id="sec3-slider-mobile" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000"
                 data-bs-pause="false">
-
                 <div class="carousel-inner">
-
-                    <!-- CARD 1 -->
-                    <div class="carousel-item active">
-                        <div class="sec-3-card-parent">
-
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="/Assets/Images/sec-3-card-1-img.webp" alt="">
-                                </div>
-
-                                <div class="sec-3-part-2-content-parent">
-
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- CARD 2 -->
-                    <div class="carousel-item">
-                        <div class="sec-3-card-parent">
-
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="/Assets/Images/sec-3-card-2-img.webp" alt="">
-                                </div>
-
-                                <div class="sec-3-part-2-content-parent">
-
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Kajla Supreme</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Kajla</p>
-                                        <p>75,000</p>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- CARD 3 -->
-                    <div class="carousel-item">
-                        <div class="sec-3-card-parent">
-
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="/Assets/Images/sec-3-card-3-img.webp" alt="">
-                                </div>
-
-                                <div class="sec-3-part-2-content-parent">
-
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Kamori Prince</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Kamori</p>
-                                        <p>120,000</p>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
+                    <!-- JS se populate hoga -->
                 </div>
+                <a class="carousel-control-prev" href="#sec3-slider-mobile" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#sec3-slider-mobile" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
 
-                <!-- buttons -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#mobileAnimalSlider"
-                    data-bs-slide="prev">
+            <!-- SLIDER B: Small tablet (576px – 767px) — 2 cards -->
+            <div id="sec3-slider-sm" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000"
+                data-bs-pause="false">
+                <div class="carousel-inner">
+                    <!-- JS se populate hoga -->
+                </div>
+                <a class="carousel-control-prev" href="#sec3-slider-sm" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#sec3-slider-sm" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
 
-                    <span class="carousel-control-prev-icon"></span>
+            <!-- SLIDER C: Medium (768px – 1199px) — 3 cards chote -->
+            <div id="sec3-slider-md" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000"
+                data-bs-pause="false">
+                <div class="carousel-inner">
+                    <!-- JS se populate hoga -->
+                </div>
+                <a class="carousel-control-prev" href="#sec3-slider-md" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#sec3-slider-md" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
 
-                </button>
-
-                <button class="carousel-control-next" type="button" data-bs-target="#mobileAnimalSlider"
-                    data-bs-slide="next">
-
-                    <span class="carousel-control-next-icon"></span>
-
-                </button>
-
+            <!-- SLIDER D: Desktop (>= 1200px) — 3 cards default -->
+            <div id="sec3-slider-desktop" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000"
+                data-bs-pause="false">
+                <div class="carousel-inner">
+                    <!-- JS se populate hoga -->
+                </div>
+                <a class="carousel-control-prev" href="#sec3-slider-desktop" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#sec3-slider-desktop" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
             </div>
 
         </div>
-
-        <!-- ===================================== -->
-        <!-- TABLET SLIDER (2 CARDS) -->
-        <!-- ===================================== -->
-
-        <div class="sec-3-slider-tablet">
-
-            <div id="tabletAnimalSlider" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000"
-                data-bs-pause="false">
-
-                <div class="carousel-inner">
-
-                    <!-- SLIDE 1 -->
-                    <div class="carousel-item active">
-
-                        <div class="sec-3-card-parent">
-
-                            <!-- card -->
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="/Assets/Images/sec-3-card-1-img.webp">
-                                </div>
-
-                                <div class="sec-3-part-2-content-parent">
-
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <!-- card -->
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="/Assets/Images/sec-3-card-2-img.webp">
-                                </div>
-
-                                <div class="sec-3-part-2-content-parent">
-
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Kajla Supreme</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Kajla</p>
-                                        <p>75,000</p>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <!-- SLIDE 2 -->
-                    <div class="carousel-item">
-
-                        <div class="sec-3-card-parent">
-
-                            <!-- card -->
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="/Assets/Images/sec-3-card-3-img.webp">
-                                </div>
-
-                                <div class="sec-3-part-2-content-parent">
-
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Kamori Prince</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Kamori</p>
-                                        <p>120,000</p>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <!-- card -->
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="/Assets/Images/sec-3-card-4-img.webp">
-                                </div>
-
-                                <div class="sec-3-part-2-content-parent">
-
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Mundra Giant</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Mundra</p>
-                                        <p>65,000</p>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- ===================================== -->
-        <!-- DESKTOP SLIDER (3 CARDS) -->
-        <!-- ===================================== -->
-
-        <div class="sec-3-slider-desktop">
-
-            <div id="desktopAnimalSlider" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000"
-                data-bs-pause="false">
-
-                <div class="carousel-inner">
-
-                    <!-- slide -->
-                    <div class="carousel-item active">
-
-                        <div class="sec-3-card-parent">
-
-                            <!-- card -->
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="/Assets/Images/sec-3-card-1-img.webp">
-                                </div>
-
-                                <div class="sec-3-part-2-content-parent">
-
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Beetal King</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Beetal</p>
-                                        <p>85,000</p>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <!-- card -->
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="/Assets/Images/sec-3-card-2-img.webp">
-                                </div>
-
-                                <div class="sec-3-part-2-content-parent">
-
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Kajla Supreme</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Kajla</p>
-                                        <p>75,000</p>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <!-- card -->
-                            <div class="sec-3-part-2-cards">
-                                <div class="sec-3-part-2-img-wrap">
-                                    <img src="/Assets/Images/sec-3-card-3-img.webp">
-                                </div>
-
-                                <div class="sec-3-part-2-content-parent">
-
-                                    <div class="sec-3-part-2-content-line-1">
-                                        <p>Kamori Prince</p>
-                                        <p>STARTING PKR</p>
-                                    </div>
-
-                                    <div class="sec-3-part-2-content-line-2">
-                                        <p>Kamori</p>
-                                        <p>120,000</p>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
     </div>
 
     <!-- section-4 -->
@@ -2732,203 +2671,62 @@
         <p>The most exceptional specimens currently available at our farm.</p>
         <div class="sec-5-cards-parent">
 
+            <!-- SLIDER A: Mobile (< 576px) — 1 card -->
+            <div id="sec5-slider-mobile" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000"
+                data-bs-pause="false">
+                <div class="carousel-inner">
+                    <!-- JS se populate hoga -->
+                </div>
+                <a class="carousel-control-prev" href="#sec5-slider-mobile" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#sec5-slider-mobile" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <!-- SLIDER B: Small tablet (576px – 767px) — 2 cards -->
+            <div id="sec5-slider-sm" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000"
+                data-bs-pause="false">
+                <div class="carousel-inner">
+                    <!-- JS se populate hoga -->
+                </div>
+                <a class="carousel-control-prev" href="#sec5-slider-sm" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#sec5-slider-sm" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <!-- SLIDER C: Medium (768px – 1199px) — 3 cards chote -->
+            <div id="sec5-slider-md" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000"
+                data-bs-pause="false">
+                <div class="carousel-inner">
+                    <!-- JS se populate hoga -->
+                </div>
+                <a class="carousel-control-prev" href="#sec5-slider-md" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#sec5-slider-md" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <!-- SLIDER D: Desktop (>= 1200px) — 4 cards default -->
             <div id="carouselAnimalsSlide-sec-5" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000"
                 data-bs-pause="false">
-
-                <div class="sec-5-screen-slide-parent carousel-inner">
-                    <div class="sec-5-screen-slide carousel-item active">
-                        <div class="sec-5-card-parent">
-
-                            <div class="sec-5-cards">
-                                <div class="sec-5-img-wrapper">
-                                    <img src="/Assets/Images/sec-5-card-1-img.webp" alt="">
-                                </div>
-                                <div class="sec-5-cards-content-parent">
-                                    <div class="sec-5-cards-content-1">
-                                        <div class="sec-5-cards-content-1-line-1">
-                                            <h4>Sultan</h4>
-                                            <p>1.2M</p>
-                                        </div>
-                                        <div class="sec-5-cards-content-1-line-2">
-                                            <p>Brahman * 2.5 Years</p>
-                                            <p>PKR</p>
-                                        </div>
-                                    </div>
-                                    <div class="sec-5-cards-content-2">
-                                        <p><img src="/Assets/Icons/sec-5-trending-icon.png" alt=""> 250 KG</p>
-                                        <p><img src="/Assets/Icons/sec-5-verified-icon.png" alt=""> Vaccinated</p>
-                                    </div> <a href="">Quick view</a>
-                                </div>
-                            </div>
-
-                            <div class="sec-5-cards">
-                                <div class="sec-5-img-wrapper">
-                                    <img src="/Assets/Images/sec-5-card-2-img.webp" alt="">
-                                </div>
-                                <div class="sec-5-cards-content-parent">
-                                    <div class="sec-5-cards-content-1">
-                                        <div class="sec-5-cards-content-1-line-1">
-                                            <h4>Sultan</h4>
-                                            <p>1.2M</p>
-                                        </div>
-                                        <div class="sec-5-cards-content-1-line-2">
-                                            <p>Brahman * 2.5 Years</p>
-                                            <p>PKR</p>
-                                        </div>
-                                    </div>
-                                    <div class="sec-5-cards-content-2">
-                                        <p><img src="/Assets/Icons/sec-5-trending-icon.png" alt=""> 250 KG</p>
-                                        <p><img src="/Assets/Icons/sec-5-verified-icon.png" alt=""> Vaccinated</p>
-                                    </div> <a href="">Quick view</a>
-                                </div>
-                            </div>
-                            <div class="sec-5-cards">
-                                <div class="sec-5-img-wrapper">
-                                    <img src="/Assets/Images/sec-5-card-3-img.webp" alt="">
-                                </div>
-                                <div class="sec-5-cards-content-parent">
-                                    <div class="sec-5-cards-content-1">
-                                        <div class="sec-5-cards-content-1-line-1">
-                                            <h4>Sultan</h4>
-                                            <p>1.2M</p>
-                                        </div>
-                                        <div class="sec-5-cards-content-1-line-2">
-                                            <p>Brahman * 2.5 Years</p>
-                                            <p>PKR</p>
-                                        </div>
-                                    </div>
-                                    <div class="sec-5-cards-content-2">
-                                        <p><img src="/Assets/Icons/sec-5-trending-icon.png" alt=""> 250 KG</p>
-                                        <p><img src="/Assets/Icons/sec-5-verified-icon.png" alt=""> Vaccinated</p>
-                                    </div> <a href="">Quick view</a>
-                                </div>
-                            </div>
-                            <div class="sec-5-cards">
-                                <div class="sec-5-img-wrapper">
-                                    <img src="/Assets/Images/sec-5-card-4-img.webp" alt="">
-                                </div>
-                                <div class="sec-5-cards-content-parent">
-                                    <div class="sec-5-cards-content-1">
-                                        <div class="sec-5-cards-content-1-line-1">
-                                            <h4>Sultan</h4>
-                                            <p>1.2M</p>
-                                        </div>
-                                        <div class="sec-5-cards-content-1-line-2">
-                                            <p>Brahman * 2.5 Years</p>
-                                            <p>PKR</p>
-                                        </div>
-                                    </div>
-                                    <div class="sec-5-cards-content-2">
-                                        <p><img src="/Assets/Icons/sec-5-trending-icon.png" alt=""> 250 KG</p>
-                                        <p><img src="/Assets/Icons/sec-5-verified-icon.png" alt=""> Vaccinated</p>
-                                    </div> <a href="">Quick view</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="sec-3-screen-slide carousel-item">
-                        <div class="sec-5-card-parent">
-
-                            <div class="sec-5-cards">
-                                <div class="sec-5-img-wrapper">
-                                    <img src="/Assets/Images/sec-5-card-1-img.webp" alt="">
-                                </div>
-                                <div class="sec-5-cards-content-parent">
-                                    <div class="sec-5-cards-content-1">
-                                        <div class="sec-5-cards-content-1-line-1">
-                                            <h4>Sultan</h4>
-                                            <p>1.2M</p>
-                                        </div>
-                                        <div class="sec-5-cards-content-1-line-2">
-                                            <p>Brahman * 2.5 Years</p>
-                                            <p>PKR</p>
-                                        </div>
-                                    </div>
-                                    <div class="sec-5-cards-content-2">
-                                        <p><img src="/Assets/Icons/sec-5-trending-icon.png" alt=""> 250 KG</p>
-                                        <p><img src="/Assets/Icons/sec-5-verified-icon.png" alt=""> Vaccinated</p>
-                                    </div> <a href="">Quick view</a>
-                                </div>
-                            </div>
-
-                            <div class="sec-5-cards">
-                                <div class="sec-5-img-wrapper">
-                                    <img src="/Assets/Images/sec-5-card-2-img.webp" alt="">
-                                </div>
-                                <div class="sec-5-cards-content-parent">
-                                    <div class="sec-5-cards-content-1">
-                                        <div class="sec-5-cards-content-1-line-1">
-                                            <h4>Sultan</h4>
-                                            <p>1.2M</p>
-                                        </div>
-                                        <div class="sec-5-cards-content-1-line-2">
-                                            <p>Brahman * 2.5 Years</p>
-                                            <p>PKR</p>
-                                        </div>
-                                    </div>
-                                    <div class="sec-5-cards-content-2">
-                                        <p><img src="/Assets/Icons/sec-5-trending-icon.png" alt=""> 250 KG</p>
-                                        <p><img src="/Assets/Icons/sec-5-verified-icon.png" alt=""> Vaccinated</p>
-                                    </div> <a href="">Quick view</a>
-                                </div>
-                            </div>
-                            <div class="sec-5-cards">
-                                <div class="sec-5-img-wrapper">
-                                    <img src="/Assets/Images/sec-5-card-3-img.webp" alt="">
-                                </div>
-                                <div class="sec-5-cards-content-parent">
-                                    <div class="sec-5-cards-content-1">
-                                        <div class="sec-5-cards-content-1-line-1">
-                                            <h4>Sultan</h4>
-                                            <p>1.2M</p>
-                                        </div>
-                                        <div class="sec-5-cards-content-1-line-2">
-                                            <p>Brahman * 2.5 Years</p>
-                                            <p>PKR</p>
-                                        </div>
-                                    </div>
-                                    <div class="sec-5-cards-content-2">
-                                        <p><img src="/Assets/Icons/sec-5-trending-icon.png" alt=""> 250 KG</p>
-                                        <p><img src="/Assets/Icons/sec-5-verified-icon.png" alt=""> Vaccinated</p>
-                                    </div> <a href="">Quick view</a>
-                                </div>
-                            </div>
-                            <div class="sec-5-cards">
-                                <div class="sec-5-img-wrapper">
-                                    <img src="/Assets/Images/sec-5-card-4-img.webp" alt="">
-                                </div>
-                                <div class="sec-5-cards-content-parent">
-                                    <div class="sec-5-cards-content-1">
-                                        <div class="sec-5-cards-content-1-line-1">
-                                            <h4>Sultan</h4>
-                                            <p>1.2M</p>
-                                        </div>
-                                        <div class="sec-5-cards-content-1-line-2">
-                                            <p>Brahman * 2.5 Years</p>
-                                            <p>PKR</p>
-                                        </div>
-                                    </div>
-                                    <div class="sec-5-cards-content-2">
-                                        <p><img src="/Assets/Icons/sec-5-trending-icon.png" alt=""> 250 KG</p>
-                                        <p><img src="/Assets/Icons/sec-5-verified-icon.png" alt=""> Vaccinated</p>
-                                    </div> <a href="">Quick view</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                <div class="carousel-inner">
+                    <!-- JS se populate hoga -->
                 </div>
-
                 <a class="carousel-control-prev" href="#carouselAnimalsSlide-sec-5" role="button" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only"></span>
                 </a>
                 <a class="carousel-control-next" href="#carouselAnimalsSlide-sec-5" role="button" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only"></span>
                 </a>
             </div>
+
         </div>
     </div>
 
@@ -3102,6 +2900,7 @@
 
 
     <script>
+        // ── NAV HAMBURGER ──
         const navBtn = document.getElementById('navHamburgerBtn');
         const offscreenMenu = document.getElementById('offscreenMenu');
         const offscreenOverlay = document.getElementById('offscreenOverlay');
@@ -3113,7 +2912,7 @@
             navBtn.classList.add('nav-btn-active');
             navBtn.setAttribute('aria-expanded', 'true');
             offscreenMenu.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden'; // scroll band
+            document.body.style.overflow = 'hidden';
             trapFocus();
         }
 
@@ -3123,7 +2922,7 @@
             navBtn.classList.remove('nav-btn-active');
             navBtn.setAttribute('aria-expanded', 'false');
             offscreenMenu.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = ''; // scroll wapas
+            document.body.style.overflow = '';
             navBtn.focus();
         }
 
@@ -3138,59 +2937,38 @@
             function handleTab(e) {
                 if (e.key !== 'Tab') return;
                 if (e.shiftKey) {
-                    if (document.activeElement === first) {
-                        e.preventDefault();
-                        last.focus();
-                    }
+                    if (document.activeElement === first) { e.preventDefault(); last.focus(); }
                 } else {
-                    if (document.activeElement === last) {
-                        e.preventDefault();
-                        first.focus();
-                    }
+                    if (document.activeElement === last) { e.preventDefault(); first.focus(); }
                 }
             }
             document.addEventListener('keydown', handleTab);
         }
 
         navBtn.addEventListener('click', () => {
-            offscreenMenu.classList.contains('offscreen-open') ?
-                closeOffscreenMenu() :
-                openOffscreenMenu();
+            offscreenMenu.classList.contains('offscreen-open') ? closeOffscreenMenu() : openOffscreenMenu();
         });
-
         offscreenOverlay.addEventListener('click', closeOffscreenMenu);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeOffscreenMenu(); });
+        offscreenLinks.forEach(link => { link.addEventListener('click', closeOffscreenMenu); });
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeOffscreenMenu();
-        });
-
-        offscreenLinks.forEach(link => {
-            link.addEventListener('click', closeOffscreenMenu);
-        });
-
+        // ── LOADER ──
         window.addEventListener("load", () => {
-
             const MIN_TIME = 7000;
             const start = performance.now();
-
             const loader = document.getElementById("loader");
             const main = document.getElementById("main");
-
             const finish = () => {
                 main.style.display = "block";
                 requestAnimationFrame(() => main.classList.add("show"));
-
                 loader.classList.add("hide");
-
                 setTimeout(() => loader.remove(), 1200);
             };
-
             const delay = Math.max(0, MIN_TIME - (performance.now() - start));
-
             setTimeout(finish, delay);
         });
 
-        // ── Hero Cube Slider ──
+        // ── HERO CUBE SLIDER ──
         (function () {
             const cube = document.getElementById('heroCube');
             const bullets = document.querySelectorAll('.hero-bullet');
@@ -3209,14 +2987,116 @@
             document.getElementById('heroNext').addEventListener('click', () => goTo(cur + 1));
             document.getElementById('heroPrev').addEventListener('click', () => goTo(cur - 1));
             bullets.forEach(b => b.addEventListener('click', () => goTo(+b.dataset.i)));
-
-            let auto = setInterval(() => goTo(cur + 1), 3000);
-
+            setInterval(() => goTo(cur + 1), 3000);
         })();
 
-        function goToDetail(id) {
-            window.location.href = `animal-detail.html?id=${id}`;
+        // ── SEC-3 DATA ──
+        const sec3Animals = [
+            { id: 1, name: "Beetal King", breed: "Beetal", price: "85,000", img: "/Assets/Images/sec-3-card-1-img.webp" },
+            { id: 2, name: "Kajla Supreme", breed: "Kajla", price: "75,000", img: "/Assets/Images/sec-3-card-2-img.webp" },
+            { id: 3, name: "Kamori Prince", breed: "Kamori", price: "1,20,000", img: "/Assets/Images/sec-3-card-3-img.webp" },
+            { id: 4, name: "Mundra Giant", breed: "Mundra", price: "65,000", img: "/Assets/Images/sec-3-card-4-img.webp" },
+            { id: 5, name: "Gulabi Star", breed: "Gulabi", price: "95,000", img: "/Assets/Images/sec-3-card-5-img.webp" },
+            { id: 6, name: "Dumba Special", breed: "Dumba", price: "88,000", img: "/Assets/Images/sec-3-card-6-img.webp" },
+        ];
+
+        // ── SEC-5 DATA ──
+        const sec5Livestock = [
+            { id: 1, name: "Sultan", breed: "Brahman", price: "1,200,000", img: "/Assets/Images/sec-5-card-1-img.webp" },
+            { id: 2, name: "Sultan", breed: "Brahman", price: "1,200,000", img: "/Assets/Images/sec-5-card-2-img.webp" },
+            { id: 3, name: "Sultan", breed: "Brahman", price: "1,200,000", img: "/Assets/Images/sec-5-card-3-img.webp" },
+            { id: 4, name: "Sultan", breed: "Brahman", price: "1,200,000", img: "/Assets/Images/sec-5-card-4-img.webp" },
+        ];
+
+        // ── CARD BUILDERS ──
+        function buildSec3Card(animal) {
+            const div = document.createElement("div");
+            div.className = "sec-3-part-2-cards";
+            div.style.cursor = "pointer";
+            div.onclick = () => window.location.href = `animal-detail.html?id=${animal.id}`;
+            div.innerHTML = `
+            <div class="sec-3-part-2-img-wrap">
+                <img src="${animal.img}" alt="${animal.name}">
+            </div>
+            <div class="sec-3-part-2-content-parent">
+                <div class="sec-3-part-2-content-line-1">
+                    <p>${animal.name}</p>
+                    <p>STARTING PKR</p>
+                </div>
+                <div class="sec-3-part-2-content-line-2">
+                    <p>${animal.breed}</p>
+                    <p>${animal.price}</p>
+                </div>
+            </div>
+        `;
+            return div;
         }
+
+        function buildSec5Card(animal, extraClass = "") {
+            const div = document.createElement("div");
+            div.className = "sec-5-cards" + (extraClass ? " " + extraClass : "");
+            div.style.cursor = "pointer";
+            div.onclick = () => window.location.href = `animal-detail.html?type=livestock&id=${animal.id}`;
+            div.innerHTML = `
+            <div class="sec-5-img-wrapper">
+                <img src="${animal.img}" alt="${animal.name}">
+            </div>
+            <div class="sec-5-cards-content-parent">
+                <div class="sec-5-cards-content-1">
+                    <div class="sec-5-cards-content-1-line-1">
+                        <h4>${animal.name}</h4>
+                        <p>${animal.price}</p>
+                    </div>
+                    <div class="sec-5-cards-content-1-line-2">
+                        <p>${animal.breed} * 2.5 Years</p>
+                        <p>PKR</p>
+                    </div>
+                </div>
+                <div class="sec-5-cards-content-2">
+                    <p><img src="/Assets/Icons/sec-5-trending-icon.png" alt=""> 250 KG</p>
+                    <p><img src="/Assets/Icons/sec-5-verified-icon.png" alt=""> Vaccinated</p>
+                </div>
+                <a href="animal-detail.html?type=livestock&id=${animal.id}">Quick view</a>
+            </div>
+        `;
+            return div;
+        }
+
+        // ── SLIDER POPULATOR ──
+        function populateSlider(sliderId, data, cardsPerSlide, gridClass, buildFn, extraCardClass = "") {
+            const sliderInner = document.querySelector(`#${sliderId} .carousel-inner`);
+            if (!sliderInner) return;
+            sliderInner.innerHTML = "";
+
+            for (let i = 0; i < data.length; i += cardsPerSlide) {
+                const chunk = data.slice(i, i + cardsPerSlide);
+
+                const carouselItem = document.createElement("div");
+                carouselItem.className = "carousel-item" + (i === 0 ? " active" : "");
+
+                const grid = document.createElement("div");
+                grid.className = gridClass;
+
+                chunk.forEach(animal => {
+                    grid.appendChild(buildFn(animal, extraCardClass));
+                });
+
+                carouselItem.appendChild(grid);
+                sliderInner.appendChild(carouselItem);
+            }
+        }
+
+        // ── SEC-3 SLIDERS POPULATE ──
+        populateSlider("sec3-slider-mobile", sec3Animals, 1, "sec3-grid-1", buildSec3Card);
+        populateSlider("sec3-slider-sm", sec3Animals, 2, "sec3-grid-2", buildSec3Card);
+        populateSlider("sec3-slider-md", sec3Animals, 3, "sec3-grid-3-sm", buildSec3Card, "sec-3-card-sm");
+        populateSlider("sec3-slider-desktop", sec3Animals, 3, "sec-3-card-parent", buildSec3Card);
+
+        // ── SEC-5 SLIDERS POPULATE ──
+        populateSlider("sec5-slider-mobile", sec5Livestock, 1, "sec5-grid-1", buildSec5Card);
+        populateSlider("sec5-slider-sm", sec5Livestock, 2, "sec5-grid-2", buildSec5Card);
+        populateSlider("sec5-slider-md", sec5Livestock, 3, "sec5-grid-3", buildSec5Card, "sec-5-card-sm");
+        populateSlider("carouselAnimalsSlide-sec-5", sec5Livestock, 4, "sec-5-card-parent", buildSec5Card);
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
