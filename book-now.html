@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Master Agreement</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        @font-face {
+            font-family: inter;
+            src: url(/Assets/Fonts/Inter_28pt-Bold.ttf);
+        }
+
+        @font-face {
+            font-family: work-sans;
+            src: url(/Assets/Fonts/WorkSans-Regular.ttf);
+        }
+
+        :root {
+            --green-text: #124C36;
+            --white-text: #FFFFFFFF;
+            --black-text: black;
+            --inner-bg: whitesmoke;
+            --white-bg: #FFFFFF;
+            --black-bg: black;
+            --dark-black-bg: #161A1DFF;
+            --green-bg: #124C36;
+            --transparent-green-bg: #32a14aa2;
+            --border-bg: black;
+            --heading-font: inter;
+            --para-font: work-sans;
+        }
+
+        /* ===== NAV ===== */
+        nav {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            background-color: var(--white-bg);
+            border-bottom: 1px solid var(--border-bg);
+        }
+
+        .IconPrime {
+            width: 90px;
+            height: 100px;
+            position: relative;
+            right: 20px;
+            top: 5px;
+        }
+
+        .nav-child {
+            width: calc(87.5% - 100px);
+            height: 81px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-child ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-child ul li a {
+            color: var(--black-text);
+            font-family: var(--para-font);
+            font-weight: 600;
+            font-size: clamp(13px, 1.2vw, 15px);
+            position: relative;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-child ul li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background: var(--green-text);
+            transition: width 0.3s ease;
+        }
+
+        .nav-child ul li a:hover::after {
+            width: 100%;
+        }
+
+        .nav-child ul li a.active {
+            color: var(--green-text);
+        }
+
+        .nav-child ul li a.active::after {
+            width: 100%;
+        }
+
+        .nav-child ul li:first-child a::after {
+            display: none;
+        }
+
+        .nav-child ul li:first-child a:hover {
+            color: initial;
+        }
+
+        .nav-child ul li:first-child a {
+            color: var(--green-text);
+            font-size: clamp(19px, 1.8vw, 29px);
+            font-weight: 700;
+            font-family: var(--para-font);
+        }
+
+        .nav-child ul li:nth-child(2) a {
+            color: var(--green-text);
+        }
+
+        .nav-hamburger-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-left: auto;
+            padding: 8px;
+        }
+
+        .nav-hamburger-btn span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--black-bg);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .nav-hamburger-btn.nav-btn-active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .nav-hamburger-btn.nav-btn-active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger-btn.nav-btn-active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .offscreen-menu {
+            display: none;
+            width: 100%;
+            background-color: var(--white-bg);
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height .7s cubic-bezier(0.4, 0, 0.2, 1);
+            position: fixed;
+            border-bottom: 1px solid var(--border-bg);
+            top: 81px;
+            left: 0;
+            z-index: 98;
+        }
+
+        .offscreen-menu.offscreen-open {
+            max-height: 400px;
+        }
+
+        .offscreen-menu-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0 24px;
+        }
+
+        .offscreen-menu-inner ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 88%;
+        }
+
+        .offscreen-menu-inner ul li {
+            border-bottom: 1px solid var(--border-bg);
+        }
+
+        .offscreen-menu-inner ul li:last-child {
+            border-bottom: none;
+        }
+
+        .offscreen-menu-inner ul li:first-child a {
+            color: var(--green-text);
+        }
+
+        .offscreen-menu-inner ul li a {
+            display: block;
+            padding: 14px 8px;
+            color: var(--black-text);
+            font-family: var(--para-font);
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease, padding-left 0.2s ease;
+        }
+
+        .offscreen-menu-inner ul li a:hover {
+            color: var(--green-text);
+            padding-left: 18px;
+        }
+
+        .offscreen-overlay {
+            display: none;
+            position: fixed;
+            top: 81px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 97;
+        }
+
+        .offscreen-overlay.offscreen-overlay-visible {
+            display: block;
+        }
+
+        /* ===== RESPONSIVE NAV ===== */
+        @media (max-width: 820px) {
+            nav {
+                height: 100%;
+            }
+
+            .offscreen-menu {
+                top: 70px;
+                display: block;
+            }
+
+            .nav-child ul li:not(:first-child) {
+                display: none;
+            }
+
+            .nav-hamburger-btn {
+                display: flex;
+            }
+
+            nav>a {
+                display: none;
+            }
+
+            .nav-child {
+                width: 88%;
+                justify-content: space-between;
+            }
+        }
+
+        @media (min-width: 821px) {
+            .nav-child {
+                width: 88%;
+            }
+
+            .nav-hamburger-btn {
+                display: none;
+            }
+
+            .offscreen-menu {
+                display: none !important;
+            }
+
+            .offscreen-overlay {
+                display: none !important;
+            }
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .dip-container {
+            margin-top: 40px;
+            width: 100%;
+            max-width: 700px;
+            padding: 25px 30px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 22px;
+            z-index: 1;
+            border: 1px solid var(--green-bg);
+
+        }
+
+        .goat-img img {
+            width: 150px;
+            max-width: 30%;
+            animation: float 3s infinite ease-in-out;
+            position: relative;
+            left: 230px;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        h1 {
+            position: relative;
+            bottom: 30px;
+            margin: 10px 0 20px;
+            color: #104B35;
+            font-size: clamp(22px, 5vw, 40px);
+            margin-left: 40px;
+        }
+
+        /* ===== FORM ===== */
+        .form-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 10px 0;
+        }
+
+        .section {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        h3 {
+            color: #104B35;
+            font-size: clamp(16px, 3vw, 20px);
+            margin-bottom: 5px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 5px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"] {
+            width: 100%;
+            padding: 10px 12px;
+            margin-top: 5px;
+            border: 1px solid #104B35;
+            border-radius: 8px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .no-arrow::-webkit-outer-spin-button,
+        .no-arrow::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input:focus {
+            border: 2px solid #2c3e50;
+        }
+
+        .date-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .date-field {
+            flex: 1;
+            min-width: 140px;
+        }
+
+        .pkg-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .radio {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: none;
+            background: #104B35;
+            color: #fff;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #0f6445;
+        }
+
+        button:active {
+            transform: scale(0.97);
+        }
+
+        /* ===== TERMS BOXES ===== */
+        .container {
+            width: 100%;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 0;
+            justify-content: center;
+        }
+
+        .box {
+            width: 48%;
+            flex: 1;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, .06);
+            border: 1px solid #ececec;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .box h2,
+        .box h3 {
+            color: #104B35;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            min-height: 55px;
+            display: flex;
+            align-items: center;
+        }
+
+        .box ul {
+            padding-left: 25px;
+            margin-bottom: 30px;
+        }
+
+        .box li {
+            font-size: 15px;
+            line-height: 2.1;
+            color: #111;
+            margin-bottom: 8px;
+        }
+
+        .box p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* ===== URDU BOX ===== */
+        .box.urdu {
+            direction: rtl;
+            text-align: right;
+            font-family: "Noto Nastaliq Urdu", serif;
+        }
+
+        .box.urdu h2,
+        .box.urdu h3 {
+            text-align: right;
+            width: 100%;
+            justify-content: flex-end;
+        }
+
+        .box.urdu ul {
+            padding-right: 28px;
+            padding-left: 0;
+            margin-bottom: 30px;
+        }
+
+        .box.urdu li {
+            font-size: 15px;
+            line-height: 2.4;
+            color: #111;
+            margin-bottom: 10px;
+            text-align: right;
+            list-style-position: outside;
+        }
+
+        .box.urdu p {
+            text-align: right;
+        }
+
+        @keyframes moveBorder {
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(50%);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .box,
+            .box.urdu {
+                width: 100%;
+            }
+        }
+
+        /* ===== SIGNATURE SECTION ===== */
+        .form {
+            width: 100%;
+            margin-top: 10px;
+            padding-left: 0;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .sing {
+            margin: 0;
+            position: static;
+            font-size: 20px;
+            color: var(--green-text);
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .singnatur-owner {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            color: green;
+            font-size: 30px;
+            width: 200px;
+            height: 60px;
+        }
+
+        .sig-box {
+            width: 150px;
+            height: 80px;
+            border: 1px dashed #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        /* ===== SIGNATURE MODAL ===== */
+        .sig-modal {
+            display: none;
+            position: fixed;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(6px);
+            background: rgba(0, 0, 0, 0.4);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .sig-content {
+            position: relative;
+            width: 500px;
+            height: 490px;
+            max-width: 650px;
+            padding: 0 25px 25px;
+            border-radius: 28px;
+            overflow: hidden;
+            background: white;
+            z-index: 1;
+            animation: popupZoom 2s ease-in-out infinite alternate;
+            box-shadow: 0 0 25px rgba(0, 255, 85, .4), 0 0 25px rgba(0, 128, 255, .4);
+        }
+
+        .sig-content::before {
+            content: "";
+            position: absolute;
+            width: 320%;
+            height: 320%;
+            top: -110%;
+            left: -110%;
+            border-radius: 50%;
+            background: conic-gradient(transparent 0deg 70deg, #124C36 70deg 120deg, transparent 120deg 210deg, #124C36 210deg 260deg, transparent 260deg 360deg);
+            animation: rotateBorder 18s linear infinite;
+            z-index: -2;
+            filter: blur(2px) drop-shadow(0 0 20px #124C36) drop-shadow(0 0 18px #373738);
+        }
+
+        .sig-content::after {
+            content: "";
+            position: absolute;
+            inset: 4px;
+            background: white;
+            border-radius: 24px;
+            z-index: -1;
+        }
+
+        .sig-header {
+            background: #0f6445;
+            position: relative;
+            padding: 4px 10px;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .sig-icon {
+            font-size: 26px;
+            color: white;
+            animation: iconFloat 2s ease-in-out infinite;
+        }
+
+        .sig-header h2 {
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
+            border: none;
+            min-height: unset;
+            display: block;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sig-text {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sig-text p {
+            font-size: 17px;
+            color: #104B35;
+            position: relative;
+            display: inline-block;
+        }
+
+        .sig-text p::before,
+        .sig-text p::after {
+            content: "";
+            position: absolute;
+            width: 45px;
+            height: 2px;
+            background: #104B35;
+            top: 50%;
+        }
+
+        .sig-text p::before {
+            left: -60px;
+        }
+
+        .sig-text p::after {
+            right: -60px;
+        }
+
+        .canvas-wrapper {
+            border: 2px dashed #999;
+            border-radius: 18px;
+            width: 100%;
+            height: 260px;
+            margin: 0 auto 20px;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+        }
+
+        #signatureCanvas {
+            width: 100%;
+            height: 240px;
+            display: block;
+            background: white;
+            border-radius: 14px;
+            cursor: crosshair;
+        }
+
+        #sigBtns {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            width: 100%;
+        }
+
+        #deleteSignature,
+        #saveSignature {
+            border: none;
+            padding: 12px 26px;
+            border-radius: 14px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        #deleteSignature {
+            background: white;
+            color: #0f6445;
+            border: 2px solid #104B35;
+        }
+
+        #saveSignature {
+            background: #0f6445;
+            color: white;
+        }
+
+        #deleteSignature:hover,
+        #saveSignature:hover {
+            transform: scale(1.06);
+        }
+
+        @keyframes rotateBorder {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes popupZoom {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.02);
+            }
+        }
+
+        @keyframes iconFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        /* ===== AGREEMENT MODAL ===== */
+        #agreementModal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 50px;
+            background: rgba(0, 0, 0, .35);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            overflow: hidden;
+            box-sizing: border-box;
+            animation: modalFade .5s ease;
+        }
+
+        #modalContent {
+            position: relative;
+            width: 90%;
+            max-width: 850px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+            overflow-x: hidden;
+            margin: 0 auto;
+            top: 50px;
+            padding: 25px;
+            border-radius: 28px;
+            background: #ffffff !important;
+            color: #000000 !important;
+            animation: none !important;
+            box-shadow: none !important;
+            scrollbar-width: thin
+        }
+
+        #modalContent::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #modalContent::-webkit-scrollbar-track {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background: transparent;
+        }
+
+        #modalContent::-webkit-scrollbar-thumb {
+            background: #0f6445;
+            border-radius: 20px;
+        }
+
+        #modalContent h2 {
+            text-align: center;
+            color: #104B35;
+            font-size: 40px;
+            margin-bottom: 25px;
+            position: relative;
+            animation: titleGlow 2s ease-in-out infinite alternate;
+            border: none;
+            min-height: unset;
+            display: block;
+        }
+
+        /* ===== MODAL DATA BOXES ===== */
+        .modal-info-box {
+            border: 2px solid rgba(16, 75, 53, .08);
+            padding: 18px;
+            border-radius: 20px;
+            margin-bottom: 22px;
+            transition: .35s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, .06);
+        }
+
+        .modal-info-box:hover {
+            transform: translateY(-3px) scale(1.01);
+            /* box-shadow: 0 0 18px rgba(0, 255, 85, .15), 0 0 18px rgba(0, 128, 255, .15); */
+        }
+
+        .modal-info-box::before {
+            content: "";
+            position: absolute;
+            left: -100%;
+            top: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #00ff66, #0080ff);
+            animation: lineMove 4s linear infinite;
+        }
+
+        .modal-info-box h3 {
+            color: #104B35;
+            font-size: 22px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #dcdcdc;
+            padding-bottom: 10px;
+            min-height: unset;
+            display: block;
+        }
+
+        .modal-info-box p,
+        .modal-info-box li {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #222;
+        }
+
+        .modal-info-box ul {
+            padding-left: 20px;
+        }
+
+        /* Urdu box inside modal */
+        .modal-urdu-box {
+            direction: rtl;
+            text-align: right;
+            font-family: "Noto Nastaliq Urdu", "Times New Roman", serif;
+            unicode-bidi: embed;
+            line-height: 2.2;
+        }
+
+        .modal-urdu-box h3 {
+            text-align: right !important;
+            width: 100%;
+        }
+
+        .modal-urdu-box ul {
+            padding-right: 25px !important;
+            padding-left: 0 !important;
+        }
+
+        .modal-urdu-box li {
+            text-align: right !important;
+            list-style-position: outside;
+            margin-bottom: 10px;
+            line-height: 2;
+        }
+
+        .modal-urdu-box p {
+            text-align: right;
+        }
+
+        /* Signature box inside modal */
+        .modal-sig-preview {
+            border: 1px solid #ccc;
+            width: 40%;
+            min-height: 140px;
+            margin-top: 10px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .modal-sig-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Agreement date */
+        .modal-date-line {
+            color: #666;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Modal button row */
+        .modal-btn-row {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: flex-end;
+        }
+
+        #closeModalBtn {
+            background: white;
+            border: 2px solid #dc3545 !important;
+            color: #dc3545;
+            width: auto;
+            padding: 10px 20px;
+        }
+
+        #downloadPDFBtn {
+            background: #0f6445;
+            color: white;
+            width: auto;
+            padding: 10px 20px;
+        }
+
+        #closeModalBtn:hover,
+        #downloadPDFBtn:hover {
+            transform: translateY(-2px) scale(1.03);
+        }
+
+        #modalData {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        #modalData * {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        @keyframes modalFade {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-120px) scale(.9);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes titleGlow {
+            0% {
+                text-shadow: 0 0 0px rgba(0, 255, 85, 0);
+            }
+
+            100% {
+                text-shadow: 0 0 10px rgba(0, 255, 85, .35), 0 0 10px rgba(0, 128, 255, .35);
+            }
+        }
+
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .dip-container {
+                padding: 20px;
+            }
+
+            .goat-img img {
+                width: 120px;
+            }
+
+            .pkg-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .dip-container {
+                padding: 15px;
+                border-radius: 14px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            .goat-img img {
+                width: 90px;
+            }
+
+            .date-row {
+                flex-direction: column;
+            }
+
+            button {
+                font-size: 15px;
+                padding: 11px;
+            }
+        }
+
+        /* ===== PRINT CONDITIONS WRAPPER ===== */
+        .print-conditions-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+            width: 100%;
+        }
+
+        .print-left {
+            width: 48%;
+        }
+
+        .print-right {
+            width: 48%;
+        }
+
+        .print-box,
+        .print-urdu {
+            margin-bottom: 45px;
+            page-break-inside: avoid;
+        }
+
+        .print-box h3,
+        .print-urdu h3 {
+            font-size: 30px;
+            color: #104B35;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        .print-box {
+            direction: ltr;
+            text-align: left;
+        }
+
+        .print-box ul {
+            padding-left: 25px;
+        }
+
+        .print-box li {
+            line-height: 2;
+            margin-bottom: 18px;
+            font-size: 18px;
+        }
+
+        .print-urdu {
+            direction: rtl;
+            text-align: right;
+            font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", serif;
+        }
+
+        .print-urdu ul {
+            padding-right: 25px;
+        }
+
+        .print-urdu li {
+            line-height: 3;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        @media print {
+            .print-conditions-wrapper {
+                display: flex !important;
+                align-items: flex-start !important;
+            }
+
+            .print-left,
+            .print-right {
+                width: 48% !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="liveToast" class="toast text-white border-0 fade hide" role="alert" data-bs-delay="2500">
+            <div class="d-flex">
+                <div class="toast-body" id="toastMsg"></div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        </div>
+    </div>
+
+    <nav>
+        <div class="nav-child">
+            <ul>
+                <li><a href="/index.html"><img class="IconPrime" src="./asest/prime goat farm logo pic png01.png"
+                            alt=""></a></li>
+                <li><a href="/index.html" class="active">Home</a></li>
+                <li><a href="/introduction.html">Introduction</a></li>
+                <li><a href="/service.html">Services</a></li>
+                <li><a href="/location.html">Contact Us</a></li>
+            </ul>
+            <button class="nav-hamburger-btn" id="navHamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="offscreen-overlay" id="offscreenOverlay"></div>
+
+    <div class="offscreen-menu" id="offscreenMenu" aria-hidden="true">
+        <div class="offscreen-menu-inner">
+            <ul>
+                <li><a href="/index.html" class="offscreen-link">Home</a></li>
+                <li><a href="/introduction.html" class="offscreen-link">Introduction</a></li>
+                <li><a href="/service.html" class="offscreen-link">Services</a></li>
+                <li><a href="/location.html" class="offscreen-link">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="dip-container">
+        <div class="goat-img">
+            <img src="./asest/prime goat farm logo pic png01.png" alt="">
+        </div>
+        <h1>FINAL MASTER AGREEMENT</h1>
+
+        <div class="form-card">
+
+            <!-- Owner Information -->
+            <div class="section">
+                <h3>Owner Information</h3>
+                <label>Name</label>
+                <input type="text" id="ownerName" placeholder="Enter owner name"
+                    oninput="this.value=this.value.replace(/[^a-zA-Z\u0600-\u06FF\s]/g,'')">
+                <label>Contact</label>
+                <input type="text" id="ownerContact" maxlength="11" pattern="[0-9]{11}"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')" class="no-arrow"
+                    placeholder="Enter phone number" />
+                <label>CNIC</label>
+                <input type="text" id="ownerCNIC" maxlength="15" placeholder="12345-1234567-1"
+                    oninput="this.value=this.value.replace(/[^0-9-]/g,'')">
+            </div>
+
+            <!-- Animal Details -->
+            <div class="section">
+                <h3>Animal Details</h3>
+                <label>Quantity</label>
+                <input type="number" id="animalQty" placeholder="Enter quantity" required>
+                <label>Type / Color</label>
+                <input type="text" id="animalType" placeholder="Goat type/color" required
+                    oninput="this.value = this.value.replace(/[0-9]/g, '')" />
+                <label>Special Mark</label>
+                <input type="text" id="animalMark" placeholder="Any mark">
+            </div>
+
+            <!-- Duration -->
+            <div class="section">
+                <h3>Duration</h3>
+                <label>Start Date</label>
+                <input type="date" id="startDate" required>
+                <label>Return Date</label>
+                <input type="date" id="returnDate" required>
+            </div>
+
+            <!-- Packages -->
+            <div class="section">
+                <h3>Packages</h3>
+                <label class="radio"><input type="radio" name="pkg" value="Premium (5500)"> Premium (5500)</label>
+                <label class="radio"><input type="radio" name="pkg" value="Standard (4500)" checked> Standard
+                    (4500)</label>
+                <label class="radio"><input type="radio" name="pkg" value="Basic (3500)"> Basic (3500)</label>
+            </div>
+
+            <!-- Terms and Conditions -->
+            <div class="container">
+
+                <!-- English Box -->
+                <div class="box" id="englishTermsBox">
+                    <h3>Terms &amp; Conditions</h3>
+                    <p>1. The farm has the right to reasonably increase charges (prior notice will be given).</p>
+                    <p>2. Additional charges will apply if the animal is kept after the agreed date.</p>
+                    <p>3. If the animal is taken back before the agreed duration, the paid fee will not be refunded.</p>
+                    <h3>Important Terms:</h3>
+                    <ul>
+                        <li>Advance payment is mandatory.</li>
+                        <li>Sick or infected animals will not be accepted.</li>
+                        <li>The farm will provide standard feed, however weight gain is not guaranteed.</li>
+                        <li>Immediate notice will be given in case of illness.</li>
+                        <li>The farm will not be responsible in case of natural death, theft, or any unforeseen
+                            incident.</li>
+                    </ul>
+                    <h3>Payments &amp; Discipline:</h3>
+                    <ul>
+                        <li>In case of delayed payment, the farm has the right to charge extra or return the animal.
+                        </li>
+                    </ul>
+                    <h3>Visit Policy:</h3>
+                    <ul>
+                        <li>The owner can visit at any time.</li>
+                        <li>At least 1 hour prior notice is required.</li>
+                        <li>The owner will not handle the animal without staff permission.</li>
+                    </ul>
+                    <h3>Updates:</h3>
+                    <ul>
+                        <li>The farm may provide animal photos or videos from time to time.</li>
+                    </ul>
+                    <h3>Security:</h3>
+                    <ul>
+                        <li>Basic security arrangements are available, however full responsibility is not on the farm.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Urdu Box -->
+                <div class="box urdu" id="urduTermsBox">
+                    <h3>شرائط و ضوابط</h3>
+                    <p>1. فارم کو چارجز میں مناسب اضافہ کرنے کا حق حاصل ہوگا (پہلے اطلاع دی جائے گی)۔</p>
+                    <p>2. مقررہ تاریخ کے بعد جانور رکھنے پر اضافی چارجز لاگو ہوں گے۔</p>
+                    <p>3. مدت سے پہلے جانور واپس لینے کی صورت میں ادا شدہ فیس قابل واپسی نہیں ہوگی۔</p>
+                    <h3>اہم شرائط:</h3>
+                    <ul>
+                        <li>ایڈوانس ادائیگی لازمی ہوگی۔</li>
+                        <li>بیمار یا متاثرہ جانور قبول نہیں کیے جائیں گے۔</li>
+                        <li>فارم معیاری خوراک فراہم کرے گا، تاہم وزن میں اضافہ کی ضمانت نہیں ہوگی۔</li>
+                        <li>بیماری کی صورت میں فوری اطلاع دی جائے گی۔</li>
+                        <li>قدرتی موت، چوری یا کسی بھی غیر متوقع واقعہ کی صورت میں فارم ذمہ دار نہیں ہوگا۔</li>
+                    </ul>
+                    <h3>ادائیگی اور نظم و ضبط:</h3>
+                    <ul>
+                        <li>ادائیگی میں تاخیر کی صورت میں فارم کو اضافی چارجز لینے یا جانور واپس کرنے کا حق ہوگا۔</li>
+                    </ul>
+                    <h3>وزٹ پالیسی:</h3>
+                    <ul>
+                        <li>مالک کسی بھی وقت وزٹ کر سکتا ہے۔</li>
+                        <li>کم از کم 1 گھنٹہ پہلے اطلاع دینا ضروری ہے۔</li>
+                        <li>عملے کی اجازت کے بغیر جانور کو ہاتھ نہیں لگایا جائے گا۔</li>
+                    </ul>
+                    <h3>اپڈیٹس:</h3>
+                    <ul>
+                        <li>فارم وقتاً فوقتاً جانور کی تصاویر یا ویڈیوز فراہم کر سکتا ہے۔</li>
+                    </ul>
+                    <h3>سیکیورٹی:</h3>
+                    <ul>
+                        <li>بنیادی سیکیورٹی موجود ہے، تاہم مکمل ذمہ داری فارم پر نہیں ہوگی۔</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Signatures -->
+            <div class="form ">
+                <div class="row ">
+                    <h1 class="sing">Owner Signature</h1>
+                    <div class="singnatur-owner">&#10004;</div>
+                </div>
+                <div class="row">
+                    <h1 class="sing">User Signature</h1>
+                    <div id="userSignatureBox" class="sig-box">Click to sign</div>
+                </div>
+
+                <!-- Signature Modal -->
+                <div id="signatureModal" class="sig-modal">
+                    <div class="sig-content">
+                        <div class="sig-header">
+                            <div class="sig-icon">&#9997;</div>
+                            <h2>Your Signature</h2>
+                        </div>
+                        <div class="sig-text">
+                            <p>Please sign in the box below</p>
+                        </div>
+                        <div class="canvas-wrapper">
+                            <canvas id="signatureCanvas"></canvas>
+                        </div>
+                        <div id="sigBtns">
+                            <button id="deleteSignature">&#128465; Delete</button>
+                            <button id="saveSignature">&#10004; Save</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Agreement Modal -->
+            <div id="agreementModal">
+                <div id="modalContent">
+                    <h2>&#128196; Agreement Summary</h2>
+                    <div id="modalData"></div>
+                    <div class="modal-btn-row">
+                        <button id="closeModalBtn">Close</button>
+                        <button id="downloadPDFBtn">&#128229; Download Agreement</button>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" id="submitAgreementBtn">Submit Agreement</button>
+
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+        import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
+        import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-messaging.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCK2j13R9IoIP0Tjrmsj-qCwDtFUW_oa4E",
+            authDomain: "prime-goat-farm-3e148.firebaseapp.com",
+            projectId: "prime-goat-farm-3e148",
+            storageBucket: "prime-goat-farm-3e148.firebasestorage.app",
+            messagingSenderId: "42499736897",
+            appId: "1:42499736897:web:462172284aa9ebd8d4cdc0",
+            databaseURL: "https://prime-goat-farm-3e148-default-rtdb.firebaseio.com"
+        };
+
+        (async () => {
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase(app);
+            const messaging = getMessaging(app);
+
+            await Notification.requestPermission();
+            getToken(messaging, { vapidKey: "BO-M9hgAgYpGnQX5etrE-iAKCEOoh6knlSpZecU84qvIBWf1WreyWoX6O42WbQ6dMOw_6_14CPWfxfMoj8T4bow" })
+                .then(token => { if (token) window._fcmToken = token; })
+                .catch(err => console.error("FCM:", err));
+
+            window._db = db;
+            window._ref = ref;
+            window._push = push;
+        })();
+    </script>
+
+    <script>
+
+        // ========== NAVBAR ==========
+        const navBtn = document.getElementById('navHamburgerBtn');
+        const offscreenMenu = document.getElementById('offscreenMenu');
+        const offscreenOverlay = document.getElementById('offscreenOverlay');
+        const offscreenLinks = document.querySelectorAll('.offscreen-link');
+
+        function openOffscreenMenu() {
+            offscreenMenu.classList.add('offscreen-open');
+            offscreenOverlay.classList.add('offscreen-overlay-visible');
+            navBtn.classList.add('nav-btn-active');
+            navBtn.setAttribute('aria-expanded', 'true');
+            offscreenMenu.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            trapFocus();
+        }
+
+        function closeOffscreenMenu() {
+            offscreenMenu.classList.remove('offscreen-open');
+            offscreenOverlay.classList.remove('offscreen-overlay-visible');
+            navBtn.classList.remove('nav-btn-active');
+            navBtn.setAttribute('aria-expanded', 'false');
+            offscreenMenu.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            navBtn.focus();
+        }
+
+        function trapFocus() {
+            const focusable = Array.from(offscreenMenu.querySelectorAll('a[href], button:not([disabled])'));
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (first) first.focus();
+            function handleTab(e) {
+                if (e.key !== 'Tab') return;
+                if (e.shiftKey) {
+                    if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+                } else {
+                    if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+                }
+            }
+            document.addEventListener('keydown', handleTab);
+        }
+
+        navBtn.addEventListener('click', function () {
+            offscreenMenu.classList.contains('offscreen-open') ? closeOffscreenMenu() : openOffscreenMenu();
+        });
+
+        offscreenOverlay.addEventListener('click', closeOffscreenMenu);
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeOffscreenMenu(); });
+        offscreenLinks.forEach(function (link) { link.addEventListener('click', closeOffscreenMenu); });
+
+        function showToast(msg, type) {
+            const toastEl = document.getElementById("liveToast");
+            const toastMsg = document.getElementById("toastMsg");
+            toastMsg.innerText = msg;
+            toastEl.classList.remove("bg-success", "bg-danger");
+            toastEl.classList.add(type === "success" ? "bg-success" : "bg-danger");
+            const toast = new bootstrap.Toast(toastEl);
+            toast.show();
+        }
+
+
+        // ========== SIGNATURE PAD ==========
+        window.addEventListener('load', function () {
+            var sigBox = document.getElementById('userSignatureBox');
+            var sigModal = document.getElementById('signatureModal');
+            var canvas = document.getElementById('signatureCanvas');
+            var ctx = canvas.getContext('2d');
+            var saveBtn = document.getElementById('saveSignature');
+            var deleteBtn = document.getElementById('deleteSignature');
+            var btns = document.getElementById('sigBtns');
+
+            canvas.width = 430;
+            canvas.height = 232;
+            var drawing = false;
+
+            sigBox.addEventListener('click', function () {
+                sigModal.style.display = 'flex';
+                btns.style.display = 'flex';
+            });
+
+            sigModal.addEventListener('click', function (e) {
+                if (e.target === sigModal) sigModal.style.display = 'none';
+            });
+
+            function getPos(e) {
+                var rect = canvas.getBoundingClientRect();
+                var x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+                var y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+                return { x: x, y: y };
+            }
+
+            canvas.addEventListener('mousedown', function (e) {
+                drawing = true;
+                ctx.beginPath();
+                var p = getPos(e);
+                ctx.moveTo(p.x, p.y);
+            });
+
+            canvas.addEventListener('mouseup', function () { drawing = false; });
+            canvas.addEventListener('mouseleave', function () { drawing = false; });
+
+            canvas.addEventListener('mousemove', function (e) {
+                if (!drawing) return;
+                var p = getPos(e);
+                ctx.lineWidth = 2;
+                ctx.lineCap = 'round';
+                ctx.lineTo(p.x, p.y);
+                ctx.stroke();
+            });
+
+            canvas.addEventListener('touchstart', function (e) {
+                drawing = true;
+                ctx.beginPath();
+                var p = getPos(e);
+                ctx.moveTo(p.x, p.y);
+            });
+
+            canvas.addEventListener('touchend', function () { drawing = false; });
+            canvas.addEventListener('touchcancel', function () { drawing = false; });
+
+            canvas.addEventListener('touchmove', function (e) {
+                if (!drawing) return;
+                var p = getPos(e);
+                ctx.lineWidth = 2;
+                ctx.lineCap = 'round';
+                ctx.lineTo(p.x, p.y);
+                ctx.stroke();
+            });
+
+            // Save signature — DOM approach, no innerHTML
+            saveBtn.addEventListener('click', function () {
+                var dataUrl = canvas.toDataURL();
+                sigBox.innerHTML = '';
+                var img = document.createElement('img');
+                img.src = dataUrl;
+                img.style.cssText = 'width:100%; height:100%; object-fit:cover;';
+                sigBox.appendChild(img);
+                sigModal.style.display = 'none';
+            });
+
+            deleteBtn.addEventListener('click', function () {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            });
+        });
+
+
+        // ========== MODAL HELPERS ==========
+        function closeModal() {
+            document.getElementById('agreementModal').style.display = 'none';
+        }
+
+        // Creates a styled info box div
+        function createInfoBox() {
+            var div = document.createElement('div');
+            div.className = 'modal-info-box';
+            return div;
+        }
+
+        // Creates an h3 heading
+        function makeH3(text) {
+            var h = document.createElement('h3');
+            h.textContent = text;
+            return h;
+        }
+
+        // Creates a paragraph (supports simple bold via innerHTML for <strong> tags)
+        function makePara(html) {
+            var p = document.createElement('p');
+            p.innerHTML = html;
+            return p;
+        }
+
+
+        // ========== PDF DOWNLOAD ==========
+        async function downloadAgreement() {
+
+            const fileName = 'prime-goat-farm-agreement.pdf';
+
+            const modalContent = document.getElementById('modalContent');
+            const btns = modalContent.querySelector('.modal-btn-row');
+            btns.style.display = 'none';
+
+            // Temporarily remove scroll restriction
+            const originalMaxHeight = modalContent.style.maxHeight;
+            const originalOverflow = modalContent.style.overflow;
+            modalContent.style.maxHeight = 'none';
+            modalContent.style.overflow = 'visible';
+
+            const style = document.createElement('style');
+            style.innerHTML = '#modalContent::before, #modalContent::after { display: none !important; }';
+            document.head.appendChild(style);
+
+            const canvas = await html2canvas(modalContent, {
+                scale: 3,               // Higher quality
+                useCORS: true,
+                backgroundColor: '#ffffff',
+                logging: false,
+                y: 0,                   // Start from top of element
+                scrollX: 0,
+                scrollY: 0,
+                windowWidth: modalContent.scrollWidth,
+                windowHeight: modalContent.scrollHeight
+            });
+
+            document.head.removeChild(style);
+
+            // Restore
+            modalContent.style.maxHeight = originalMaxHeight;
+            modalContent.style.overflow = originalOverflow;
+
+            btns.style.display = 'flex';
+
+            const imgData = canvas.toDataURL('image/png');
+            let link = document.createElement('a');
+            link.download = 'prime-goat-farm-agreement.png';
+            link.href = imgData;
+            link.click();
+
+            // Cloudinary + Firebase
+            try {
+                const formData = new FormData();
+                formData.append('file', imgData);
+                formData.append('upload_preset', 'prime-goat-farm-pdf');
+
+                const res = await fetch('https://api.cloudinary.com/v1_1/duyytg5os/image/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await res.json();
+
+                await window._push(window._ref(window._db, "bookings"), {
+                    ownerName: document.getElementById('ownerName').value || '',
+                    ownerContact: document.getElementById('ownerContact').value || '',
+                    ownerCNIC: document.getElementById('ownerCNIC').value || '',
+                    animalQty: document.getElementById('animalQty').value || '',
+                    animalType: document.getElementById('animalType').value || '',
+                    animalMark: document.getElementById('animalMark').value || '',
+                    startDate: document.getElementById('startDate').value || '',
+                    returnDate: document.getElementById('returnDate').value || '',
+                    package: (function () { var p = ''; document.querySelectorAll('input[name="pkg"]').forEach(function (r) { if (r.checked) p = r.value; }); return p; })(),
+                    agreementUrl: data.secure_url,
+                    publicId: data.public_id,
+                    timestamp: new Date().toISOString(),
+                    fcmToken: window._fcmToken || 'not-granted'
+                });
+
+                showToast("Agreement saved successfully 😎", "success");
+                console.log('✅ Saved:', data.secure_url);
+            } catch (err) {
+                console.error(err);
+                showToast("Downloaded but cloud save failed", "danger");
+            }
+        }
+
+        // ========== FORM SUBMIT ==========
+        document.addEventListener('DOMContentLoaded', function () {
+
+            document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+            document.getElementById('downloadPDFBtn').addEventListener('click', downloadAgreement);
+
+            document.getElementById('agreementModal').addEventListener('click', function (e) {
+                if (e.target === this) closeModal();
+            });
+
+            document.getElementById('submitAgreementBtn').addEventListener('click', function (e) {
+                e.preventDefault();
+
+                var ownerName = document.getElementById('ownerName').value.trim();
+                var ownerContact = document.getElementById('ownerContact').value.trim();
+                var ownerCNIC = document.getElementById('ownerCNIC').value.trim();
+                var animalQty = document.getElementById('animalQty').value.trim();
+                var animalType = document.getElementById('animalType').value.trim();
+                var animalMark = document.getElementById('animalMark').value.trim();
+                var startDate = document.getElementById('startDate').value;
+                var returnDate = document.getElementById('returnDate').value;
+
+                var selectedPackage = '';
+                document.querySelectorAll('input[name="pkg"]').forEach(function (r) { if (r.checked) selectedPackage = r.value; });
+
+                if (!ownerName) { showToast("Please fill in Owner Name", "danger"); return; }
+                if (!ownerContact) { showToast("Please fill in Contact Number", "danger"); return; }
+                if (ownerContact.length < 11) { showToast("Contact must be 11 digits", "danger"); return; }
+                if (!ownerCNIC) { showToast("Please fill in CNIC", "danger"); return; }
+                if (!animalQty) { showToast("Please fill in Animal Quantity", "danger"); return; }
+                if (!animalType) { showToast("Please fill in Animal Type/Color", "danger"); return; }
+                if (!animalMark) { showToast("Please fill in Special Mark", "danger"); return; }
+                if (!startDate) { showToast("Please select Start Date", "danger"); return; }
+                if (!returnDate) { showToast("Please select Return Date", "danger"); return; }
+                if (!selectedPackage) { showToast("Please select a Package", "danger"); return; }
+
+                var sigBox = document.getElementById('userSignatureBox');
+                if (!sigBox.querySelector('img')) { showToast("Please add your Signature", "danger"); return; }
+
+                // Gather values
+
+                var selectedPackage = 'Not selected';
+                document.querySelectorAll('input[name="pkg"]').forEach(function (r) {
+                    if (r.checked) selectedPackage = r.value;
+                });
+
+                var signatureBox = document.getElementById('userSignatureBox');
+                var modalData = document.getElementById('modalData');
+                modalData.innerHTML = '';
+
+                // --- Owner Info ---
+                var ownerBox = createInfoBox();
+                ownerBox.appendChild(makeH3('Owner Information'));
+                ownerBox.appendChild(makePara('<strong>Name:</strong> ' + ownerName));
+                ownerBox.appendChild(makePara('<strong>Contact:</strong> ' + ownerContact));
+                ownerBox.appendChild(makePara('<strong>CNIC:</strong> ' + ownerCNIC));
+                modalData.appendChild(ownerBox);
+
+                // --- Animal Details ---
+                var animalBox = createInfoBox();
+                animalBox.appendChild(makeH3('Animal Details'));
+                animalBox.appendChild(makePara('<strong>Quantity:</strong> ' + animalQty));
+                animalBox.appendChild(makePara('<strong>Type/Color:</strong> ' + animalType));
+                animalBox.appendChild(makePara('<strong>Special Mark:</strong> ' + animalMark));
+                animalBox.appendChild(makePara('<strong>Package:</strong> ' + selectedPackage));
+                modalData.appendChild(animalBox);
+
+                // --- Duration ---
+                var durBox = createInfoBox();
+                durBox.appendChild(makeH3('Duration'));
+                durBox.appendChild(makePara('<strong>Start Date:</strong> ' + startDate));
+                durBox.appendChild(makePara('<strong>Return Date:</strong> ' + returnDate));
+                modalData.appendChild(durBox);
+
+                // --- English Terms ---
+                var engBox = createInfoBox();
+                engBox.appendChild(makeH3('Terms & Conditions (English)'));
+                var engInner = document.createElement('div');
+                engInner.innerHTML = document.getElementById('englishTermsBox').innerHTML;
+                engBox.appendChild(engInner);
+                modalData.appendChild(engBox);
+
+                // --- Urdu Terms ---
+                var urduBox = createInfoBox();
+                urduBox.classList.add('modal-urdu-box');
+                var urduH = document.createElement('h3');
+                urduH.textContent = 'شرائط و ضوابط (Urdu)';
+                urduBox.appendChild(urduH);
+                var urduInner = document.createElement('div');
+                urduInner.innerHTML = document.getElementById('urduTermsBox').innerHTML;
+                urduBox.appendChild(urduInner);
+                modalData.appendChild(urduBox);
+
+                // --- Signatures ---
+                var sigSection = createInfoBox();
+                sigSection.appendChild(makeH3('Signatures'));
+                sigSection.appendChild(makePara('<strong>Owner Signature:</strong> &#10004;&#65039; Signed'));
+
+                var userSigLabel = document.createElement('p');
+                userSigLabel.innerHTML = '<strong>User Signature:</strong>';
+                sigSection.appendChild(userSigLabel);
+
+                var sigPreview = document.createElement('div');
+                sigPreview.className = 'modal-sig-preview';
+                sigPreview.appendChild(signatureBox.cloneNode(true));
+                sigSection.appendChild(sigPreview);
+                modalData.appendChild(sigSection);
+
+                // --- Date ---
+                var dateLine = document.createElement('p');
+                dateLine.className = 'modal-date-line';
+                dateLine.innerHTML = '<strong>Agreement Date:</strong> ' + new Date().toLocaleString();
+                modalData.appendChild(dateLine);
+
+                // Show modal
+                document.getElementById('agreementModal').style.display = 'flex';
+            });
+
+        });
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</body>
+
+</html>

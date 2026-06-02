@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Goat — Bookings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --green: #124C36;
+            --green-light: #1a6b4a;
+            --green-pale: #e8f5ee;
+            --black: #0d0d0d;
+            --gray: #6b7280;
+            --gray-light: #f4f4f5;
+            --white: #ffffff;
+            --danger: #dc2626;
+            --danger-light: #fef2f2;
+            --border: #e4e4e7;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #f7f7f8;
+            color: var(--black);
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            background: var(--black);
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-logo {
+            padding: 28px 24px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .sidebar-logo img {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+            border-radius: 10px;
+            background: var(--green);
+            padding: 4px;
+        }
+
+        .sidebar-logo h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--white);
+            margin-top: 10px;
+            line-height: 1.2;
+        }
+
+        .sidebar-logo p {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 2px;
+        }
+
+        .sidebar-nav {
+            padding: 20px 12px;
+            flex: 1;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s;
+            margin-bottom: 2px;
+        }
+
+        .sidebar-nav a.active,
+        .sidebar-nav a:hover {
+            background: var(--green);
+            color: var(--white);
+        }
+
+        .sidebar-nav a svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-footer {
+            padding: 16px 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.25);
+            text-align: center;
+        }
+
+        /* MAIN */
+        .main {
+            margin-left: 240px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* TOPBAR */
+        .topbar {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .topbar-left h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .topbar-left p {
+            font-size: 12px;
+            color: var(--gray);
+            margin-top: 1px;
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .search-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gray-light);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-size: 13px;
+            color: var(--gray);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .search-trigger:hover {
+            background: var(--green-pale);
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        .search-trigger svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .sort-select {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-family: 'DM Sans', sans-serif;
+            color: var(--black);
+            background: var(--white);
+            cursor: pointer;
+            outline: none;
+        }
+
+        .sort-select:focus {
+            border-color: var(--green);
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        /* STATS */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            padding: 24px 28px 0;
+        }
+
+        .stat-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .stat-card .label {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-card .value {
+            font-family: 'Syne', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--black);
+            margin-top: 6px;
+        }
+
+        .stat-card .sub {
+            font-size: 11px;
+            color: var(--green);
+            margin-top: 4px;
+        }
+
+        /* TABLE */
+        .table-section {
+            padding: 20px 28px 40px;
+            flex: 1;
+        }
+
+        .table-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+
+        .table-header h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .count-badge {
+            background: var(--green-pale);
+            color: var(--green);
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+
+        .table-wrap {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            max-height: 450px;
+            overflow: auto;
+            box-shadow: var(--shadow);
+            scrollbar-width: thin;
+            scrollbar-color: #000 #9a9da1;
+            position: relative;
+        }
+
+        .table-wrap::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        .table-wrap::-webkit-scrollbar-track {
+            background: #9a9da1;
+            border-radius: 999px;
+        }
+
+        .table-wrap::-webkit-scrollbar-thumb {
+            background: #000;
+            border-radius: 999px;
+        }
+
+        table {
+            width: 100%;
+            min-width: 950px;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        thead tr {
+            background: var(--gray-light);
+            border-bottom: 1px solid var(--border);
+        }
+
+        thead th {
+            padding: 12px 16px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: left;
+            position: sticky;
+            top: 0;
+            z-index: 5;
+            background: var(--gray-light);
+        }
+
+        tbody tr {
+            border-bottom: 1px solid var(--border);
+            transition: background 0.15s;
+            animation: rowIn 0.3s ease forwards;
+        }
+
+        tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: var(--gray-light);
+        }
+
+        @keyframes rowIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        tbody td {
+            padding: 13px 16px;
+            font-size: 13px;
+            color: var(--black);
+            vertical-align: middle;
+        }
+
+        .id-badge {
+            font-family: 'Syne', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            background: var(--black);
+            color: var(--white);
+            padding: 3px 8px;
+            border-radius: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .name-cell {
+            font-weight: 500;
+        }
+
+        .pkg-badge {
+            background: var(--green-pale);
+            color: var(--green);
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .date-cell {
+            color: var(--gray);
+            font-size: 12px;
+        }
+
+        /* ACTION MENU */
+        .action-menu-wrap {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dots-btn {
+            background: var(--gray-light);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 5px 8px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+            transition: all 0.2s;
+        }
+
+        .dots-btn:hover {
+            background: var(--border);
+        }
+
+        .dots-btn span {
+            width: 3px;
+            height: 3px;
+            background: var(--black);
+            border-radius: 50%;
+            display: block;
+        }
+
+        .action-dropdown {
+            display: none;
+            position: fixed;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            box-shadow: var(--shadow-lg);
+            min-width: 160px;
+            z-index: 999;
+            overflow: hidden;
+        }
+
+        .action-dropdown.open {
+            display: block;
+            animation: modalIn 0.2s ease;
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(-6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .action-dropdown a,
+        .action-dropdown button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            padding: 10px 14px;
+            font-size: 13px;
+            font-family: 'DM Sans', sans-serif;
+            background: none;
+            border: none;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            color: var(--black);
+            text-decoration: none;
+            transition: background 0.15s;
+            text-align: left;
+        }
+
+        .action-dropdown a:last-child,
+        .action-dropdown button:last-child {
+            border-bottom: none;
+        }
+
+        .action-dropdown a:hover,
+        .action-dropdown button:hover {
+            background: var(--gray-light);
+        }
+
+        .action-dropdown button.del {
+            color: var(--danger);
+        }
+
+        .action-dropdown button.del:hover {
+            background: var(--danger-light);
+        }
+
+        /* LOADING/EMPTY */
+        .loading-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--gray);
+        }
+
+        .spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid var(--border);
+            border-top-color: var(--green);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 12px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--gray);
+        }
+
+        .empty-state svg {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 12px;
+            opacity: 0.3;
+        }
+
+        /* SEARCH OVERLAY */
+        .search-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            display: none;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 80px;
+        }
+
+        .search-overlay.active {
+            display: flex;
+        }
+
+        .search-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+
+        .search-modal {
+            position: relative;
+            z-index: 1;
+            background: var(--white);
+            border-radius: 16px;
+            width: 90%;
+            max-width: 580px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            animation: modalIn 0.25s ease;
+        }
+
+        .search-input-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .search-input-wrap svg {
+            width: 18px;
+            height: 18px;
+            color: var(--gray);
+            flex-shrink: 0;
+        }
+
+        .search-input-wrap input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            font-family: 'DM Sans', sans-serif;
+            color: var(--black);
+            background: transparent;
+        }
+
+        .search-input-wrap input::placeholder {
+            color: var(--gray);
+        }
+
+        .cancel-search {
+            background: var(--gray-light);
+            border: none;
+            border-radius: 6px;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            color: var(--black);
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .cancel-search:hover {
+            background: var(--border);
+        }
+
+        .search-results {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .search-result-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-item:hover {
+            background: var(--gray-light);
+        }
+
+        .sri-left .sri-name {
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .sri-left .sri-meta {
+            font-size: 11px;
+            color: var(--gray);
+            margin-top: 2px;
+        }
+
+        .sri-right .sri-pkg {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            color: var(--green);
+            font-size: 13px;
+        }
+
+        .no-results {
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--gray);
+            font-size: 13px;
+        }
+
+        /* NOTIFICATION */
+        .notif-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 300;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            pointer-events: none;
+        }
+
+        .notif {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--green);
+            border-radius: 10px;
+            padding: 14px 16px;
+            box-shadow: var(--shadow-lg);
+            min-width: 280px;
+            max-width: 320px;
+            animation: notifIn 0.3s ease;
+            pointer-events: auto;
+        }
+
+        @keyframes notifIn {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .notif-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .notif-body {
+            font-size: 12px;
+            color: var(--gray);
+            margin-top: 3px;
+        }
+
+        .notif-time {
+            font-size: 10px;
+            color: var(--gray);
+            margin-top: 6px;
+        }
+
+        /* SIDEBAR OVERLAY */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .sidebar-overlay.open {
+                display: block;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 16px 16px 0;
+            }
+
+            .table-section {
+                padding: 16px 16px 40px;
+            }
+
+            .topbar {
+                padding: 14px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .stat-card .value {
+                font-size: 20px;
+            }
+
+            .topbar-right .sort-select {
+                display: none;
+            }
+        }
+
+        /* Action col always visible */
+        thead th:last-child,
+        tbody td:last-child {
+            display: table-cell !important;
+        }
+
+        .delete-btn {
+            background: var(--danger-light);
+            color: var(--danger);
+            border: 1px solid #fecaca;
+            border-radius: 6px;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .delete-btn:hover {
+            background: var(--danger);
+            color: var(--white);
+            border-color: var(--danger);
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            <img src="../Assets/Images/prime goat farm logo pic png01.png" alt="Logo"
+                onerror="this.style.display='none'">
+            <h1>Prime Goat Farm</h1>
+            <p>Admin Dashboard</p>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="./index.html">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+                Billing Records
+            </a>
+            <a href="./bookings.html" class="active">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Bookings
+            </a>
+            <a href="../billing-screen.html">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+                New Bill
+            </a>
+        </nav>
+        <div class="sidebar-footer">Prime Goat Farm © 2025</div>
+    </aside>
+
+    <div class="main">
+        <header class="topbar">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button class="hamburger" onclick="openSidebar()">
+                    <svg width="20" height="20" fill="none" stroke="#0d0d0d" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                <div class="topbar-left">
+                    <h2>Booking Records</h2>
+                    <p id="topbarDate">Loading...</p>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <select class="sort-select" id="sortSelect" onchange="applySorting()">
+                    <option value="newest">Latest First</option>
+                    <option value="oldest">Oldest First</option>
+                </select>
+                <button class="search-trigger" onclick="openSearch()">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0" />
+                    </svg>
+                    Search bookings...
+                </button>
+            </div>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="label">Total Bookings</div>
+                <div class="value" id="statTotal">—</div>
+                <div class="sub">All time</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Today's Bookings</div>
+                <div class="value" id="statToday">—</div>
+                <div class="sub">Added today</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Total Animals</div>
+                <div class="value" id="statAnimals">—</div>
+                <div class="sub">Qty booked</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Latest Package</div>
+                <div class="value" id="statPackage" style="font-size:13px;margin-top:10px;">—</div>
+                <div class="sub">Most recent</div>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <div class="table-header">
+                <h3>All Bookings</h3>
+                <span class="count-badge" id="countBadge">0 records</span>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Owner</th>
+                            <th>Contact</th>
+                            <th>Animal</th>
+                            <th>Package</th>
+                            <th>Start</th>
+                            <th>Return</th>
+                            <th>Agreement</th>
+                            <th>action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr>
+                            <td colspan="9">
+                                <div class="loading-state">
+                                    <div class="spinner"></div>
+                                    <p>Loading bookings...</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-backdrop" onclick="closeSearch()"></div>
+        <div class="search-modal">
+            <div class="search-input-wrap">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0" />
+                </svg>
+                <input type="text" id="searchInput" placeholder="Search by name, contact, package..."
+                    oninput="doSearch(this.value)">
+                <button class="cancel-search" onclick="closeSearch()">Cancel</button>
+            </div>
+            <div class="search-results" id="searchResults">
+                <div class="no-results">Start typing to search...</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notif-container" id="notifContainer"></div>
+
+    <!-- Firebase -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+        import { getDatabase, ref, onValue, remove } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCK2j13R9IoIP0Tjrmsj-qCwDtFUW_oa4E",
+            authDomain: "prime-goat-farm-3e148.firebaseapp.com",
+            projectId: "prime-goat-farm-3e148",
+            storageBucket: "prime-goat-farm-3e148.firebasestorage.app",
+            messagingSenderId: "42499736897",
+            appId: "1:42499736897:web:462172284aa9ebd8d4cdc0",
+            databaseURL: "https://prime-goat-farm-3e148-default-rtdb.firebaseio.com"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        window._db = db;
+        window._ref = ref;
+        window._remove = remove;
+
+        let allRecords = [];
+        let isFirstLoad = true;
+
+        onValue(ref(db, "bookings"), (snapshot) => {
+            const data = snapshot.val();
+            const newRecords = [];
+            if (data) {
+                Object.entries(data).forEach(([key, val]) => {
+                    newRecords.push({ id: key, ...val });
+                });
+            }
+            if (!isFirstLoad && newRecords.length > allRecords.length) {
+                const newest = newRecords.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))[0];
+                showNotification(newest);
+            }
+            isFirstLoad = false;
+            allRecords = newRecords;
+            window._allRecords = allRecords;
+            renderTable(allRecords);
+            updateStats(allRecords);
+        });
+    </script>
+
+    <script>
+        Notification.requestPermission();
+
+        document.getElementById('topbarDate').innerText = new Date().toLocaleDateString('en-PK', {
+            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+        });
+
+        function openSidebar() {
+            document.getElementById('sidebar').classList.add('open');
+            document.getElementById('sidebarOverlay').classList.add('open');
+        }
+        function closeSidebar() {
+            document.getElementById('sidebar').classList.remove('open');
+            document.getElementById('sidebarOverlay').classList.remove('open');
+        }
+
+        function renderTable(records) {
+            const tbody = document.getElementById('tableBody');
+            const sort = document.getElementById('sortSelect').value;
+            let sorted = [...records];
+            if (sort === 'newest') {
+                sorted.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            } else {
+                sorted.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+            }
+
+            document.getElementById('countBadge').innerText = sorted.length + ' records';
+
+            if (sorted.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="9"><div class="empty-state">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                <p>No booking records found</p>
+            </div></td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = sorted.map((r) => {
+                const shortId = r.id.slice(-6).toUpperCase();
+                return `<tr>
+                <td><span class="id-badge">#${shortId}</span></td>
+                <td class="name-cell">${r.ownerName || '—'}</td>
+                <td>${r.ownerContact || '—'}</td>
+                <td>${r.animalQty || '—'} · ${r.animalType || '—'}</td>
+                <td><span class="pkg-badge">${r.package || '—'}</span></td>
+                <td class="date-cell">${r.startDate || '—'}</td>
+                <td class="date-cell">${r.returnDate || '—'}</td>
+                <td>${r.agreementUrl ? `<a href="${r.agreementUrl}" target="_blank" style="display:inline-flex;align-items:center;gap:4px;color:var(--green);font-size:12px;font-weight:500;text-decoration:none;padding:4px 10px;border:1px solid var(--green);border-radius:6px;transition:all 0.2s;">
+                    <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg> View
+                    </a>` : '—'}
+                </td>
+                <td>
+                    <button class="delete-btn" onclick="deleteRecord('${r.id}', '${r.publicId || ''}')">
+                    <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                    Delete
+                    </button>
+                </td>
+            </tr>`;
+            }).join('');
+        }
+
+        function updateStats(records) {
+            document.getElementById('statTotal').innerText = records.length;
+            const today = new Date().toDateString();
+            const todayCount = records.filter(r => r.timestamp && new Date(r.timestamp).toDateString() === today).length;
+            document.getElementById('statToday').innerText = todayCount;
+            const totalAnimals = records.reduce((sum, r) => sum + (parseInt(r.animalQty) || 0), 0);
+            document.getElementById('statAnimals').innerText = totalAnimals;
+            if (records.length > 0) {
+                const latest = [...records].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))[0];
+                document.getElementById('statPackage').innerText = latest.package || '—';
+            }
+        }
+
+        function applySorting() {
+            if (window._allRecords) renderTable(window._allRecords);
+        }
+
+        async function deleteRecord(id, publicId) {
+            if (!confirm('Delete this booking?')) return;
+            try {
+                if (publicId) {
+                    await fetch('/api/delete-image', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ publicId })
+                    });
+                }
+                await window._remove(window._ref(window._db, `bookings/${id}`));
+            } catch (err) {
+                console.error(err);
+                alert("Delete failed");
+            }
+        }
+
+        function toggleMenu(id) {
+            document.querySelectorAll('.action-dropdown').forEach(d => {
+                if (d.id !== id) d.classList.remove('open');
+            });
+            const dropdown = document.getElementById(id);
+            const btn = dropdown.previousElementSibling;
+            const rect = btn.getBoundingClientRect();
+            dropdown.style.top = (rect.bottom + 6) + 'px';
+            dropdown.style.left = (rect.right - 160) + 'px';
+            dropdown.classList.toggle('open');
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.action-menu-wrap')) {
+                document.querySelectorAll('.action-dropdown').forEach(d => d.classList.remove('open'));
+            }
+        });
+
+        function openSearch() {
+            document.getElementById('searchOverlay').classList.add('active');
+            setTimeout(() => document.getElementById('searchInput').focus(), 100);
+        }
+
+        function closeSearch() {
+            document.getElementById('searchOverlay').classList.remove('active');
+            document.getElementById('searchInput').value = '';
+            document.getElementById('searchResults').innerHTML = '<div class="no-results">Start typing to search...</div>';
+        }
+
+        function doSearch(query) {
+            const q = query.toLowerCase().trim();
+            const results = document.getElementById('searchResults');
+            if (!q) { results.innerHTML = '<div class="no-results">Start typing to search...</div>'; return; }
+            const records = window._allRecords || [];
+            const filtered = records.filter(r =>
+                (r.ownerName || '').toLowerCase().includes(q) ||
+                (r.ownerContact || '').toLowerCase().includes(q) ||
+                (r.ownerCNIC || '').toLowerCase().includes(q) ||
+                (r.package || '').toLowerCase().includes(q) ||
+                (r.animalType || '').toLowerCase().includes(q)
+            );
+            if (filtered.length === 0) { results.innerHTML = '<div class="no-results">No results found</div>'; return; }
+            results.innerHTML = filtered.map(r => {
+                const shortId = r.id.slice(-6).toUpperCase();
+                return `<div class="search-result-item">
+                <div class="sri-left">
+                    <div class="sri-name">${r.ownerName || '—'} <span style="font-size:10px;color:#6b7280;margin-left:6px;">#${shortId}</span></div>
+                    <div class="sri-meta">${r.ownerContact || '—'} · ${r.package || '—'} · ${r.startDate || '—'}</div>
+                </div>
+                <div class="sri-right">
+                    <div class="sri-pkg">${r.animalQty || '0'} animals</div>
+                </div>
+            </div>`;
+            }).join('');
+        }
+
+        function showNotification(record) {
+            if (Notification.permission === 'granted') {
+                new Notification('🐐 New Booking Received!', {
+                    body: `${record.ownerName || 'Unknown'} — ${record.package || ''} — ${record.animalQty || ''} animals`,
+                    icon: '../Assets/Images/prime goat farm logo pic png01.png',
+                    tag: 'new-booking',
+                    renotify: true
+                });
+            }
+            const container = document.getElementById('notifContainer');
+            const notif = document.createElement('div');
+            notif.className = 'notif';
+            notif.innerHTML = `
+            <div class="notif-title">🐐 New Booking Received</div>
+            <div class="notif-body">${record.ownerName || 'Unknown'} — ${record.package || ''} — ${record.animalQty || ''} animals</div>
+            <div class="notif-time">Just now</div>
+        `;
+            container.appendChild(notif);
+            setTimeout(() => notif.remove(), 5000);
+        }
+
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearch(); });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

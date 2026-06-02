@@ -1,0 +1,3493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Goat Farm</title>
+    <link rel="shortcut icon" href="/Assets/Images/prime goat only logo png.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        @font-face {
+            font-family: inter;
+            src: url(/Assets/Fonts/Inter_28pt-Bold.ttf);
+        }
+
+        @font-face {
+            font-family: work-sans;
+            src: url(/Assets/Fonts/WorkSans-Regular.ttf);
+        }
+
+
+        :root {
+            --green-text: #124C36;
+            --white-text: #FFFFFFFF;
+            --black-text: black;
+
+            --inner-bg: whitesmoke;
+            --white-bg: #FFFFFF;
+            --black-bg: black;
+            --dark-black-bg: #161A1DFF;
+            --green-bg: #124C36;
+            --transparent-green-bg: #32a14aa2;
+
+            --border-bg: black;
+
+            --heading-font: inter;
+            --para-font: work-sans;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #loader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+
+            opacity: 1;
+            visibility: visible;
+
+            transition:
+                opacity 1.2s ease,
+                visibility 1.2s ease;
+        }
+
+        /* fade state */
+        #loader.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* video */
+        #loader-video {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            top: 0;
+            left: 0;
+        }
+
+
+        #main {
+            display: none;
+        }
+
+        /* nav */
+
+        nav {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            background-color: var(--white-bg);
+            border: 1px solid var(--border-bg);
+        }
+
+        .IconPrime {
+            width: 90px;
+            height: 100px;
+            position: relative;
+            right: 20px;
+            top: 5px;
+        }
+
+        .nav-child {
+            width: calc(87.5% - 100px);
+            height: 81px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-child ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-child ul li a {
+            color: var(--black-text);
+            font-family: var(--para-font);
+            font-weight: 600;
+            font-size: clamp(13px, 1.2vw, 15px);
+        }
+
+        .nav-child ul li a {
+            position: relative;
+            text-decoration: none;
+            color: var(--black-text);
+            transition: color 0.3s ease;
+        }
+
+        .nav-child ul li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background: var(--green-text);
+            transition: width 0.3s ease;
+        }
+
+        .nav-child ul li a:hover::after {
+            width: 100%;
+        }
+
+        .nav-child ul li a.active {
+            color: var(--green-text);
+        }
+
+        .nav-child ul li a.active::after {
+            width: 100%;
+        }
+
+        .nav-child ul li:first-child a::after {
+            display: none;
+        }
+
+        .nav-child ul li:first-child a:hover {
+            color: initial;
+        }
+
+        .nav-child ul li a {
+            text-decoration: none;
+        }
+
+        .nav-child ul li:first-child a {
+            color: var(--green-text);
+            font-size: clamp(19px, 1.8vw, 29px);
+            font-weight: 700;
+            font-family: var(--font-fam-heading);
+        }
+
+        .nav-child ul li:nth-child(2) a {
+            color: var(--green-text);
+        }
+
+        .nav-hamburger-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-left: auto;
+            padding: 8px;
+        }
+
+        .nav-hamburger-btn span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--black-bg);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .nav-hamburger-btn.nav-btn-active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .nav-hamburger-btn.nav-btn-active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger-btn.nav-btn-active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .offscreen-menu {
+            display: none;
+            width: 100%;
+            background-color: var(--white-bg);
+            border-bottom: 1px solid var(--border-gray-bg);
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height .7s cubic-bezier(0.4, 0, 0.2, 1);
+            position: absolute;
+            top: 81px;
+            left: 0;
+            z-index: 98;
+        }
+
+        .offscreen-menu.offscreen-open {
+            max-height: 600px;
+        }
+
+        .offscreen-menu-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0 24px;
+        }
+
+        .offscreen-menu-inner ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 88%;
+        }
+
+        .offscreen-menu-inner ul li {
+            border-bottom: 1px solid var(--border-bg);
+        }
+
+        .offscreen-menu-inner ul li:last-child {
+            border-bottom: none;
+        }
+
+        .offscreen-menu-inner ul li a {
+            display: block;
+            padding: 14px 8px;
+            color: var(--black-text);
+            font-family: var(--para-font);
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease, padding-left 0.2s ease;
+        }
+
+        .offscreen-menu-inner ul li a:hover {
+            color: var(--green-text);
+            padding-left: 18px;
+        }
+
+        .offscreen-overlay {
+            display: none;
+            position: fixed;
+            top: 81px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 97;
+        }
+
+        .offscreen-overlay.offscreen-overlay-visible {
+            display: block;
+        }
+
+        .offscreen-menu-inner ul li:first-child a {
+            color: var(--green-text);
+        }
+
+        @media (max-width: 820px) {
+            nav {
+                height: 100%;
+            }
+
+            .offscreen-menu {
+                top: 70px;
+            }
+
+            .nav-child ul li:not(:first-child) {
+                display: none;
+            }
+
+            .nav-hamburger-btn {
+                display: flex;
+            }
+
+            nav>a {
+                display: none;
+            }
+
+            .nav-child {
+                width: 88%;
+                justify-content: space-between;
+            }
+
+            .offscreen-menu {
+                display: block;
+            }
+        }
+
+        @media (min-width: 821px) {
+            .nav-child {
+                width: calc(88%);
+            }
+
+            .nav-hamburger-btn {
+                display: none;
+            }
+
+            .offscreen-menu {
+                display: none !important;
+            }
+
+            .offscreen-overlay {
+                display: none !important;
+            }
+        }
+
+        /* hero-section */
+        .hero-banner-parent {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-banner {
+            width: 100%;
+            height: calc(100vh - 81px);
+        }
+
+        .hero-banner-detail-parent {
+            width: 95%;
+            max-width: 940px;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            position: absolute;
+            filter: brightness(100%);
+        }
+
+        .hero-head-1 {
+            padding: clamp(5px, .5vw, 8px) clamp(16px, 2vw, 28px);
+            font-size: clamp(10px, .87vw, 13px);
+            border-radius: 40px;
+            border: 2px solid var(--white-bg);
+            color: var(--green-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white-bg);
+            font-family: var(--heading-font);
+            font-weight: 400;
+        }
+
+        .hero-head-2 {
+            color: var(--white-text);
+            font-size: 52px;
+            font-family: var(--heading-font);
+            text-align: center;
+        }
+
+        .hero-head-2 span {
+            color: var(--green-text);
+        }
+
+        .hero-para {
+            width: 90%;
+            max-width: 940px;
+            font-size: clamp(16px, 1.6vw, 24px);
+            text-align: center;
+            color: var(--white-text);
+            font-family: var(--para-font);
+        }
+
+        .hero-btn-parent {
+            width: 55%;
+            max-width: 350px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .hero-btn-parent button {
+            border: none;
+            border-radius: 10px;
+            height: 56px;
+            transition: scale .4s ease;
+        }
+
+        .hero-btn-parent button:hover {
+            scale: 1.03;
+        }
+
+        .hero-btn-parent button:active {
+            scale: .98;
+        }
+
+        .hero-btn-parent a:first-child button {
+            font-size: clamp(13px, 1.1vw, 18px);
+            font-weight: 800;
+            font-family: var(--para-font);
+            background-color: var(--green-bg);
+            width: clamp(150px, 55%, 275px);
+            color: var(--white-text);
+        }
+
+        .hero-btn-parent a:last-child button {
+            font-size: clamp(13px, 1.1vw, 18px);
+            font-family: var(--para-font);
+            font-weight: 800;
+            background-color: var(--white-bg);
+            color: var(--black-bg);
+            width: clamp(150px, 55%, 275px);
+        }
+
+        /* ── Cube Slider ── */
+        .hero-banner-parent {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-viewport {
+            width: 100%;
+            height: calc(100vh - 81px);
+            perspective: 1200px;
+            perspective-origin: 50% 50%;
+        }
+
+        .hero-cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .hero-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .face-front {
+            transform: translateZ(calc((100vh - 81px) / 2));
+        }
+
+        .face-right {
+            transform: rotateY(90deg) translateZ(calc((100vh - 81px) / 2));
+        }
+
+        .face-back {
+            transform: rotateY(180deg) translateZ(calc((100vh - 81px) / 2));
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+
+        }
+
+        .hero-bg img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: brightness(80%);
+        }
+
+        /* Arrows */
+        .hero-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: var(--white-text);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            font-size: 28px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-arrow:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-arrow-left {
+            left: 20px;
+        }
+
+        .hero-arrow-right {
+            right: 20px;
+        }
+
+        /* Dots */
+        .hero-bullets {
+            position: absolute;
+            bottom: 24px;
+            left: 54%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .hero-bullet {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .hero-bullet.active {
+            background: #fff;
+            transform: scale(1.3);
+        }
+
+        /* section-2 */
+        .sec-2-parent {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            padding: 70px 0;
+            background-color: var(--white-bg);
+        }
+
+        .sub-sec-2-part-1 {
+            width: 43%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            gap: 20px;
+        }
+
+        .sub-sec-2-part-1 h1 {
+            color: var(--black-text);
+            font-size: var(--heading-font);
+            font-size: clamp(28px, 3.6vw, 38px);
+            font-weight: 700;
+        }
+
+        .sec-2-hor-line {
+            width: 100px;
+            height: 5px;
+            background-color: var(--green-bg);
+            border-radius: 16px;
+        }
+
+        .sub-sec-2-part-1 p {
+            font-family: var(--para-font);
+            font-size: clamp(15px, 1.3vw, 19px);
+            line-height: 29px;
+            font-weight: 600;
+            color: var(--black-text);
+        }
+
+        .sub-sec-2-part-1 button img {
+            width: 20px;
+            margin-left: 12px;
+        }
+
+        .sub-sec-2-part-2 {
+            width: 42%;
+        }
+
+        .sec-2-part-2-card-parent {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .sec-2-part-2-cards {
+            width: 100%;
+            height: 210px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+            border-radius: 14px;
+            padding-left: 5%;
+            border: 1px solid var(--border-bg);
+            transition: transform .3s, box-shadow .5s;
+        }
+
+        .sec-2-part-2-cards:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px;
+        }
+
+        .sec-2-icon-parent {
+            width: 48px;
+            height: 48px;
+            background-color: var(--green-bg);
+            border-radius: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sec-2-icon-parent img {
+            width: 24px;
+            height: 24px;
+            fill: var(--green-bg);
+        }
+
+        .sec-2-part-2-card-parent h3 {
+            color: var(--black-text);
+            font-family: var(--heading-font);
+            font-size: clamp(18px, 1.4vw, 20px);
+            font-weight: 700;
+        }
+
+        .sec-2-part-2-card-parent p {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--black-text);
+            font-family: var(--para-font);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* section-3 */
+        .sec-3-parent {
+            width: 100%;
+            padding-top: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sec-3-part-1 {
+            width: 87.5%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 50px;
+        }
+
+        .sec-3-part-1-head-1 {
+            width: fit-content;
+            padding: clamp(5px, .4vw, 8px) clamp(16px, 2vw, 28px);
+            font-size: clamp(10px, .87vw, 13px);
+            color: var(--green-text);
+            font-size: 12px;
+            font-family: var(--heading-font);
+            font-weight: 600;
+            border: 2px solid var(--green-bg);
+            border-radius: 9999px;
+            display: flex;
+        }
+
+        .sec-3-part-1 h1 {
+            color: var(--black-text);
+            font-size: clamp(28px, 2.6vw, 40px);
+            font-weight: 700;
+        }
+
+        .sec-3-part-1>p {
+            width: 75%;
+            font-weight: 600;
+            font-family: var(--para-font);
+            font-size: clamp(14px, 1.6vw, 16px);
+        }
+
+        .sec-3-part-2 {
+            width: 87.5%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sec-3-part-2-cards {
+            margin-top: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-bg);
+            margin-bottom: 23px;
+            cursor: pointer;
+            transition: transform .3s, box-shadow .5s;
+        }
+
+        .sec-3-part-2-cards:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px;
+        }
+
+        .sec-3-part-2-img-wrap {
+            width: 100%;
+            height: auto;
+        }
+
+        .sec-3-part-2-img-wrap img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .sec-3-part-2-content-parent {
+            padding: 8% 6% 3% 6%;
+        }
+
+        .sec-3-part-2-content-line-1,
+        .sec-3-part-2-content-line-2 {
+            height: 26px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sec-3-part-2-content-line-1 p:first-child {
+            font-family: var(--heading-font);
+            font-size: clamp(15px, 1.3vw, 20px);
+            font-weight: 700;
+            color: var(--black-text);
+        }
+
+        .sec-3-part-2-content-line-1 p:last-child {
+            font-size: clamp(9px, .9vw, 15px);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .sec-3-part-2-content-line-2 p:first-child {
+            font-size: clamp(11px, 1.1vw, 16px);
+            font-weight: 400;
+        }
+
+        .sec-3-part-2-content-line-1 p:last-child,
+        .sec-3-part-2-content-line-2 p:first-child {
+            color: var(--black-text);
+            font-family: var(--para-font);
+        }
+
+        .sec-3-part-2-content-line-2 p:last-child {
+            font-size: clamp(15px, 1.3vw, 20px);
+            font-weight: 700;
+            color: var(--green-text);
+        }
+
+        /* section-4 */
+        .sec-4-cards-parent {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 120px;
+            background-color: var(--inner-bg);
+            border-bottom: 1px solid var(--border-gray-bg);
+            padding: 80px 0;
+        }
+
+        .sec-4-cards-inner-parent {
+            width: 88%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        .sec-4-cards {
+            width: 100%;
+            padding: 10px 20px;
+            background-color: var(--white-bg);
+            border: 1px solid var(--border-bg);
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+            transition: transform .3s, box-shadow .5s;
+        }
+
+        .sec-4-cards:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px;
+        }
+
+        .sec-4-cards h3 {
+            font-family: var(--heading-font);
+            font-size: clamp(19px, 1.5vw, 22px);
+            font-weight: 700;
+            color: var(--black-text);
+        }
+
+        .sec-4-cards p {
+            color: var(--black-text);
+            font-family: var(--para-font);
+            font-size: clamp(13px, 1.1vw, 18px);
+            line-height: 26px;
+            font-weight: 600;
+        }
+
+        .sec-4-cards-icon-parent {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: var(--green-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sec-4-cards-icon-parent img {
+            width: 25px;
+        }
+
+        /* section-5 */
+        .sec-5-parent {
+            width: 100%;
+            padding: 8% 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--border-gray-bg);
+        }
+
+        .sec-5-parent h1 {
+            color: var(--black-text);
+            margin-bottom: 10px;
+            font-family: var(--heading-font);
+            font-size: clamp(28px, 2.6vw, 40px);
+            line-height: 40px;
+            font-weight: 700;
+        }
+
+        .sec-5-parent>p {
+            width: 90%;
+            color: var(--black-text);
+            font-family: var(--para-font);
+            font-size: clamp(12px, 1.6vw, 17px);
+            line-height: 24px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .sec-5-cards-parent {
+            width: 88%;
+        }
+
+        .sec-5-cards {
+            margin-top: 20px;
+            width: 100%;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid var(--border-bg);
+            transition: transform .3s, box-shadow .5s;
+        }
+
+        .sec-5-cards:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px;
+        }
+
+        .sec-5-img-wrapper img {
+            width: 100%;
+            height: 288px;
+            border-radius: 12px 12px 0 0;
+            object-fit: cover;
+        }
+
+        .sec-5-cards-content-parent {
+            width: 88%;
+            padding: 3% 6%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sec-5-cards-content-1 {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            border-bottom: 1px solid var(--border-bg);
+            padding: 6% 0 4%;
+        }
+
+        .sec-5-cards-content-1-line-1,
+        .sec-5-cards-content-1-line-2 {
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sec-5-cards-content-1-line-1 h4 {
+            color: var(--black-text);
+            font-family: var(--heading-font);
+            font-size: clamp(14px, 1.5vw, 16px);
+            font-weight: 700;
+        }
+
+        .sec-5-cards-content-1-line-1 p {
+            color: var(--green-text);
+            font-family: var(--para-font);
+            font-size: clamp(14px, 1.5vw, 16px);
+            font-weight: 700;
+        }
+
+        .sec-5-cards-content-parent a {
+            color: var(--black-text);
+        }
+
+        .sec-5-cards-content-1-line-2 p:first-child {
+            font-family: var(--para-font);
+            font-size: clamp(12px, 1vw, 16px);
+            font-weight: 600;
+        }
+
+        .sec-5-cards-content-1-line-2 p:last-child {
+            font-family: var(--para-font);
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .sec-5-cards-content-2 {
+            width: 100%;
+            border-bottom: 1px solid var(--border-bg);
+            padding: 12px 0 0 0;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .sec-5-cards-content-2 p:first-child {
+            padding-right: 20%;
+        }
+
+        .sec-5-cards-content-2 img {
+            width: 18px;
+        }
+
+        .sec-5-cards-content-parent a {
+            margin: 15px 0;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* section-6 */
+        .sec-6-parent {
+            width: 100%;
+            padding: 100px 0 0 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .sec-6-head-1 {
+            padding: clamp(5px, .5vw, 8px) clamp(16px, 2vw, 28px);
+            font-size: clamp(10px, .87vw, 13px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-left: 6px;
+            padding-right: 6px;
+            font-family: var(--heading-font);
+            font-size: 12px;
+            line-height: 20px;
+            font-weight: 400;
+            border: 2px solid var(--green-bg);
+            border-radius: 9999px;
+            color: var(--green-text);
+        }
+
+        .sec-6-parent h2 {
+            font-family: var(--heading-font);
+            font-size: clamp(28px, 2.6vw, 40px);
+            font-weight: 700;
+            color: var(--black-text);
+        }
+
+        .sec-6-parent .carousel {
+            width: 66.2%;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .sec-6.carousel-inner {
+            width: 100%;
+            overflow: hidden;
+            border: 1px solid var(--border-bg);
+            border-radius: 14px;
+        }
+
+        .sec-6.carousel-item {
+            width: 100%;
+            border-radius: 14px;
+        }
+
+        .sec-6.carousel-item.active {
+            display: flex !important;
+            opacity: 1 !important;
+        }
+
+        .carousel-item-child {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin: 0 auto;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 40px;
+            height: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            filter: invert(1);
+            border-radius: 50%;
+        }
+
+
+        .carousel-item-child p:nth-child(1) {
+            font-size: clamp(18px, 1.5vw, 24px);
+        }
+
+        .carousel-item-child p:nth-child(2) {
+            width: 88%;
+            font-family: var(--heading-font);
+            font-size: clamp(19px, 1.6vw, 26px);
+            line-height: 39px;
+            font-weight: 300;
+            color: var(--black-text);
+            text-align: center;
+            font-style: italic;
+        }
+
+        .profile-parent {
+            width: 270px;
+            font-family: var(--para-font);
+        }
+
+        .profile-parent img {
+            width: 64px;
+            height: 64px;
+            border-radius: 32px;
+            float: left;
+            margin-right: 15px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .profile-parent h4 {
+            font-size: clamp(14px, 1.31vw, 22px);
+            font-weight: 700;
+            color: var(--black-text);
+            margin-bottom: 1px;
+            margin-top: 8px;
+        }
+
+        .profile-parent span {
+            font-size: clamp(11px, 1.02vw, 16px);
+            font-weight: 400;
+            color: var(--black-text);
+        }
+
+        /* section-7 */
+        .sec-7-parent {
+            width: 100%;
+            padding: 100px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid var(--border-gray-bg);
+        }
+
+        .sub-sec-7 {
+            width: 88%;
+            height: 100%;
+            background-color: var(--inner-bg);
+            padding: 4% 6%;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sec-7-part-1 {
+            width: 668px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sec-7-part-1 h1 {
+            font-size: clamp(26px, 3.5vw, 48px);
+            font-weight: 700;
+            color: var(--black-text);
+            font-family: var(--heading-font);
+        }
+
+        .sec-7-part-1 p {
+            color: var(--black-text);
+            font-size: clamp(16px, 1.5vw, 22px);
+            font-weight: 400;
+            line-height: 33px;
+            font-family: var(--heading-font);
+        }
+
+        .sec-7-part-1-btn-parent {
+            display: flex;
+            gap: 15px;
+        }
+
+        .sec-7-part-1-btn-parent button {
+            height: 56px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--para-font);
+            padding: 0 12px;
+            font-size: clamp(13px, 1.1vw, 18px);
+            transition: scale .4s ease;
+        }
+
+        .sec-7-part-1-btn-parent button:hover {
+            scale: 1.03;
+        }
+
+        .sec-7-part-1-btn-parent button:active {
+            scale: .98;
+        }
+
+        .sec-7-part-1-btn-parent button:first-child {
+            width: 234px;
+            font-weight: 700;
+            border: none;
+            color: var(--white-text);
+            background-color: var(--green-bg);
+        }
+
+        .sec-7-part-2 {
+            width: 256px;
+            height: 256px;
+            border-radius: 9999px;
+            background-color: var(--dark-black-bg);
+            border: 10px solid var(--transparent-green-bg);
+            box-shadow: 0 0 0 4px var(--transparent-green-bg);
+            position: relative;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sec-7-part-2 h2 {
+            color: var(--green-text);
+            font-family: var(--heading-font);
+            font-size: clamp(36px, 3.5vw, 52px);
+            font-weight: 900;
+            margin-bottom: 0;
+        }
+
+        .sec-7-part-2 p {
+            color: var(--white-text);
+            font-family: var(--para-font);
+            font-size: clamp(12px, .9vw, 14px);
+            font-weight: 700;
+        }
+
+        /* XS - Extra Small */
+        @media (max-width: 575px) {
+
+            #loader img {
+                width: 120px;
+            }
+
+            .hero-head-1 {
+                text-align: center;
+                justify-content: center;
+                font-size: 10px;
+            }
+
+            .hero-banner-detail-parent {
+                width: 100%;
+            }
+
+            .hero-head-2 {
+                font-size: 25px;
+            }
+
+            .hero-para {
+                font-size: 14px;
+            }
+
+            .hero-btn-parent {
+                width: 90%;
+            }
+
+            .hero-bg img {
+                object-fit: cover;
+            }
+
+            .hero-btn-parent button {
+                height: 45px;
+            }
+
+            .hero-btn-parent {
+                gap: 10px;
+            }
+
+            .sec-2-parent {
+                flex-direction: column;
+                gap: 80px;
+            }
+
+            .sub-sec-2-part-1,
+            .sub-sec-2-part-2 {
+                width: 90%;
+            }
+
+            .sec-2-hor-line {
+                display: none;
+            }
+
+            .sub-sec-2-part-1 {
+                text-align: center;
+                align-items: center;
+            }
+
+            .sub-sec-2-part-1 p {
+                line-height: 22px;
+            }
+
+            .sub-sec-2-part-1 button img {
+                margin-left: 4px;
+            }
+
+            .sec-2-part-2-card-parent {
+                gap: 20px;
+                grid-template-columns: 1fr;
+            }
+
+            .sec-2-part-2-cards {
+                width: 100%;
+                align-items: center;
+            }
+
+            .sec-2-part-2-card-parent p {
+                text-align: center;
+            }
+
+            .sec-3-part-1-head-3 {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sec-3-part-1 {
+                align-items: center;
+                justify-content: center;
+            }
+
+            .sec-3-part-1 p {
+                width: fit-content;
+                text-align: center;
+            }
+
+            .sec-3-part-2 {
+                flex-direction: column;
+            }
+
+            .sub {
+                font-size: 16px;
+            }
+
+            .sec-3-part-2-cards-parent {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sec-3-part-2-cards {
+                height: auto;
+            }
+
+            .sec-3-part-2-img-wrap {
+                width: 100%;
+                height: auto;
+            }
+
+            .sec-3-part-2-content-parent {
+                padding: 9% 6% 0% 6%;
+            }
+
+            .sec-4-cards-inner-parent {
+                width: 90%;
+                flex-direction: column;
+                align-items: center;
+                grid-template-columns: 1fr;
+            }
+
+            .sec-4-cards {
+                margin-bottom: 20px;
+                padding: 10px 7%;
+                align-items: center;
+            }
+
+            .sec-4-cards p,
+            .sec-4-cards h3 {
+                text-align: center;
+                line-height: 20px;
+            }
+
+            .sec-5-parent {
+                padding: 100px 0;
+            }
+
+            .sec-5-parent>p,
+            .sec-5-parent>h1 {
+                line-height: 20px;
+            }
+
+            .sec-5-img-wrapper img {
+                width: 100%;
+                height: 320px;
+            }
+
+            .sec-5-cards-content-2 p:first-child {
+                padding-right: 35%;
+            }
+
+            .sec-6.carousel-item {
+                height: fit-content;
+            }
+
+            .sec-6-parent .sec-6.carousel {
+                width: 90%;
+            }
+
+            .carousel-item-child p:nth-child(2) {
+                line-height: 28px;
+            }
+
+            .profile-parent img {
+                width: 46px;
+                height: 46px;
+            }
+
+            .profile-parent {
+                width: 240px;
+            }
+
+            .profile-parent h4 {
+                margin: 0;
+            }
+
+            .sub-sec-7 {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .sec-7-part-1 {
+                width: 100%;
+                text-align: center;
+                padding: 30px 0;
+            }
+
+            .sec-7-part-1 p {
+                line-height: 24px;
+            }
+
+            .sec-7-part-1-btn-parent {
+                justify-content: center;
+            }
+
+            .sec-7-part-1-btn-parent button {
+                line-height: 14px;
+            }
+
+            .sec-7-part-1-btn-parent button:first-child {
+                width: 170px;
+                height: 50px;
+            }
+
+            .sec-7-part-1-btn-parent button:last-child {
+                width: 140px;
+                height: 50px;
+            }
+
+            .sec-7-part-2 {
+                width: 220px;
+                height: 220px;
+                margin-bottom: 20px;
+            }
+
+        }
+
+        /* SM - Small */
+        @media (min-width: 576px) and (max-width: 800px) {
+
+            #loader img {
+                width: 140px;
+            }
+
+            .sec-2-hor-line {
+                display: none;
+            }
+
+            .sec-2-parent {
+                flex-direction: column;
+            }
+
+            .sub-sec-2-part-1,
+            .sub-sec-2-part-2 {
+                width: 88%;
+            }
+
+            .sub-sec-2-part-1 {
+                text-align: center;
+                align-items: center;
+            }
+
+            .sec-2-part-2-cards {
+                height: 180px;
+            }
+
+            .sec-3-part-1 {
+                align-items: center;
+                gap: 20px;
+            }
+
+            .sec-3-part-1-head-3 {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .sec-3-part-1,
+            .sec-3-part-2 {
+                width: 88%;
+            }
+
+            .sec-3-part-1 p {
+                width: fit-content;
+            }
+
+            .sec-3-part-2 {
+                flex-direction: column;
+
+            }
+
+            .sec-3-part-2-cards-parent {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .sec-3-part-2-cards {
+                width: 100%;
+                height: auto;
+            }
+
+            .sec-3-part-2-img-wrap {
+                width: 100%;
+                height: 200px;
+                overflow: hidden;
+            }
+
+            .sec-3-part-2-img-wrap img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .sec-4-cards-parent {
+                padding: 60px 0;
+            }
+
+            .sec-4-cards-inner-parent {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .sec-4-cards {
+                width: 100%;
+                padding: 10px 20px;
+                gap: 1.5vw;
+            }
+
+            .sec-4-cards p {
+                line-height: 22px;
+            }
+
+            .sec-5-cards {
+                width: 100%;
+            }
+
+            .sec-5-img-wrapper img {
+                width: 100%;
+                height: 270px;
+            }
+
+            .sec-5-cards-content-parent {
+                padding: 3%;
+            }
+
+            .sec-6-parent .sec-6.carousel {
+                width: 88%;
+            }
+
+            .sec-6.carousel-item {
+                width: 100%;
+            }
+
+            .sub-sec-7 {
+                width: 88%;
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .sec-7-part-1 {
+                width: 100%;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .sec-7-part-1 p {
+                line-height: 24px;
+            }
+
+        }
+
+        /* MD - Medium */
+        @media (min-width: 801px) and (max-width: 999px) {
+
+            #loader img {
+                width: 160px;
+            }
+
+            .sec-2-hor-line {
+                display: none;
+            }
+
+            .sec-2-parent {
+                flex-direction: column;
+            }
+
+            .sub-sec-2-part-1 {
+                width: 88%;
+                text-align: center;
+                align-items: center;
+            }
+
+            .sub-sec-2-part-1 p {
+                line-height: 26px;
+            }
+
+            .sub-sec-2-part-2 {
+                width: 88%;
+            }
+
+            .sec-2-part-2-card-parent {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 3vw;
+            }
+
+            .sec-2-part-2-cards {
+                width: 100%;
+                margin-bottom: 0;
+            }
+
+            .sec-3-part-1 {
+                text-align: center;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .sec-3-part-1 p {
+                width: fit-content;
+            }
+
+            .sec-3-part-2 {
+                flex-direction: column;
+            }
+
+            .sec-3-part-2-cards-parent {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .sec-3-part-2-cards {
+                width: 100%;
+                height: auto;
+            }
+
+            .sec-3-part-2-img-wrap {
+                width: 100%;
+                height: 200px;
+                overflow: hidden;
+            }
+
+            .sec-3-part-2-img-wrap img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .sec-4-cards-parent {
+                padding: 60px 0;
+            }
+
+            .sec-4-cards-inner-parent {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .sec-4-cards {
+                width: 100%;
+                padding: 20px;
+                gap: 1.5vw;
+            }
+
+            .sec-4-cards p {
+                line-height: 22px;
+            }
+
+            .sec-6-parent .sec-6.carousel {
+                width: 88%;
+            }
+
+            .sub-sec-7 {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .sec-7-part-1 {
+                align-items: center;
+            }
+
+            .sec-7-part-1 p {
+                line-height: 23px;
+            }
+
+        }
+
+        /* LG - Large */
+        @media (min-width: 1000px) and (max-width: 1200px) {
+
+            #loader img {
+                width: 180px;
+            }
+
+            .sec-2-parent {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sub-sec-2-part-1,
+            .sub-sec-2-part-2 {
+                width: 88%;
+            }
+
+            .sec-2-part-2-card-parent {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                gap: 15px;
+            }
+
+            .sec-2-part-2-cards {
+                width: 100%;
+            }
+
+            .sec-3-part-2-cards {
+                width: 100%;
+            }
+
+            .sec-3-part-2-img-wrap {
+                width: 100%;
+            }
+
+            .sec-4-cards-inner-parent {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 20px;
+            }
+
+            .sec-4-cards {
+                width: 100%;
+                padding: 15px;
+            }
+
+            .sec-4-cards p {
+                line-height: 22px;
+            }
+
+            .sec-5-cards-content-1-line-2 img {
+                width: 15px;
+            }
+
+            .sec-5-cards-content-2 p:first-child {
+                padding-right: 10%;
+            }
+
+            .sec-5-cards-content-parent {
+                padding: 3% 2.8%;
+            }
+
+            .sec-7-part-1 {
+                width: 70%;
+            }
+
+            .sec-7-part-1 p {
+                line-height: 26px;
+            }
+
+            .sec-7-part-2 {
+                width: 200px;
+                height: 200px;
+            }
+
+            .hero-banner-detail-parent {
+                width: 80%;
+            }
+
+            .hero-head-1 {
+                font-size: 10px;
+                padding: 5px 12px;
+                text-align: center;
+            }
+
+            .hero-head-2 {
+                text-align: center;
+                font-size: 40px;
+            }
+
+            .hero-para {
+                width: 80%;
+                font-size: 16px;
+                line-height: 1.4;
+                text-align: center;
+            }
+
+            .hero-btn-parent {
+                width: 100% !important;
+                justify-content: space-between;
+                align-items: center !important;
+            }
+
+            .hero-btn-parent a {
+                display: flex;
+                justify-content: center;
+                text-decoration: none;
+            }
+
+            .hero-btn-parent a:first-child button {
+                width: 150px !important;
+                height: 40px;
+                font-size: 12px;
+            }
+
+            .hero-btn-parent a:last-child button {
+                width: 150px !important;
+                height: 40px;
+                font-size: 12px;
+            }
+
+            .hero-viewport {
+                height: 125vh;
+            }
+
+        }
+
+
+
+
+
+
+        .sec-3-screen-slide.carousel-item {
+            width: 100%;
+        }
+
+        .sec-3-card-parent {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            width: 100%;
+            gap: 2%;
+        }
+
+        .sec-3-part-2-cards {
+            width: 98%;
+        }
+
+        .sec-5.carousel-item {
+            width: 100%;
+        }
+
+        .sec-5-card-parent {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            width: 100%;
+            gap: 2%;
+        }
+
+        .sec-5-cards {
+            width: 98%;
+        }
+
+        .sec-5-cards-parent {
+            width: 88%;
+        }
+
+
+        /* Tablet */
+        @media (max-width:991px) {
+
+            .hero-viewport {
+                height: 100vh;
+            }
+
+            .hero-banner-detail-parent {
+                width: 80%;
+                height: auto;
+                gap: 25px;
+            }
+
+            .hero-head-1 {
+                font-size: 11px;
+                padding: 8px 18px;
+                text-align: center;
+            }
+
+            .hero-para {
+                width: 100%;
+                font-size: 17px;
+                line-height: 1.7;
+            }
+
+            .hero-btn-parent {
+                width: 100%;
+                max-width: 500px;
+                justify-content: center;
+                gap: 16px;
+            }
+
+            .hero-btn-parent a {
+                width: 100%;
+            }
+
+            .hero-btn-parent button {
+                width: 100% !important;
+                height: 52px;
+            }
+
+            .hero-arrow {
+                width: 42px;
+                height: 42px;
+                font-size: 24px;
+            }
+
+        }
+
+
+        /* Mobile */
+        @media (max-width:767px) {
+
+            .hero-banner-parent {
+                min-height: 100vh;
+            }
+
+            .hero-viewport {
+                height: 100vh;
+            }
+
+            .hero-banner-detail-parent {
+                width: 70%;
+                gap: 20px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .hero-head-1 {
+                font-size: 10px;
+                padding: 5px 12px;
+                text-align: center;
+            }
+
+            .hero-head-2 {
+                font-size: 30px;
+            }
+
+            .hero-para {
+                font-size: 13px;
+                line-height: 1.8;
+                text-align: center;
+            }
+
+            .hero-btn-parent {
+                width: 65%;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+
+            .hero-btn-parent a {
+                display: flex;
+                justify-content: center;
+                text-decoration: none;
+            }
+
+            .hero-btn-parent a:first-child button {
+                width: 105px !important;
+                height: 40px;
+                font-size: 12px;
+            }
+
+            .hero-btn-parent a:last-child button {
+                width: 105px !important;
+                height: 40px;
+                font-size: 12px;
+            }
+
+            .hero-arrow {
+                width: 38px;
+                height: 38px;
+                font-size: 20px;
+            }
+
+            .hero-arrow-left {
+                left: 10px;
+            }
+
+            .hero-arrow-right {
+                right: 10px;
+            }
+
+            .hero-bullets {
+                bottom: 16px;
+            }
+
+        }
+
+
+
+        /* Cube Depth Fix For Mobile */
+        @media (max-width: 1000px) {
+
+            .hero-banner-detail-parent {
+                width: 70%;
+                gap: 20px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .hero-head-1 {
+                font-size: 10px;
+                padding: 5px 12px;
+                text-align: center;
+            }
+
+            .hero-head-2 {
+                width: 80%;
+                font-size: 30px;
+            }
+
+            .hero-para {
+                max-width: none;
+                width: 80%;
+                font-size: 15px;
+                line-height: 1.4;
+                text-align: center;
+            }
+
+            .hero-btn-parent {
+                width: 60%;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+
+            .hero-btn-parent a {
+                display: flex;
+                justify-content: center;
+                text-decoration: none;
+            }
+
+            .hero-btn-parent a:first-child button {
+                width: 130px !important;
+                height: 40px;
+                font-size: 12px;
+            }
+
+            .hero-btn-parent a:last-child button {
+                width: 130px !important;
+                height: 40px;
+                font-size: 12px;
+            }
+
+            .face-front {
+                transform: translateZ(50vw);
+            }
+
+            .face-right {
+                transform: rotateY(90deg) translateZ(50vw);
+            }
+
+            .face-back {
+                transform: rotateY(180deg) translateZ(50vw);
+            }
+
+
+
+        }
+
+        @media (max-width: 1200px) {
+
+            .hero-banner-detail-parent {
+                width: 65%;
+            }
+
+        }
+
+
+        /* ============================= */
+        /* COMMON */
+        /* ============================= */
+
+        .sec-3-slider-mobile,
+        .sec-3-slider-tablet,
+        .sec-3-slider-desktop {
+            display: none;
+            width: 87.5%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .sec-3-card-parent {
+            width: 100%;
+            display: grid;
+            gap: 20px;
+        }
+
+        .sec-3-part-2-cards {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .sec-3-part-2-img-wrap img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+        }
+
+        .sec-3-part-2-content-parent {
+            padding: 20px;
+        }
+
+        .sec-3-part-2-content-line-1,
+        .sec-3-part-2-content-line-2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sec-3-part-2-content-line-1 {
+            margin-bottom: 8px;
+        }
+
+        /* ============================= */
+        /* MOBILE */
+        /* ============================= */
+
+        @media(max-width:575px) {
+
+            .sec-3-slider-mobile {
+                display: block;
+            }
+
+            .sec-3-card-parent {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        /* ============================= */
+        /* TABLET */
+        /* ============================= */
+
+        @media(min-width:576px) and (max-width:991px) {
+
+            .sec-3-slider-tablet {
+                display: block;
+            }
+
+            .sec-3-card-parent {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+        /* ============================= */
+        /* DESKTOP */
+        /* ============================= */
+
+        @media(min-width:992px) {
+
+            .sec-3-slider-desktop {
+                display: block;
+            }
+
+            .sec-3-card-parent {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+        }
+
+        /* ── Section-3 Responsive Slider Override ── */
+
+        /* Team member ke purane classes hide karo */
+        .sec-3-slider-mobile,
+        .sec-3-slider-tablet,
+        .sec-3-slider-desktop {
+            display: none !important;
+        }
+
+        /* Naye slider grids */
+        .sec3-grid-1 {
+            display: grid;
+            grid-template-columns: 1fr;
+            width: 100%;
+        }
+
+        .sec3-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+            gap: 2%;
+        }
+
+        .sec3-grid-3-sm {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            width: 100%;
+            gap: 2%;
+        }
+
+        .sec-3-card-sm .sec-3-part-2-img-wrap img {
+            height: 180px !important;
+        }
+
+        /* Breakpoint toggles */
+        #sec3-slider-mobile {
+            display: block;
+        }
+
+        #sec3-slider-sm {
+            display: none;
+        }
+
+        #sec3-slider-md {
+            display: none;
+        }
+
+        #sec3-slider-desktop {
+            display: none;
+        }
+
+        @media (min-width: 576px) {
+            #sec3-slider-mobile {
+                display: none;
+            }
+
+            #sec3-slider-sm {
+                display: block;
+            }
+
+            #sec3-slider-md {
+                display: none;
+            }
+
+            #sec3-slider-desktop {
+                display: none;
+            }
+        }
+
+        @media (min-width: 800px) {
+            #sec3-slider-mobile {
+                display: none;
+            }
+
+            #sec3-slider-sm {
+                display: none;
+            }
+
+            #sec3-slider-md {
+                display: block;
+            }
+
+            #sec3-slider-desktop {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            #sec3-slider-mobile {
+                display: none;
+            }
+
+            #sec3-slider-sm {
+                display: none;
+            }
+
+            #sec3-slider-md {
+                display: none;
+            }
+
+            #sec3-slider-desktop {
+                display: block;
+            }
+        }
+
+
+
+        /* ── Section-5 Responsive Slider Grids ── */
+        .sec5-grid-1 {
+            display: grid;
+            grid-template-columns: 1fr;
+            width: 100%;
+        }
+
+        .sec5-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+            gap: 2%;
+        }
+
+        .sec5-grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            width: 100%;
+            gap: 2%;
+        }
+
+        /* Choti image medium slider ke liye */
+        .sec-5-card-sm .sec-5-img-wrapper img {
+            height: 200px !important;
+        }
+
+        /* ── Breakpoint display toggles ── */
+        #sec5-slider-mobile {
+            display: block;
+        }
+
+        #sec5-slider-sm {
+            display: none;
+        }
+
+        #sec5-slider-md {
+            display: none;
+        }
+
+        #carouselAnimalsSlide-sec-5 {
+            display: none;
+        }
+
+        @media (min-width: 576px) {
+            #sec5-slider-mobile {
+                display: none;
+            }
+
+            #sec5-slider-sm {
+                display: block;
+            }
+
+            #sec5-slider-md {
+                display: none;
+            }
+
+            #carouselAnimalsSlide-sec-5 {
+                display: none;
+            }
+        }
+
+        @media (min-width: 768px) {
+            #sec5-slider-mobile {
+                display: none;
+            }
+
+            #sec5-slider-sm {
+                display: none;
+            }
+
+            #sec5-slider-md {
+                display: block;
+            }
+
+            #carouselAnimalsSlide-sec-5 {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            #sec5-slider-mobile {
+                display: none;
+            }
+
+            #sec5-slider-sm {
+                display: none;
+            }
+
+            #sec5-slider-md {
+                display: none;
+            }
+
+            #carouselAnimalsSlide-sec-5 {
+                display: block;
+            }
+        }
+
+        @media (max-width: 575px) {
+
+            .hero-banner-detail-parent {
+                width: 85%;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- loader -->
+    <!-- <div id="loader">
+
+        <video autoplay muted loop playsinline id="loader-video">
+            <source src="/Assets/Videos/loader-video.mp4" type="video/mp4">
+        </video>
+
+    </div>
+
+    <div id="main"></div> -->
+
+    <!-- nav-bar -->
+    <nav>
+        <div class="nav-child">
+            <ul>
+                <li><a href="/gaot-admin-panel/index.html"><img class="IconPrime"
+                            src="./Assets/Images/prime goat farm logo pic png01.png" alt=""></a></li>
+                <li><a href="/index.html" class="active">Home</a></li>
+                <li><a href="/introduction.html">Introduction</a></li>
+                <li><a href="/service.html">Services</a></li>
+                <li><a href="/location.html">Contact Us</a></li>
+            </ul>
+
+            <!-- Hamburger Btn -->
+            <button class="nav-hamburger-btn" id="navHamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Overlay -->
+    <div class="offscreen-overlay" id="offscreenOverlay"></div>
+
+    <!-- Offscreen Menu -->
+    <div class="offscreen-menu" id="offscreenMenu" aria-hidden="true">
+        <div class="offscreen-menu-inner">
+            <ul>
+                <li><a href="/index.html" class="offscreen-link">Home</a></li>
+                <li><a href="/introduction.html" class="offscreen-link">Introduction</a></li>
+                <li><a href="/service.html" class="offscreen-link">Services</a></li>
+                <li><a href="/location.html" class="offscreen-link">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- hero-section -->
+    <div class="hero-banner-parent">
+        <div class="hero-viewport">
+            <div class="hero-cube" id="heroCube">
+
+                <!-- Slide 1 -->
+                <div class="hero-face face-front">
+                    <div class="hero-bg">
+                        <img src="/Assets/Images/home-slider-1-img-2.jpeg" alt="">
+                    </div>
+                    <div class="hero-banner-detail-parent">
+                        <div class="hero-head-1">ESTABLISHED 2025 · 500 ACRES · KORANGI, KARACHI</div>
+                        <h1 class="hero-head-2">Pakistan's Premier Livestock Heritage Farm</h1>
+                        <p class="hero-para">Three decades of breeding excellence — delivering the finest goats, sheep,
+                            and cattle raised to international standards across South Asia.</p>
+                        <div class="hero-btn-parent">
+                            <a href="/billing-screen.html"><button>Pay Bill</button></a>
+                            <a href="/book-now.html"><button>Book Now</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="hero-face face-right">
+                    <div class="hero-bg">
+                        <img src="/Assets/Images/home-slider-1-img-1.jpeg" alt="">
+                    </div>
+                    <div class="hero-banner-detail-parent">
+                        <div class="hero-head-1">DOCUMENTED LINEAGES · EXPORT-CERTIFIED</div>
+                        <h1 class="hero-head-2">Elite Genetics. Verified Pedigree. Global Reach.</h1>
+                        <p class="hero-para">Every animal carries a certified health record and documented bloodline —
+                            bred for domestic sale and cleared for international export across South Asia and beyond.
+                        </p>
+                        <div class="hero-btn-parent">
+                            <a href="/billing-screen.html"><button>Pay Bill</button></a>
+                            <a href="/book-now.html"><button>Book Now</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="hero-face face-back">
+                    <div class="hero-bg">
+                        <img src="/Assets/Images/home-slider-1-img-3.jpeg" alt="">
+                    </div>
+                    <div class="hero-banner-detail-parent">
+                        <div class="hero-head-1">100% ORGANIC FEED · 24/7 VETERINARY CARE</div>
+                        <h1 class="hero-head-2">A Gold-Standard Protocol. No Shortcuts. Ever.</h1>
+                        <p class="hero-para">No synthetic additives, no growth hormones. Just certified organic
+                            nutrition and round-the-clock expert veterinary oversight — for every animal, every day.</p>
+                        <div class="hero-btn-parent">
+                            <a href="/billing-screen.html"><button>Pay Bill</button></a>
+                            <a href="/book-now.html"><button>Book Now</button></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Arrows -->
+        <button class="hero-arrow hero-arrow-left" id="heroPrev">&#8249;</button>
+        <button class="hero-arrow hero-arrow-right" id="heroNext">&#8250;</button>
+
+        <!-- Dots -->
+        <div class="hero-bullets" id="heroBullets">
+            <button class="hero-bullet active" data-i="0"></button>
+            <button class="hero-bullet" data-i="1"></button>
+            <button class="hero-bullet" data-i="2"></button>
+        </div>
+    </div>
+
+    <!-- section-2 -->
+    <div class="sec-2-parent">
+        <div class="sub-sec-2-part-1">
+            <h1>Elevating the Standard of Livestock Farming.</h1>
+            <div class="sec-2-hor-line"></div>
+            <p class="sec-2-para-1">At Prime Goat Farm, quality is not a claim — it is a thirty-year practice. Our
+                500-acre state-of-the-art facility in Korangi, Karachi operates under what we call the Gold-Standard
+                Health Protocol: a comprehensive, internationally aligned system of daily veterinary assessments,
+                certified organic nutrition, and fully documented genetic records. Every animal is an individual asset —
+                tagged, tracked, and cared for with precision from birth to delivery.</p>
+            <p class="sec-2-para-2">Unlike the opacity of traditional livestock markets, Prime Goat Farm provides
+                complete transparency at every stage. Whether you are a family sourcing a premium sacrificial animal for
+                Eid ul-Adha, a restaurateur demanding consistent meat quality, an independent breeder investing in
+                superior bloodlines, or an international export partner requiring certified bio-security compliance —
+                our standards never change. You receive the animal's full health history, documented pedigree, and our
+                personal assurance of excellence.</p>
+        </div>
+        <div class="sub-sec-2-part-2">
+            <div class="sec-2-part-2-card-parent">
+                <div class="sec-2-part-2-cards">
+                    <div class="sec-2-icon-parent">
+                        <img src="/Assets/Icons/sec-2-protect-icon.png" alt="">
+                    </div>
+                    <h3>100% Vaccinated</h3>
+                    <p>Full WHO-standard medical history provided with every animal — no exceptions.</p>
+                </div>
+                <div class="sec-2-part-2-cards">
+                    <div class="sec-2-icon-parent">
+                        <img src="/Assets/Icons/sec-2-trending-icon (2).png" alt="">
+                    </div>
+                    <h3>Certified Organic Feed</h3>
+                    <p>Zero synthetic additives or growth hormones — pure, nutrient-dense, and curated.</p>
+                </div>
+                <div class="sec-2-part-2-cards">
+                    <div class="sec-2-icon-parent">
+                        <img src="/Assets/Icons/sec-2-trending-icon.png" alt="">
+                    </div>
+                    <h3>Elite Pedigree Breeds</h3>
+                    <p>Documented genetic lineage for every specimen, from Beetal to Kamori to Gulabi.</p>
+                </div>
+                <div class="sec-2-part-2-cards">
+                    <div class="sec-2-icon-parent">
+                        <img src="/Assets/Icons/sec-4-contact-icon.png" alt="">
+                    </div>
+                    <h3>24/7 Veterinary Care</h3>
+                    <p>Licensed on-site veterinarians monitoring animal health around the clock, every day.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- section-3 -->
+
+    <div class="sec-3-parent">
+        <div class="sec-3-part-1">
+            <div class="sec-3-part-1-head-1">Our Curated Catalog</div>
+            <h1 class="sec-3-part-1-head-2">Browse Available Livestock</h1>
+            <p>Explore our current inventory of health-certified, hand-selected animals. Every listing includes breed
+                classification, weight range, vaccination history, and a certified veterinary record — full transparency
+                before you commit.</p>
+        </div>
+
+        <div class="sec-3-part-2">
+
+            <!-- SLIDER A: Mobile (< 576px) — 1 card -->
+            <div id="sec3-slider-mobile" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000"
+                data-bs-pause="false">
+                <div class="carousel-inner">
+                    <!-- JS se populate hoga -->
+                </div>
+                <a class="carousel-control-prev" href="#sec3-slider-mobile" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#sec3-slider-mobile" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <!-- SLIDER B: Small tablet (576px – 767px) — 2 cards -->
+            <div id="sec3-slider-sm" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000"
+                data-bs-pause="false">
+                <div class="carousel-inner">
+                    <!-- JS se populate hoga -->
+                </div>
+                <a class="carousel-control-prev" href="#sec3-slider-sm" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#sec3-slider-sm" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <!-- SLIDER C: Medium (768px – 1199px) — 3 cards chote -->
+            <div id="sec3-slider-md" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000"
+                data-bs-pause="false">
+                <div class="carousel-inner">
+                    <!-- JS se populate hoga -->
+                </div>
+                <a class="carousel-control-prev" href="#sec3-slider-md" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#sec3-slider-md" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <!-- SLIDER D: Desktop (>= 1200px) — 3 cards default -->
+            <div id="sec3-slider-desktop" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000"
+                data-bs-pause="false">
+                <div class="carousel-inner">
+                    <!-- JS se populate hoga -->
+                </div>
+                <a class="carousel-control-prev" href="#sec3-slider-desktop" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#sec3-slider-desktop" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- section-4 -->
+    <div class="sec-4-cards-parent">
+        <div class="sec-4-cards-inner-parent">
+            <div class="sec-4-cards">
+                <div class="sec-4-cards-icon-parent">
+                    <img src="/Assets/Icons/sec-4-search-icon.png" alt="">
+                </div>
+                <h3>Digital Discovery</h3>
+                <p>Browse our curated online catalog at your own pace. Filter by breed, category, weight class, or
+                    intended purpose. View certified health records and pedigree documentation for every available
+                    animal before making contact.</p>
+            </div>
+            <div class="sec-4-cards">
+                <div class="sec-4-cards-icon-parent">
+                    <img src="/Assets/Icons/sec-4-contact-icon.png" alt="">
+                </div>
+                <h3>Private Consultation & On-Site Inspection</h3>
+                <p>Connect with our livestock specialists for a dedicated consultation — by phone, WhatsApp, or a
+                    scheduled visit to our Korangi facility. Walk our grounds, meet our veterinary team, and inspect
+                    your chosen animals in person before any commitment.</p>
+            </div>
+            <div class="sec-4-cards">
+                <div class="sec-4-cards-icon-parent">
+                    <img src="/Assets/Icons/sec-4-check-icon.png" alt="">
+                </div>
+                <h3>Seamless Acquisition & Logistics</h3>
+                <p>Confirm your selection with clear, straightforward documentation. Our team manages professional
+                    packaging, transport, and end-to-end logistics — ensuring every animal arrives at your location in
+                    peak condition, on time, every time.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- section-5 -->
+    <div class="sec-5-parent">
+        <h1>Featured Livestock</h1>
+        <p>The most exceptional specimens currently available at our farm.</p>
+        <div class="sec-5-cards-parent">
+
+            <!-- SLIDER A: Mobile (< 576px) — 1 card -->
+            <div id="sec5-slider-mobile" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000"
+                data-bs-pause="false">
+                <div class="carousel-inner">
+                    <!-- JS se populate hoga -->
+                </div>
+                <a class="carousel-control-prev" href="#sec5-slider-mobile" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#sec5-slider-mobile" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <!-- SLIDER B: Small tablet (576px – 767px) — 2 cards -->
+            <div id="sec5-slider-sm" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000"
+                data-bs-pause="false">
+                <div class="carousel-inner">
+                    <!-- JS se populate hoga -->
+                </div>
+                <a class="carousel-control-prev" href="#sec5-slider-sm" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#sec5-slider-sm" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <!-- SLIDER C: Medium (768px – 1199px) — 3 cards chote -->
+            <div id="sec5-slider-md" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000"
+                data-bs-pause="false">
+                <div class="carousel-inner">
+                    <!-- JS se populate hoga -->
+                </div>
+                <a class="carousel-control-prev" href="#sec5-slider-md" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#sec5-slider-md" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <!-- SLIDER D: Desktop (>= 1200px) — 4 cards default -->
+            <div id="carouselAnimalsSlide-sec-5" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000"
+                data-bs-pause="false">
+                <div class="carousel-inner">
+                    <!-- JS se populate hoga -->
+                </div>
+                <a class="carousel-control-prev" href="#carouselAnimalsSlide-sec-5" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#carouselAnimalsSlide-sec-5" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- section-6 -->
+    <div class="sec-6-parent">
+
+        <div class="sec-6-head-1">Testimonial</div>
+        <h2>What Our Clients Say</h2>
+        <div id="carouselTestimonial" class="sec-6 carousel slide" data-bs-ride="carousel" data-bs-interval="3000"
+            data-bs-pause="false">
+            <div class="sec-6 carousel-inner">
+                <div class="sec-6 carousel-item active">
+                    <div class="carousel-item-child">
+                        <p>⭐⭐⭐⭐⭐</p>
+                        <p>"I have visited many farms in Karachi, but the Korangi facility at Prime Goat Farm is in a
+                            league of its own. Seeing the 24/7 veterinary presence and the immaculate health records for
+                            every animal gave me the confidence I needed. They aren't just selling livestock; they are
+                            providing a professional service backed by science."</p>
+                        <div class="profile-parent">
+                            <img src="/Assets/Images/testimonial-img-1.jpg" alt="">
+                            <h4>Farhan J.</h4>
+                            <span>Corporate Client • Karachi</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-item-child">
+                        <p>⭐⭐⭐⭐⭐</p>
+                        <p>"The quality of the meat and the overall health of the animals is a direct result of their
+                            'Premium Feed' program. You can tell these goats are raised on a nutrient-rich, organic
+                            diet—no shortcuts, no chemicals. If you want livestock that has been raised ethically and
+                            naturally, this is the only place to go."</p>
+                        <div class="profile-parent">
+                            <img src="/Assets/Images/testimonial-img-2.jpg" alt="">
+                            <h4>M. Rizwan</h4>
+                            <span>High-End Meat Distributor • Karachi</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-item-child">
+                        <p>⭐⭐⭐⭐⭐</p>
+                        <p>"For serious breeders, lineage is everything. Prime Goat Farm provided me with documented
+                            pedigree and a clear medical history that is impossible to find elsewhere. Their commitment
+                            to elite genetics and purebred standards makes them the most reliable partner for anyone
+                            looking to upgrade their own flock."</p>
+                        <div class="profile-parent">
+                            <img src="/Assets/Images/testimonial-img-3.jpg" alt="">
+                            <h4>Dr. Arshad</h4>
+                            <span>Livestock Consultant • Karachi</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-item-child">
+                        <p>⭐⭐⭐⭐⭐</p>
+                        <p>"As an international partner, I prioritize bio-security and international standards. Prime
+                            Goat Farm’s export protocols and 100% vaccination guarantee make the entire process seamless
+                            and low-risk. Their digital branding is professional, but their on-ground operations are
+                            even better."</p>
+                        <div class="profile-parent">
+                            <img src="/Assets/Images/testimonial-img-4.jpg" alt="">
+                            <h4>Salman K.</h4>
+                            <span>Export Partner • Karachi</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-item-child">
+                        <p>⭐⭐⭐⭐⭐</p>
+                        <p>"In the world of agricultural investment, transparency is rare. Prime Goat Farm is the
+                            exception. Their digitized tracking and elite genetic blueprints make them a low-risk,
+                            high-reward partner. I’ve seen their Korangi facility firsthand—the integration of 24/7 vet
+                            care and state-of-the-art breeding is unlike anything else in Pakistan. They aren't just
+                            farming; they are setting a global gold standard."</p>
+                        <div class="profile-parent">
+                            <img src="/Assets/Images/testimonial-img-5.jpg" alt="">
+                            <h4>Mustafa Qureshi</h4>
+                            <span>Equity Partner & Agro-Investor • Karachi</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-item-child">
+                        <p>⭐⭐⭐⭐⭐</p>
+                        <p>"For my restaurants, the quality of the product starts at the source. The organic,
+                            nutrient-rich diet these animals are raised on translates directly into the marbling and
+                            flavor of the meat. Prime Goat Farm’s dedication to a 'high-quality life' for their
+                            livestock is exactly why they are our exclusive supplier. Our customers can taste the
+                            difference of a chemical-free, organic upbringing."</p>
+                        <div class="profile-parent">
+                            <img src="/Assets/Images/testimonial-img-6.jpg" alt="">
+                            <h4>Chef Rehan Ahmed</h4>
+                            <span>Executive Chef at The Grill Karachi</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-item-child">
+                        <p>⭐⭐⭐⭐⭐</p>
+                        <p>"Exporting requires meeting brutal international standards. Prime Goat Farm makes my job
+                            easy. Their bio-security measures and documented medical histories are so rigorous that they
+                            clear export inspections without a hitch. They are single-handedly improving the reputation
+                            of Pakistani livestock on the international stage."</p>
+                        <div class="profile-parent">
+                            <img src="/Assets/Images/testimonial-img-7.jpg" alt="">
+                            <h4>Adnan Siddiqui</h4>
+                            <span>CEO of Global Livestock Exports • Karachi</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-item-child">
+                        <p>⭐⭐⭐⭐⭐</p>
+                        <p>"I’ve been breeding goats for 30 years, and I’ve never seen a facility as sophisticated as
+                            Prime. They’ve managed to keep the heart of traditional breeding while adding the precision
+                            of modern technology. The growth rates of their elite pedigree stock are incredible. If you
+                            want to start your own flock with the best genetics in the country, start here."</p>
+                        <div class="profile-parent">
+                            <img src="/Assets/Images/testimonial-img-8.jpg" alt="">
+                            <h4>Haji Bashir</h4>
+                            <span>Independent Livestock Breeder • Karachi</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-item-child">
+                        <p>⭐⭐⭐⭐⭐</p>
+                        <p>"As a veterinarian, I’m critical of livestock management, but Prime Goat Farm is flawless.
+                            Their 100% vaccination protocol and refusal to use synthetic growth hormones result in
+                            animals that are physically superior and disease-resistant. When you buy from Prime, you are
+                            buying peace of mind and scientific excellence."</p>
+                        <div class="profile-parent">
+                            <img src="/Assets/Images/testimonial-img-9.jpg" alt="">
+                            <h4>Dr. Zainab Malik</h4>
+                            <span>Senior Veterinary Consultant • Karachi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselTestimonial" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only"></span>
+            </a>
+            <a class="carousel-control-next" href="#carouselTestimonial" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only"></span>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- section-7 -->
+    <div class="sec-7-parent">
+        <div class="sub-sec-7">
+            <div class="sec-7-part-1">
+                <h1>Ready to Partner with Pakistan's Premier Livestock Farm?</h1>
+                <p>Join our exclusive dispatch for seasonal arrivals, breeding insights, and priority booking — or
+                    request a customised private or corporate quotation directly from our team.</p>
+                <div class="sec-7-part-1-btn-parent">
+                    <button>Visit Our Location</button>
+                </div>
+            </div>
+            <div class="sec-7-part-2">
+                <h2>2.5k+</h2>
+                <p>Happy Clients</p>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+
+
+    <script>
+        // ── NAV HAMBURGER ──
+        const navBtn = document.getElementById('navHamburgerBtn');
+        const offscreenMenu = document.getElementById('offscreenMenu');
+        const offscreenOverlay = document.getElementById('offscreenOverlay');
+        const offscreenLinks = document.querySelectorAll('.offscreen-link');
+
+        function openOffscreenMenu() {
+            offscreenMenu.classList.add('offscreen-open');
+            offscreenOverlay.classList.add('offscreen-overlay-visible');
+            navBtn.classList.add('nav-btn-active');
+            navBtn.setAttribute('aria-expanded', 'true');
+            offscreenMenu.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            trapFocus();
+        }
+
+        function closeOffscreenMenu() {
+            offscreenMenu.classList.remove('offscreen-open');
+            offscreenOverlay.classList.remove('offscreen-overlay-visible');
+            navBtn.classList.remove('nav-btn-active');
+            navBtn.setAttribute('aria-expanded', 'false');
+            offscreenMenu.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            navBtn.focus();
+        }
+
+        function trapFocus() {
+            const focusable = Array.from(
+                offscreenMenu.querySelectorAll('a[href], button:not([disabled])')
+            );
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (first) first.focus();
+
+            function handleTab(e) {
+                if (e.key !== 'Tab') return;
+                if (e.shiftKey) {
+                    if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+                } else {
+                    if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+                }
+            }
+            document.addEventListener('keydown', handleTab);
+        }
+
+        navBtn.addEventListener('click', () => {
+            offscreenMenu.classList.contains('offscreen-open') ? closeOffscreenMenu() : openOffscreenMenu();
+        });
+        offscreenOverlay.addEventListener('click', closeOffscreenMenu);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeOffscreenMenu(); });
+        offscreenLinks.forEach(link => { link.addEventListener('click', closeOffscreenMenu); });
+
+        // ── LOADER ──
+        window.addEventListener("load", () => {
+            const MIN_TIME = 7000;
+            const start = performance.now();
+            const loader = document.getElementById("loader");
+            const main = document.getElementById("main");
+            const finish = () => {
+                main.style.display = "block";
+                requestAnimationFrame(() => main.classList.add("show"));
+                loader.classList.add("hide");
+                setTimeout(() => loader.remove(), 1200);
+            };
+            const delay = Math.max(0, MIN_TIME - (performance.now() - start));
+            setTimeout(finish, delay);
+        });
+
+        // ── HERO CUBE SLIDER ──
+        (function () {
+            const cube = document.getElementById('heroCube');
+            const bullets = document.querySelectorAll('.hero-bullet');
+            const angles = [0, -90, -180];
+            let cur = 0, locked = false;
+
+            function goTo(n) {
+                if (locked || n === cur) return;
+                locked = true;
+                cur = ((n % 3) + 3) % 3;
+                cube.style.transform = `rotateY(${angles[cur]}deg)`;
+                bullets.forEach((b, i) => b.classList.toggle('active', i === cur));
+                setTimeout(() => locked = false, 1050);
+            }
+
+            document.getElementById('heroNext').addEventListener('click', () => goTo(cur + 1));
+            document.getElementById('heroPrev').addEventListener('click', () => goTo(cur - 1));
+            bullets.forEach(b => b.addEventListener('click', () => goTo(+b.dataset.i)));
+            setInterval(() => goTo(cur + 1), 3000);
+        })();
+
+        // ── SEC-3 DATA ──
+
+        // ─── SEC-3 ANIMALS DATA (Available Animals) ───
+        const sec3Animals = [
+            {
+                id: 1,
+                name: "Beetal King",
+                breed: "Beetal",
+                price: "85,000",
+                img: "/Assets/Images/sec-3-card-1-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-3-card-1-img.webp",
+                    "/Assets/Images/sec-3-card-2-img.webp",
+                    "/Assets/Images/sec-3-card-3-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "3 Years" },
+                    { key: "Weight", val: "~85 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Excellent" },
+                    { key: "Location", val: "Multan" }
+                ],
+                desc: "Beetal King is a premier Beetal breed goat known for its massive size and exceptional meat quality. Fully vaccinated, dewormed, and health certified. Ideal for premium Qurbani or breeding purposes."
+            },
+            {
+                id: 2,
+                name: "Kajla Supreme",
+                breed: "Kajla",
+                price: "75,000",
+                img: "/Assets/Images/sec-3-card-2-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-3-card-2-img.webp",
+                    "/Assets/Images/sec-3-card-1-img.webp",
+                    "/Assets/Images/sec-3-card-4-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "2.5 Years" },
+                    { key: "Weight", val: "~75 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Very Good" },
+                    { key: "Location", val: "Lahore" }
+                ],
+                desc: "Kajla Supreme is a top-quality Kajla breed with excellent body structure and healthy temperament. Complete vaccination record available. Perfect for families looking for a reliable Qurbani animal."
+            },
+            {
+                id: 3,
+                name: "Kamori Prince",
+                breed: "Kamori",
+                price: "1,20,000",
+                img: "/Assets/Images/sec-3-card-3-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-3-card-3-img.webp",
+                    "/Assets/Images/sec-3-card-5-img.webp",
+                    "/Assets/Images/sec-3-card-1-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "4 Years" },
+                    { key: "Weight", val: "~95 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "6 Dant" },
+                    { key: "Condition", val: "Premium" },
+                    { key: "Location", val: "Karachi" }
+                ],
+                desc: "Kamori Prince is an elite Kamori breed goat with superior genetics and outstanding physical attributes. Health certified with complete veterinary records. A choice selection for discerning buyers."
+            },
+            {
+                id: 4,
+                name: "Mundra Giant",
+                breed: "Mundra",
+                price: "65,000",
+                img: "/Assets/Images/sec-3-card-4-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-3-card-4-img.webp",
+                    "/Assets/Images/sec-3-card-6-img.webp",
+                    "/Assets/Images/sec-3-card-2-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "2 Years" },
+                    { key: "Weight", val: "~70 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Good" },
+                    { key: "Location", val: "Sindh" }
+                ],
+                desc: "Mundra Giant is a robust Mundra breed with strong build and excellent health. Fully vaccinated and dewormed. Great value for money with reliable quality for Qurbani."
+            },
+            {
+                id: 5,
+                name: "Gulabi Star",
+                breed: "Gulabi",
+                price: "95,000",
+                img: "/Assets/Images/sec-3-card-5-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-3-card-5-img.webp",
+                    "/Assets/Images/sec-3-card-4-img.webp",
+                    "/Assets/Images/sec-3-card-6-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "3 Years" },
+                    { key: "Weight", val: "~80 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Excellent" },
+                    { key: "Location", val: "Multan" }
+                ],
+                desc: "Gulabi Star is a prized Gulabi breed goat with a striking pink nose and large floppy ears. This breed is highly sought after for its beauty and meat quality. Fully vaccinated, dewormed, and certified. A great choice for a premium Qurbani animal."
+            },
+            {
+                id: 6,
+                name: "Dumba Special",
+                breed: "Dumba",
+                price: "88,000",
+                img: "/Assets/Images/sec-3-card-6-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-3-card-6-img.webp",
+                    "/Assets/Images/sec-3-card-3-img.webp",
+                    "/Assets/Images/sec-3-card-5-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "3.5 Years" },
+                    { key: "Weight", val: "~82 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Very Good" },
+                    { key: "Location", val: "Punjab" }
+                ],
+                desc: "Dumba Special is a high-quality Dumba breed known for its distinctive features and excellent meat yield. Health certified with full vaccination history. An excellent choice for Qurbani or breeding."
+            }
+        ];
+
+        // ─── SEC-5 LIVESTOCK DATA (Featured Livestock) ───
+        const sec5Livestock = [
+            {
+                id: 1,
+                name: "Sultan Brahman",
+                breed: "Brahman",
+                price: "1,200,000",
+                img: "/Assets/Images/sec-5-card-1-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-5-card-1-img.webp",
+                    "/Assets/Images/sec-5-card-2-img.webp",
+                    "/Assets/Images/sec-5-card-3-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "2.5 Years" },
+                    { key: "Weight", val: "~250 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Premium" },
+                    { key: "Location", val: "Multan" }
+                ],
+                desc: "Sultan Brahman #1 is an exceptional Brahman breed cattle with superior genetics and massive frame. Fully vaccinated, health certified, and vet-approved. The ideal choice for luxury Qurbani or breeding program."
+            },
+            {
+                id: 2,
+                name: "Sultan Brahman",
+                breed: "Brahman",
+                price: "1,200,000",
+                img: "/Assets/Images/sec-5-card-2-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-5-card-2-img.webp",
+                    "/Assets/Images/sec-5-card-3-img.webp",
+                    "/Assets/Images/sec-5-card-4-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "2.5 Years" },
+                    { key: "Weight", val: "~250 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Premium" },
+                    { key: "Location", val: "Multan" }
+                ],
+                desc: "Sultan Brahman #2 is a premium Brahman cattle with outstanding build and health status. Complete veterinary records and health certification included. Perfect for those seeking top-tier Qurbani animals."
+            },
+            {
+                id: 3,
+                name: "Sultan Brahman",
+                breed: "Brahman",
+                price: "1,200,000",
+                img: "/Assets/Images/sec-5-card-3-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-5-card-3-img.webp",
+                    "/Assets/Images/sec-5-card-4-img.webp",
+                    "/Assets/Images/sec-5-card-1-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "2.5 Years" },
+                    { key: "Weight", val: "~250 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Premium" },
+                    { key: "Location", val: "Multan" }
+                ],
+                desc: "Sultan Brahman #3 represents the finest in Brahman breed cattle with exceptional size and health. Vet-examined with full vaccination history. A prestigious choice for premium Qurbani."
+            },
+            {
+                id: 4,
+                name: "Sultan Brahman",
+                breed: "Brahman",
+                price: "1,200,000",
+                img: "/Assets/Images/sec-5-card-4-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-5-card-4-img.webp",
+                    "/Assets/Images/sec-5-card-1-img.webp",
+                    "/Assets/Images/sec-5-card-2-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "2.5 Years" },
+                    { key: "Weight", val: "~250 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Premium" },
+                    { key: "Location", val: "Multan" }
+                ],
+                desc: "Sultan Brahman #4 is a magnificent Brahman cattle with superior qualities and excellent health record. Fully certified and vaccination complete. Ideal for luxury Qurbani requirements."
+            },
+            {
+                id: 5,
+                name: "Sultan Brahman",
+                breed: "Brahman",
+                price: "1,200,000",
+                img: "/Assets/Images/sec-5-card-1-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-5-card-1-img.webp",
+                    "/Assets/Images/sec-5-card-2-img.webp",
+                    "/Assets/Images/sec-5-card-4-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "2.5 Years" },
+                    { key: "Weight", val: "~250 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Premium" },
+                    { key: "Location", val: "Multan" }
+                ],
+                desc: "Sultan Brahman #5 is an elite Brahman breed with exceptional genetics and robust health. Health certified with complete vet records. A top choice for discerning buyers seeking premium livestock."
+            },
+            {
+                id: 6,
+                name: "Sultan Brahman",
+                breed: "Brahman",
+                price: "1,200,000",
+                img: "/Assets/Images/sec-5-card-2-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-5-card-2-img.webp",
+                    "/Assets/Images/sec-5-card-3-img.webp",
+                    "/Assets/Images/sec-5-card-1-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "2.5 Years" },
+                    { key: "Weight", val: "~250 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Premium" },
+                    { key: "Location", val: "Multan" }
+                ],
+                desc: "Sultan Brahman #6 is a outstanding Brahman cattle with premium qualities and excellent physical attributes. Fully vaccinated and health certified. Perfect for luxury Qurbani or breeding."
+            },
+            {
+                id: 7,
+                name: "Sultan Brahman",
+                breed: "Brahman",
+                price: "1,200,000",
+                img: "/Assets/Images/sec-5-card-3-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-5-card-3-img.webp",
+                    "/Assets/Images/sec-5-card-4-img.webp",
+                    "/Assets/Images/sec-5-card-2-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "2.5 Years" },
+                    { key: "Weight", val: "~250 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Premium" },
+                    { key: "Location", val: "Multan" }
+                ],
+                desc: "Sultan Brahman #7 is a superior Brahman breed cattle with exceptional build and health status. Complete veterinary certification included. An excellent choice for premium Qurbani needs."
+            },
+            {
+                id: 8,
+                name: "Sultan Brahman",
+                breed: "Brahman",
+                price: "1,200,000",
+                img: "/Assets/Images/sec-5-card-4-img.webp",
+                thumbs: [
+                    "/Assets/Images/sec-5-card-4-img.webp",
+                    "/Assets/Images/sec-5-card-1-img.webp",
+                    "/Assets/Images/sec-5-card-3-img.webp"
+                ],
+                specs: [
+                    { key: "Age", val: "2.5 Years" },
+                    { key: "Weight", val: "~250 kg" },
+                    { key: "Gender", val: "Male" },
+                    { key: "Teeth", val: "4 Dant" },
+                    { key: "Condition", val: "Premium" },
+                    { key: "Location", val: "Multan" }
+                ],
+                desc: "Sultan Brahman #8 is a magnificent Brahman cattle with top-tier genetics and outstanding health. Fully certified with complete vaccination records. The ultimate choice for luxury Qurbani."
+            }
+        ];
+
+        localStorage.setItem('sec3AnimalsData', JSON.stringify(sec3Animals));
+        localStorage.setItem('sec5LivestockData', JSON.stringify(sec5Livestock));
+
+
+        // ─── CARD BUILDERS ───
+        function buildSec3Card(animal) {
+            const div = document.createElement("div");
+            div.className = "sec-3-part-2-cards";
+            div.style.cursor = "pointer";
+
+            div.addEventListener("click", () => {
+                localStorage.setItem("selectedAnimal", JSON.stringify(animal));
+                window.location.href = "animal-detail.html";
+            });
+
+            div.innerHTML = `
+        <div class="sec-3-part-2-img-wrap">
+            <img src="${animal.img}" alt="${animal.name}">
+        </div>
+        <div class="sec-3-part-2-content-parent">
+            <div class="sec-3-part-2-content-line-1">
+                <p>${animal.name}</p>
+                <p>STARTING PKR</p>
+            </div>
+            <div class="sec-3-part-2-content-line-2">
+                <p>${animal.breed}</p>
+                <p>${animal.price}</p>
+            </div>
+        </div>
+    `;
+
+            return div;
+        }
+
+        function buildSec5Card(animal, extraClass = "") {
+            const div = document.createElement("div");
+            div.className = "sec-5-cards" + (extraClass ? " " + extraClass : "");
+            div.style.cursor = "pointer";
+
+            div.addEventListener("click", () => {
+                localStorage.setItem("selectedAnimal", JSON.stringify(animal));
+                localStorage.setItem("animalType", "livestock");
+                window.location.href = "animal-detail.html?type=livestock";
+            });
+
+            div.innerHTML = `
+        <div class="sec-5-img-wrapper">
+            <img src="${animal.img}" alt="${animal.name}">
+        </div>
+        <div class="sec-5-cards-content-parent">
+            <div class="sec-5-cards-content-1">
+                <div class="sec-5-cards-content-1-line-1">
+                    <h4>${animal.name}</h4>
+                    <p>${animal.price}</p>
+                </div>
+                <div class="sec-5-cards-content-1-line-2">
+                    <p>${animal.breed} * 2.5 Years</p>
+                    <p>PKR</p>
+                </div>
+            </div>
+            <div class="sec-5-cards-content-2">
+                <p>
+                    <img src="/Assets/Icons/sec-5-trending-icon.png" alt="">
+                    250 KG
+                </p>
+                <p>
+                    <img src="/Assets/Icons/sec-5-verified-icon.png" alt="">
+                    Vaccinated
+                </p>
+            </div>
+            <a href="animal-detail.html?type=livestock"
+               onclick="event.stopPropagation()">
+               Quick View
+            </a>
+        </div>
+    `;
+
+            return div;
+        }
+
+        // ─── SLIDER POPULATOR ───
+        function populateSlider(sliderId, data, cardsPerSlide, gridClass, buildFn, extraCardClass = "") {
+            const sliderInner = document.querySelector(`#${sliderId} .carousel-inner`);
+            if (!sliderInner) return;
+            sliderInner.innerHTML = "";
+
+            for (let i = 0; i < data.length; i += cardsPerSlide) {
+                const chunk = data.slice(i, i + cardsPerSlide);
+
+                const carouselItem = document.createElement("div");
+                carouselItem.className = "carousel-item" + (i === 0 ? " active" : "");
+
+                const grid = document.createElement("div");
+                grid.className = gridClass;
+
+                chunk.forEach(animal => {
+                    grid.appendChild(buildFn(animal, extraCardClass));
+                });
+
+                carouselItem.appendChild(grid);
+                sliderInner.appendChild(carouselItem);
+            }
+        }
+
+        // ─── SEC-3 SLIDERS POPULATE ───
+        populateSlider("sec3-slider-mobile", sec3Animals, 1, "sec3-grid-1", buildSec3Card);
+        populateSlider("sec3-slider-sm", sec3Animals, 2, "sec3-grid-2", buildSec3Card);
+        populateSlider("sec3-slider-md", sec3Animals, 3, "sec3-grid-3-sm", buildSec3Card, "sec-3-card-sm");
+        populateSlider("sec3-slider-desktop", sec3Animals, 3, "sec-3-card-parent", buildSec3Card);
+
+        // ─── SEC-5 SLIDERS POPULATE ───
+        populateSlider("sec5-slider-mobile", sec5Livestock, 1, "sec5-grid-1", buildSec5Card);
+        populateSlider("sec5-slider-sm", sec5Livestock, 2, "sec5-grid-2", buildSec5Card);
+        populateSlider("sec5-slider-md", sec5Livestock, 3, "sec5-grid-3", buildSec5Card, "sec-5-card-sm");
+        populateSlider("carouselAnimalsSlide-sec-5", sec5Livestock, 4, "sec-5-card-parent", buildSec5Card);
+
+        // ─── SIMILAR ANIMALS FUNCTION FOR DETAIL PAGE ───
+        function loadSimilarAnimals() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const animalType = urlParams.get('type');
+            const animalData = JSON.parse(localStorage.getItem('selectedAnimal'));
+
+            if (!animalData) return;
+
+            const similarGrid = document.getElementById('similar-grid');
+            if (!similarGrid) return;
+
+            let similarAnimals = [];
+
+            if (animalType === 'livestock') {
+                similarAnimals = sec5Livestock.filter(a => a.id !== animalData.id).slice(0, 3);
+            } else {
+                similarAnimals = sec3Animals.filter(a => a.id !== animalData.id).slice(0, 3);
+            }
+
+            similarGrid.innerHTML = '';
+
+            similarAnimals.forEach(similar => {
+                const card = document.createElement('a');
+                card.className = 'similar-card';
+                card.href = '#';
+
+                card.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    localStorage.setItem('selectedAnimal', JSON.stringify(similar));
+                    if (animalType === 'livestock') {
+                        localStorage.setItem('animalType', 'livestock');
+                        window.location.href = 'animal-detail.html?type=livestock';
+                    } else {
+                        localStorage.removeItem('animalType');
+                        window.location.href = 'animal-detail.html';
+                    }
+                });
+
+                card.innerHTML = `
+            <img src="${similar.img}" alt="${similar.name}">
+            <div class="similar-card-body">
+                <div>
+                    <div class="name">${similar.name}</div>
+                    <div class="breed">${similar.breed}</div>
+                </div>
+                <div class="price">${similar.price}</div>
+            </div>
+        `;
+                similarGrid.appendChild(card);
+            });
+        }
+
+        // Load similar animals when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadSimilarAnimals);
+        } else {
+            loadSimilarAnimals();
+        }
+
+        // ─── WHATSAPP FUNCTION ───
+        function handleWhatsApp() {
+            const animalData = JSON.parse(localStorage.getItem('selectedAnimal'));
+            if (!animalData) return;
+
+            const phoneNumber = "+92 317 1442824"; // Change to your actual number
+            const message = `Hi, I'm interested in ${animalData.name} (${animalData.breed}) priced at PKR ${animalData.price}`;
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        const sec07LocationBtn = document.querySelector('.sec-7-part-1-btn-parent button:last-child');
+        sec07LocationBtn.addEventListener('click', () => {
+            window.location.href = '/location.html';
+        });
+
+    </script>
+
+</body>
+
+</html>

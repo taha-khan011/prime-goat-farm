@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>prime goat farm</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="introduction.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<style>
+  :root {
+    --green-text: #124C36;
+    --white-text: #FFFFFFFF;
+    --black-text: black;
+
+    --inner-bg: whitesmoke;
+    --white-bg: #FFFFFF;
+    --black-bg: black;
+    --green-bg: #124C36;
+    --transparent-green-bg: #124C36;
+
+    --border-bg: black;
+
+    --heading-font: inter;
+    --para-font: work-sans;
+
+  }
+
+  @font-face {
+    font-family: inter;
+    src: url(./Assets/Fonts/Inter_28pt-Bold.ttf);
+  }
+
+  @font-face {
+    font-family: work-sans;
+    src: url(./Assets/Fonts/WorkSans-Regular.ttf);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  @font-face {
+    font-family: inter;
+    src: url(/Assets/Fonts/Inter_28pt-Bold.ttf);
+  }
+
+  @font-face {
+    font-family: work-sans;
+    src: url(/Assets/Fonts/WorkSans-Regular.ttf);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --green-text: #124C36;
+    --white-text: #FFFFFFFF;
+    --black-text: black;
+
+    --inner-bg: whitesmoke;
+    --white-bg: #FFFFFF;
+    --black-bg: black;
+    --dark-black-bg: #161A1DFF;
+    --green-bg: #124C36;
+    --transparent-green-bg: #32a14aa2;
+
+    --border-bg: black;
+
+    --heading-font: inter;
+    --para-font: work-sans;
+  }
+
+  body {
+    background: var(--white-bg);
+  }
+
+  /* nav */
+
+  nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    background-color: var(--white-bg);
+    border-bottom: 1px solid var(--border-bg);
+  }
+
+  .IconPrime {
+    width: 90px;
+    height: 100px;
+    position: relative;
+    right: 20px;
+    top: 5px;
+  }
+
+  .nav-child {
+    width: calc(87.5% - 100px);
+    height: 81px;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-child ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .nav-child ul li a {
+    color: var(--black-text);
+    font-family: var(--para-font);
+    font-weight: 600;
+    font-size: clamp(13px, 1.2vw, 15px);
+    position: relative;
+    text-decoration: none;
+    color: var(--black-text);
+    transition: color 0.3s ease;
+  }
+
+  .nav-child ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: var(--green-text);
+    transition: width 0.3s ease;
+  }
+
+  .nav-child ul li a:hover::after {
+    width: 100%;
+  }
+
+  .nav-child ul li a.active {
+    color: var(--green-text);
+  }
+
+  .nav-child ul li a.active::after {
+    width: 100%;
+  }
+
+  .nav-child ul li:first-child a::after {
+    display: none;
+  }
+
+  .nav-child ul li:first-child a:hover {
+    color: initial;
+  }
+
+  .nav-child ul li:first-child a {
+    color: var(--green-text);
+    font-size: clamp(19px, 1.8vw, 29px);
+    font-weight: 700;
+    font-family: var(--para-font);
+  }
+
+  .nav-child ul li:nth-child(3) a {
+    color: var(--green-text);
+  }
+
+  .nav-hamburger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 8px;
+  }
+
+  .nav-hamburger-btn span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--black-bg);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .nav-hamburger-btn.nav-btn-active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .nav-hamburger-btn.nav-btn-active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-hamburger-btn.nav-btn-active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .offscreen-menu {
+    display: none;
+    width: 100%;
+    background-color: var(--white-bg);
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .7s cubic-bezier(0.4, 0, 0.2, 1);
+    position: fixed;
+    border-bottom: 1px solid var(--border-bg);
+    top: 81px;
+    left: 0;
+    z-index: 98;
+  }
+
+  .offscreen-menu.offscreen-open {
+    max-height: 400px;
+  }
+
+  .offscreen-menu-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0 24px;
+  }
+
+  .offscreen-menu-inner ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 88%;
+  }
+
+  .offscreen-menu-inner ul li {
+    border-bottom: 1px solid var(--border-bg);
+  }
+
+  .offscreen-menu-inner ul li:last-child {
+    border-bottom: none;
+  }
+
+  .offscreen-menu-inner ul li a {
+    display: block;
+    padding: 14px 8px;
+    color: var(--black-text);
+    font-family: var(--para-font);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+  }
+
+  .offscreen-menu-inner ul li a:hover {
+    color: var(--green-text);
+    padding-left: 18px;
+  }
+
+  .offscreen-overlay {
+    display: none;
+    position: fixed;
+    top: 81px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 97;
+  }
+
+  .offscreen-overlay.offscreen-overlay-visible {
+    display: block;
+  }
+
+  .offscreen-menu-inner ul li:nth-child(2) a {
+    color: var(--green-text);
+  }
+
+  @media (max-width: 820px) {
+    nav {
+      height: 100%;
+    }
+
+    .offscreen-menu {
+      top: 70px;
+    }
+
+    .nav-child ul li:not(:first-child) {
+      display: none;
+    }
+
+    .nav-hamburger-btn {
+      display: flex;
+    }
+
+    nav>a {
+      display: none;
+    }
+
+    .nav-child {
+      width: 88%;
+      justify-content: space-between;
+    }
+
+    .offscreen-menu {
+      display: block;
+    }
+  }
+
+  @media (min-width: 821px) {
+    .nav-child {
+      width: 88%;
+    }
+
+    .nav-hamburger-btn {
+      display: none;
+    }
+
+    .offscreen-menu {
+      display: none !important;
+    }
+
+    .offscreen-overlay {
+      display: none !important;
+    }
+  }
+
+
+  .main-div {
+    width: 100%;
+    height: 370px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .baner-man {
+
+    width: 100%;
+    height: auto;
+
+
+    display: block;
+
+    opacity: 0;
+
+    transform: scale(1.15) translateY(-80px);
+
+    animation: bannerAnimation 2s ease forwards;
+  }
+
+
+  /* SMOOTH ANIMATION */
+
+  @keyframes bannerAnimation {
+
+    0% {
+      opacity: 0;
+      transform: scale(1.15) translateY(-80px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+  }
+
+
+  .main-div {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 550px;
+
+
+  }
+
+  .baner-man {
+
+    width: 100%;
+    height: 550px;
+    opacity: 0.2;
+  }
+
+  .pera-hea {
+
+    height: auto;
+
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 20px;
+  }
+
+
+
+  .text-img-div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
+    width: 100%;
+    height: auto;
+    background-color: white;
+    padding: 50px 0;
+  }
+
+  .text-img {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    
+    top: 0;
+    width: 87%;
+    height: auto;
+    gap: 10px;
+    padding: 10px 0;
+    /* background-color: #04e9e9; */
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 55%;
+    height: auto;
+    opacity: 0;
+    transform: translateX(-150px);
+
+    animation: textReveal linear forwards;
+
+    animation-timeline: view();
+
+    animation-range: entry 0% cover 50%;
+  }
+
+
+  @keyframes textReveal {
+
+    from {
+
+      opacity: 0;
+
+      transform: translateX(-170px);
+    }
+
+    to {
+
+      opacity: 1;
+
+      transform: translateX(0);
+    }
+
+  }
+
+  .p2 {
+    position: relative;
+    top: 10px;
+    color: black;
+    font-size: 12px;
+  }
+
+  .color-black {
+    color: black;
+    font-size: 40px;
+  }
+
+
+  span {
+    position: relative;
+    left: 10px;
+    bottom: 10px;
+    color: #124C36;
+    font-size: 20px;
+  }
+
+
+  /* TEXT + IMAGE PREMIUM SCROLL ANIMATION */
+  /* SECTION */
+  .text-img {
+    perspective: 1200px;
+  }
+
+
+  /* IMAGE */
+  .img2 {
+
+    width: 47%;
+    border-radius: 10px;
+    height: 400px;
+
+
+
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+
+    /* scroll par animation start */
+    animation:
+      showImage linear forwards,
+      rotateXImage 2s linear infinite;
+
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+  }
+
+
+  /* IMAGE SHOW */
+  @keyframes showImage {
+
+    from {
+      opacity: 0;
+      filter: blur(15px);
+      transform: scale(0.7) translateY(120px);
+    }
+
+    to {
+      opacity: 1;
+      filter: blur(0);
+      transform: scale(1) translateY(0);
+    }
+  }
+
+
+  /* CONTINUOUS ROTATEX */
+  @keyframes rotateXImage {
+
+    from {
+      transform: rotateX(0deg);
+    }
+
+    to {
+      transform: rotateX(360deg);
+    }
+  }
+
+
+
+
+
+  .h2 {
+    color: rgb(0, 0, 0);
+  }
+
+  .p3 {
+    color: black;
+  }
+
+  /* PREMIUM IMAGE CARD UI */
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+
+  }
+
+  .card {
+    position: relative;
+    overflow: hidden;
+    /* gap: 30px; */
+    height: 420px;
+    padding: 0 !important;
+    border-radius: 20px;
+    transition: 0.5s ease;
+    width: 100%;
+  }
+
+  .card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.8s ease;
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+        rgba(0, 0, 0, 0.95),
+        rgba(0, 0, 0, 0.2));
+  }
+
+  .card-content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+    padding: 30px;
+
+    color: white;
+
+    transform: translateY(80px);
+    transition: 0.7s ease;
+  }
+
+  .card:hover .card-content {
+    transform: translateY(0);
+    cursor: pointer;
+  }
+
+  .card:hover .card-img {
+    transform: scale(1.12);
+    cursor: pointer;
+  }
+
+  .card:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
+  }
+
+  .card h3 {
+    color: white !important;
+    position: relative;
+    bottom: 20px;
+    font-size: 36px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .card p {
+    color: #f1f1f1 !important;
+    position: relative;
+    bottom: 20px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .icon {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    /* background: white; */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 30px;
+
+    margin-bottom: 15px;
+
+    backdrop-filter: blur(5px);
+  }
+
+  /* SCROLL ANIMATION */
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(150px);
+    transition: 1s all ease;
+  }
+
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .same-cont-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 93%;
+    height: auto;
+    position: relative;
+    right: 20px;
+    bottom: 0;
+    padding: 20px 0;
+    /* background-color: #06e35e; */
+  }
+
+  .img-same {
+    width: 50%;
+    height: 380px;
+    position: relative;
+    right: 10px;
+
+  }
+
+  #same-left {
+    position: relative;
+    left: 13px;
+  }
+
+  .btn-3:hover {
+    background: #fff;
+    color: var(--green-text);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn-3:active {
+    transform: scale(0.96);
+  }
+
+  /* Disabled */
+  .btn-3:disabled {
+    opacity: 0.4;
+  }
+
+
+  @media (max-width: 992px) {
+    .footer-container {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .links {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer-container {
+      grid-template-columns: 1fr;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .links-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+
+  @media (max-width: 1024px) {
+    h1 {
+      font-size: 50px;
+    }
+
+    .pera-hea {
+      width: 90%;
+    }
+
+    .text-img {
+      flex-direction: column;
+      align-items: center;
+      width: 90%;
+    }
+
+    .text {
+      width: 100%;
+      text-align: center;
+    }
+
+    .img2 {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      width: 567px;
+      height: 450px;
+      border-radius: 30px;
+    }
+
+    .btn-2 {
+      margin: 20px auto 0;
+    }
+
+    .main-text {
+      width: 90%;
+    }
+
+    .same {
+      width: 45%;
+    }
+
+    .same-cont-2 {
+      flex-direction: column;
+      height: auto;
+      gap: 20px;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .container2 {
+      width: 90%;
+      padding: 30px;
+    }
+
+    .footer-container {
+      flex-wrap: wrap;
+    }
+
+    .box {
+      min-width: 200px;
+    }
+
+    span {
+      left: 0;
+      bottom: 0;
+    }
+
+    #same-left {
+      left: 0;
+    }
+  }
+
+  /* ===================== */
+  /* MOBILE - max 767px */
+  /* ===================== */
+  @media (max-width: 767px) {
+    h1 {
+      font-size: 28px;
+      top: 0;
+      text-align: center;
+    }
+
+    .main-div {
+
+      height: auto;
+      min-height: 60vh;
+      padding: 40px 15px;
+    }
+
+    .pera-hea {
+      width: 100%;
+      height: auto;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .About-us {
+      width: 140px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .text-img-div {
+      padding: 20px 10px;
+    }
+
+    .text-img {
+      flex-direction: column;
+      width: 95%;
+      top: 0;
+      height: auto;
+      gap: 15px;
+    }
+
+    .text {
+      width: 100%;
+      text-align: center;
+    }
+
+    span {
+      left: 0;
+      bottom: 0;
+      text-align: center;
+      display: block;
+    }
+
+    .img2 {
+      width: 96%;
+      height: 220px;
+      top: 330px;
+      border-radius: 10px;
+    }
+
+    .main-text {
+      width: 100%;
+      text-align: center;
+      padding: 20px 0;
+      top: 30px;
+      bottom: 0;
+    }
+
+    .p3 {
+
+      text-align: center;
+    }
+
+    .main-perent {
+      flex-direction: column;
+      width: 97%;
+      bottom: 0;
+      right: 0;
+      padding: 10px 0;
+    }
+
+    .same {
+      width: 100%;
+      min-width: unset;
+    }
+
+    h4 {
+      left: 0;
+      padding-left: 15px;
+    }
+
+    .p5,
+    .p4 {
+      left: 0;
+      padding-left: 15px;
+    }
+
+    .container {
+      flex-direction: column;
+      position: relative;
+      top: 310px;
+      width: 98%;
+      padding: 20px 15px;
+      right: 10px;
+      bottom: 0;
+      margin: 10px auto;
+
+    }
+
+    .card {
+      min-width: unset;
+      width: 100%;
+    }
+
+    .same-cont-2 {
+      flex-direction: column;
+      width: 95%;
+      gap: 15px;
+      position: relative;
+      top: 320px;
+
+    }
+
+    .same-cont-2 .text-img {
+      flex-direction: column;
+
+
+    }
+
+    #same-left {
+      /* bottom: 300px; */
+      left: 20px;
+      text-align: center;
+    }
+
+
+    .foter-img {
+      position: relative;
+      /* bottom: 50px; */
+      top: 380px;
+      width: 110%;
+      height: 270px;
+      left: 20px;
+
+    }
+
+    .same-text-2 {
+      position: relative;
+      bottom: 300px;
+    }
+
+    .container2 {
+      flex-direction: column;
+      width: 95%;
+      padding: 25px 20px;
+      top: 40px;
+      right: 0;
+      bottom: 0;
+      align-items: flex-start;
+      margin: 10px auto;
+    }
+
+    .left {
+      max-width: 100%;
+    }
+
+    .right {
+      width: 100%;
+      align-items: stretch;
+    }
+
+    .btn {
+      width: 100%;
+    }
+
+    .features {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer {
+      position: relative;
+      top: 40px;
+      padding: 30px 15px;
+    }
+
+    .footer-container {
+      flex-direction: column;
+    }
+
+    .box {
+      min-width: unset;
+      width: 100%;
+    }
+  }
+
+  /* ===================== */
+  /* Very Small Mobile - max 400px */
+  /* ===================== */
+  @media (max-width: 400px) {
+
+
+    h1 {
+      font-size: 22px;
+    }
+
+    .img2 {
+
+      height: 18px;
+    }
+
+    .container2 {
+
+      padding: 20px 15px;
+    }
+  }
+</style>
+
+<body>
+
+
+  <nav>
+    <div class="nav-child">
+      <ul>
+        <li><a href="/index.html"><img class="IconPrime" src="./Assets/Images/prime goat farm logo pic png01.png"
+              alt=""></a></li>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/introduction.html" class="active">Introduction</a></li>
+        <li><a href="/service.html">Services</a></li>
+        <li><a href="/location.html">Contact Us</a></li>
+      </ul>
+
+      <!-- Hamburger Btn -->
+      <button class="nav-hamburger-btn" id="navHamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+  </nav>
+
+  <!-- Overlay -->
+  <div class="offscreen-overlay" id="offscreenOverlay"></div>
+
+  <!-- Offscreen Menu -->
+  <div class="offscreen-menu" id="offscreenMenu" aria-hidden="true">
+    <div class="offscreen-menu-inner">
+      <ul>
+        <li><a href="/index.html" class="offscreen-link">Home</a></li>
+        <li><a href="/introduction.html" class="offscreen-link">Introduction</a></li>
+        <li><a href="/service.html" class="offscreen-link">Services</a></li>
+        <li><a href="/location.html" class="offscreen-link">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Overlay -->
+  <div class="offscreen-overlay" id="offscreenOverlay"></div>
+
+  <!-- Offscreen Menu -->
+  <div class="offscreen-menu" id="offscreenMenu" aria-hidden="true">
+    <div class="offscreen-menu-inner">
+      <ul>
+        <li><a href="/index.html" class="offscreen-link">Home</a></li>
+        <li><a href="/introduction.html" class="offscreen-link">Introduction</a></li>
+        <li><a href="/service.html" class="offscreen-link">Services</a></li>
+        <li><a href="/location.html" class="offscreen-link">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-div">
+    <img class="baner-man" src="./Assets/introduction-img/man-img.jpeg" alt="">
+
+  </div>
+
+  <div class="text-img-div">
+    <div class="text-img">
+      <div class="text">
+        <span>SINCE 2025</span>
+        <h1 class="color-black">The Vision: Heritage Meets Innovation</h1>
+        <p class="p2">Prime Goat Farm was born from a singular, uncompromising vision: Excellence is not an act, but a
+          habit. What began as a dedicated family legacy has transformed into Pakistan's premier state-of-the-art
+          breeding epicenter. We don't just raise livestock; we engineer a standard of living that defines the future of
+          the industry. We believe that a high-quality life is the only path to high-quality results. Two decades of
+          perfecting genetic lineages and medical protocols have led us here—where tradition meets the cutting edge..
+        </p>
+        <!-- <button class="btn-2">Learn More</button> -->
+      </div>
+      <img class="img2" src="./Assets/introduction-img/text-imge.jpeg" alt="">
+    </div>
+
+
+    <div class="container">
+
+      <!-- CARD 1 -->
+
+      <div class="card reveal">
+
+        <img class="card-img" src="./Assets/introduction-img/img-box-03.jpeg" alt="">
+
+        <div class="overlay"></div>
+
+        <div class="card-content">
+
+          <div class="icon">🌿</div>
+
+          <h3>Precision Nutrition (100% Organic)</h3>
+
+          <p>
+            We’ve replaced industrial shortcuts with nature’s blueprint. Our livestock <br /> thrives on a curated,
+            nutrient-dense diet of organic silage, hand-selected <br /> grains, and fresh seasonal greens. No chemicals,
+            no growth hormones—just pure, <br /> peak physical development.
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- CARD 2 -->
+
+      <div class="card reveal">
+
+        <img class="card-img" src="./Assets/introduction-img/img-box-02.jpeg" alt="">
+
+        <div class="overlay"></div>
+
+        <div class="card-content">
+
+          <div class="icon">🛡️</div>
+
+          <h3>Digital Health Governance</h3>
+
+          <p>
+            Our bio-security is absolute. Every animal is a "Digital Asset," <br /> tagged and tracked through a
+            rigorous, international-standard <br /> vaccination protocol. From birth to export, every health <br />
+            milestone is recorded in a transparent, verifiable digital history.
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- CARD 3 -->
+
+      <div class="card reveal">
+
+        <img class="card-img" src="./Assets/introduction-img/img-box-01.jpeg" alt="">
+
+        <div class="overlay"></div>
+
+        <div class="card-content">
+
+          <div class="icon">❤️</div>
+
+          <h3>Elite Veterinary Command</h3>
+
+          <p>
+            Comfort is our priority; vigilance is our promise. Our 500-acre <br /> facility is under 24/7 surveillance
+            by a dedicated team of on-site <br /> veterinarians and master herdsmen. We don't just react to health
+            <br /> issues—we prevent them through constant, expert-level care.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="text-img-div same-cont-2">
+      <div class="text-img same-img-2">
+        <img class="img2 img-same foter-img" src="./Assets/introduction-img/text-imge 02.jpeg" alt="">
+        <div class="text same-text-2">
+          <span id="same-left">SINCE 2025</span>
+          <h1 id="same-left" class="color-black">The Anthem of Prime: Forging the Future of Livestock</h1>
+          <p class="p2" id="same-left">At Prime Goat Farm, we don’t predict the future of the industry; we build it.
+            Born from an uncompromising refusal to accept the ordinary, our journey from a small family barn to
+            Pakistan’s leading, state-of-the-art breeding epicenter is fueled by one core obsession: Excellence is not a
+            goal; it’s our DNA.
+            We do not merely raise livestock. We engineer a legacy of health, vitality, and genetic perfection. Two
+            decades of ruthless dedication to medical protocols and elite lineage development have culminated here. This
+            is where tradition finds its edge. We believe a high-quality life is the only blueprint for high-quality
+            results. Our operations are precise, our vision is </p>
+          <!-- <button class="btn-3" id="same-left Mobile-left">Learn More</button> -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const navBtn = document.getElementById('navHamburgerBtn');
+      const offscreenMenu = document.getElementById('offscreenMenu');
+      const offscreenOverlay = document.getElementById('offscreenOverlay');
+      const offscreenLinks = document.querySelectorAll('.offscreen-link');
+
+      function openOffscreenMenu() {
+        offscreenMenu.classList.add('offscreen-open');
+        offscreenOverlay.classList.add('offscreen-overlay-visible');
+        navBtn.classList.add('nav-btn-active');
+        navBtn.setAttribute('aria-expanded', 'true');
+        offscreenMenu.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden'; // scroll band
+        trapFocus();
+      }
+
+      function closeOffscreenMenu() {
+        offscreenMenu.classList.remove('offscreen-open');
+        offscreenOverlay.classList.remove('offscreen-overlay-visible');
+        navBtn.classList.remove('nav-btn-active');
+        navBtn.setAttribute('aria-expanded', 'false');
+        offscreenMenu.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = ''; // scroll wapas
+        navBtn.focus();
+      }
+
+      function trapFocus() {
+        const focusable = Array.from(
+          offscreenMenu.querySelectorAll('a[href], button:not([disabled])')
+        );
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (first) first.focus();
+
+        function handleTab(e) {
+          if (e.key !== 'Tab') return;
+          if (e.shiftKey) {
+            if (document.activeElement === first) {
+              e.preventDefault();
+              last.focus();
+            }
+          } else {
+            if (document.activeElement === last) {
+              e.preventDefault();
+              first.focus();
+            }
+          }
+        }
+        document.addEventListener('keydown', handleTab);
+      }
+
+      navBtn.addEventListener('click', () => {
+        offscreenMenu.classList.contains('offscreen-open') ?
+          closeOffscreenMenu() :
+          openOffscreenMenu();
+      });
+
+      offscreenOverlay.addEventListener('click', closeOffscreenMenu);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeOffscreenMenu();
+      });
+
+      offscreenLinks.forEach(link => {
+        link.addEventListener('click', closeOffscreenMenu);
+      });
+
+
+
+
+
+
+
+
+
+      window.addEventListener("scroll", reveal);
+
+      function reveal() {
+
+        let reveals = document.querySelectorAll(".reveal");
+
+        for (let i = 0; i < reveals.length; i++) {
+
+          let windowHeight = window.innerHeight;
+
+          let revealTop =
+            reveals[i].getBoundingClientRect().top;
+
+          let revealPoint = 120;
+
+          if (revealTop < windowHeight - revealPoint) {
+
+            reveals[i].classList.add("active");
+
+          } else {
+
+            reveals[i].classList.remove("active");
+
+          }
+
+        }
+
+      }
+
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"></script>
+
+</body>
+
+</html>
