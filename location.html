@@ -46,6 +46,120 @@
             scroll-behavior: smooth;
         }
 
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        .page-content {
+            transition: filter 0.25s ease;
+        }
+
+        body.modal-open .page-content {
+            filter: blur(6px);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.58);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.28s ease, visibility 0.28s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .schedule-modal {
+            width: min(100%, 650px);
+            background: #fff;
+            border-radius: 18px;
+            padding: 28px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+            transform: translateY(24px) scale(0.96);
+            opacity: 0;
+            transition: transform 0.28s ease, opacity 0.28s ease;
+        }
+
+        .modal-overlay.active .schedule-modal {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+
+        .schedule-modal h2 {
+            font-family: var(--heading-font);
+            margin-bottom: 8px;
+        }
+
+        .schedule-modal p {
+            font-family: var(--para-font);
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 50%;
+            background: #f2f2f2;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .schedule-form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .schedule-form .form-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .schedule-form .form-row input {
+            width: 100%;
+            background: var(--white-bg);
+            border: 1px solid #2a2a2a;
+            border-radius: 10px;
+            outline: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            padding: 10px 14px;
+        }
+
+        .btn-book {
+            background: var(--green-bg);
+            color: var(--white-text);
+            font-weight: 700;
+            font-size: 13px;
+            padding: 11px;
+            border-radius: 8px;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            .schedule-form .form-row {
+                flex-direction: column;
+            }
+        }
+
         nav {
             width: 100%;
             display: flex;
@@ -1048,6 +1162,33 @@
 
 <body>
 
+    <div class="modal-overlay" id="scheduleModalOverlay">
+        <div class="schedule-modal">
+            <button class="modal-close" id="closeScheduleModal" type="button" aria-label="Close modal">×</button>
+
+            <h2>Book Your Visit</h2>
+            <p>Enter your details and choose a preferred date and time.</p>
+
+            <form id="scheduleForm" class="schedule-form">
+                <div class="form-row">
+                    <input type="text" name="fullname" placeholder="Full Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+
+                <div class="form-row">
+                    <input type="tel" name="phone" placeholder="Phone Number" required>
+                    <input type="date" name="visitDate" required>
+                </div>
+
+                <div class="form-row">
+                    <input type="time" name="visitTime" required>
+                </div>
+
+                <button type="submit" class="btn-book">Book Schedule</button>
+            </form>
+        </div>
+    </div>
+
     <!-- nav-bar -->
     <nav>
         <div class="nav-child">
@@ -1243,7 +1384,7 @@
                 </svg>
                 <div><span>Best Visit Times</span><span>Weekends (10 AM – 2 PM)</span></div>
             </div>
-            <button class="btn-green-full">Schedule Visit</button>
+            <button class="btn-green-full" id="openScheduleModal" type="button">Schedule Visit</button>
             <div class="registered-tag">Registered Breeding Center #38219</div>
         </div>
     </section>
@@ -1410,6 +1551,39 @@
             alert("Message sent successfully!");
 
             this.reset(); // form clear
+        });
+
+        const openScheduleModal = document.getElementById("openScheduleModal");
+        const scheduleModalOverlay = document.getElementById("scheduleModalOverlay");
+        const closeScheduleModal = document.getElementById("closeScheduleModal");
+        const scheduleForm = document.getElementById("scheduleForm");
+
+        function openModal() {
+            scheduleModalOverlay.classList.add("active");
+            document.body.classList.add("modal-open");
+        }
+
+        function closeModal() {
+            scheduleModalOverlay.classList.remove("active");
+            document.body.classList.remove("modal-open");
+        }
+
+        openScheduleModal.addEventListener("click", openModal);
+        closeScheduleModal.addEventListener("click", closeModal);
+
+        scheduleModalOverlay.addEventListener("click", (e) => {
+            if (e.target === scheduleModalOverlay) closeModal();
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") closeModal();
+        });
+
+        scheduleForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            alert("Your visit has been booked successfully!");
+            this.reset();
+            closeModal();
         });
     </script>
 
