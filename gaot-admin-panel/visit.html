@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prime Goat — Admin Panel</title>
+    <title>Prime Goat — Visit Schedules</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
         rel="stylesheet">
     <link rel="shortcut icon" href="/Assets/Images/prime goat only logo png.png" type="image/x-icon">
 
+
     <style>
         :root {
             --green: #124C36;
-            --green-light: #1a6b4a;
             --green-pale: #e8f5ee;
             --black: #0d0d0d;
             --gray: #6b7280;
@@ -22,10 +22,8 @@
             --white: #ffffff;
             --danger: #dc2626;
             --danger-light: #fef2f2;
-            --gold: #d4a017;
             --border: #e4e4e7;
-            --shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
-            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
             --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
 
@@ -42,7 +40,6 @@
             min-height: 100vh;
         }
 
-        /* ── SIDEBAR ── */
         .sidebar {
             width: 240px;
             height: 100vh;
@@ -124,7 +121,6 @@
             text-align: center;
         }
 
-        /* ── MAIN ── */
         .main {
             margin-left: 240px;
             min-height: 100vh;
@@ -132,7 +128,6 @@
             flex-direction: column;
         }
 
-        /* ── TOPBAR ── */
         .topbar {
             background: var(--white);
             border-bottom: 1px solid var(--border);
@@ -149,7 +144,6 @@
             font-family: 'Syne', sans-serif;
             font-size: 18px;
             font-weight: 700;
-            color: var(--black);
         }
 
         .topbar-left p {
@@ -214,7 +208,6 @@
             padding: 4px;
         }
 
-        /* ── STATS ── */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -252,7 +245,6 @@
             margin-top: 4px;
         }
 
-        /* ── TABLE SECTION ── */
         .table-section {
             padding: 20px 28px 40px;
             flex: 1;
@@ -284,31 +276,16 @@
             background: var(--white);
             border: 1px solid var(--border);
             border-radius: 12px;
-            max-height: 400px;
-
+            max-height: 450px;
             overflow: auto;
             box-shadow: var(--shadow);
-
-
             scrollbar-width: thin;
             scrollbar-color: #000 #9a9da1;
-
-
-            position: relative;
         }
 
         .table-wrap::-webkit-scrollbar {
             width: 6px;
             height: 6px;
-        }
-
-        .table-wrap::-webkit-scrollbar-button:start:decrement,
-        .table-wrap::-webkit-scrollbar-button:end:increment,
-        .table-wrap::-webkit-scrollbar-button {
-            display: none;
-            width: 0;
-            height: 0;
-            background: transparent;
         }
 
         .table-wrap::-webkit-scrollbar-track {
@@ -323,7 +300,7 @@
 
         table {
             width: 100%;
-            min-width: 950px;
+            min-width: 900px;
             border-collapse: separate;
             border-spacing: 0;
         }
@@ -395,50 +372,9 @@
             font-weight: 500;
         }
 
-        .pkg-badge {
-            background: var(--green-pale);
-            color: var(--green);
-            font-size: 11px;
-            font-weight: 600;
-            padding: 3px 10px;
-            border-radius: 20px;
-            white-space: nowrap;
-        }
-
-        .amount-cell {
-            font-family: 'Syne', sans-serif;
-            font-weight: 700;
-            font-size: 13px;
-            color: var(--green);
-        }
-
         .date-cell {
             color: var(--gray);
             font-size: 12px;
-        }
-
-        .receipt-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            color: var(--green);
-            font-size: 12px;
-            font-weight: 500;
-            text-decoration: none;
-            padding: 4px 10px;
-            border: 1px solid var(--green);
-            border-radius: 6px;
-            transition: all 0.2s;
-        }
-
-        .receipt-link:hover {
-            background: var(--green);
-            color: var(--white);
-        }
-
-        .receipt-link svg {
-            width: 12px;
-            height: 12px;
         }
 
         .delete-btn {
@@ -463,12 +399,6 @@
             border-color: var(--danger);
         }
 
-        .delete-btn svg {
-            width: 12px;
-            height: 12px;
-        }
-
-        /* ── LOADING ── */
         .loading-state {
             text-align: center;
             padding: 60px 20px;
@@ -504,7 +434,6 @@
             opacity: 0.3;
         }
 
-        /* ── SEARCH OVERLAY ── */
         .search-overlay {
             position: fixed;
             inset: 0;
@@ -631,11 +560,11 @@
             margin-top: 2px;
         }
 
-        .sri-right .sri-amount {
+        .sri-right .sri-date {
             font-family: 'Syne', sans-serif;
             font-weight: 700;
             color: var(--green);
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .no-results {
@@ -645,7 +574,6 @@
             font-size: 13px;
         }
 
-        /* ── NOTIFICATION ── */
         .notif-container {
             position: fixed;
             top: 20px;
@@ -701,7 +629,6 @@
             margin-top: 6px;
         }
 
-        /* ── MOBILE OVERLAY ── */
         .sidebar-overlay {
             display: none;
             position: fixed;
@@ -710,14 +637,18 @@
             z-index: 99;
         }
 
-        /* ── RESPONSIVE ── */
-        @media (max-width: 1024px) {
+        thead th:last-child,
+        tbody td:last-child {
+            display: table-cell !important;
+        }
+
+        @media (max-width:1024px) {
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width:768px) {
             .sidebar {
                 transform: translateX(-100%);
             }
@@ -750,16 +681,9 @@
             .topbar {
                 padding: 14px 16px;
             }
-
-            thead th:nth-child(3),
-            tbody td:nth-child(3),
-            thead th:nth-child(5),
-            tbody td:nth-child(5) {
-                display: none;
-            }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width:480px) {
             .stats-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 10px;
@@ -769,24 +693,18 @@
                 font-size: 20px;
             }
 
-            thead th:nth-child(4),
-            tbody td:nth-child(4) {
-                display: none;
-            }
-
             .topbar-right .sort-select {
                 display: none;
             }
         }
     </style>
+
 </head>
 
 <body>
 
-    <!-- Sidebar Overlay -->
     <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
-    <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-logo">
             <img src="../Assets/Images/prime goat farm logo pic png01.png" alt="Logo"
@@ -795,21 +713,21 @@
             <p>Admin Dashboard</p>
         </div>
         <nav class="sidebar-nav">
-            <a href="#" class="active">
+            <a href="./index.html">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                 </svg>
                 Billing Records
             </a>
-            <a href="../gaot-admin-panel/bookings.html">
+            <a href="./bookings.html">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
                 Bookings
             </a>
-            <a href="./visits.html">
+            <a href="./visits.html" class="active">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -820,10 +738,7 @@
         <div class="sidebar-footer">Prime Goat Farm © 2025</div>
     </aside>
 
-    <!-- Main -->
     <div class="main">
-
-        <!-- Topbar -->
         <header class="topbar">
             <div style="display:flex;align-items:center;gap:12px;">
                 <button class="hamburger" onclick="openSidebar()">
@@ -833,7 +748,7 @@
                     </svg>
                 </button>
                 <div class="topbar-left">
-                    <h2>Billing Records</h2>
+                    <h2>Visit Schedules</h2>
                     <p id="topbarDate">Loading...</p>
                 </div>
             </div>
@@ -847,39 +762,37 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0" />
                     </svg>
-                    Search bills...
+                    Search schedules...
                 </button>
             </div>
         </header>
 
-        <!-- Stats -->
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="label">Total Bills</div>
+                <div class="label">Total Schedules</div>
                 <div class="value" id="statTotal">—</div>
-                <div class="sub">All time records</div>
+                <div class="sub">All time</div>
             </div>
             <div class="stat-card">
-                <div class="label">Total Revenue</div>
-                <div class="value" id="statRevenue">—</div>
-                <div class="sub">PKR collected</div>
-            </div>
-            <div class="stat-card">
-                <div class="label">Today's Bills</div>
+                <div class="label">Today's Visits</div>
                 <div class="value" id="statToday">—</div>
-                <div class="sub">Added today</div>
+                <div class="sub">Scheduled today</div>
             </div>
             <div class="stat-card">
-                <div class="label">Latest Package</div>
-                <div class="value" id="statPackage" style="font-size:15px;margin-top:10px;">—</div>
-                <div class="sub">Most recent</div>
+                <div class="label">Upcoming</div>
+                <div class="value" id="statUpcoming">—</div>
+                <div class="sub">Future visits</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Next Visit</div>
+                <div class="value" id="statNext" style="font-size:13px;margin-top:10px;">—</div>
+                <div class="sub">Nearest scheduled</div>
             </div>
         </div>
 
-        <!-- Table -->
         <div class="table-section">
             <div class="table-header">
-                <h3>All Transactions</h3>
+                <h3>All Visit Schedules</h3>
                 <span class="count-badge" id="countBadge">0 records</span>
             </div>
             <div class="table-wrap">
@@ -887,13 +800,13 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Customer</th>
+                            <th>Name</th>
                             <th>Phone</th>
-                            <th>Package</th>
-                            <th>Amount</th>
-                            <th>Date</th>
-                            <th>Receipt</th>
-                            <th>Action</th>
+                            <th>Email</th>
+                            <th>Visit Date</th>
+                            <th>Time</th>
+                            <th>Booked On</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody id="tableBody">
@@ -901,7 +814,7 @@
                             <td colspan="8">
                                 <div class="loading-state">
                                     <div class="spinner"></div>
-                                    <p>Loading records...</p>
+                                    <p>Loading schedules...</p>
                                 </div>
                             </td>
                         </tr>
@@ -911,7 +824,6 @@
         </div>
     </div>
 
-    <!-- Search Overlay -->
     <div class="search-overlay" id="searchOverlay">
         <div class="search-backdrop" onclick="closeSearch()"></div>
         <div class="search-modal">
@@ -920,7 +832,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0" />
                 </svg>
-                <input type="text" id="searchInput" placeholder="Search by name, phone, package..."
+                <input type="text" id="searchInput" placeholder="Search by name, phone, email..."
                     oninput="doSearch(this.value)">
                 <button class="cancel-search" onclick="closeSearch()">Cancel</button>
             </div>
@@ -930,10 +842,8 @@
         </div>
     </div>
 
-    <!-- Notification Container -->
     <div class="notif-container" id="notifContainer"></div>
 
-    <!-- Firebase -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
         import { getDatabase, ref, onValue, remove } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
@@ -958,8 +868,7 @@
         let allRecords = [];
         let isFirstLoad = true;
 
-        // Realtime listener
-        onValue(ref(db, "receipts"), (snapshot) => {
+        onValue(ref(db, "schedules"), (snapshot) => {
             // Timeout — 8 seconds baad offline message
             const loadingTimeout = setTimeout(() => {
                 document.getElementById('tableBody').innerHTML = `
@@ -972,35 +881,30 @@
             }, 8000);
             const data = snapshot.val();
             const newRecords = [];
-
             if (data) {
                 Object.entries(data).forEach(([key, val]) => {
                     newRecords.push({ id: key, ...val });
                 });
             }
-
-            // Notification on new entry (not on first load)
             if (!isFirstLoad && newRecords.length > allRecords.length) {
-                const newest = newRecords.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))[0];
+                const newest = [...newRecords].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))[0];
                 showNotification(newest);
             }
-
             isFirstLoad = false;
             allRecords = newRecords;
             window._allRecords = allRecords;
-
             renderTable(allRecords);
             updateStats(allRecords);
         });
     </script>
 
     <script>
-        // ── Date in topbar
+        Notification.requestPermission();
+
         document.getElementById('topbarDate').innerText = new Date().toLocaleDateString('en-PK', {
             weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
         });
 
-        // ── Sidebar
         function openSidebar() {
             document.getElementById('sidebar').classList.add('open');
             document.getElementById('sidebarOverlay').classList.add('open');
@@ -1010,172 +914,128 @@
             document.getElementById('sidebarOverlay').classList.remove('open');
         }
 
-        // ── Render Table
         function renderTable(records) {
             const tbody = document.getElementById('tableBody');
             const sort = document.getElementById('sortSelect').value;
-
             let sorted = [...records];
-            if (sort === 'newest') {
-                sorted.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-            } else {
-                sorted.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-            }
+            sorted.sort((a, b) => sort === 'newest'
+                ? new Date(b.timestamp) - new Date(a.timestamp)
+                : new Date(a.timestamp) - new Date(b.timestamp));
 
             document.getElementById('countBadge').innerText = sorted.length + ' records';
 
             if (sorted.length === 0) {
                 tbody.innerHTML = `<tr><td colspan="8"><div class="empty-state">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-                <p>No billing records found</p>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                <p>No visit schedules found</p>
             </div></td></tr>`;
                 return;
             }
 
-            tbody.innerHTML = sorted.map((r, i) => {
+            tbody.innerHTML = sorted.map(r => {
                 const shortId = r.id.slice(-6).toUpperCase();
-                const date = r.timestamp ? new Date(r.timestamp).toLocaleString('en-PK') : r.date || '—';
+                const bookedOn = r.timestamp ? new Date(r.timestamp).toLocaleDateString('en-PK') : '—';
                 return `<tr>
                 <td><span class="id-badge">#${shortId}</span></td>
-                <td class="name-cell">${r.name || '—'}</td>
+                <td class="name-cell">${r.fullname || '—'}</td>
                 <td>${r.phone || '—'}</td>
-                <td><span class="pkg-badge">${r.package || '—'}</span></td>
-                <td class="amount-cell">${r.amount || '—'}</td>
-                <td class="date-cell">${date}</td>
-                <td>${r.receiptUrl ? `<a href="${r.receiptUrl}" target="_blank" class="receipt-link">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                    View
-                </a>` : '—'}</td>
-                <td><button class="delete-btn" onclick="deleteRecord('${r.id}', '${r.publicId || ''}')">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                <td class="date-cell">${r.email || '—'}</td>
+                <td class="date-cell">${r.visitDate || '—'}</td>
+                <td class="date-cell">${r.visitTime || '—'}</td>
+                <td class="date-cell">${bookedOn}</td>
+                <td><button class="delete-btn" onclick="deleteRecord('${r.id}')">
+                    <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
                     Delete
                 </button></td>
             </tr>`;
             }).join('');
         }
 
-        // ── Stats
         function updateStats(records) {
             document.getElementById('statTotal').innerText = records.length;
-
-            const totalRev = records.reduce((sum, r) => {
-                const amt = parseInt((r.amount || '0').replace(/[^0-9]/g, ''));
-                return sum + (isNaN(amt) ? 0 : amt);
-            }, 0);
-            document.getElementById('statRevenue').innerText = totalRev.toLocaleString();
-
             const today = new Date().toDateString();
             const todayCount = records.filter(r => r.timestamp && new Date(r.timestamp).toDateString() === today).length;
             document.getElementById('statToday').innerText = todayCount;
-
-            if (records.length > 0) {
-                const latest = [...records].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))[0];
-                document.getElementById('statPackage').innerText = latest.package || '—';
+            const now = new Date();
+            const upcoming = records.filter(r => r.visitDate && new Date(r.visitDate) >= now);
+            document.getElementById('statUpcoming').innerText = upcoming.length;
+            if (upcoming.length > 0) {
+                upcoming.sort((a, b) => new Date(a.visitDate) - new Date(b.visitDate));
+                document.getElementById('statNext').innerText = upcoming[0].visitDate + ' ' + (upcoming[0].visitTime || '');
             }
         }
 
-        // ── Sort
         function applySorting() {
             if (window._allRecords) renderTable(window._allRecords);
         }
 
-        // ── Delete
-        async function deleteRecord(id, publicId) {
-
-            if (!confirm('Delete this record?')) return;
-
+        async function deleteRecord(id) {
+            if (!confirm('Delete this schedule?')) return;
             try {
-
-                // 1. Cloudinary delete
-                if (publicId) {
-                    await fetch('/api/delete-image', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ publicId })
-                    });
-                }
-
-                // 2. Firebase delete
-                await window._remove(
-                    window._ref(window._db, `receipts/${id}`)
-                );
-
+                await window._remove(window._ref(window._db, `schedules/${id}`));
             } catch (err) {
                 console.error(err);
                 alert("Delete failed");
             }
         }
 
-        // ── Search Overlay
         function openSearch() {
             document.getElementById('searchOverlay').classList.add('active');
             setTimeout(() => document.getElementById('searchInput').focus(), 100);
         }
-
         function closeSearch() {
             document.getElementById('searchOverlay').classList.remove('active');
             document.getElementById('searchInput').value = '';
             document.getElementById('searchResults').innerHTML = '<div class="no-results">Start typing to search...</div>';
         }
-
         function doSearch(query) {
             const q = query.toLowerCase().trim();
             const results = document.getElementById('searchResults');
-
-            if (!q) {
-                results.innerHTML = '<div class="no-results">Start typing to search...</div>';
-                return;
-            }
-
+            if (!q) { results.innerHTML = '<div class="no-results">Start typing to search...</div>'; return; }
             const records = window._allRecords || [];
             const filtered = records.filter(r =>
-                (r.name || '').toLowerCase().includes(q) ||
+                (r.fullname || '').toLowerCase().includes(q) ||
                 (r.phone || '').toLowerCase().includes(q) ||
-                (r.package || '').toLowerCase().includes(q) ||
-                (r.amount || '').toLowerCase().includes(q)
+                (r.email || '').toLowerCase().includes(q) ||
+                (r.visitDate || '').includes(q)
             );
-
-            if (filtered.length === 0) {
-                results.innerHTML = '<div class="no-results">No results found</div>';
-                return;
-            }
-
+            if (filtered.length === 0) { results.innerHTML = '<div class="no-results">No results found</div>'; return; }
             results.innerHTML = filtered.map(r => {
                 const shortId = r.id.slice(-6).toUpperCase();
-                const date = r.timestamp ? new Date(r.timestamp).toLocaleDateString('en-PK') : '—';
                 return `<div class="search-result-item">
                 <div class="sri-left">
-                    <div class="sri-name">${r.name || '—'} <span style="font-size:10px;color:#6b7280;margin-left:6px;">#${shortId}</span></div>
-                    <div class="sri-meta">${r.phone || '—'} · ${r.package || '—'} · ${date}</div>
+                    <div class="sri-name">${r.fullname || '—'} <span style="font-size:10px;color:#6b7280;margin-left:6px;">#${shortId}</span></div>
+                    <div class="sri-meta">${r.phone || '—'} · ${r.email || '—'}</div>
                 </div>
                 <div class="sri-right">
-                    <div class="sri-amount">${r.amount || '—'}</div>
+                    <div class="sri-date">${r.visitDate || '—'}</div>
                 </div>
             </div>`;
             }).join('');
         }
 
-        // ── Notification
         function showNotification(record) {
+            if (Notification.permission === 'granted') {
+                new Notification('📅 New Visit Scheduled!', {
+                    body: `${record.fullname || 'Unknown'} — ${record.visitDate || ''} at ${record.visitTime || ''}`,
+                    icon: '../Assets/Images/prime goat farm logo pic png01.png',
+                    tag: 'new-schedule',
+                    renotify: true
+                });
+            }
             const container = document.getElementById('notifContainer');
             const notif = document.createElement('div');
             notif.className = 'notif';
             notif.innerHTML = `
-            <div class="notif-title">🐐 New Payment Received</div>
-            <div class="notif-body">${record.name || 'Unknown'} — ${record.package || ''} — ${record.amount || ''}</div>
+            <div class="notif-title">📅 New Visit Scheduled</div>
+            <div class="notif-body">${record.fullname || 'Unknown'} — ${record.visitDate || ''} at ${record.visitTime || ''}</div>
             <div class="notif-time">Just now</div>
         `;
             container.appendChild(notif);
             setTimeout(() => notif.remove(), 5000);
         }
 
-        // Escape key closes search
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeSearch();
-        });
-
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearch(); });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>

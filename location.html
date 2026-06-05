@@ -1163,6 +1163,15 @@
 
 <body>
 
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index:99999">
+        <div id="liveToast" class="toast text-white border-0 fade hide" role="alert" data-bs-delay="3000">
+            <div class="d-flex">
+                <div class="toast-body" id="toastMsg"></div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        </div>
+    </div>
+
     <div class="modal-overlay" id="scheduleModalOverlay">
         <div class="schedule-modal">
             <button class="modal-close" id="closeScheduleModal" type="button" aria-label="Close modal">×</button>
@@ -1468,7 +1477,47 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+        import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
+        import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-messaging.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCK2j13R9IoIP0Tjrmsj-qCwDtFUW_oa4E",
+            authDomain: "prime-goat-farm-3e148.firebaseapp.com",
+            projectId: "prime-goat-farm-3e148",
+            storageBucket: "prime-goat-farm-3e148.firebasestorage.app",
+            messagingSenderId: "42499736897",
+            appId: "1:42499736897:web:462172284aa9ebd8d4cdc0",
+            databaseURL: "https://prime-goat-farm-3e148-default-rtdb.firebaseio.com"
+        };
+
+        (async () => {
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase(app);
+            const messaging = getMessaging(app);
+            await Notification.requestPermission();
+            getToken(messaging, { vapidKey: "BO-M9hgAgYpGnQX5etrE-iAKCEOoh6knlSpZecU84qvIBWf1WreyWoX6O42WbQ6dMOw_6_14CPWfxfMoj8T4bow" })
+                .then(token => { if (token) window._fcmToken = token; })
+                .catch(err => console.error("FCM:", err));
+            window._db = db;
+            window._ref = ref;
+            window._push = push;
+        })();
+    </script>
+
     <script>
+
+        function showToast(msg, type) {
+            const toastEl = document.getElementById("liveToast");
+            document.getElementById("toastMsg").innerText = msg;
+            toastEl.classList.remove("bg-success", "bg-danger");
+            toastEl.classList.add(type === "success" ? "bg-success" : "bg-danger");
+            new bootstrap.Toast(toastEl).show();
+        }
+
         const navBtn = document.getElementById('navHamburgerBtn');
         const offscreenMenu = document.getElementById('offscreenMenu');
         const offscreenOverlay = document.getElementById('offscreenOverlay');
@@ -1538,20 +1587,21 @@
         document.getElementById("inquiryForm").addEventListener("submit", function (e) {
             e.preventDefault();
 
-            const data = {
-                to_email: this.to_email.value,
-                fullname: this.fullname.value,
-                phone: this.phone.value,
-                email: this.email.value, // optional
-                message: this.message.value
-            };
+            const fullname = this.fullname.value.trim();
+            const phone = this.phone.value.trim();
+            const email = this.email.value.trim();
+            const message = this.message.value.trim();
 
-            console.log("Form Data:", data);
+            if (!fullname) { showToast("Please enter your Full Name", "danger"); return; }
+            if (!phone) { showToast("Please enter your Phone Number", "danger"); return; }
+            if (!message) { showToast("Please enter your Message", "danger"); return; }
 
-            // yahan ab tum API ya EmailJS lagao
-            alert("Message sent successfully!");
+            const ownerNumber = "92 317 1442824"; // farm owner ka WhatsApp number yahan daalo
+            const text = `*New Inquiry*%0AName: ${fullname}%0APhone: ${phone}%0AEmail: ${email || 'Not provided'}%0AMessage: ${message}`;
+            window.open(`https://wa.me/${ownerNumber}?text=${text}`, '_blank');
 
-            this.reset(); // form clear
+            showToast("Redirecting to WhatsApp ✅", "success");
+            this.reset();
         });
 
         const openScheduleModal = document.getElementById("openScheduleModal");
@@ -1580,12 +1630,36 @@
             if (e.key === "Escape") closeModal();
         });
 
-        scheduleForm.addEventListener("submit", function (e) {
+        scheduleForm.addEventListener("submit", async function (e) {
             e.preventDefault();
-            alert("Your visit has been booked successfully!");
-            this.reset();
-            closeModal();
+
+            const fullname = this.fullname.value.trim();
+            const email = this.email.value.trim();
+            const phone = this.phone.value.trim();
+            const visitDate = this.visitDate.value;
+            const visitTime = this.visitTime.value;
+
+            if (!fullname) { showToast("Please enter your Full Name", "danger"); return; }
+            if (!email) { showToast("Please enter your Email", "danger"); return; }
+            if (!phone) { showToast("Please enter your Phone Number", "danger"); return; }
+            if (!visitDate) { showToast("Please select a Visit Date", "danger"); return; }
+            if (!visitTime) { showToast("Please select a Visit Time", "danger"); return; }
+
+            try {
+                await window._push(window._ref(window._db, "schedules"), {
+                    fullname, email, phone, visitDate, visitTime,
+                    timestamp: new Date().toISOString(),
+                    fcmToken: window._fcmToken || 'not-granted'
+                });
+                showToast("Visit booked successfully! 🎉", "success");
+                this.reset();
+                closeModal();
+            } catch (err) {
+                console.error(err);
+                showToast("Booking failed, please try again", "danger");
+            }
         });
+    
     </script>
 
 </body>

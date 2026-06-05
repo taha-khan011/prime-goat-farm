@@ -834,11 +834,12 @@
                 </svg>
                 Bookings
             </a>
-            <a href="../billing-screen.html">
+            <a href="./visits.html">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                New Bill
+                Visit Schedules
             </a>
         </nav>
         <div class="sidebar-footer">Prime Goat Farm © 2025</div>
@@ -978,6 +979,16 @@
         let isFirstLoad = true;
 
         onValue(ref(db, "bookings"), (snapshot) => {
+            // Timeout — 8 seconds baad offline message
+            const loadingTimeout = setTimeout(() => {
+                document.getElementById('tableBody').innerHTML = `
+        <tr><td colspan="8">
+            <div class="empty-state">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.364 5.636a9 9 0 010 12.728M15.536 8.464a5 5 0 010 7.072M6.343 17.657a9 9 0 010-12.728M9.172 14.828a5 5 0 010-7.072M12 12h.01"/></svg>
+                <p>No internet connection — please check your network</p>
+            </div>
+        </td></tr>`;
+            }, 8000);
             const data = snapshot.val();
             const newRecords = [];
             if (data) {
