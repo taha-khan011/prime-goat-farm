@@ -958,37 +958,32 @@
         let allRecords = [];
         let isFirstLoad = true;
 
-        // Realtime listener
+        const loadingTimeout = setTimeout(() => {
+            document.getElementById('tableBody').innerHTML = `
+    <tr><td colspan="8">
+        <div class="empty-state">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.364 5.636a9 9 0 010 12.728M15.536 8.464a5 5 0 010 7.072M6.343 17.657a9 9 0 010-12.728M9.172 14.828a5 5 0 010-7.072M12 12h.01"/></svg>
+            <p>No internet connection — please check your network</p>
+        </div>
+    </td></tr>`;
+        }, 8000);
+
         onValue(ref(db, "receipts"), (snapshot) => {
-            // Timeout — 8 seconds baad offline message
-            const loadingTimeout = setTimeout(() => {
-                document.getElementById('tableBody').innerHTML = `
-        <tr><td colspan="8">
-            <div class="empty-state">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.364 5.636a9 9 0 010 12.728M15.536 8.464a5 5 0 010 7.072M6.343 17.657a9 9 0 010-12.728M9.172 14.828a5 5 0 010-7.072M12 12h.01"/></svg>
-                <p>No internet connection — please check your network</p>
-            </div>
-        </td></tr>`;
-            }, 8000);
+            clearTimeout(loadingTimeout);
             const data = snapshot.val();
             const newRecords = [];
-
             if (data) {
                 Object.entries(data).forEach(([key, val]) => {
                     newRecords.push({ id: key, ...val });
                 });
             }
-
-            // Notification on new entry (not on first load)
             if (!isFirstLoad && newRecords.length > allRecords.length) {
-                const newest = newRecords.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))[0];
+                const newest = [...newRecords].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))[0];
                 showNotification(newest);
             }
-
             isFirstLoad = false;
             allRecords = newRecords;
             window._allRecords = allRecords;
-
             renderTable(allRecords);
             updateStats(allRecords);
         });
